@@ -1,0 +1,1739 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sales Tech Academy</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Formation gratuite en 40 séances pour devenir SDR ou BDR dans la tech.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Mise en page : site d'apprentissage. Bandeau « nuit » (en-tête + têtes de page) façon salle d'appels, contenu clair en dessous.
+   Le corail est la couleur de l'action (appeler, commencer), chaque module garde sa couleur, l'or est réservé à l'XP. */
+:root{
+  --bg:#F3F5F9; --surface:#FFFFFF; --surface-2:#F7F8FB; --ink:#0E1626; --muted:#5A6579; --line:#E1E5EE;
+  --brand:#E04E26; --on-brand:#FFFFFF;
+  --night:#0A1222; --night-2:#121D35; --night-line:rgba(255,255,255,.09); --on-night:#EEF2FA; --on-night-muted:#9AA7C0; --hot:#FF7A4D; --teal:#2CC9B5;
+  --flame:#FF6A1A; --flame-2:#FFB020; --xp:#C98A00; --ok:#12925C;
+  --m1:#3F5BD8; --m2:#0E8F81; --m3:#2B7BDD; --m4:#CF3A84; --m5:#7A4ECF; --m6:#1C9655; --m7:#BF720A; --m8:#D6453A;
+  --shadow:0 1px 2px rgba(14,22,38,.05),0 8px 24px rgba(14,22,38,.06);
+  --shadow-lg:0 24px 60px rgba(6,12,26,.28);
+  --display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --body:'Inter','Segoe UI',system-ui,Arial,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:18px; --on-c:#FFFFFF; --maxw:1180px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#070C17; --surface:#0F1728; --surface-2:#131D31; --ink:#E8EDF6; --muted:#97A3B9; --line:#222D43;
+  --brand:#FF7A4D; --on-brand:#0A1222; --night:#050912; --night-2:#0D1528;
+  --flame:#FF8440; --flame-2:#FFC24D; --xp:#F2B437; --ok:#45CC8B;
+  --m1:#8C9CFF; --m2:#37C6B3; --m3:#6AAEFF; --m4:#FF77B6; --m5:#B18DFF; --m6:#4FD08A; --m7:#F3B04A; --m8:#FF7C70;
+  --shadow:0 1px 2px rgba(0,0,0,.35); --on-c:#0A1222; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#070C17; --surface:#0F1728; --surface-2:#131D31; --ink:#E8EDF6; --muted:#97A3B9; --line:#222D43;
+  --brand:#FF7A4D; --on-brand:#0A1222; --night:#050912; --night-2:#0D1528;
+  --flame:#FF8440; --flame-2:#FFC24D; --xp:#F2B437; --ok:#45CC8B;
+  --m1:#8C9CFF; --m2:#37C6B3; --m3:#6AAEFF; --m4:#FF77B6; --m5:#B18DFF; --m6:#4FD08A; --m7:#F3B04A; --m8:#FF7C70;
+  --shadow:0 1px 2px rgba(0,0,0,.35); --on-c:#0A1222; color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:100;background:var(--night)}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:6px}
+h1,h2,h3,h4{font-family:var(--display);margin:0;letter-spacing:-.02em;text-wrap:balance;font-weight:700}
+p{margin:0}
+.ico{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.num{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--mono)}
+.muted{color:var(--muted)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.inner{max-width:var(--maxw);margin:0 auto;width:100%}
+
+/* ---------- En-tête ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;background:color-mix(in srgb,var(--night) 94%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--night-line);color:var(--on-night)}
+.top .inner{display:flex;align-items:center;gap:18px;height:66px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
+.logo-mark{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:var(--hot);color:#0A1222;position:relative;overflow:hidden}
+.logo-mark svg{width:20px;height:20px;stroke:#0A1222;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.logo b{font-family:var(--display);font-size:17px;font-weight:800;letter-spacing:-.02em;line-height:1}
+.logo small{display:block;font-size:11px;color:var(--on-night-muted);letter-spacing:.02em;margin-top:3px}
+.nav{display:flex;align-items:center;gap:2px;margin-left:8px}
+.ni{position:relative}
+.nl{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:10px;border:0;background:transparent;color:var(--on-night-muted);text-decoration:none;font-weight:600;font-size:14px;cursor:pointer;white-space:nowrap;transition:color .15s,background .15s}
+.nl:hover,.ni.open>.nl,.nav:not(.quiet) .ni:hover>.nl{color:var(--on-night);background:rgba(255,255,255,.06)}
+.nl[aria-current="page"]{color:var(--on-night)}
+.nl[aria-current="page"]::after{content:"";position:absolute;left:12px;right:12px;bottom:-12px;height:2px;border-radius:2px;background:var(--hot)}
+.nl .chev{width:14px;height:14px;transition:transform .2s}
+.ni.open .chev,.nav:not(.quiet) .ni:hover .chev{transform:rotate(180deg)}
+.dd{position:absolute;top:100%;left:-8px;padding-top:12px;display:none;z-index:70}
+.ni.open .dd,.nav:not(.quiet) .ni:hover .dd{display:block;animation:ddin .18s ease-out}
+@keyframes ddin{from{opacity:0;transform:translateY(-4px)}}
+.ddp{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg);padding:10px;min-width:300px}
+.dd-h{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:8px 10px 6px}
+.dd-l{display:flex;gap:12px;align-items:flex-start;padding:10px;border-radius:12px;text-decoration:none;cursor:pointer;border:0;background:transparent;width:100%;text-align:left}
+.dd-l:hover{background:var(--surface-2)}
+.dd-l .di{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none;background:color-mix(in srgb,var(--c,var(--brand)) 13%,var(--surface));color:var(--c,var(--brand))}
+.dd-l .di .ico{width:18px;height:18px}
+.dd-l .dn{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:none;background:var(--c);color:var(--on-c);font-family:var(--display);font-weight:800;font-size:14px}
+.dd-l b{display:block;font-size:14px;font-weight:600;line-height:1.3}
+.dd-l small{display:block;font-size:12.5px;color:var(--muted);line-height:1.35;margin-top:2px}
+.mega{left:-120px}
+.mega .ddp{width:min(760px,calc(100vw - 40px));display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;padding:14px}
+.mega .foot-l{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:6px;padding:12px 12px 4px;border-top:1px solid var(--line);font-size:13.5px;flex-wrap:wrap}
+.mega .foot-l a{color:var(--brand);font-weight:600;text-decoration:none}
+.today-card{display:grid;gap:4px;padding:12px;border-radius:14px;background:color-mix(in srgb,var(--c) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--c) 25%,var(--line));text-decoration:none;margin-top:6px}
+.today-card b{font-family:var(--display);font-size:15px}
+.today-card span{font-size:12.5px;color:var(--muted)}
+.mprog{margin-left:auto;font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;align-self:center;white-space:nowrap}
+.acts{margin-left:auto;display:flex;align-items:center;gap:8px;flex:none}
+#pills{flex-wrap:nowrap}
+.kbtn{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 10px 0 12px;border-radius:11px;border:1px solid var(--night-line);background:rgba(255,255,255,.04);color:var(--on-night-muted);cursor:pointer;font-size:13.5px}
+.kbtn:hover{color:var(--on-night);background:rgba(255,255,255,.08)}
+.kbtn kbd{font-family:var(--mono);font-size:11px;padding:2px 6px;border-radius:6px;background:rgba(255,255,255,.08);color:var(--on-night-muted)}
+.pill{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 11px;border-radius:999px;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;font-family:var(--mono)}
+.pill svg{width:16px;height:16px}
+.pill.fl{background:rgba(255,122,77,.14);color:var(--hot)}
+.pill.fl.off{background:rgba(255,255,255,.05);color:var(--on-night-muted)}
+.pill.fl svg .o{fill:currentColor}.pill.fl svg .i{fill:var(--night)}
+.pill.xp{background:rgba(242,180,55,.14);color:#F2B437}
+.avatar{width:38px;height:38px;border-radius:50%;border:2px solid rgba(255,255,255,.14);background:linear-gradient(140deg,var(--hot),#F2B437);color:#0A1222;font-family:var(--display);font-weight:800;font-size:15px;cursor:pointer;display:grid;place-items:center}
+.prof .dd{left:auto;right:0}
+.prof .ddp{width:300px;display:grid;gap:12px;padding:16px}
+.lvl{display:grid;gap:8px;padding:12px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line)}
+.lvl b{font-family:var(--display);font-size:15px}
+.lvl small{font-size:12px;color:var(--muted)}
+.burger{display:none;width:40px;height:40px;border-radius:11px;border:1px solid var(--night-line);background:rgba(255,255,255,.04);color:var(--on-night);cursor:pointer;place-items:center}
+
+/* Tiroir mobile */
+.drawer{position:fixed;inset:0;z-index:90;display:flex;justify-content:flex-end;background:rgba(5,9,18,.55);animation:fade .2s ease}
+.drawer-p{width:min(380px,100%);height:100%;overflow-y:auto;background:var(--surface);padding:calc(16px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) 16px;display:grid;align-content:start;gap:6px;animation:slidein .25s cubic-bezier(.2,.8,.2,1)}
+@keyframes slidein{from{transform:translateX(30px);opacity:.4}}
+.drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.drawer details{border-bottom:1px solid var(--line)}
+.drawer summary{list-style:none;display:flex;justify-content:space-between;align-items:center;padding:14px 4px;font-weight:700;font-family:var(--display);font-size:17px;cursor:pointer}
+.drawer summary::-webkit-details-marker{display:none}
+.drawer details[open] summary .chev{transform:rotate(180deg)}
+.drawer summary .chev{transition:transform .2s;width:18px;height:18px}
+.drawer details>div{display:grid;gap:2px;padding-bottom:10px}
+.drawer .solo{display:block;padding:14px 4px;font-weight:700;font-family:var(--display);font-size:17px;text-decoration:none;border-bottom:1px solid var(--line)}
+
+/* ---------- Bandeaux de page ---------- */
+.band{background:var(--night);color:var(--on-night);position:relative;overflow:hidden;isolation:isolate}
+.band::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(600px 300px at 85% -10%,color-mix(in srgb,var(--c,var(--hot)) 30%,transparent),transparent 70%),
+  radial-gradient(500px 260px at 5% 120%,rgba(44,201,181,.16),transparent 70%)}
+.band::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;background-image:linear-gradient(var(--night-line) 1px,transparent 1px),linear-gradient(90deg,var(--night-line) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(180deg,#000,transparent 85%);-webkit-mask-image:linear-gradient(180deg,#000,transparent 85%)}
+.band .inner{padding-block:44px 48px;display:grid;gap:14px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.band .eyebrow{color:var(--hot)}
+.band h1{font-size:clamp(30px,4.6vw,48px);line-height:1.05;font-weight:800}
+.band .lede{color:var(--on-night-muted);max-width:64ch;font-size:16.5px}
+.crumbs{font-size:13px;color:var(--on-night-muted);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.crumbs a{color:var(--on-night-muted);text-decoration:none}
+.crumbs a:hover{color:var(--on-night)}
+.band .chip{background:rgba(255,255,255,.07);border-color:var(--night-line);color:var(--on-night-muted)}
+.band .chip.cert{background:rgba(242,180,55,.14);color:#F2B437}
+.band .mchip{background:rgba(255,255,255,.08)}
+.wrap{padding-block:34px 70px}
+.wrap>.inner{display:grid;gap:28px}
+
+/* ---------- Composants ---------- */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;min-width:0;box-shadow:var(--shadow)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:12px;border:0;background:var(--c,var(--brand));color:var(--on-brand);text-decoration:none;font-weight:700;font-size:14.5px;cursor:pointer;transition:transform .12s,filter .15s,box-shadow .15s;white-space:nowrap}
+.btn:hover{filter:brightness(1.07)}
+.btn:active{transform:scale(.98)}
+.btn.hot{background:var(--hot);color:#0A1222;box-shadow:0 10px 30px rgba(255,122,77,.3)}
+.btn.sec{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.btn.ghost{background:rgba(255,255,255,.06);color:var(--on-night);border:1px solid var(--night-line)}
+.btn.sm{padding:8px 13px;font-size:13.5px;border-radius:10px}
+.btn .ico{width:18px;height:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:3px 10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted);white-space:nowrap;font-weight:600;text-decoration:none}
+.chip.cert{background:color-mix(in srgb,var(--xp) 14%,var(--surface));border-color:transparent;color:var(--xp)}
+.chip svg{width:13px;height:13px}
+.mchip{display:inline-flex;align-items:center;gap:7px;padding:4px 12px 4px 4px;border-radius:999px;background:var(--surface);font-size:12.5px;font-weight:700;color:var(--c)}
+.mchip b{width:22px;height:22px;border-radius:50%;background:var(--c);color:var(--on-c);display:grid;place-items:center;font-size:11.5px}
+.seg{display:inline-flex;padding:4px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);gap:2px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;padding:7px 14px;border-radius:9px;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.input{font:inherit;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);min-width:0}
+.input:focus{outline:2px solid color-mix(in srgb,var(--brand) 50%,transparent);outline-offset:0}
+.bar{height:8px;border-radius:99px;background:color-mix(in srgb,var(--c,var(--brand)) 14%,var(--surface-2));overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:var(--c,var(--brand));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.bar.xpb i{background:linear-gradient(90deg,var(--xp),var(--flame-2))}
+.ring .tr{stroke:color-mix(in srgb,var(--c,var(--brand)) 15%,var(--surface-2))}
+.ring .pr{stroke:var(--c,var(--brand));transition:stroke-dashoffset .6s cubic-bezier(.2,.8,.2,1)}
+.ringwrap{position:relative;display:grid;place-items:center;flex:none}
+.ringwrap>span{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-variant-numeric:tabular-nums}
+.chead{display:flex;align-items:center;justify-content:space-between;gap:8px 12px;margin-bottom:16px;flex-wrap:wrap}
+.chead h3{font-size:19px}
+.sech{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.sech h2{font-size:clamp(22px,2.6vw,28px)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:4px;margin-right:6px;vertical-align:-1px}
+.iconbtn{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--surface);cursor:pointer;display:grid;place-items:center;color:var(--ink)}
+.iconbtn:hover{background:var(--surface-2)}
+.note{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line);font-size:14px}
+.note .ico{color:var(--brand);margin-top:2px}
+.pm{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:12px;font-weight:800;color:var(--on-c);flex:none;font-family:var(--display)}
+
+/* ---------- Accueil : visiteur ---------- */
+.hero .inner{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;gap:40px;padding-block:64px 72px}
+.hero h1{font-size:clamp(36px,5.6vw,64px);line-height:1.0;letter-spacing:-.035em}
+.hero h1 em{font-style:normal;color:var(--hot)}
+.hero .lede{font-size:18px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.trust{display:flex;gap:8px 18px;flex-wrap:wrap;margin-top:10px;font-size:13px;color:var(--on-night-muted)}
+.trust span{display:inline-flex;gap:7px;align-items:center}
+.trust .ico{width:16px;height:16px;color:var(--teal)}
+.call{background:linear-gradient(180deg,var(--night-2),color-mix(in srgb,var(--night-2) 70%,var(--night)));border:1px solid var(--night-line);border-radius:24px;padding:22px;display:grid;gap:16px;box-shadow:0 30px 80px rgba(0,0,0,.35);max-width:440px;justify-self:end;width:100%}
+.call-top{display:flex;align-items:center;gap:12px}
+.call-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(140deg,var(--teal),#3F5BD8);display:grid;place-items:center;font-family:var(--display);font-weight:800;color:#0A1222}
+.call-top b{display:block;font-size:15px}
+.call-top small{color:var(--on-night-muted);font-size:12.5px}
+.live{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:13px;color:var(--hot)}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--hot);animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+.wave{display:flex;align-items:center;gap:3px;height:38px}
+.wave i{flex:1;border-radius:3px;background:linear-gradient(180deg,var(--hot),color-mix(in srgb,var(--hot) 40%,transparent));height:20%;animation:wv 1.2s ease-in-out infinite}
+@keyframes wv{50%{height:var(--h)}}
+.script{display:grid;gap:10px}
+.line{display:grid;grid-template-columns:52px minmax(0,1fr);gap:10px;font-size:14px;color:var(--on-night)}
+.line .ts{font-family:var(--mono);font-size:12px;color:var(--on-night-muted);padding-top:2px}
+.line.you p{background:rgba(255,122,77,.12);border:1px solid rgba(255,122,77,.25);padding:9px 12px;border-radius:12px 12px 12px 4px}
+.line.them p{background:rgba(255,255,255,.05);border:1px solid var(--night-line);padding:9px 12px;border-radius:12px 12px 12px 4px;color:var(--on-night-muted)}
+.call-foot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--on-night-muted);padding-top:12px;border-top:1px solid var(--night-line)}
+.call-foot b{color:var(--teal);font-family:var(--mono)}
+.figs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden;box-shadow:var(--shadow)}
+.fig{padding:20px 18px;display:grid;gap:2px;border-right:1px solid var(--line)}
+.fig:last-child{border-right:0}
+.fig b{font-family:var(--display);font-size:32px;font-weight:800;line-height:1;letter-spacing:-.03em}
+.fig span{font-size:13px;color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.step{display:grid;gap:10px;align-content:start}
+.step .sn{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--brand)}
+.step h3{font-size:19px}
+.step p{color:var(--muted);font-size:14.5px}
+.modgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.modcard{display:grid;gap:10px;align-content:start;text-decoration:none;position:relative;overflow:hidden;transition:transform .18s,border-color .18s}
+.modcard:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--c) 45%,var(--line))}
+.modcard .mn{display:flex;justify-content:space-between;align-items:center}
+.modcard .mn span:first-child{width:40px;height:40px;border-radius:12px;background:var(--c);color:var(--on-c);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:18px}
+.modcard h3{font-size:17px;line-height:1.2}
+.modcard p{font-size:13.5px;color:var(--muted)}
+.modcard .wk{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.cta-band{border-radius:24px;padding:36px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center}
+.cta-band h2{font-size:clamp(24px,3vw,34px)}
+
+/* ---------- Accueil : tableau de bord ---------- */
+.dash .inner{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px;align-items:stretch;padding-block:36px 40px}
+.dash .hello{grid-column:1/-1;display:flex;justify-content:space-between;gap:16px;align-items:flex-end;flex-wrap:wrap}
+.dash .hello h1{font-size:clamp(30px,4.4vw,46px)}
+.dash .hello p{color:var(--on-night-muted)}
+.cont{background:var(--surface);color:var(--ink);border-radius:22px;padding:26px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:center;position:relative;overflow:hidden;border:1px solid transparent}
+.cont::after{content:"";position:absolute;right:-70px;top:-70px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--c) 22%,transparent),transparent 70%);pointer-events:none}
+.cont h2{font-size:clamp(22px,2.6vw,30px);line-height:1.12;margin-top:12px}
+.cont p.o{margin:8px 0 16px;color:var(--muted);max-width:52ch}
+.cont .mchip{background:color-mix(in srgb,var(--c) 10%,var(--surface))}
+.minipath{display:flex;gap:8px;margin:0 0 18px;flex-wrap:wrap}
+.minipath a{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:12.5px;font-weight:700;text-decoration:none;border:2px solid color-mix(in srgb,var(--c) 35%,var(--line));color:var(--c);background:var(--surface)}
+.minipath a.d{background:var(--c);border-color:var(--c);color:var(--on-c)}
+.minipath a.cur{box-shadow:0 0 0 3px var(--surface),0 0 0 5px var(--c)}
+.streakc{background:rgba(255,255,255,.04);border:1px solid var(--night-line);border-radius:22px;padding:22px;display:grid;gap:14px;align-content:start}
+.streak-top{display:flex;align-items:center;gap:14px}
+.bigflame{width:58px;height:58px;flex:none}
+.bigflame .o{fill:rgba(255,255,255,.12)} .bigflame .i{fill:var(--night)}
+.lit .bigflame .o{fill:url(#flameGrad)} .lit .bigflame .i{fill:#FFE3B0}
+.lit .bigflame{animation:flick 2.8s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes flick{0%,100%{transform:scale(1) rotate(0)}30%{transform:scale(1.04) rotate(-1.5deg)}60%{transform:scale(.98) rotate(1.2deg)}}
+.sn-big{font-family:var(--display);font-size:46px;font-weight:800;line-height:1}
+.lit .sn-big{color:var(--hot)}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.wd{display:grid;justify-items:center;gap:5px;font-size:11px;color:var(--on-night-muted);font-weight:700}
+.wd b{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.05);border:1px solid var(--night-line)}
+.wd b svg{width:17px;height:17px}
+.wd b svg .o{fill:rgba(255,255,255,.14)} .wd b svg .i{fill:var(--night)}
+.wd.on b{background:rgba(255,122,77,.16);border-color:rgba(255,122,77,.4)}
+.wd.on b svg .o{fill:var(--hot)} .wd.on b svg .i{fill:#FFE3B0}
+.wd.now{color:var(--on-night)}
+.wd.now b{box-shadow:0 0 0 2px var(--night),0 0 0 3.5px var(--on-night)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.stat{display:flex;gap:14px;align-items:center;padding:18px;text-decoration:none}
+.stat .t{display:grid;gap:1px;min-width:0}
+.stat .k{font-size:12.5px;color:var(--muted);font-weight:600}
+.stat .v{font-family:var(--display);font-size:21px;font-weight:800;line-height:1.15}
+.stat .s{font-size:12px;color:var(--muted)}
+.two{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px}
+.glance{display:grid;gap:7px}
+.grow{display:grid;grid-template-columns:36px repeat(5,minmax(0,1fr));gap:6px;align-items:center}
+.grow .lab{font-size:11.5px;font-weight:800;color:var(--c);font-family:var(--mono)}
+.tile{height:32px;border-radius:9px;border:1.5px solid color-mix(in srgb,var(--c) 26%,var(--line));background:var(--surface-2);display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--muted);text-decoration:none;transition:transform .12s;font-family:var(--mono)}
+.tile:hover{transform:translateY(-1px)}
+.tile.part{background:linear-gradient(90deg,color-mix(in srgb,var(--c) 30%,var(--surface)) var(--p),var(--surface-2) var(--p));border-color:color-mix(in srgb,var(--c) 45%,var(--line));color:var(--ink)}
+.tile.d{background:var(--c);border-color:var(--c);color:var(--on-c)}
+.tile.cur{box-shadow:0 0 0 2px var(--surface),0 0 0 3.5px var(--ink)}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.cal .dh{font-size:11px;color:var(--muted);text-align:center;padding-bottom:2px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.cell{height:40px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12.5px;font-variant-numeric:tabular-nums;color:var(--muted)}
+.cell.pad{visibility:hidden}
+.cell .p{font-size:9.5px;font-weight:800;color:var(--brand);line-height:1;font-family:var(--mono)}
+.cell.plan{background:var(--surface-2)}
+.cell.act{background:linear-gradient(160deg,var(--flame-2),var(--flame));color:#fff;font-weight:700}
+.cell.act .p{color:#fff}
+.cell.now{box-shadow:inset 0 0 0 2px var(--ink)}
+.startset{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13.5px}
+.badges{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:12px}
+.badge{display:grid;justify-items:center;gap:7px;text-align:center;font-size:12px;color:var(--muted);font-weight:600;line-height:1.25}
+.medal{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:19px;color:var(--muted);background:var(--surface-2);border:2px dashed var(--line)}
+.badge.got .medal{color:var(--on-c);border:0;background:linear-gradient(145deg,color-mix(in srgb,var(--c) 70%,#fff),var(--c));box-shadow:0 8px 18px color-mix(in srgb,var(--c) 30%,transparent)}
+.badge.got{color:var(--ink)}
+
+/* ---------- Parcours ---------- */
+.part-t{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.part-t h2{font-size:26px}
+.mod{border-radius:var(--r);border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:90px}
+.mod>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:18px;align-items:center;padding:20px 22px;background:color-mix(in srgb,var(--c) 7%,var(--surface))}
+.mod>summary::-webkit-details-marker{display:none}
+.mod>summary:hover{background:color-mix(in srgb,var(--c) 11%,var(--surface))}
+.modnum{width:54px;height:54px;border-radius:16px;background:var(--c);color:var(--on-c);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:23px}
+.mod h2{font-size:21px}
+.mod summary p{color:var(--muted);font-size:14px;margin-top:3px}
+.mod .chev{width:22px;height:22px;transition:transform .25s;color:var(--muted)}
+.mod[open] .chev{transform:rotate(180deg)}
+.mod-body{padding:8px 22px 22px;display:grid;gap:14px}
+.livdl{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px 0 4px}
+.livdl div{padding:12px 14px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);font-size:14px}
+.livdl dt{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);font-weight:800;margin-bottom:4px}
+.livdl dd{margin:0}
+.track{list-style:none;margin:0;padding:0;display:grid;gap:8px;position:relative}
+.track::before{content:"";position:absolute;left:23px;top:24px;bottom:24px;width:3px;border-radius:3px;background:color-mix(in srgb,var(--c) 20%,var(--line))}
+.track a{position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;align-items:center;text-decoration:none;padding:6px 0;border-radius:14px}
+.track a:hover .tcard{border-color:color-mix(in srgb,var(--c) 40%,var(--line));transform:translateX(3px)}
+.node{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:14px;background:var(--surface);border:3px solid color-mix(in srgb,var(--c) 35%,var(--line));color:var(--c);z-index:1}
+.node.d{background:var(--c);border-color:var(--c);color:var(--on-c)}
+.node.cur{border-color:var(--c);box-shadow:0 0 0 5px color-mix(in srgb,var(--c) 18%,transparent);animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 9px color-mix(in srgb,var(--c) 8%,transparent)}}
+.tcard{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:13px 16px;transition:border-color .15s,transform .15s}
+.tcard h3{font-size:15.5px;font-family:var(--body);font-weight:600;letter-spacing:0}
+.tcard p{font-size:13.5px;color:var(--muted)}
+.tcard .st{font-size:12.5px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tcard .st.d{color:var(--ok)}
+
+/* ---------- Séance ---------- */
+.sprog{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;max-width:620px}
+.sprog .bar{background:rgba(255,255,255,.1)}
+.tasks{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.task{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;display:grid;grid-template-columns:30px minmax(0,1fr);gap:16px;box-shadow:var(--shadow);transition:background .2s}
+.task.is-done{background:var(--surface-2);box-shadow:none}
+.task.is-done .tt{color:var(--muted);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--muted) 50%,transparent)}
+.task.pop{animation:pop .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{30%{transform:scale(1.015)}}
+.chk{appearance:none;-webkit-appearance:none;width:28px;height:28px;border-radius:50%;border:2px solid color-mix(in srgb,var(--c) 45%,var(--line));background:var(--surface);cursor:pointer;margin:0;display:grid;place-items:center;transition:background .15s,border-color .15s,transform .15s}
+.chk:hover{transform:scale(1.06);border-color:var(--c)}
+.chk:checked{background:var(--ok);border-color:var(--ok)}
+.chk:checked::after{content:"";width:7px;height:12px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
+.tbody{display:grid;gap:10px;min-width:0}
+.tmeta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.kind{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;padding:3px 9px;border-radius:6px;background:color-mix(in srgb,var(--m1) 12%,var(--surface));color:var(--m1)}
+.kind.p{background:color-mix(in srgb,var(--ok) 13%,var(--surface));color:var(--ok)}
+.tt{max-width:74ch;font-size:15px;cursor:pointer}
+.res{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.res li a,.res li div{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface-2);text-decoration:none;min-width:0;transition:border-color .15s,background .15s}
+.res li a:hover{border-color:color-mix(in srgb,var(--c) 45%,var(--line));background:var(--surface)}
+.res .pm{width:32px;height:32px;font-size:11px;border-radius:9px}
+.res .rt{display:grid;min-width:0;flex:1}
+.res .rt b{font-size:14px;font-weight:600;overflow-wrap:anywhere}
+.res .rt span{font-size:12.5px;color:var(--muted)}
+.res .rc{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.jump{justify-self:start;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:7px 12px;border-radius:10px;border:1px dashed color-mix(in srgb,var(--c) 55%,var(--line));background:transparent;color:var(--c);cursor:pointer;text-decoration:none}
+.jump .ico{width:16px;height:16px}
+details.sol{font-size:14px;background:var(--surface-2);border-radius:12px;padding:11px 14px;border:1px solid var(--line)}
+details.sol summary{cursor:pointer;font-weight:700;color:var(--c)}
+details.sol p{margin-top:8px}
+.livr{display:grid;gap:8px;padding:18px 20px;border-radius:var(--r);border:1px dashed color-mix(in srgb,var(--c) 45%,var(--line));background:color-mix(in srgb,var(--c) 5%,var(--surface))}
+.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* ---------- Fiches ---------- */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.fcard{display:grid;gap:10px;align-content:start;text-decoration:none;transition:transform .18s,border-color .18s}
+.fcard:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--c) 45%,var(--line))}
+.fcard .fn{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--c)}
+.fcard h3{font-size:18px;line-height:1.2}
+.fcard p{font-size:14px;color:var(--muted)}
+.article{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:32px;align-items:start}
+.prose{display:grid;gap:18px;font-size:16px;line-height:1.7;max-width:70ch}
+.prose h2{font-size:24px;margin-top:10px}
+.prose h3{font-size:18px}
+.prose ul,.prose ol{margin:0;padding-left:22px;display:grid;gap:6px}
+.prose table{width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.5}
+.prose th,.prose td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.prose th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.prose .case{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:14px;padding:18px 20px;display:grid;gap:10px;font-size:15px}
+.prose .ex{font-family:var(--mono);font-size:13.5px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;line-height:1.6}
+.keybox{position:sticky;top:96px;display:grid;gap:12px;border-top:4px solid var(--c)}
+.keybox h3{font-size:16px}
+.keybox ul{margin:0;padding-left:18px;display:grid;gap:8px;font-size:14px}
+.scroll{overflow-x:auto}
+
+/* ---------- Certifications ---------- */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.ccard{display:grid;gap:12px;align-content:start;position:relative}
+.ccard.done{border-color:color-mix(in srgb,var(--xp) 55%,var(--line))}
+.ccard .top2{display:flex;gap:12px;align-items:flex-start}
+.ccard .pm{width:44px;height:44px;border-radius:12px;font-size:14px}
+.ccard h3{font-size:17px;line-height:1.25}
+.ccard .org{font-size:13px;color:var(--muted)}
+.ccard p.d{font-size:14px}
+.ccard .acc{font-size:12.5px;color:var(--muted)}
+.ccard .got{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,var(--flame-2),var(--xp))}
+.ccard .got svg{width:16px;height:16px;stroke:#fff}
+.cstat{display:flex;gap:4px;padding:3px;border-radius:11px;background:var(--surface-2);border:1px solid var(--line)}
+.cstat button{flex:1;border:0;background:transparent;padding:7px 10px;white-space:nowrap;border-radius:8px;font-size:12.5px;font-weight:700;color:var(--muted);cursor:pointer}
+.cstat button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.cstat button[aria-pressed="true"][data-v="done"]{background:var(--ok);color:#fff}
+
+/* ---------- Glossaire, cartes, quiz ---------- */
+.gtools{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.gtools .input{flex:1 1 260px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.fchip{font-size:13px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);cursor:pointer;color:var(--muted);font-weight:600}
+.fchip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.gcard{padding:16px 18px;display:grid;gap:6px;align-content:start;box-shadow:none}
+.gcard .term{font-family:var(--display);font-weight:700;font-size:17px;display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.gcard .en{font-size:13px;color:var(--c);font-weight:700}
+.gcard p{font-size:14px;color:var(--muted)}
+.known{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ok);flex:none}
+.known svg{width:13px;height:13px;stroke:#fff}
+.fc-wrap{display:grid;gap:16px;justify-items:center}
+.fc{width:min(580px,100%);height:310px;perspective:1200px;cursor:pointer;border:0;background:none;padding:0}
+.fc-in{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.3,.8,.3,1);transform-style:preserve-3d}
+.fc.flip .fc-in{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:24px;display:grid;place-items:center;align-content:center;gap:12px;padding:28px;text-align:center;border:1px solid var(--line);box-shadow:var(--shadow)}
+.fc-front{background:var(--surface)}
+.fc-front .t{font-family:var(--display);font-size:clamp(26px,4vw,38px);font-weight:800;line-height:1.1}
+.fc-front .h{font-size:13px;color:var(--muted)}
+.fc-back{transform:rotateY(180deg);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 15%,var(--surface)),var(--surface))}
+.fc-back .en{font-family:var(--display);font-size:21px;font-weight:700;color:var(--c)}
+.fc-back p{font-size:15.5px;max-width:46ch}
+.fc-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.quiz{max-width:680px;width:100%;margin:0 auto;display:grid;gap:16px}
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13.5px;color:var(--muted);font-family:var(--mono)}
+.qcard{display:grid;gap:16px;padding:26px}
+.qcard .q{font-family:var(--display);font-size:clamp(22px,3vw,30px);font-weight:800;line-height:1.15}
+.qcard .qk{font-size:13px;color:var(--muted);font-weight:600}
+.opts{display:grid;gap:10px}
+.opt{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;align-items:center;text-align:left;padding:13px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;font-size:14.5px;transition:border-color .15s,background .15s}
+.opt:hover:not([disabled]){border-color:color-mix(in srgb,var(--brand) 50%,var(--line))}
+.opt .lt{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--surface-2);font-family:var(--mono);font-weight:700;font-size:13px}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 10%,var(--surface))}
+.opt.right .lt{background:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--m8);background:color-mix(in srgb,var(--m8) 9%,var(--surface))}
+.opt.wrong .lt{background:var(--m8);color:#fff}
+.opt[disabled]{cursor:default}
+
+/* ---------- Ressources & outils ---------- */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.rcard{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:start;padding:16px;text-decoration:none;box-shadow:none;transition:border-color .15s,transform .15s}
+a.rcard:hover{border-color:color-mix(in srgb,var(--brand) 40%,var(--line));transform:translateY(-2px)}
+.rcard .pm{width:44px;height:44px;border-radius:12px;font-size:14px}
+.rcard .rt{display:grid;gap:4px;min-width:0}
+.rcard b{font-size:14.5px;line-height:1.3}
+.rcard .src{font-size:12.5px;color:var(--muted)}
+.rcard .rc{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.used{font-size:12px;color:var(--muted)}
+.toolnav{display:flex;gap:8px;flex-wrap:wrap}
+.toolgrid{display:grid;gap:16px}
+.tool{display:grid;gap:12px;scroll-margin-top:90px}
+.tool table{width:100%;border-collapse:collapse;font-size:14px}
+.tool th,.tool td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.tool th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.tool ol,.tool ul{margin:0;padding-left:20px;display:grid;gap:7px;font-size:14.5px}
+.tool .tpl{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14px;display:grid;gap:8px}
+.tool.flash{animation:flash 1.4s ease-out}
+@keyframes flash{0%{box-shadow:0 0 0 3px var(--brand)}100%{box-shadow:var(--shadow)}}
+
+/* ---------- Pied de page ---------- */
+.foot{background:var(--night);color:var(--on-night-muted);font-size:13px}
+.foot .inner{padding-block:36px calc(36px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
+.foot h4{color:var(--on-night);font-size:14px;margin-bottom:10px;font-family:var(--body);letter-spacing:0}
+.foot a{color:var(--on-night-muted);text-decoration:none;display:block;padding:3px 0}
+.foot a:hover{color:var(--on-night)}
+.foot .base{grid-column:1/-1;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-top:18px;border-top:1px solid var(--night-line)}
+.sync{display:inline-flex;align-items:center;gap:8px}
+.sync i{width:8px;height:8px;border-radius:50%;background:var(--on-night-muted)}
+.sync.db i{background:var(--teal)}
+
+/* ---------- Superpositions ---------- */
+.xpf{position:fixed;z-index:120;pointer-events:none;font-family:var(--mono);font-weight:700;font-size:15px;color:var(--xp);animation:xpup 1s ease-out forwards;white-space:nowrap}
+@keyframes xpup{0%{opacity:0;transform:translateY(0) scale(.8)}20%{opacity:1;transform:translateY(-8px) scale(1.1)}100%{opacity:0;transform:translateY(-44px) scale(1)}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:130;display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;background:var(--ink);color:var(--bg);font-weight:600;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.2);animation:toast 3.2s ease forwards;max-width:calc(100vw - 32px)}
+.toast svg{width:18px;height:18px}
+.toast svg .o{fill:var(--flame-2)}.toast svg .i{fill:var(--ink)}
+@keyframes toast{0%{opacity:0;transform:translate(-50%,10px)}10%,85%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,6px)}}
+#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:140}
+.modal{position:fixed;inset:0;z-index:110;display:grid;place-items:center;padding:20px;background:rgba(5,9,18,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);animation:fade .2s ease}
+@keyframes fade{from{opacity:0}}
+.mbox{width:min(460px,100%);background:var(--surface);border-radius:24px;padding:28px;display:grid;gap:16px;box-shadow:var(--shadow-lg);animation:rise .35s cubic-bezier(.2,1.2,.4,1)}
+.mbox.center{text-align:center;justify-items:center}
+@keyframes rise{from{transform:translateY(16px) scale(.97);opacity:0}}
+.mbox h2{font-size:25px}
+.mbox p{color:var(--muted)}
+.field{display:grid;gap:6px;font-size:13.5px;font-weight:600}
+.mstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%}
+.mstats div{border:1px solid var(--line);border-radius:14px;padding:12px 6px;display:grid;gap:2px}
+.mstats b{font-family:var(--display);font-size:21px}
+.mstats span{font-size:12px;color:var(--muted)}
+.pal{align-items:start;padding-top:max(60px,10vh)}
+.palbox{width:min(640px,100%);background:var(--surface);border-radius:20px;box-shadow:var(--shadow-lg);overflow:hidden;animation:rise .25s ease}
+.palin{display:flex;gap:10px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.palin input{flex:1;border:0;background:transparent;font:inherit;font-size:17px;color:var(--ink);outline:none;min-width:0}
+.palin kbd{font-family:var(--mono);font-size:11px;padding:3px 7px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted)}
+.pallist{max-height:min(460px,60vh);overflow-y:auto;padding:8px}
+.palgrp{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:10px 10px 4px}
+.palit{display:flex;gap:12px;align-items:center;padding:10px;border-radius:12px;text-decoration:none;cursor:pointer}
+.palit[aria-selected="true"]{background:color-mix(in srgb,var(--brand) 10%,var(--surface))}
+.palit .pk{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:none;background:color-mix(in srgb,var(--c,var(--brand)) 13%,var(--surface));color:var(--c,var(--brand));font-family:var(--mono);font-size:11.5px;font-weight:700}
+.palit .pk .ico{width:16px;height:16px}
+.palit b{display:block;font-size:14px;font-weight:600}
+.palit small{display:block;font-size:12.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:48ch}
+.palempty{padding:24px;text-align:center;color:var(--muted)}
+
+/* Texte sur couleur de module */
+.mchip b,.modnum,.node.d,.tile.d,.minipath a.d,.badge.got .medal,.pm,.dd-l .dn{color:var(--on-c)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1120px){
+  .nav .nl{padding:9px 9px}
+  .kbtn span,.kbtn kbd,.top .logo small{display:none}
+  .pill.xp{display:none}
+  .modgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .badges{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .figs{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .fig:nth-child(3){border-right:0}
+  .fig:nth-child(-n+3){border-bottom:1px solid var(--line)}
+}
+@media (max-width:920px){
+  .nav,.acts .pill,.prof{display:none}
+  .burger{display:grid}
+  .hero .inner,.dash .inner,.two,.article{grid-template-columns:1fr}
+  .call{justify-self:stretch;max-width:none}
+  .keybox{position:static}
+  .steps{grid-template-columns:1fr}
+  .foot .inner{grid-template-columns:1fr 1fr}
+  .cta-band{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .top .inner{height:60px;gap:10px}
+  .logo small{display:none}
+  .band .inner{padding-block:30px 34px}
+  .hero .inner{padding-block:40px 48px}
+  .cont{grid-template-columns:1fr;padding:20px}
+  .cont .ringwrap{display:none}
+  .card{padding:18px}
+  .stats{gap:10px}
+  .stat{padding:14px;gap:10px;flex-direction:column;align-items:flex-start}
+  .figs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fig{border-right:0;border-bottom:1px solid var(--line)}
+  .fig:nth-child(odd){border-right:1px solid var(--line)}
+  .fig:nth-child(n+5){border-bottom:0}
+  .fig b{font-size:26px}
+  .modgrid{grid-template-columns:1fr}
+  .badges{gap:10px}
+  .medal{width:48px;height:48px;font-size:17px}
+  .mod>summary{grid-template-columns:auto minmax(0,1fr) auto;padding:16px;gap:12px}
+  .mod>summary .ringwrap{display:none}
+  .modnum{width:44px;height:44px;font-size:19px;border-radius:13px}
+  .mod-body{padding:6px 14px 16px}
+  .livdl{grid-template-columns:1fr}
+  .tcard{grid-template-columns:1fr;gap:4px}
+  .task{padding:16px;gap:12px}
+  .res li a,.res li div{display:grid;grid-template-columns:32px minmax(0,1fr);gap:6px 12px}
+  .res .rc{grid-column:2;justify-content:flex-start}
+  .fc{height:290px}
+  .foot .inner{grid-template-columns:1fr}
+  .cta-band{padding:24px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+<style>html,body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="flameGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB020"/><stop offset="1" stop-color="#FF5A1F"/></linearGradient></defs></svg>
+
+<header class="top gutter">
+  <div class="inner">
+    <a class="logo" href="#accueil" aria-label="Sales Tech Academy, accueil"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-9"/><path d="M15 7h5v5"/></svg></span><span><b>Sales Tech Academy</b><small>La formation SDR &amp; BDR de PA</small></span></a>
+    <nav class="nav" id="nav" aria-label="Navigation principale"></nav>
+    <div class="acts">
+      <button class="kbtn" type="button" id="open-search" aria-label="Rechercher"><svg class="ico" viewBox="0 0 24 24" style="width:17px;height:17px"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Rechercher</span><kbd>⌘K</kbd></button>
+      <span id="pills" class="row" style="gap:6px"></span>
+      <div class="ni prof" id="prof"></div>
+      <button class="burger" type="button" id="open-drawer" aria-label="Ouvrir le menu"><svg class="ico" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="view" tabindex="-1"></main>
+<footer class="foot gutter" id="foot"></footer>
+<div id="fx"></div>
+<canvas id="confetti" hidden></canvas>
+
+<script>
+/* ===================== CONTENU ===================== */
+/* Ressources : [titre, organisme, url, langue, type]. Les fiches (f1…f8) sont écrites dans le site. */
+const R = {
+  f1:["Fiche 1 · Le métier de SDR et de BDR","Sales Tech Academy","#fiche-1","FR","Fiche"],
+  f2:["Fiche 2 · Les entreprises tech et le cycle de vente","Sales Tech Academy","#fiche-2","FR","Fiche"],
+  f3:["Fiche 3 · Cibler des situations, la cadence sur 10 jours","Sales Tech Academy","#fiche-3","FR","Fiche"],
+  f4:["Fiche 4 · La découverte, SPIN et le cas Eddie","Sales Tech Academy","#fiche-4","FR","Fiche"],
+  f5:["Fiche 5 · MEDDIC et les ventes complexes","Sales Tech Academy","#fiche-5","FR","Fiche"],
+  f6:["Fiche 6 · Traiter les objections","Sales Tech Academy","#fiche-6","FR","Fiche"],
+  f7:["Fiche 7 · Journée type, rémunération, carrière","Sales Tech Academy","#fiche-7","FR","Fiche"],
+  f8:["Fiche 8 · Raconter ton parcours","Sales Tech Academy","#fiche-8","FR","Fiche"],
+  oc_bizdev:["Découvrez le métier de Business Developer","OpenClassrooms","https://openclassrooms.com/courses/8677741-decouvrez-le-metier-de-business-developer","FR","Cours"],
+  oc_tech:["Initiez-vous aux techniques commerciales","OpenClassrooms","https://openclassrooms.com/courses/4750821-initiez-vous-aux-techniques-commerciales","FR","Cours"],
+  oc_prosp:["Pilotez une prospection commerciale efficace","OpenClassrooms","https://openclassrooms.com/courses/6380896-pilotez-une-prospection-commerciale-efficace","FR","Cours"],
+  oc_newclients:["Prospectez des nouveaux clients","OpenClassrooms","https://openclassrooms.com/courses/4225216-prospectez-des-nouveaux-clients","FR","Cours"],
+  oc_rdv:["Réussissez vos rendez-vous commerciaux","OpenClassrooms","https://openclassrooms.com/fr/courses/6391716-reussissez-vos-rendez-vous-commerciaux","FR","Cours"],
+  skip_sdr:["Parcours « Devenir SDR », avec simulateur d'appel","Skipcall","https://skipcall.io/formation/sdr","FR","Cours"],
+  skip_guide:["Cold call B2B : le guide complet","Skipcall","https://skipcall.io/guide-cold-call","FR","Guide"],
+  skip_script:["Modèle de script de cold call","Skipcall","https://skipcall.io/blog/modele-script-cold-call","FR","Article"],
+  skip_accroche:["Les accroches de cold call","Skipcall","https://skipcall.io/blog/accroche-cold-call","FR","Article"],
+  skip_obj:["Objections en cold call et réponses","Skipcall","https://skipcall.io/blog/objections-cold-call-reponses","FR","Article"],
+  skip_salaire:["Salaire d'un SDR en France","Skipcall","https://skipcall.io/blog/salaire-sdr-france","FR","Article"],
+  skip_variable:["La rémunération variable du SDR","Skipcall","https://skipcall.io/blog/remuneration-variable-sdr","FR","Article"],
+  skip_recruter:["Recruter un SDR : la méthode du manager","Skipcall","https://skipcall.io/formation/manager/recruter-un-sdr","FR","Cours"],
+  skip_en:["How to cold call","Skipcall","https://skipcall.io/en/blog/how-to-cold-call","EN","Article"],
+  hs_inbound:["Inbound Sales","HubSpot Academy","https://academy.hubspot.com/academy/public/courses/inbound-sales","EN","Certification"],
+  hs_software:["HubSpot Sales Hub Software","HubSpot Academy","https://academy.hubspot.com/academy/public/courses/hubspot-sales-hub-software","EN","Certification"],
+  hs_inbound_core:["Inbound","HubSpot Academy","https://academy.hubspot.com/academy/public/courses/inbound","EN","Certification"],
+  hs_enable:["Sales Enablement","HubSpot Academy","https://academy.hubspot.com/courses/sales-enablement","EN","Certification"],
+  hs_revops:["Revenue Operations","HubSpot Academy","https://academy.hubspot.com/academy/public/courses/revenue-operations","EN","Certification"],
+  hs_kpi:["SaaS : 18 KPI à suivre","HubSpot","https://blog.hubspot.fr/marketing/indicateurs-reference-secteur-saas","FR","Article"],
+  hs_qualif:["Les principes de base de la qualification des prospects","HubSpot","https://blog.hubspot.fr/sales/qualifier-prospect-pour-vente","FR","Article"],
+  hs_obj:["Gérer les objections courantes en prospection","HubSpot","https://blog.hubspot.fr/sales/gerer-objections-courantes-prospection","FR","Article"],
+  hs_lettre:["Lettre de motivation de commercial","HubSpot","https://blog.hubspot.fr/sales/lettre-de-motivation-commercial","FR","Article"],
+  claap_kpi:["Métriques SaaS : les 13 KPIs essentiels","Claap","https://www.claap.io/fr/blog/metriques-saas-kpis-essentiels","FR","Article"],
+  claap_meddic:["Le modèle MEDDIC pour qualifier ses prospects","Claap","https://www.claap.io/fr/blog/modele-meddic-qualification","FR","Article"],
+  fullcast:["MEDDPICC : the complete guide","Fullcast","https://www.fullcast.com/content/meddpicc/","EN","Guide"],
+  pipedrive_bant:["Qualifier ses leads avec la méthode BANT","Pipedrive","https://www.pipedrive.com/fr/blog/methode-bant-qualification-de-leads","FR","Article"],
+  th:["Construire sa carrière commerciale dans l'écosystème Salesforce","Salesforce","https://www.salesforce.com/blog/sales-career-path-trailblazer-ecosystem/","EN","Article"],
+  th_prosp:["Strategic Prospecting","Salesforce Trailhead","https://trailhead.salesforce.com/content/learn/modules/prospecting-strategies","EN","Badge"],
+  th_contact:["Prospecting Contact Strategy","Salesforce Trailhead","https://trailhead.salesforce.com/content/learn/modules/prospecting-contact-strategy","EN","Badge"],
+  th_improve:["Prospecting to Improve Sales","Salesforce Trailhead","https://trailhead.salesforce.com/content/learn/modules/prospecting-to-improve-sales","EN","Badge"],
+  th_rep:["Sales Rep Training","Salesforce Trailhead","https://trailhead.salesforce.com/modules/sales-rep-training","EN","Badge"],
+  th_leads:["Leads and Opportunities","Salesforce Trailhead","https://trailhead.salesforce.com/content/learn/modules/leads_opportunities_lightning_experience","EN","Badge"],
+  th_opp:["Opportunity Management","Salesforce Trailhead","https://trailhead.salesforce.com/content/learn/modules/opportunity-management","EN","Badge"],
+  th_process:["Build a Sales Process","Salesforce Trailhead","https://trailhead.salesforce.com/content/learn/modules/build-a-sales-process","EN","Badge"],
+  li_nav_cert:["Sales Navigator Essentials Certificate","LinkedIn Sales Solutions","https://training.sales.linkedin.com/path/sales-navigator-essentials-skillset","EN","Certification"],
+  li_nav_best:["Sales Navigator Best Practices Certificate","LinkedIn Sales Solutions","https://training.sales.linkedin.com/path/sales-navigator-best-practices-skillset","EN","Certification"],
+  li_learning:["Become an Inside Sales Representative","LinkedIn Learning","https://www.linkedin.com/learning/paths/become-an-inside-sales-representative","EN","Certification"],
+  coursera_sdr:["Salesforce Sales Development Representative","Coursera · Salesforce","https://www.coursera.org/professional-certificates/sales-development-representative","EN","Certification"],
+  coursera_hs:["HubSpot Sales Representative","Coursera · HubSpot","https://www.coursera.org/professional-certificates/hubspot-sales-representative","EN","Certification"],
+  coursera_en:["Business English: Marketing and Sales","Coursera · Arizona State University","https://www.coursera.org/learn/marketing-sales-english","EN","Cours"],
+  google_ads:["Google Ads Search","Google Skillshop","https://skillshop.exceedlms.com/student/path/18128","EN","Certification"],
+  apollo:["Apollo Academy : cours et master classes","Apollo","https://www.apollo.io/academy","EN","Cours"],
+  outreach:["Outreach University","Outreach","https://university.outreach.io","EN","Cours"],
+  clay:["Clay 101 : GTM Automation","Clay University","https://university.clay.com/courses/clay-101","EN","Cours"],
+  jb:["Learn cold email","Josh Braun","https://joshbraun.com/learn/cold-email/","EN","Article"],
+  woodpecker:["15 cold email templates","Woodpecker","https://woodpecker.co/docs/cold-email-templates-ebook.pdf","EN","E-book"],
+  lemlist_email:["L'email de prospection","lemlist","https://lemlist.com/fr/blog/email-de-prospection","FR","Article"],
+  close:["Cold email tips from 20 sales leaders","Close","https://close.com/blog/cold-email-tips-linkedin","EN","Article"],
+  gong_cheat:["Cold Call Cheat Sheet","Gong","https://www.gong.io/resources/guides/cold-calling-cheat-sheet","EN","Guide"],
+  gong_how:["How to cold call","Gong","https://www.gong.io/blog/how-to-cold-call","EN","Article"],
+  gong_labs:["Gong Labs : études sur les conversations commerciales","Gong","https://www.gong.io/gong-labs","EN","Article"],
+  waalaxy_nav:["Tutoriel : utiliser LinkedIn Sales Navigator","Waalaxy","https://blog.waalaxy.com/tutoriel-comment-utiliser-le-sales-navigator","FR","Article"],
+  linkedin_nav:["Ressources Sales Navigator","LinkedIn","https://business.linkedin.com/fr-fr/sales-solutions/sales-navigator-customer-hub/resources","FR","Guide"],
+  lgm_icp:["Définir son profil client idéal","La Growth Machine","https://lagrowthmachine.com/fr/profil-client-ideal/","FR","Article"],
+  lgm_linkedin:["Utiliser LinkedIn en tant que commercial","La Growth Machine","https://lagrowthmachine.com/fr/comment-utiliser-linkedin-en-tant-que-commercial/","FR","Article"],
+  clearbit_icp:["Ideal customer profile template","Clearbit","https://clearbit.com/blog/ideal-customer-profile-template","EN","Article"],
+  crunchbase_day:["A day in the life of a successful SDR","Crunchbase","https://about.crunchbase.com/blog/day-in-the-life-of-a-successful-sdr","EN","Article"],
+  zeliq_sdr:["Sales Development Representative : rôle, missions, salaire","Zeliq","https://www.zeliq.com/fr/blog/sales-development-representativee","FR","Article"],
+  resumegeni_cv:["Guide du CV de SDR","ResumeGeni","https://resumegeni.com/fr/blog/sales-development-representative-resume-guide","FR","Article"],
+  jobrise_li:["Exemples de profils LinkedIn de SDR","Jobrise","https://jobrise.io/fr/blog/sales-development-representative-linkedin-profile-examples-2026/","FR","Article"],
+  jobrise_int:["Exemples de réponses d'entretien SDR","Jobrise","https://jobrise.io/fr/blog/sales-development-representative-interview-answers-examples-2026/","FR","Article"],
+  jobrise_cover:["Exemples de lettres de motivation SDR","Jobrise","https://jobrise.io/fr/blog/sales-development-representative-cover-letter-examples-2026/","FR","Article"],
+  bravado:["Acing the SDR interview","Bravado","https://bravado.co/blog/sdr-interview","EN","Article"],
+  reply_int:["12 common SDR interview questions","Reply","https://reply.io/sdr-interview-questions/","EN","Article"],
+  springboard:["SDR interview questions","Springboard","https://www.springboard.com/blog/sales/sdr-interview-questions/","EN","Article"],
+  glassdoor_hs:["Entretiens BDR chez HubSpot","Glassdoor","https://www2.glassdoor.com.au/Interview/HubSpot-Business-Development-Representative-BDR-Interview-Questions-EI_IE227605.0,7_KO8,47.htm","EN","Témoignages"],
+  glassdoor:["Avis d'entretien par entreprise","Glassdoor","https://www.glassdoor.fr","FR","Témoignages"],
+  wttj:["Offres d'emploi et pages entreprises","Welcome to the Jungle","https://www.welcometothejungle.com","FR","Offres"],
+  repvue:["Notes des équipes sales","RepVue","https://www.repvue.com","EN","Témoignages"],
+  licorne:["Salaires des commerciaux","Licorne Society","https://www.licornesociety.com/blog/salaire-commerciaux","FR","Article"],
+  yt_day:["« Day in the life SDR » : sélection de vidéos","YouTube","https://www.youtube.com/results?search_query=day+in+the+life+SDR+tech+sales","EN","Vidéo"],
+  yt_30mpc:["30 Minutes to President's Club : cold calls","YouTube","https://www.youtube.com/results?search_query=30+minutes+to+presidents+club+cold+call","EN","Vidéo"],
+  yt_mock:["Mock cold calls d'entretien SDR","YouTube","https://www.youtube.com/results?search_query=SDR+mock+cold+call+interview","EN","Vidéo"],
+  yt_int:["Tech sales interview questions","YouTube","https://www.youtube.com/results?search_query=tech+sales+interview+questions+SDR","EN","Vidéo"],
+  yt_fr:["Journée type et cold call de SDR en français","YouTube","https://www.youtube.com/results?search_query=SDR+cold+call+prospection+B2B+fran%C3%A7ais","FR","Vidéo"],
+  monsieur_lead:["Monsieur Lead : prospection B2B","YouTube","https://www.youtube.com/channel/UCwxM0eH0tXQpDbkCXLW5cSg","FR","Vidéo"],
+  prospect_pod:["PROSPECT, le podcast des SDR","Cognism","https://www.cognism.com/fr/prospect-podcast","FR","Podcast"],
+  cognism_pod:["20 podcasts de vente","Cognism","https://www.cognism.com/fr/blog/podcast-vente","FR","Podcast"],
+  cognism_obj:["Le traitement des objections","Cognism","https://www.cognism.com/fr/blog/traitement-objections-vente","FR","Article"],
+  salesblazer:["Communauté Salesblazer","Salesforce","https://www.salesforce.com/fr/blog/sales/salesblazer-community-sign-up/","FR","Communauté"],
+};
+
+/* Programme : 8 modules × 5 séances. Tâche = [c|p, durée, consigne, ressources, extra {g: module du glossaire, o: outil, sol: solution}] */
+const M = [
+{t:"Le métier et l'écosystème tech sales",obj:"Expliquer le rôle du SDR et du BDR, l'organisation d'une équipe commerciale tech et l'économie d'une entreprise SaaS.",liv:"Note d'une page « Le métier de SDR » et certification HubSpot Inbound Sales.",crit:"Tu expliques le métier à l'oral en 2 minutes, sans notes, avec le bon vocabulaire en français et en anglais.",s:[
+ {t:"Le métier de SDR et de BDR",o:"Comprendre ce que fait un SDR, un BDR, et ce qui les distingue.",k:[
+  ["c","1 h 30","Suis la partie 1 du cours « Découvrez le métier de Business Developer » et fais le quiz de fin de partie.",["oc_bizdev"]],
+  ["c","30 min","Lis la fiche métier du SDR : missions, compétences, salaire.",["zeliq_sdr"]],
+  ["c","1 h","Lis la fiche 1 : le métier de SDR et de BDR, et les rôles qui l'entourent.",["f1"]],
+  ["p","1 h","Écris une page : ce que font un SDR, un BDR, un AE et un CSM. Pour chacun, donne le terme anglais et l'indicateur sur lequel il est jugé.",[],{g:1}]]},
+ {t:"L'équipe commerciale et le cycle de vente",o:"Situer le SDR dans l'équipe et dans les étapes d'une vente B2B.",k:[
+  ["c","1 h 30","Lis la fiche 2 : les types d'entreprises tech et les étapes du cycle de vente.",["f2"]],
+  ["c","30 min","Suis la première étape du parcours « Devenir SDR ».",["skip_sdr"]],
+  ["p","1 h 30","Sur LinkedIn, cartographie les équipes commerciales de deux éditeurs SaaS (par exemple HubSpot France et Matera) : nombre de SDR ou BDR, d'AE, d'AM et de CSM. Repère 3 personnes passées de SDR à AE et combien de temps elles sont restées SDR.",[]],
+  ["p","30 min","Dessine le cycle de vente B2B, de la prospection à la signature, et place chaque rôle dessus.",[]]]},
+ {t:"L'économie du SaaS",o:"Maîtriser les indicateurs qui font tourner une entreprise SaaS.",k:[
+  ["c","1 h","Lis le panorama des 13 métriques SaaS essentielles.",["claap_kpi"]],
+  ["c","45 min","Complète avec les 18 KPI SaaS de HubSpot.",["hs_kpi"]],
+  ["p","45 min","Exercice. Une scale-up compte 120 clients à 400 € par mois. Calcule son MRR et son ARR. Six clients résilient ce mois-ci : quel est le churn mensuel en clients ? Si les 114 restants passent en moyenne à 450 € par mois, quel est le nouveau MRR ?",[],{sol:"MRR = 120 × 400 = 48 000 €. ARR = 48 000 × 12 = 576 000 €. Churn = 6 ÷ 120 = 5 %. Nouveau MRR = 114 × 450 = 51 300 €. Le revenu augmente malgré le churn grâce à l'upsell : c'est ce que mesure le NRR."}],
+  ["p","1 h 30","Apprends tous les termes du module 1 du glossaire, puis teste-toi avec le quiz.",[],{g:1}]]},
+ {t:"Une journée de SDR, la rémunération, la carrière",o:"Savoir à quoi ressemble le quotidien d'un SDR et ce que le métier rapporte.",k:[
+  ["c","45 min","Lis « A day in the life of a successful SDR ».",["crunchbase_day"]],
+  ["c","45 min","Regarde deux vidéos de journée type, une en anglais et une en français.",["yt_day","yt_fr"]],
+  ["c","45 min","Lis les articles sur le salaire d'un SDR en France et sur le variable.",["skip_salaire","skip_variable"]],
+  ["c","45 min","Lis la fiche 7 : journée type, rémunération et carrière.",["f7"]],
+  ["p","1 h","Prépare tes questions pour deux pros de ton réseau (un SDR ou BDR, un AE ou Account Manager), puis propose-leur un créneau.",[],{o:"amis"}]]},
+ {t:"Certification HubSpot Inbound Sales",o:"Obtenir ta première certification et rédiger ta synthèse du métier.",k:[
+  ["c","3 h","Suis les 7 leçons d'Inbound Sales puis passe l'examen de certification.",["hs_inbound"]],
+  ["p","1 h","Livrable : rédige ta note d'une page « Le métier de SDR », puis présente-la à voix haute en 2 minutes en t'enregistrant.",[]]]}
+]},
+{t:"Cibler : ICP, personas et signaux d'achat",obj:"Savoir choisir qui contacter, et pourquoi maintenant.",liv:"Dossier de ciblage : ICP, 2 personas, 30 comptes avec un signal et un contact chacun.",crit:"Chaque compte correspond à l'ICP et porte un signal daté de moins de 3 mois.",s:[
+ {t:"Le profil client idéal",o:"Définir précisément le type d'entreprise à cibler.",k:[
+  ["c","1 h","Lis le guide pour définir son profil client idéal.",["lgm_icp"]],
+  ["c","45 min","Lis le modèle d'ICP B2B de Clearbit.",["clearbit_icp"]],
+  ["c","15 min","Lis la fiche 3 : on contacte des situations, pas des fiches.",["f3"]],
+  ["p","2 h","Choisis ton entreprise d'étude : un éditeur SaaS français qui recrute des SDR. Elle sera ton terrain d'exercice jusqu'à la séance 25. Étudie son site, ses clients et ses concurrents, puis rédige son ICP : secteur, taille, pays, outils utilisés, événements déclencheurs. Si tu as étudié la stratégie ou le marketing, c'est une segmentation de marché : tu connais déjà l'exercice.",[]]]},
+ {t:"Les personas",o:"Comprendre qui achète, ce qui le préoccupe et comment il en parle.",k:[
+  ["c","1 h 30","Suis le cours « Pilotez une prospection commerciale efficace », chapitre sur la cible et les objectifs.",["oc_prosp"]],
+  ["p","1 h 30","Rédige 2 personas pour ton entreprise d'étude : fonction, objectifs, problèmes, indicateurs suivis, objections probables.",[]],
+  ["p","1 h","Rédige tes 2 personas en anglais. C'est le vocabulaire que tu utiliseras en entretien en anglais.",[],{g:2}]]},
+ {t:"Signaux d'achat et recherche de compte",o:"Trouver pourquoi un compte a besoin du produit maintenant.",k:[
+  ["c","1 h","Suis l'étape « Construire son fichier » du parcours Skipcall.",["skip_sdr"]],
+  ["c","1 h","Suis le cours « Prospectez des nouveaux clients ».",["oc_newclients"]],
+  ["p","2 h","Constitue un fichier de 15 comptes. Pour chacun : un signal daté (levée de fonds, recrutement, nouveau dirigeant, ouverture d'un pays) et sa source. Limite-toi à 8 minutes par compte, c'est le rythme d'un SDR.",[]]]},
+ {t:"LinkedIn Sales Navigator et le CRM",o:"Connaître les outils de ciblage et de suivi.",k:[
+  ["c","45 min","Suis le tutoriel Sales Navigator.",["waalaxy_nav"]],
+  ["c","1 h","Passe le certificat gratuit Sales Navigator Essentials de LinkedIn. Si l'accès demande une licence, active l'essai gratuit de Sales Navigator ce jour-là.",["li_nav_cert","linkedin_nav"]],
+  ["c","45 min","Gagne tes deux premiers badges Trailhead : Strategic Prospecting et Prospecting Contact Strategy.",["th_prosp","th_contact"]],
+  ["p","1 h 30","Complète ton fichier à 30 comptes et ajoute pour chacun un contact qui correspond à l'un de tes personas.",[]]]},
+ {t:"Bilan du module 2",o:"Finaliser et défendre ton dossier de ciblage.",k:[
+  ["c","1 h 30","Trailhead : gagne les badges sur la prospection, les leads et le métier de commercial.",["th_improve","th_leads","th_rep"]],
+  ["p","1 h 30","Livrable : mets en forme ton dossier de ciblage (ICP, personas, 30 comptes).",[]],
+  ["p","1 h","Présente ton dossier à ton binôme en 5 minutes, puis justifie 3 comptes tirés au hasard.",[]]]}
+]},
+{t:"Prospecter par écrit",obj:"Écrire des messages courts et personnalisés, sans présentation du produit, en français et en anglais.",liv:"Une séquence multicanale de 6 touches en français et sa version anglaise.",crit:"Chaque email fait 5 lignes au plus, part d'un signal réel et se termine par une demande simple.",s:[
+ {t:"Les principes du cold email",o:"Comprendre ce qui fait répondre un prospect.",k:[
+  ["c","1 h 30","Lis les articles de Josh Braun sur le cold email.",["jb"]],
+  ["c","45 min","Lis le guide lemlist de l'email de prospection.",["lemlist_email"]],
+  ["c","45 min","Regarde la master class gratuite d'Apollo sur les cold emails qui obtiennent des réponses.",["apollo"]],
+  ["p","1 h","Analyse 10 modèles de l'e-book Woodpecker : pour chacun, note l'accroche, le problème évoqué et la demande finale.",["woodpecker"],{g:3}]]},
+ {t:"Écrire ses premiers emails",o:"Passer de la théorie à 5 emails prêts à envoyer.",k:[
+  ["c","1 h","Lis les conseils de 20 responsables commerciaux.",["close"]],
+  ["p","2 h","Écris 5 cold emails pour 5 comptes de ton fichier, chacun sur un signal différent : 5 lignes au plus, pas de présentation du produit, une seule question à la fin.",[]],
+  ["p","1 h","Réécris 2 de ces emails directement en anglais, sans traduire mot à mot.",[]]]},
+ {t:"LinkedIn comme canal de prospection",o:"Utiliser LinkedIn pour ouvrir une conversation.",k:[
+  ["c","1 h","Lis le guide LinkedIn pour les commerciaux.",["lgm_linkedin"]],
+  ["p","1 h","Mets ton profil LinkedIn à niveau : photo, titre, courte section Infos. Ce sera aussi ton profil de candidat.",[]],
+  ["p","2 h","Pour chacun de tes 2 personas, écris une demande de connexion, un premier message et une relance.",[]]]},
+ {t:"Les séquences multicanales",o:"Organiser plusieurs prises de contact sur plusieurs jours.",k:[
+  ["c","1 h","Relis la cadence de Léa sur 10 jours dans la fiche 3.",["f3"]],
+  ["c","1 h","Lis le chapitre « Séquences multicanales » du guide du cold call.",["skip_guide"]],
+  ["p","2 h","Construis une séquence de 6 touches sur 10 jours pour ton persona principal (emails, LinkedIn, appels), avec le texte de chaque touche.",[]]]},
+ {t:"Atelier de relecture",o:"Corriger tes messages comme le ferait un manager SDR.",k:[
+  ["p","1 h 30","Revue croisée avec ton binôme : note chaque email sur la longueur, la personnalisation et la clarté de la demande.",[]],
+  ["p","1 h 30","Réécris tout ce qui n'a pas passé la relecture.",[]],
+  ["p","1 h","Livrable : rédige la version anglaise complète de ta séquence.",[]]]}
+]},
+{t:"Prospecter au téléphone",obj:"Ouvrir un appel, annoncer sa raison, traiter une objection et obtenir un rendez-vous daté, en français et en anglais.",liv:"Script d'une minute en français et en anglais, réponses à 10 objections, 20 appels simulés notés.",crit:"La raison de l'appel arrive en moins de 30 secondes et au moins la moitié des appels se termine sur une date.",s:[
+ {t:"L'anatomie d'un cold call",o:"Comprendre les étapes d'un appel qui débouche sur un rendez-vous.",k:[
+  ["c","2 h","Lis les chapitres 1 à 5 du guide du cold call.",["skip_guide"]],
+  ["c","30 min","Lis la Cold Call Cheat Sheet de Gong, tirée de milliers d'appels enregistrés.",["gong_cheat"]],
+  ["p","1 h 30","Écris l'ouverture de ton appel (30 secondes) pour ton persona principal, puis répète-la à voix haute jusqu'à la dire sans lire.",[],{g:4}]]},
+ {t:"L'accroche et le script",o:"Écrire un script d'une minute et le tester.",k:[
+  ["c","1 h","Lis les articles sur les accroches et le modèle de script.",["skip_accroche","skip_script"]],
+  ["c","30 min","Lis « How to cold call » de Gong.",["gong_how"]],
+  ["p","1 h","Écris ton script complet d'une minute : accroche, raison de l'appel, question sur le problème, demande de rendez-vous avec deux créneaux.",[]],
+  ["p","1 h 30","Fais 10 essais sur le simulateur d'appel du parcours Skipcall.",["skip_sdr"]]]},
+ {t:"Les objections",o:"Répondre aux objections sans argumenter frontalement.",k:[
+  ["c","1 h 30","Lis les deux articles sur les objections en prospection.",["skip_obj","hs_obj"]],
+  ["c","30 min","Relis la fiche 6 sur le traitement des objections.",["f6"]],
+  ["p","2 h","Écris ta réponse aux 10 objections les plus fréquentes (« envoyez-moi un email », « pas le temps », « on a déjà un outil », « pas de budget »…) en suivant la règle : reconnaître, poser une question, rebondir.",["cognism_obj"]]]},
+ {t:"Le cold call en anglais",o:"Mener le même appel en anglais.",k:[
+  ["c","1 h","Lis « How to cold call » de Skipcall.",["skip_en"]],
+  ["c","1 h","Regarde les vidéos de 30 Minutes to President's Club sur les ouvertures et les objections.",["yt_30mpc"]],
+  ["p","1 h","Écris ton script et tes 5 réponses principales aux objections en anglais.",[]],
+  ["p","1 h","Fais 10 appels simulés avec ton binôme (5 en français, 5 en anglais) et enregistre-les.",[]]]},
+ {t:"Session d'appels notés",o:"Mesurer ton niveau au téléphone.",k:[
+  ["p","2 h","Fais 20 appels simulés avec ton binôme et note chacun avec la grille d'évaluation de l'appel.",[],{o:"grille"}],
+  ["p","1 h","Réécoute tes 5 moins bons appels et note ce qui a bloqué.",[]],
+  ["p","1 h","Livrable : version finale de ton script et de tes réponses aux objections, en français et en anglais.",[]]]}
+]},
+{t:"Qualifier et transmettre",obj:"Poser les bonnes questions, décider si un prospect est qualifié et transmettre l'affaire à l'AE.",liv:"Certification HubSpot Sales Hub Software et examen de mi-parcours validé.",crit:"Au moins 3/5 sur chaque critère de la grille d'appel et 80 % de bonnes réponses en vocabulaire.",s:[
+ {t:"Qualifier un prospect avec BANT",o:"Décider si une affaire mérite le temps d'un AE.",k:[
+  ["c","1 h","Lis les principes de base de la qualification.",["hs_qualif"]],
+  ["c","1 h","Lis l'article sur la méthode BANT.",["pipedrive_bant"]],
+  ["p","2 h","Invente 5 situations de prospects pour ton entreprise d'étude. Pour chacune, décide avec BANT s'il faut poursuivre, et justifie.",[],{g:5}]]},
+ {t:"La découverte et la méthode SPIN",o:"Mener une découverte qui fait parler le prospect de ses problèmes.",k:[
+  ["c","1 h","Lis la fiche 4 : le discovery call et la méthode SPIN.",["f4"]],
+  ["c","1 h 30","Suis le cours « Réussissez vos rendez-vous commerciaux ».",["oc_rdv"]],
+  ["p","1 h 30","Écris 15 questions SPIN pour ton entreprise d'étude : situation, problème, implication, bénéfice.",[]]]},
+ {t:"MEDDIC et les ventes complexes",o:"Comprendre comment se qualifie une vente à plusieurs décideurs.",k:[
+  ["c","1 h","Lis le modèle MEDDIC de Claap.",["claap_meddic"]],
+  ["c","1 h","Lis le guide MEDDPICC de Fullcast.",["fullcast"]],
+  ["c","30 min","Lis la fiche 5 sur MEDDIC.",["f5"]],
+  ["p","1 h 30","Remplis une grille MEDDIC pour le cas Eddie (fiche 4) et compare avec le corrigé de la fiche 5. Fais ensuite 2 découvertes simulées de 20 minutes avec ton binôme.",["f4"]]]},
+ {t:"Certification CRM et passation à l'AE",o:"Maîtriser un CRM et transmettre une affaire proprement.",k:[
+  ["c","2 h","Passe la certification HubSpot Sales Hub Software.",["hs_software"]],
+  ["c","1 h","Trailhead : badges Opportunity Management et Build a Sales Process, pour voir ce que devient une affaire après ta passation.",["th_opp","th_process"]],
+  ["p","1 h","Rédige une note de passation à un AE pour l'une de tes découvertes : contexte, problème, enjeux, qui décide, prochaine étape.",[]]]},
+ {t:"Examen de mi-parcours",o:"Valider la partie métier avant de passer à la candidature.",k:[
+  ["p","30 min","Passe le quiz du glossaire sur les modules 1 à 5. Objectif : 80 %.",[],{g:0}],
+  ["p","1 h","Passe un cold call noté par ton binôme avec la grille.",[],{o:"grille"}],
+  ["p","1 h","Mène une découverte simulée de 20 minutes, puis rédige ta note de passation.",[]],
+  ["p","1 h 30","Bilan écrit : 3 points forts, 3 points à travailler. Reprends les séances liées à tes points faibles l'après-midi.",[]]]}
+]},
+{t:"Préparer sa candidature",obj:"Produire des supports qui prouvent ta préparation au métier.",liv:"CV en français et en anglais, profil LinkedIn, lettre, message au manager SDR, liste de 30 entreprises.",crit:"Le CV tient sur une page, chaque expérience porte un résultat chiffré et la formation sales y figure.",s:[
+ {t:"Le marché de l'emploi SDR",o:"Savoir où postuler et ce que les entreprises demandent.",k:[
+  ["c","1 h","Lis 10 offres SDR ou BDR et relève les mots-clés et les étapes du recrutement.",["wttj"]],
+  ["c","30 min","Lis le baromètre des salaires des commerciaux.",["licorne"]],
+  ["c","30 min","Regarde les notes des équipes sales (atteinte de quota, management), surtout pour les entreprises internationales.",["repvue"]],
+  ["p","2 h","Dresse la liste de 30 entreprises : 10 d'entraînement, 10 réalistes, 10 prioritaires.",[]]]},
+ {t:"Ton récit : pourquoi la vente tech",o:"Expliquer en une minute pourquoi tu choisis la vente tech.",k:[
+  ["c","30 min","Lis la fiche 8 : raconter ton parcours.",["f8"]],
+  ["p","2 h","Écris ton pitch de 60 secondes avec la trame des Outils.",[],{o:"pitch"}],
+  ["p","1 h 30","Écris la version anglaise, puis répète les deux jusqu'à les dire sans notes. Enregistre-toi.",[]]]},
+ {t:"Le CV",o:"Un CV d'une page qui donne envie d'appeler.",k:[
+  ["c","1 h","Lis le guide du CV de SDR.",["resumegeni_cv"]],
+  ["p","2 h","Rédige ton CV d'une page avec la trame des Outils. Chaque expérience porte un résultat chiffré.",[],{o:"candidature"}],
+  ["p","1 h","Rédige la version anglaise du CV.",[]]]},
+ {t:"LinkedIn, lettre et message au manager",o:"Être trouvable et faire bonne impression avant l'entretien.",k:[
+  ["c","30 min","Lis des exemples de profils LinkedIn de SDR.",["jobrise_li"]],
+  ["c","30 min","Lis les exemples de lettres de motivation.",["hs_lettre","jobrise_cover"]],
+  ["p","1 h 30","Refais ton profil LinkedIn : titre, section Infos, certifications. Publie un premier post sur ce que tu as appris.",[]],
+  ["p","1 h 30","Écris ta lettre modèle et ton message court au manager SDR.",[],{o:"candidature"}]]},
+ {t:"Premières candidatures",o:"Envoyer tes candidatures d'entraînement.",k:[
+  ["p","2 h","Prépare tes 5 entreprises d'entraînement : produit, clients, signal récent, nom du manager SDR.",[]],
+  ["p","2 h","Envoie 5 candidatures, chacune suivie d'un message au manager SDR. Note tout dans un tableau de suivi : entreprise, contact, date, étape, date de relance.",[]]]}
+]},
+{t:"Réussir les entretiens",obj:"Répondre aux questions de motivation et réussir la mise en situation, en français et en anglais.",liv:"6 récits STAR, 10 fiches entreprises, 5 mock calls enregistrés, réponses en anglais.",crit:"Tu réponds aux 10 questions les plus fréquentes sans notes, en français et en anglais.",s:[
+ {t:"Le processus de recrutement SDR",o:"Savoir à quoi s'attendre à chaque étape.",k:[
+  ["c","1 h","Lis les retours d'entretien BDR chez HubSpot, puis les avis d'entretien de tes 10 entreprises.",["glassdoor_hs","glassdoor"]],
+  ["c","30 min","Lis comment un manager recrute un SDR.",["skip_recruter"]],
+  ["p","1 h 30","Échange avec les deux pros de ton réseau à partir des questions des Outils, et note leurs réponses.",[],{o:"amis"}],
+  ["p","1 h","Rédige une fiche d'une demi-page par entreprise : étapes, cas de mise en situation, questions posées.",[]]]},
+ {t:"Motivation et méthode STAR",o:"Raconter tes expériences de façon structurée et chiffrée.",k:[
+  ["c","45 min","Lis les exemples de réponses et les questions fréquentes.",["jobrise_int","reply_int"]],
+  ["c","1 h","Suis le premier module du cours « Foundations for Interviewing with Confidence » du certificat SDR de Salesforce sur Coursera.",["coursera_sdr"]],
+  ["p","2 h 15","Écris 6 récits STAR avec la trame des Outils : un échec, un refus, un objectif atteint, un travail d'équipe, un apprentissage rapide, une initiative.",[],{o:"star"}]]},
+ {t:"Le mock call",o:"Réussir la mise en situation d'appel.",k:[
+  ["c","1 h","Lis « Acing the SDR interview » et regarde des mock calls d'entretien.",["bravado","yt_mock"]],
+  ["p","1 h","Prépare une mise en situation sur le produit d'une entreprise prioritaire : persona, problème, signal, script.",[]],
+  ["p","2 h","Fais 5 mock calls avec ton binôme, avec une objection surprise à chaque fois, et note-les avec la grille.",[],{o:"grille"}]]},
+ {t:"L'entretien en anglais",o:"Tenir un entretien et un appel en anglais.",k:[
+  ["c","1 h","Lis les questions d'entretien SDR, regarde une vidéo de questions d'entretien et parcours le module « Pitch » du cours Business English: Marketing and Sales.",["springboard","yt_int","coursera_en"]],
+  ["p","2 h","Réponds à voix haute, en anglais, aux 10 questions les plus fréquentes, en t'enregistrant.",[]],
+  ["p","1 h","Fais un mock call en anglais avec ton binôme.",[]]]},
+ {t:"Candidatures et entretien simulé",o:"Postuler aux entreprises réalistes et t'entraîner en conditions réelles.",k:[
+  ["p","2 h","Envoie 5 candidatures à tes entreprises réalistes et relance celles de la séance 30.",[]],
+  ["p","2 h","Passe un entretien RH (30 min) puis un entretien manager (30 min) simulés par ton binôme, avec un retour écrit.",[]]]}
+]},
+{t:"Simulation et examen final",obj:"Être prêt pour un processus de recrutement complet, mise en situation comprise.",liv:"Examen final validé et 15 candidatures envoyées.",crit:"Au moins 3/5 sur chaque critère de la grille lors de l'examen final.",s:[
+ {t:"Les entreprises prioritaires",o:"Postuler là où tu veux vraiment aller.",k:[
+  ["p","2 h","Prépare tes 5 entreprises prioritaires : fiche, signal récent, ICP, concurrent principal.",[]],
+  ["p","2 h","Envoie les 5 candidatures, chacune avec un message au manager SDR.",[]]]},
+ {t:"Mock calls en conditions réelles",o:"Mesurer tes progrès depuis le module 4.",k:[
+  ["c","1 h","Réécoute tes appels de la séance 20 et compare-les avec ton niveau actuel.",[]],
+  ["p","3 h","Fais 5 mock calls chronométrés sur 5 produits différents et note-les avec la grille.",[],{o:"grille"}]]},
+ {t:"L'exercice écrit",o:"Réussir un exercice de rédaction chronométré.",k:[
+  ["p","1 h","Exercice chronométré : 5 cold emails en 30 minutes sur 5 comptes, puis correction.",[]],
+  ["p","1 h 30","En anglais : rédige une séquence de 3 emails pour un persona d'une entreprise prioritaire.",[]],
+  ["p","1 h 30","Passe le quiz sur tout le glossaire. Objectif : 90 %.",[],{g:0}]]},
+ {t:"Rémunération et questions au recruteur",o:"Comprendre une offre et poser les bonnes questions.",k:[
+  ["c","1 h","Relis l'article sur le variable du SDR et la fiche 7.",["skip_variable","f7"]],
+  ["p","1 h 30","Prépare tes questions au recruteur : durée du ramp-up, quota, part de l'équipe qui l'atteint, fixe et variable, délai moyen de passage AE.",[]],
+  ["p","1 h 30","Travaille les points faibles relevés à la séance 37.",[]]]},
+ {t:"Examen final",o:"Valider la formation dans les conditions d'un vrai processus.",k:[
+  ["p","1 h 30","Prépare l'examen : choisis l'entreprise, relis ta fiche et tes récits STAR.",[]],
+  ["p","1 h","Examen final conduit par ton binôme ou un proche : entretien de motivation (20 min, dont 5 en anglais), mock call (20 min), notation avec la grille (20 min).",[],{o:"grille"}],
+  ["p","1 h 30","Bilan de la formation et rythme pour la suite : 5 candidatures, 5 relances et un mock call par semaine jusqu'à la signature.",[]]]}
+]}
+];
+
+/* Glossaire : [terme FR, terme EN, définition, module] */
+const G = [
+ ["SDR","Sales Development Representative","Développe le pipeline : contacte et qualifie des prospects, puis planifie des rendez-vous pour les AE. Dans beaucoup d'entreprises, le SDR traite surtout les leads entrants.",1],
+ ["BDR","Business Development Representative","Même mission, centrée sur la prospection sortante de comptes qui n'ont pas encore manifesté d'intérêt. Les deux titres sont souvent employés l'un pour l'autre.",1],
+ ["AE","Account Executive","Commercial qui mène l'affaire du premier rendez-vous jusqu'à la signature.",1],
+ ["Account Manager","Account Manager (AM)","Développe le chiffre d'affaires des clients existants : renouvellements, ventes additionnelles.",1],
+ ["CSM","Customer Success Manager","Accompagne les clients pour qu'ils tirent de la valeur du produit et renouvellent leur abonnement.",1],
+ ["Avant-vente","Sales Engineer, Solutions Engineer","Expert technique qui démontre le produit et répond aux questions techniques pendant la vente.",1],
+ ["RevOps","Revenue Operations","Équipe qui gère les outils, les données et les processus des équipes commerciales, marketing et customer success.",1],
+ ["Inbound","Inbound","Prospect qui vient vers l'entreprise : formulaire, essai gratuit, téléchargement de contenu.",1],
+ ["Outbound","Outbound","Prospection à l'initiative du commercial : appel, email, LinkedIn.",1],
+ ["Cycle de vente","Sales cycle","Étapes et durée entre le premier contact et la signature.",1],
+ ["Pipeline","Pipeline","Ensemble des affaires en cours, classées par étape.",1],
+ ["Objectif","Quota","Objectif chiffré sur une période. Pour un SDR : rendez-vous qualifiés ou pipeline généré.",1],
+ ["Rémunération cible","On-Target Earnings (OTE)","Rémunération totale, fixe et variable, si l'objectif est atteint à 100 %.",1],
+ ["Montée en charge","Ramp-up","Premiers mois en poste, avec un objectif réduit le temps de se former.",1],
+ ["SaaS","Software as a Service","Logiciel vendu par abonnement et utilisé en ligne.",1],
+ ["Revenu récurrent annuel","ARR, Annual Recurring Revenue","Valeur annuelle des abonnements en cours.",1],
+ ["Revenu récurrent mensuel","MRR, Monthly Recurring Revenue","Valeur mensuelle des abonnements en cours. ARR = MRR × 12.",1],
+ ["Attrition","Churn","Part des clients ou du revenu perdus sur une période.",1],
+ ["Rétention nette du revenu","NRR, Net Revenue Retention","Revenu conservé sur les clients d'il y a un an, ventes additionnelles comprises et churn déduit. Au-dessus de 100 %, les clients existants rapportent plus qu'avant.",1],
+ ["Coût d'acquisition client","CAC, Customer Acquisition Cost","Coût moyen pour gagner un client, marketing et ventes compris.",1],
+ ["Valeur vie client","LTV, Lifetime Value","Revenu total attendu d'un client sur toute la durée de la relation.",1],
+ ["Valeur annuelle du contrat","ACV, Annual Contract Value","Montant annuel moyen d'un contrat.",1],
+ ["Segments de clients","SMB, Mid-Market, Enterprise","Découpage des clients par taille : petites, moyennes et grandes entreprises. Chaque segment a son cycle de vente et souvent sa propre équipe.",1],
+ ["Vente additionnelle","Upsell","Vendre une offre supérieure ou plus de licences à un client existant.",1],
+ ["Vente croisée","Cross-sell","Vendre un autre produit à un client existant.",1],
+ ["Profil client idéal","ICP, Ideal Customer Profile","Type d'entreprise qui tire le plus de valeur du produit : secteur, taille, pays, outils, situation.",2],
+ ["Persona","Buyer persona","Profil type d'une personne qui intervient dans l'achat : fonction, objectifs, problèmes.",2],
+ ["Marché adressable","TAM, Total Addressable Market","Chiffre d'affaires maximal si toutes les entreprises cibles achetaient.",2],
+ ["Compte","Account","Entreprise cible. Les contacts sont les personnes qui y travaillent.",2],
+ ["Signal d'achat","Buying signal, trigger event","Événement qui rend un besoin probable maintenant : levée de fonds, recrutement, nouveau dirigeant, expansion.",2],
+ ["Décideur","Decision maker","Personne qui a le pouvoir de valider l'achat.",2],
+ ["Lead","Lead","Contact identifié comme potentiellement intéressé.",2],
+ ["MQL","Marketing Qualified Lead","Lead jugé assez intéressé par le marketing pour être transmis aux ventes.",2],
+ ["SQL","Sales Qualified Lead","Lead validé par les ventes comme une vraie opportunité.",2],
+ ["CRM","Customer Relationship Management","Logiciel de suivi des comptes, contacts, activités et affaires, comme Salesforce ou HubSpot.",2],
+ ["Sales Navigator","LinkedIn Sales Navigator","Outil payant de LinkedIn pour rechercher et suivre des prospects.",2],
+ ["Enrichissement","Data enrichment","Compléter une fiche contact (email, téléphone, poste) à l'aide d'outils dédiés.",2],
+ ["Marketing par comptes","ABM, Account-Based Marketing","Cibler une liste précise de comptes avec des actions personnalisées.",2],
+ ["Email à froid","Cold email","Email envoyé à un prospect qui ne vous connaît pas.",3],
+ ["Séquence","Sequence, cadence","Suite planifiée de prises de contact (email, appel, LinkedIn) sur plusieurs jours.",3],
+ ["Point de contact","Touchpoint","Une prise de contact au sein d'une séquence.",3],
+ ["Personnalisation","Personalization","Adapter un message à partir d'un fait précis concernant le prospect.",3],
+ ["Taux de réponse","Reply rate","Part des prospects contactés qui répondent.",3],
+ ["Délivrabilité","Deliverability","Capacité des emails à arriver en boîte de réception plutôt qu'en spam.",3],
+ ["Appel à l'action","CTA, Call to action","La demande en fin de message, par exemple « Ouvert à en parler 15 minutes jeudi ? ».",3],
+ ["Relance","Follow-up","Message envoyé après une absence de réponse.",3],
+ ["Proposition de valeur","Value proposition","Ce que le produit change concrètement pour le client.",3],
+ ["Appel à froid","Cold call","Appel à un prospect qui ne vous attend pas.",4],
+ ["Accroche","Opener","Les premières secondes de l'appel, avant d'en donner la raison.",4],
+ ["Pitch","Pitch","Présentation courte de la raison de l'appel et de la valeur pour le prospect.",4],
+ ["Objection","Objection","Raison donnée par le prospect pour ne pas poursuivre.",4],
+ ["Barrage","Gatekeeper","Personne (standard, assistant) entre le commercial et le décideur.",4],
+ ["Message vocal","Voicemail","Message laissé sur répondeur, souvent couplé à un email.",4],
+ ["Formulations types","Talk track","Phrases préparées pour une situation donnée.",4],
+ ["Taux de décroché","Connect rate","Part des appels où le prospect répond.",4],
+ ["Rendez-vous pris","Meeting booked","Rendez-vous planifié par le SDR pour l'AE.",4],
+ ["Taux de présence","Show rate","Part des rendez-vous pris qui ont réellement lieu.",4],
+ ["Qualification","Qualification","Vérifier qu'un prospect a un vrai besoin, un budget et une capacité de décision.",5],
+ ["Découverte","Discovery call","Rendez-vous où le commercial comprend la situation et les problèmes du prospect.",5],
+ ["BANT","Budget, Authority, Need, Timeline","Grille de qualification : budget, pouvoir de décision, besoin, calendrier.",5],
+ ["SPIN","Situation, Problem, Implication, Need-payoff","Méthode de questionnement en quatre temps : situation, problème, conséquences, bénéfice attendu.",5],
+ ["MEDDIC","Metrics, Economic buyer, Decision criteria, Decision process, Identify pain, Champion","Grille de qualification des ventes complexes. MEDDPICC y ajoute le processus contractuel (paper process) et la concurrence.",5],
+ ["Champion","Champion","Personne chez le prospect qui soutient le projet en interne.",5],
+ ["Acheteur économique","Economic buyer","Personne qui contrôle le budget et signe.",5],
+ ["Problème","Pain point","Difficulté concrète que le prospect veut résoudre.",5],
+ ["Démonstration","Demo","Présentation du produit adaptée aux besoins du prospect.",5],
+ ["Preuve de concept","POC, Proof of Concept","Test du produit en conditions réelles avant l'achat.",5],
+ ["Opportunité","Opportunity","Affaire en cours, suivie dans le CRM avec un montant et une étape.",5],
+ ["Passation","Handoff","Transmission d'un prospect qualifié du SDR à l'AE, avec tout le contexte.",5],
+ ["Prochaine étape","Next step","Action datée convenue à la fin de chaque échange.",5],
+ ["Prévision","Forecast","Estimation du chiffre d'affaires qui sera signé sur la période.",5],
+ ["Taux de conclusion","Win rate","Part des affaires gagnées.",5],
+ ["Méthode STAR","STAR method","Situation, tâche, action, résultat : structure pour raconter une expérience en entretien.",7],
+ ["Mise en situation","Mock call, role play","Simulation d'appel pendant un entretien de recrutement.",7],
+ ["Présentation éclair","Elevator pitch","Se présenter en 30 à 60 secondes.",6],
+ ["Coachabilité","Coachability","Capacité à appliquer un retour rapidement. Très évaluée chez les SDR, notamment pendant le mock call.",7],
+ ["Promotion SDR vers AE","SDR to AE promotion","Évolution classique après 12 à 24 mois de résultats réguliers.",7],
+];
+
+/* Certifications : [id, titre, organisme, ressource, durée, niveau 1/2/3, séance, accès, description] */
+const C = [
+ ["inbound_sales","Inbound Sales","HubSpot Academy","hs_inbound","3 h",1,5,"Gratuit, certificat inclus","La méthode de vente inbound : identifier, contacter, qualifier, conseiller. La certification la plus citée sur les CV de SDR débutants."],
+ ["sales_nav","Sales Navigator Essentials","LinkedIn Sales Solutions","li_nav_cert","1 h",1,9,"Gratuit. Peut demander l'essai gratuit de Sales Navigator","Rechercher des comptes et des prospects, enregistrer des listes, suivre les signaux d'achat dans l'outil que tous les SDR utilisent."],
+ ["trailhead","Badges de prospection Trailhead","Salesforce","th_prosp","3 h",1,10,"Gratuit, badges visibles sur ton profil Trailhead","Sept modules : stratégie de prospection, prise de contact, leads, opportunités et processus de vente dans Salesforce."],
+ ["sales_hub","HubSpot Sales Hub Software","HubSpot Academy","hs_software","2 h",1,24,"Gratuit, certificat inclus","Utiliser un CRM au quotidien : contacts, séquences, tâches, pipeline."],
+ ["coursera_sdr","Salesforce Sales Development Representative","Coursera · Salesforce","coursera_sdr","115 h",2,32,"Inscription gratuite. Certificat payant ou via l'aide financière Coursera","Cinq cours sur exactement le poste que tu vises : bases du métier, entretiens, vente conversationnelle, outils, relations professionnelles."],
+ ["inbound","Inbound","HubSpot Academy","hs_inbound_core","3 h",2,0,"Gratuit, certificat inclus","La méthodologie commune au marketing, aux ventes et au service client. À faire un après-midi du module 1."],
+ ["enablement","Sales Enablement","HubSpot Academy","hs_enable","4 h",2,0,"Gratuit, certificat inclus","Comment une entreprise forme et outille ses commerciaux. Tu comprendras mieux ton futur onboarding."],
+ ["apollo","Apollo Academy","Apollo","apollo","2 h",2,11,"Gratuit avec un compte Apollo","Master classes et cours pratiques sur le cold email, le cold call et la recherche de prospects avec l'IA."],
+ ["english","Business English: Marketing and Sales","Coursera · Arizona State University","coursera_en","34 h",2,34,"Inscription gratuite. Certificat payant","Pitch, scripts de vente et langage persuasif en anglais, pour tes entretiens et tes appels."],
+ ["inside_sales","Become an Inside Sales Representative","LinkedIn Learning","li_learning","15 h",2,0,"Essai gratuit d'un mois. Vérifie si ton école ou ta bibliothèque te donne un accès","Sept cours sur la vente à distance, avec certificat LinkedIn affichable sur ton profil."],
+ ["nav_best","Sales Navigator Best Practices","LinkedIn Sales Solutions","li_nav_best","1 h",3,0,"Gratuit","La suite du certificat Essentials : recherches avancées et routines de prospection."],
+ ["coursera_hs","HubSpot Sales Representative","Coursera · HubSpot","coursera_hs","5 mois",3,0,"Inscription gratuite. Certificat payant","Cinq cours HubSpot regroupés, avec un certificat Coursera en plus des certificats HubSpot."],
+ ["revops","Revenue Operations","HubSpot Academy","hs_revops","7 h",3,0,"Gratuit, certificat inclus","Comment s'organisent les données, les outils et les processus d'une équipe revenus."],
+ ["outreach","Outreach University","Outreach","outreach","2 h",3,0,"Accès à vérifier","Séquences et prospection dans Outreach, l'outil utilisé par de nombreuses scale-ups. Badge Prospecting Specialist."],
+ ["clay","Clay 101 : GTM Automation","Clay University","clay","2 h",3,0,"Accès à vérifier","Automatiser la recherche de comptes et l'enrichissement de données. Une compétence de plus en plus recherchée chez les SDR."],
+ ["google_ads","Google Ads Search","Google Skillshop","google_ads","8 h",3,0,"Gratuit, certificat inclus","Utile si tu vises la vente de solutions marketing ou publicitaires."],
+];
+
+/* Fiches de cours écrites pour le site : {t, sub, m: module (couleur), min: lecture, body, key: à retenir} */
+const F = [
+{t:"Le métier de SDR et de BDR",sub:"Ce que fait un SDR, ce que font les rôles autour de lui, et ce qu'on attend de toi.",m:0,min:10,body:`
+<p>Le SDR (Sales Development Representative) et le BDR (Business Development Representative) occupent la première marche de l'équipe commerciale. Leur mission tient en une phrase : <b>créer des rendez-vous qualifiés pour les Account Executives</b>. Le SDR ne vend pas le produit. Il vend un rendez-vous de 30 minutes à quelqu'un qui ne l'attendait pas.</p>
+<h2>SDR ou BDR ?</h2>
+<p>Dans beaucoup d'entreprises, le SDR traite les demandes entrantes (inbound : formulaire, essai gratuit, webinar) et le BDR prospecte des comptes qui n'ont rien demandé (outbound). Dans d'autres, les deux titres désignent le même poste. Lis toujours la fiche de poste : c'est elle qui dit si tu feras surtout de l'entrant, du sortant, ou les deux.</p>
+<h2>Les rôles autour de toi</h2>
+<div class="scroll"><table><thead><tr><th>Rôle</th><th>Mission</th><th>Jugé sur</th></tr></thead><tbody>
+<tr><td><b>SDR</b><br><span class="muted">Sales Development Rep.</span></td><td>Qualifier les leads entrants, planifier les rendez-vous</td><td>Rendez-vous qualifiés, SQL</td></tr>
+<tr><td><b>BDR</b><br><span class="muted">Business Development Rep.</span></td><td>Prospecter des comptes cibles en sortant</td><td>Rendez-vous tenus, pipeline généré</td></tr>
+<tr><td><b>AE</b><br><span class="muted">Account Executive</span></td><td>Mener l'affaire jusqu'à la signature</td><td>Chiffre d'affaires signé (quota)</td></tr>
+<tr><td><b>AM</b><br><span class="muted">Account Manager</span></td><td>Faire grandir les clients existants</td><td>Renouvellements, upsell, NRR</td></tr>
+<tr><td><b>CSM</b><br><span class="muted">Customer Success Manager</span></td><td>Faire adopter le produit</td><td>Churn, satisfaction, usage</td></tr>
+<tr><td><b>Avant-vente</b><br><span class="muted">Sales Engineer</span></td><td>Démontrer le produit, répondre aux questions techniques</td><td>Taux de conclusion des affaires suivies</td></tr>
+</tbody></table></div>
+<h2>Ce que fait un SDR dans une semaine</h2>
+<p>Les volumes varient beaucoup selon l'entreprise, le segment visé et la part d'inbound. Ce qui ne varie pas : du temps de recherche sur les comptes, des blocs d'appels, des emails et messages LinkedIn personnalisés, la mise à jour du CRM, et un point régulier avec le manager pour écouter des appels ensemble.</p>
+<h2>Les qualités qu'un recruteur cherche</h2>
+<ul><li><b>Résilience</b> : la plupart des prises de contact ne donnent rien, et c'est normal.</li><li><b>Curiosité</b> : comprendre un secteur et un interlocuteur en quelques minutes.</li><li><b>Écrit concis</b> : un email de 5 lignes qui donne envie de répondre.</li><li><b>Écoute</b> : poser une question, puis se taire.</li><li><b>Organisation</b> : suivre des dizaines de comptes sans en perdre un.</li><li><b>Coachabilité</b> : appliquer un retour dès l'appel suivant.</li></ul>`,
+key:["Le SDR vend un rendez-vous, pas le produit.","SDR et BDR : entrant contre sortant, mais les titres se mélangent.","Chaque rôle a son indicateur : connais-les en français et en anglais.","Résilience et coachabilité pèsent autant que l'aisance à l'oral."]},
+{t:"Les entreprises tech et le cycle de vente",sub:"Startups, scale-ups, éditeurs établis, et les étapes d'une vente B2B.",m:0,min:10,body:`
+<h2>Où travaillent les SDR</h2>
+<ul><li><b>Startup</b> (avant ou autour de la série A) : petite équipe, beaucoup d'autonomie, processus à construire. Tu apprends vite, avec moins d'encadrement.</li><li><b>Scale-up</b> (séries B à D) : équipe SDR structurée, manager dédié, outils en place, objectifs clairs. C'est souvent le meilleur endroit pour apprendre le métier.</li><li><b>Éditeur établi</b> (HubSpot, Salesforce, Microsoft…) : formation solide, processus rodés, marque connue qui ouvre des portes, mobilité interne.</li></ul>
+<h2>Les segments de clients</h2>
+<p>On découpe les clients par taille : <b>SMB</b> (petites entreprises), <b>Mid-Market</b> et <b>Enterprise</b> (grands comptes). Plus le client est gros, plus le contrat est important, plus il y a de décideurs, et plus le cycle de vente est long : quelques semaines en SMB, souvent six mois à un an en Enterprise.</p>
+<h2>Les étapes d'une vente B2B</h2>
+<div class="scroll"><table><thead><tr><th>#</th><th>Étape</th><th>Qui</th></tr></thead><tbody>
+<tr><td>1</td><td>Ciblage des comptes et des contacts</td><td>SDR / BDR, marketing</td></tr>
+<tr><td>2</td><td>Prise de contact : appels, emails, LinkedIn</td><td>SDR / BDR</td></tr>
+<tr><td>3</td><td>Qualification et prise de rendez-vous</td><td>SDR / BDR</td></tr>
+<tr><td>4</td><td>Découverte : comprendre les problèmes</td><td>AE</td></tr>
+<tr><td>5</td><td>Démonstration, parfois preuve de concept</td><td>AE, avant-vente</td></tr>
+<tr><td>6</td><td>Proposition et négociation</td><td>AE</td></tr>
+<tr><td>7</td><td>Signature</td><td>AE</td></tr>
+<tr><td>8</td><td>Mise en route, adoption, renouvellement</td><td>CSM, Account Manager</td></tr>
+</tbody></table></div>
+<h2>L'entonnoir, en chiffres</h2>
+<p>Un exemple pour visualiser l'ordre de grandeur (chaque entreprise a ses propres taux) :</p>
+<p class="ex">1 000 contacts ciblés → 120 conversations → 30 rendez-vous → 20 qualifiés par l'AE → 5 contrats signés</p>
+<p>Ton travail se joue sur les trois premières flèches. Améliorer d'un point ton taux de conversation en rendez-vous change le chiffre d'affaires de toute l'équipe.</p>`,
+key:["La scale-up est souvent le meilleur terrain pour apprendre.","Plus le client est gros, plus le cycle est long et les décideurs nombreux.","Le SDR possède les étapes 1 à 3 du cycle.","Connais les taux de ton entonnoir : c'est ton tableau de bord."]},
+{t:"Cibler des situations, pas des fiches",sub:"ICP, signal d'achat, bon interlocuteur, et la cadence de Léa sur 10 jours.",m:1,min:12,body:`
+<p>Une liste de 500 entreprises du bon secteur ne fait pas une prospection. Ce qui fait répondre un prospect, c'est que tu le contactes <b>au moment où il a probablement le problème</b>. On contacte des situations, pas des fiches.</p>
+<h2>La formule d'un bon compte</h2>
+<p class="ex">Bon compte = correspond à l'ICP + un signal récent + le bon interlocuteur</p>
+<ul><li><b>ICP</b> : secteur, taille, pays, outils utilisés, modèle économique.</li><li><b>Signal</b> : levée de fonds, vague de recrutement, nouveau dirigeant, ouverture d'un pays, changement d'outil, résultats publiés, déménagement.</li><li><b>Interlocuteur</b> : la personne qui vit le problème au quotidien, ou celle qui en répond devant la direction.</li></ul>
+<h2>Exemple</h2>
+<div class="case"><p><b>Produit</b> : un logiciel d'onboarding des nouveaux salariés.</p><p><b>Signal</b> : une scale-up de 180 personnes publie 25 offres d'emploi en un mois.</p><p><b>Interlocuteur</b> : la responsable RH, qui va devoir accueillir 25 personnes avec un processus pensé pour 3.</p><p><b>Accroche</b> : « J'ai vu que vous recrutiez 25 personnes ce trimestre. Comment gérez-vous l'arrivée d'autant de nouveaux en même temps ? »</p></div>
+<h2>La cadence de Léa sur 10 jours</h2>
+<p>Léa est SDR chez un éditeur SaaS RH. Voici la séquence qu'elle utilise pour une responsable RH repérée grâce à un signal. Chaque touche apporte un angle nouveau, jamais un simple « je me permets de relancer ».</p>
+<div class="scroll"><table><thead><tr><th>Jour</th><th>Canal</th><th>Contenu</th></tr></thead><tbody>
+<tr><td class="mono">J1</td><td>Email</td><td>Le signal, une question sur le problème probable, une demande simple</td></tr>
+<tr><td class="mono">J1</td><td>LinkedIn</td><td>Visite du profil, puis demande de connexion sans message commercial</td></tr>
+<tr><td class="mono">J2</td><td>Appel</td><td>Ouverture en 30 secondes, raison de l'appel, question</td></tr>
+<tr><td class="mono">J4</td><td>Email</td><td>Nouvel angle : ce que vivent des entreprises comparables</td></tr>
+<tr><td class="mono">J6</td><td>Appel + vocal</td><td>Deuxième essai, message vocal de 20 secondes qui renvoie à l'email</td></tr>
+<tr><td class="mono">J7</td><td>LinkedIn</td><td>Message court si la connexion est acceptée</td></tr>
+<tr><td class="mono">J9</td><td>Appel</td><td>Troisième essai, à un autre moment de la journée</td></tr>
+<tr><td class="mono">J10</td><td>Email</td><td>Email de clôture : « Je ne vous relancerai plus, dites-moi si le sujet revient »</td></tr>
+</tbody></table></div>
+<p>Pour l'exercice du module 3, tu construis une version à 6 touches : garde le premier email, deux appels, une touche LinkedIn, un email avec un nouvel angle et l'email de clôture.</p>`,
+key:["On contacte une situation : ICP + signal + interlocuteur.","Un signal se date et se source.","Chaque relance apporte un nouvel angle.","Mélange les canaux : email, appel, LinkedIn."]},
+{t:"La découverte et la méthode SPIN",sub:"Faire parler le prospect de ses problèmes, et le cas Eddie pour t'entraîner.",m:4,min:12,body:`
+<p>Le rendez-vous de découverte (discovery call) sert à comprendre la situation du prospect avant de parler du produit. Une bonne découverte, c'est le prospect qui parle environ deux tiers du temps. Tu poses des questions, tu reformules, tu creuses.</p>
+<h2>Les quatre temps de SPIN</h2>
+<div class="scroll"><table><thead><tr><th>Temps</th><th>But</th><th>Exemple</th></tr></thead><tbody>
+<tr><td><b>Situation</b></td><td>Comprendre le contexte (peu de questions, tu as fait tes recherches)</td><td>« Combien de factures fournisseurs traitez-vous par mois ? »</td></tr>
+<tr><td><b>Problème</b></td><td>Faire émerger une difficulté</td><td>« Qu'est-ce qui ralentit votre clôture mensuelle ? »</td></tr>
+<tr><td><b>Implication</b></td><td>Mesurer ce que coûte le problème</td><td>« Que se passe-t-il quand la clôture prend 12 jours au lieu de 5 ? »</td></tr>
+<tr><td><b>Need-payoff</b></td><td>Faire dire au prospect ce que la solution changerait</td><td>« Si vos équipes ne ressaisissaient plus les factures, à quoi passeraient-elles ce temps ? »</td></tr>
+</tbody></table></div>
+<h2>Trois règles</h2>
+<ul><li>Une question à la fois, puis silence.</li><li>Reformule avant de passer à la suite : « Si je comprends bien… ».</li><li>Termine toujours par une prochaine étape datée.</li></ul>
+<h2>Le cas Eddie</h2>
+<div class="case"><p><b>Eddie Martin</b> est directeur administratif et financier de LogiTrans, un transporteur lyonnais de 350 salariés. Tu l'as eu au téléphone après avoir vu que LogiTrans ouvrait deux agences en Espagne.</p><p>Ses équipes traitent environ 4 000 factures fournisseurs par mois et les ressaisissent à la main dans l'ERP, changé l'an dernier. La clôture mensuelle prend 12 jours ; la directrice générale, Claire Dubois, veut 5 jours d'ici l'été pour présenter les chiffres plus vite aux banques.</p><p>Inès, la responsable comptable, a testé l'outil d'un concurrent l'an dernier et en parle positivement à Eddie. L'expert-comptable du groupe recommande une autre solution. Les budgets outils de l'année suivante sont validés par Claire Dubois en octobre. La DSI doit valider la sécurité de tout nouvel outil, ce qui prend en général six semaines.</p><p>Eddie te dit : « Si on peut gagner une semaine sur la clôture, ça m'intéresse. Mais je ne signe rien seul. »</p></div>
+<p>Exercice : écris 3 questions SPIN de chaque type pour Eddie, puis remplis la grille MEDDIC de la fiche 5 à partir de ce cas.</p>`,
+key:["La découverte sert à comprendre, pas à présenter.","Le prospect parle deux tiers du temps.","L'implication donne sa valeur au problème.","Toujours finir sur une prochaine étape datée."]},
+{t:"MEDDIC et les ventes complexes",sub:"Six questions pour savoir si une grande affaire peut vraiment se signer.",m:4,min:10,body:`
+<p>BANT suffit pour une petite vente. Quand plusieurs personnes décident, que le contrat est important et que le cycle dure des mois, les équipes utilisent <b>MEDDIC</b>. En tant que SDR, tu ne rempliras pas toute la grille, mais tu dois en connaître les cases : c'est ce que l'AE cherchera à compléter après ta passation.</p>
+<div class="scroll"><table><thead><tr><th>Lettre</th><th>Question</th></tr></thead><tbody>
+<tr><td><b>M</b> · Metrics</td><td>Quel gain chiffré le client attend-il ?</td></tr>
+<tr><td><b>E</b> · Economic buyer</td><td>Qui contrôle le budget et signe ?</td></tr>
+<tr><td><b>D</b> · Decision criteria</td><td>Sur quels critères la solution sera-t-elle choisie ?</td></tr>
+<tr><td><b>D</b> · Decision process</td><td>Quelles étapes, quelles personnes, quel calendrier jusqu'à la signature ?</td></tr>
+<tr><td><b>I</b> · Identify pain</td><td>Quel problème concret, et que coûte-t-il ?</td></tr>
+<tr><td><b>C</b> · Champion</td><td>Qui défend le projet en interne quand tu n'es pas là ?</td></tr>
+</tbody></table></div>
+<p><b>MEDDPICC</b> ajoute deux cases : le <b>P</b>aper process (contrat, juridique, achats) et la <b>C</b>oncurrence.</p>
+<h2>Corrigé du cas Eddie</h2>
+<details class="sol"><summary>Afficher la grille MEDDIC remplie</summary>
+<div class="scroll"><table><tbody>
+<tr><td><b>Metrics</b></td><td>Passer la clôture de 12 à 5 jours ; 4 000 factures par mois ressaisies à la main.</td></tr>
+<tr><td><b>Economic buyer</b></td><td>Claire Dubois, directrice générale : elle valide les budgets outils en octobre. Eddie l'a dit : « je ne signe rien seul ».</td></tr>
+<tr><td><b>Decision criteria</b></td><td>Gain de temps sur la clôture, compatibilité avec le nouvel ERP, sécurité validée par la DSI. À confirmer : le prix et le support en espagnol pour les nouvelles agences.</td></tr>
+<tr><td><b>Decision process</b></td><td>Eddie évalue, la DSI valide la sécurité (6 semaines), Claire Dubois arbitre en octobre. Pour une mise en place avant l'été, il faut commencer la validation DSI très tôt.</td></tr>
+<tr><td><b>Identify pain</b></td><td>Ressaisie manuelle, clôture trop lente, pression des banques et de la DG, croissance en Espagne qui va ajouter du volume.</td></tr>
+<tr><td><b>Champion</b></td><td>Eddie est un champion possible. Inès est un risque : elle préfère l'outil concurrent. L'expert-comptable pousse une troisième solution.</td></tr>
+<tr><td><b>Concurrence</b></td><td>L'outil testé par Inès et celui recommandé par l'expert-comptable.</td></tr>
+</tbody></table></div></details>
+<p>Ta note de passation à l'AE reprend ces éléments en cinq lignes : contexte, problème chiffré, qui décide, risques, prochaine étape datée.</p>`,
+key:["MEDDIC sert aux ventes à plusieurs décideurs.","Le champion et l'acheteur économique sont rarement la même personne.","Le processus de décision fixe le vrai calendrier.","Ta passation donne à l'AE les premières cases remplies."]},
+{t:"Traiter les objections",sub:"Reconnaître, poser une question, rebondir. Jamais d'argumentation frontale.",m:3,min:10,body:`
+<p>Une objection en début d'appel n'est presque jamais un vrai refus. C'est un réflexe : le prospect ne t'attendait pas et cherche à raccrocher poliment. Si tu argumentes, tu confirmes qu'il avait raison de se méfier. Si tu poses une question, tu ouvres une conversation.</p>
+<h2>La règle en trois temps</h2>
+<ol><li><b>Reconnaître</b> : « Je comprends, vous ne m'attendiez pas. »</li><li><b>Poser une question</b> : une seule, courte, sur sa situation.</li><li><b>Rebondir</b> : relier sa réponse à la raison de ton appel, puis proposer un créneau.</li></ol>
+<h2>Six objections et une réponse type</h2>
+<div class="scroll"><table><thead><tr><th>Objection</th><th>Réponse possible</th></tr></thead><tbody>
+<tr><td>« Envoyez-moi un email. »</td><td>« Avec plaisir. Pour qu'il vous soit utile, comment gérez-vous [sujet] aujourd'hui ? »</td></tr>
+<tr><td>« Je n'ai pas le temps. »</td><td>« Je comprends. Je vous prends 30 secondes pour la raison de mon appel, et vous me dites si ça vaut un autre créneau ? »</td></tr>
+<tr><td>« On a déjà un outil. »</td><td>« Très bien. Qu'est-ce qui vous plaît le plus dedans, et qu'est-ce que vous changeriez ? »</td></tr>
+<tr><td>« Pas de budget. »</td><td>« C'est logique si le sujet n'est pas prioritaire. À quel moment préparez-vous les budgets de l'an prochain ? »</td></tr>
+<tr><td>« Ça ne m'intéresse pas. »</td><td>« D'accord. Par curiosité, est-ce que [problème courant] se pose chez vous, ou pas du tout ? »</td></tr>
+<tr><td>« Rappelez-moi dans 6 mois. »</td><td>« Avec plaisir. Qu'est-ce qui aura changé d'ici là ? »</td></tr>
+</tbody></table></div>
+<h2>Ce qu'il faut éviter</h2>
+<ul><li>Contredire : « Justement, notre outil est bien meilleur… »</li><li>Enchaîner trois arguments sans respirer.</li><li>Lâcher dès la première objection : propose au moins une question avant de conclure.</li><li>Insister après deux refus clairs : remercie et note la date de relance dans le CRM.</li></ul>`,
+key:["Une objection d'ouverture est un réflexe, pas un refus.","Reconnaître, questionner, rebondir.","Une seule question, puis silence.","Deux refus clairs : remercie et planifie une relance."]},
+{t:"Journée type, rémunération, carrière",sub:"Le quotidien d'un SDR, comment il est payé et où le métier mène.",m:0,min:10,body:`
+<h2>Une journée type</h2>
+<div class="scroll"><table><thead><tr><th>Heure</th><th>Activité</th></tr></thead><tbody>
+<tr><td class="mono">8 h 45</td><td>Recherche de comptes et préparation des appels du matin</td></tr>
+<tr><td class="mono">9 h 30</td><td>Premier bloc d'appels, sans interruption</td></tr>
+<tr><td class="mono">11 h 30</td><td>Emails et messages LinkedIn personnalisés</td></tr>
+<tr><td class="mono">14 h</td><td>Suivi des séquences, mise à jour du CRM, préparation des passations</td></tr>
+<tr><td class="mono">15 h 30</td><td>Second bloc d'appels</td></tr>
+<tr><td class="mono">17 h 30</td><td>Bilan du jour, liste du lendemain</td></tr>
+</tbody></table></div>
+<p>Dans la semaine s'ajoutent un point avec le manager (souvent avec l'écoute d'appels enregistrés), un point d'équipe et des formations produit.</p>
+<h2>La rémunération</h2>
+<p>Un SDR est payé avec un <b>fixe</b> et un <b>variable</b>. Le total visé si tu atteins 100 % de ton objectif s'appelle l'<b>OTE</b> (On-Target Earnings). Le partage est souvent autour de 70 % de fixe et 30 % de variable, avec des variations selon l'entreprise.</p>
+<ul><li>Le variable dépend en général des rendez-vous qualifiés et tenus, parfois du pipeline généré ou des affaires signées.</li><li>Des <b>accélérateurs</b> augmentent le variable au-delà de 100 % de l'objectif.</li><li>Les premiers mois (<b>ramp-up</b>) ont un objectif réduit, parfois un variable garanti.</li></ul>
+<p>Pour les montants actuels en France, appuie-toi sur les articles de Skipcall et de Licorne Society listés dans les ressources : ils publient des fourchettes mises à jour par ville et par niveau.</p>
+<h2>Où mène le métier</h2>
+<p>La voie classique : SDR pendant 12 à 24 mois, puis <b>AE</b> en SMB, puis Mid-Market et Enterprise. D'autres voies existent : manager SDR, Account Manager, Customer Success, partenariats, RevOps ou marketing.</p>
+<h2>Les questions à poser en entretien</h2>
+<ul><li>Quelle est la durée du ramp-up et l'objectif pendant cette période ?</li><li>Quelle part de l'équipe atteint son objectif ?</li><li>Comment se répartissent le fixe et le variable ?</li><li>Combien de temps faut-il en moyenne pour passer AE ?</li></ul>`,
+key:["Les blocs d'appels se protègent dans l'agenda.","OTE = fixe + variable à 100 % de l'objectif.","Demande toujours la part de l'équipe qui atteint son objectif.","SDR 12 à 24 mois, puis AE : la voie la plus courante."]},
+{t:"Raconter ton parcours",sub:"Transformer ton histoire en argument, même sans expérience en vente.",m:5,min:8,body:`
+<p>Un recruteur SDR ne cherche pas un vendeur expérimenté. Il cherche quelqu'un qui apprend vite, encaisse les refus et a de bonnes raisons de vouloir ce métier. Ton récit doit le prouver en une minute.</p>
+<h2>La structure en quatre temps</h2>
+<ol><li><b>D'où tu viens</b> : ton parcours en une phrase.</li><li><b>Le déclic</b> : un moment concret qui t'a donné envie de la vente tech. Une conversation avec un SDR, un projet, un job.</li><li><b>Ce que ton parcours t'apporte</b> : relie tes compétences au métier.</li><li><b>Ta preuve</b> : ce que tu as déjà fait pour te préparer.</li></ol>
+<h2>Relier ton parcours au métier</h2>
+<div class="scroll"><table><thead><tr><th>Ton expérience</th><th>Ce qu'elle prouve pour un SDR</th></tr></thead><tbody>
+<tr><td>Études de stratégie, de commerce ou d'ingénieur</td><td>Analyser un marché, segmenter, comprendre les enjeux d'un dirigeant : la base de l'ICP et de la découverte</td></tr>
+<tr><td>Sport en compétition</td><td>Discipline, gestion de la défaite, goût des objectifs chiffrés</td></tr>
+<tr><td>Job étudiant en vente ou en service client</td><td>Écoute, aisance avec des inconnus, gestion des clients mécontents</td></tr>
+<tr><td>Association ou BDE</td><td>Prospection de partenaires et de sponsors, refus encaissés</td></tr>
+<tr><td>Projet entrepreneurial</td><td>Initiative, autonomie, premiers clients démarchés</td></tr>
+</tbody></table></div>
+<h2>Ta preuve, grâce à cette formation</h2>
+<p>160 heures de formation, des certifications HubSpot, LinkedIn et Salesforce, des dizaines d'appels simulés et notés, des séquences écrites en français et en anglais, et un dossier de ciblage sur une vraie entreprise. Peu de candidats juniors arrivent avec autant d'éléments concrets.</p>
+<h2>La question à préparer</h2>
+<p>« Pourquoi la vente plutôt que [ton autre option] ? » Réponds sans dénigrer l'autre voie : parle de ce qui t'attire dans la vente (le contact client, des résultats visibles chaque semaine, une progression rapide).</p>`,
+key:["Le recruteur achète ta capacité à apprendre.","Un déclic concret vaut mieux qu'une passion vague.","Chaque expérience se traduit en compétence SDR.","Tes certifications et tes appels notés sont ta preuve."]},
+];
+
+/* Boîte à outils */
+const TOOLS_ORDER=["grille","star","pitch","candidature","amis"];
+</script>
+<script>
+(function(){
+"use strict";
+/* ---------- Icônes ---------- */
+const I={
+ home:'<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+ path:'<circle cx="6" cy="19" r="2.2"/><circle cx="18" cy="5" r="2.2"/><path d="M8.2 19H15a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h6.8"/>',
+ award:'<circle cx="12" cy="9" r="6"/><path d="M8.6 14 7 22l5-3 5 3-1.6-8"/>',
+ book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
+ lib:'<rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="16" rx="1"/><path d="m17 5.2 3.7-.9 2.3 15.4-3.7.9z"/>',
+ tool:'<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.7 2.7-2.4-.6-.6-2.4z"/>',
+ bolt:'<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+ check:'<path d="m5 12.5 4.5 4.5L19 7"/>',
+ clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+ target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r=".8"/>',
+ left:'<path d="m15 18-6-6 6-6"/>',
+ right:'<path d="m9 18 6-6-6-6"/>',
+ down:'<path d="m6 9 6 6 6-6"/>',
+ ext:'<path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/>',
+ info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.5v.5"/>',
+ shuffle:'<path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/>',
+ flip:'<path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 21v-5h5"/>',
+ doc:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/>',
+ quiz:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.6 2.6 0 0 1 5 .8c0 1.8-2.5 2.2-2.5 3.8"/><path d="M12 17.2v.3"/>',
+ cards:'<rect x="3" y="6" width="13" height="15" rx="2"/><path d="M8 3h11a2 2 0 0 1 2 2v12"/>',
+ play:'<circle cx="12" cy="12" r="9"/><path d="m10 8.5 5 3.5-5 3.5z"/>',
+ mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',
+ grid:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
+ users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/>',
+ x:'<path d="M6 6l12 12M18 6 6 18"/>',
+ search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+ sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+ edit:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+ reset:'<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>'
+};
+const ic=(n,st)=>`<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"${st?` style="${st}"`:""}>${I[n]}</svg>`;
+const FLAMEP='<path class="o" d="M12 2c.6 3.2 3.4 5 4.9 7.6 1 1.7 1.6 3.4 1.6 5.2A6.5 6.5 0 0 1 12 21.3a6.5 6.5 0 0 1-6.5-6.5c0-2.6 1.3-4.6 2.8-6.2.2 1.6 1 2.8 2.2 3.4C10 8.6 10.6 5 12 2z"/><path class="i" d="M12.2 11.5c1.3 1.4 2.6 2.6 2.6 4.4a2.8 2.8 0 0 1-5.6 0c0-1.3.7-2.3 1.5-3.1.1.8.5 1.3 1 1.5-.2-1-.1-2 .5-2.8z"/>';
+const flame=cls=>`<svg class="${cls||""}" viewBox="0 0 24 24" aria-hidden="true">${FLAMEP}</svg>`;
+const h=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const mc=mi=>`var(--m${mi+1})`;
+const $=id=>document.getElementById(id);
+
+/* ---------- Données dérivées ---------- */
+const SES=[];
+M.forEach((m,mi)=>m.s.forEach((s,si)=>SES.push({t:s.t,o:s.o,k:s.k,n:SES.length+1,m:mi,si})));
+const TOTAL=SES.length, NRES=Object.keys(R).length;
+const SHORT=["Le métier","Cibler","Écrire","Téléphoner","Qualifier","Candidature","Entretiens","Examen"];
+const PROV_COL=["--m1","--m2","--m3","--m4","--m5","--m6","--m7","--m8"];
+function provColor(name){let x=0;for(let i=0;i<name.length;i++)x=(x*31+name.charCodeAt(i))>>>0;return `var(${PROV_COL[x%PROV_COL.length]})`;}
+function provMono(name){const w=name.replace(/[^A-Za-zÀ-ÿ0-9 ]/g," ").split(/\s+/).filter(Boolean);return ((w[0]||"?")[0]+(w[1]?w[1][0]:((w[0]||"?")[1]||""))).toUpperCase();}
+const CERT_RES={};C.forEach(c=>{CERT_RES[c[3]]=c[0];});
+const LEVELS=[[0,"Curieux"],[100,"Prospecteur"],[300,"Apprenti SDR"],[600,"SDR junior"],[1000,"SDR"],[1500,"SDR confirmé"],[2100,"Top SDR"],[2800,"Futur AE"],[3600,"Légende du pipe"]];
+const XP_TASK=10,XP_SES=20,XP_CERT=100,XP_WORD=2,DAILY=4;
+const RTYPES={all:["Toutes",null],cours:["Cours et fiches",["Cours","Fiche"]],certifs:["Certifications et badges",["Certification","Badge"]],lecture:["Articles et guides",["Article","Guide","E-book"]],media:["Vidéos et podcasts",["Vidéo","Podcast"]],terrain:["Terrain : offres, avis, communautés",["Témoignages","Offres","Communauté"]]};
+const used={};SES.forEach(s=>s.k.forEach(k=>(k[3]||[]).forEach(id=>{(used[id]=used[id]||[]);if(!used[id].includes(s.n))used[id].push(s.n);})));
+
+/* ---------- Outils ---------- */
+const TOOLS={
+ grille:{t:"Grille d'évaluation de l'appel",i:"target",d:"Note chaque critère de 1 à 5. Un appel est validé quand chaque critère atteint au moins 3.",html:'<div class="scroll"><table><thead><tr><th>Critère</th><th>Ce qui est attendu</th><th>Note</th></tr></thead><tbody>'+
+  [["Préparation","Persona, problème probable et signal récent connus avant d'appeler."],["Ouverture","Prénom, entreprise et raison de l'appel en moins de 30 secondes."],["Problème","Une question qui fait parler le prospect de son problème, sans présenter le produit."],["Objection","Reconnaître, poser une question, rebondir. Jamais d'argumentation frontale."],["Conclusion","Une demande de rendez-vous avec deux créneaux précis."],["Voix et écoute","Débit posé, silences tenus, reformulation de ce que dit le prospect."]].map(r=>`<tr><td><b>${h(r[0])}</b></td><td>${h(r[1])}</td><td class="mono">/5</td></tr>`).join("")+"</tbody></table></div>"},
+ star:{t:"Méthode STAR",i:"grid",d:"Structure de réponse aux questions « Parle-moi d'une fois où… ». Vise 90 secondes par récit, avec au moins un chiffre.",html:`<ol><li><b>Situation.</b> Le contexte en une phrase : où, quand, avec qui.</li><li><b>Tâche.</b> Ce que tu devais obtenir, et pourquoi c'était difficile.</li><li><b>Action.</b> Ce que toi tu as fait, au « je », en 2 ou 3 étapes.</li><li><b>Résultat.</b> Le résultat chiffré, puis ce que tu en as appris.</li></ol><div class="tpl"><p><b>Les 6 récits à préparer</b></p><p>Un échec et ce que tu as changé ensuite · Un refus encaissé sans lâcher · Un objectif chiffré atteint · Un travail d'équipe sous pression · Un sujet appris très vite · Une initiative prise sans qu'on te la demande.</p><p>Tes expériences d'études comptent : un cas pratique, un projet de groupe, une association, un stage, un job étudiant.</p></div>`},
+ pitch:{t:"Ton pitch en 60 secondes",i:"mic",d:"En français et en anglais. À dire sans notes.",html:`<ol><li><b>Qui tu es (10 s).</b> Ton parcours en une phrase (études, expérience) et ce qui te définit.</li><li><b>Pourquoi la vente tech (20 s).</b> Un déclic concret, par exemple un échange avec un SDR ou un AE en poste. Ce qui t'attire : le contact client, des résultats mesurables, une progression rapide.</li><li><b>Ce que ton parcours t'apporte (15 s).</b> Relie tes compétences au métier : analyser un marché, comprendre un interlocuteur, encaisser les refus.</li><li><b>Ta preuve (15 s).</b> 160 heures de formation, tes certifications HubSpot, LinkedIn et Salesforce, des dizaines d'appels simulés et notés, des séquences écrites.</li></ol><div class="tpl"><p><b>La question à anticiper</b></p><p>« Pourquoi la vente plutôt que [ton autre option] ? » Réponds sans dénigrer l'autre voie : tu veux être au contact direct des clients et voir l'impact de ton travail chaque semaine.</p></div>`},
+ candidature:{t:"CV et message au manager SDR",i:"doc",d:"Une page, des résultats chiffrés, les mots-clés des offres.",html:`<div class="tpl"><p><b>Prénom Nom</b> · Ville · Téléphone · Email · LinkedIn</p><p><b>Sales Development Representative · SaaS B2B</b><br>Deux phrases : ton parcours, puis une preuve chiffrée de résultat ou de persévérance.</p><p><b>Expériences</b> · Poste · Entreprise · Dates<br>Une à trois lignes par expérience : verbe d'action, ce que tu as fait, résultat chiffré. Exemple : « Analysé 40 concurrents et présenté 3 recommandations au comité de direction, dont 2 retenues. »</p><p><b>Formation en développement commercial (2026)</b><br>Programme intensif de 160 heures : ciblage, séquences multicanales, appels à froid simulés et notés.</p><p><b>Certifications</b> · HubSpot Inbound Sales, HubSpot Sales Hub Software, LinkedIn Sales Navigator Essentials, badges Salesforce Trailhead</p><p><b>Formation</b> · [Diplôme], [École]<br><b>Outils</b> · HubSpot, Salesforce, LinkedIn Sales Navigator, lemlist, Apollo<br><b>Langues</b> · Anglais, niveau précis · <b>Centres d'intérêt</b> · trois éléments concrets</p></div><div class="tpl"><p><b>Message au manager SDR (LinkedIn ou email)</b></p><p><i>Objet : SDR chez [Entreprise] · [signal récent]</i></p><p>Bonjour [Prénom], je viens de postuler au poste de SDR. Pour vous montrer comment je prospecte, j'ai préparé une séquence de 3 emails pour [un persona de votre cible]. Je vous l'envoie ?</p></div>`},
+ amis:{t:"Questions pour des pros du métier",i:"users",d:"Pour un SDR ou BDR en poste et un AE ou Account Manager de ton réseau : amis, anciens de ton école, contacts LinkedIn. Prends des notes, elles nourriront tes entretiens.",html:`<ol><li>Comment s'est passé ton recrutement, étape par étape ? Y avait-il une mise en situation d'appel ?</li><li>À quoi ressemble ta semaine type : combien d'appels, d'emails, de rendez-vous ?</li><li>Sur quels indicateurs es-tu évalué, et quel est ton objectif mensuel ?</li><li>Quels outils utilises-tu chaque jour ?</li><li>Qu'est-ce qui distingue les SDR qui réussissent des autres ?</li><li>Qu'est-ce qui a été le plus dur pendant tes trois premiers mois ?</li><li>Quelles ressources et quelles certifications t'ont vraiment aidé ?</li><li>En quoi le métier d'Account Manager diffère-t-il de celui de SDR ou de BDR ?</li><li>L'alternance est-elle une bonne porte d'entrée, et comment l'as-tu obtenue ?</li><li>Que me conseilles-tu de mettre en avant, venant de mon parcours ?</li><li>Accepterais-tu de me faire passer un mock call avant mes entretiens ?</li><li>Pourrais-tu me recommander si un poste ouvre chez toi ?</li></ol>`}
+};
+
+/* ---------- État ---------- */
+const KEY="sta-progress-v1",TKEY="sta-theme";
+let S=norm({});
+function norm(o){o=o||{};return {name:o.name||"",start:o.start||null,done:Object.assign({},o.done||{}),log:Object.assign({},o.log||{}),certs:Object.assign({},o.certs||{}),known:Object.assign({},o.known||{}),qbest:o.qbest||0};}
+function loadLocal(){try{const r=localStorage.getItem(KEY);if(r)S=norm(JSON.parse(r));}catch(e){}}
+function saveLocal(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+
+/* ---------- Dates ---------- */
+const pad=n=>(n<10?"0":"")+n;
+const ymd=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const parse=s=>{const p=s.split("-").map(Number);return new Date(p[0],p[1]-1,p[2],12);};
+const today=()=>{const d=new Date();d.setHours(12,0,0,0);return d;};
+const isWE=d=>{const w=d.getDay();return w===0||w===6;};
+const addDays=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x;};
+const fLong=new Intl.DateTimeFormat("fr-FR",{weekday:"long",day:"numeric",month:"long"});
+const fMonth=new Intl.DateTimeFormat("fr-FR",{month:"long",year:"numeric"});
+function weekdaysBefore(a,b){let n=0;const x=new Date(a);while(x<b){if(!isWE(x))n++;x.setDate(x.getDate()+1);}return n;}
+function plannedOn(d){if(!S.start||isWE(d))return 0;const s=parse(S.start);if(d<s)return 0;const n=weekdaysBefore(s,d)+1;return n<=TOTAL?n:0;}
+function sessionDate(n){if(!S.start)return null;const x=parse(S.start);let c=0;for(let i=0;i<500;i++){if(!isWE(x)){c++;if(c===n)return new Date(x);}x.setDate(x.getDate()+1);}return null;}
+function nextMonday(){const t=today();return addDays(t,(8-t.getDay())%7||7);}
+
+/* ---------- Progression ---------- */
+const tid=(n,i)=>"s"+n+"-"+i;
+const sCount=s=>s.k.reduce((c,_,i)=>c+(S.done[tid(s.n,i)]?1:0),0);
+const sDone=s=>sCount(s)===s.k.length;
+const doneSessions=()=>SES.filter(sDone).length;
+const nextSession=()=>SES.find(s=>!sDone(s))||null;
+const active=ds=>(S.log[ds]||0)>0;
+function bump(){const d=ymd(today());S.log[d]=(S.log[d]||0)+1;}
+function streakNow(){let d=today(),n=0;if(!active(ymd(d)))d=addDays(d,-1);for(let i=0;i<800;i++){if(active(ymd(d)))n++;else if(!isWE(d))break;d=addDays(d,-1);}return n;}
+function bestStreak(){const ks=Object.keys(S.log).filter(active).sort();if(!ks.length)return 0;let d=parse(ks[0]);const end=today();let run=0,best=0;while(d<=end){if(active(ymd(d))){run++;if(run>best)best=run;}else if(!isWE(d))run=0;d=addDays(d,1);}return best;}
+const certsDone=()=>C.filter(c=>S.certs[c[0]]==="done").length;
+const knownCount=()=>G.filter(g=>S.known[g[0]]).length;
+const xp=()=>Object.keys(S.done).length*XP_TASK+doneSessions()*XP_SES+certsDone()*XP_CERT+knownCount()*XP_WORD;
+function level(x){let i=0;while(i+1<LEVELS.length&&x>=LEVELS[i+1][0])i++;const cur=LEVELS[i],nx=LEVELS[i+1];return {i,name:cur[1],from:cur[0],to:nx?nx[0]:cur[0],next:nx?nx[1]:null};}
+function todayTasks(){const d=ymd(today());return Object.values(S.done).filter(v=>v===d).length;}
+const modSessions=mi=>SES.filter(s=>s.m===mi);
+const modDone=mi=>modSessions(mi).filter(sDone).length;
+
+/* ---------- Synchronisation avec le compte Claude (si disponible) ---------- */
+let dbRef=null,dirty=false,writing=false,again=false,wTimer=null,firstSnap=true,syncMode="local";
+function syncText(){return syncMode==="db"?"Progression enregistrée sur ton compte, sur tous tes appareils.":syncMode==="connecting"?"Connexion à ton compte…":"Progression enregistrée dans ce navigateur.";}
+function setSync(m){syncMode=m;const el=$("sync");if(!el)return;el.className="sync"+(m==="db"?" db":"");el.lastElementChild.textContent=syncText();}
+function mergeState(a,b){const o=norm(b);
+  Object.keys(a.done).forEach(k=>{if(!o.done[k]||a.done[k]<o.done[k])o.done[k]=a.done[k];});
+  Object.keys(a.log).forEach(k=>{o.log[k]=Math.max(o.log[k]||0,a.log[k]);});
+  Object.keys(a.certs).forEach(k=>{if(o.certs[k]!=="done")o.certs[k]=a.certs[k];});
+  Object.keys(a.known).forEach(k=>{o.known[k]=o.known[k]||a.known[k];});
+  o.start=o.start||a.start||null;o.name=o.name||a.name||"";o.qbest=Math.max(o.qbest||0,a.qbest||0);return o;}
+function canon(o){const r={name:o.name,start:o.start||null,qbest:o.qbest};["done","log","certs","known"].forEach(f=>{r[f]={};Object.keys(o[f]).sort().forEach(k=>{r[f][k]=o[f][k];});});return JSON.stringify(r);}
+function queueWrite(){if(!dbRef){dirty=false;return;}clearTimeout(wTimer);wTimer=setTimeout(flush,500);}
+function flush(){
+  if(!dbRef){dirty=false;return;}
+  if(writing){again=true;return;}
+  writing=true;
+  const body=JSON.parse(JSON.stringify({name:S.name,done:S.done,log:S.log,start:S.start||null,certs:S.certs,known:S.known,qbest:S.qbest,v:3}));
+  dbRef.set(body).then(()=>{},e=>{const c=e&&e.code;if(c==="unavailable"){setTimeout(()=>{dirty=true;queueWrite();},1500+Math.random()*1500);}else{dbRef=null;setSync("local");}})
+  .then(()=>{writing=false;if(again){again=false;flush();return;}dirty=false;});
+}
+function initDb(){
+  const c=window.claude;if(!c||typeof c.use!=="function")return;
+  Promise.all([c.use("db"),c.use("user")]).then(r=>{
+    const db=r[0],user=r[1];if(!db||!user)return null;
+    return user.id().then(id=>{
+      if(!id)return;
+      try{dbRef=db.doc("data/users/"+id+"/progress");}catch(e){dbRef=null;return;}
+      setSync("connecting");
+      const timer=setTimeout(()=>{if(syncMode==="connecting")setSync("local");},10000);
+      dbRef.onSnapshot(snap=>{
+        const conf=!snap.metadata.fromCache;
+        if(conf)clearTimeout(timer);
+        if(dirty||writing){if(conf)setSync("db");return;}
+        if(snap.exists){
+          const remote=norm(snap.data());
+          if(firstSnap){const merged=mergeState(S,remote);S=merged;saveLocal();if(conf){firstSnap=false;if(canon(merged)!==canon(remote)){dirty=true;queueWrite();}}}
+          else{S=remote;saveLocal();}
+          render(false);
+        }else if(conf){
+          firstSnap=false;
+          if(Object.keys(S.done).length||Object.keys(S.log).length||S.start||S.name||Object.keys(S.certs).length||Object.keys(S.known).length){dirty=true;queueWrite();}
+        }
+        if(conf)setSync("db");
+      },()=>{clearTimeout(timer);dbRef=null;setSync("local");});
+    });
+  }).catch(()=>{});
+}
+function commit(){dirty=true;saveLocal();queueWrite();}
+
+/* ---------- Thème ---------- */
+function getTheme(){try{return localStorage.getItem(TKEY)||"system";}catch(e){return "system";}}
+function applyTheme(t){try{localStorage.setItem(TKEY,t);}catch(e){}if(t==="system")document.documentElement.removeAttribute("data-theme");else document.documentElement.setAttribute("data-theme",t);}
+
+/* ---------- Composants ---------- */
+function ring(p,size,sw,inner,color){const r=(size-sw)/2,c=2*Math.PI*r,off=c*(1-Math.max(0,Math.min(1,p)));
+  return `<div class="ringwrap" style="width:${size}px;height:${size}px${color?";--c:"+color:""}"><svg class="ring" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle class="tr" cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke-width="${sw}"/><circle class="pr" cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke-width="${sw}" stroke-linecap="round" stroke-dasharray="${c.toFixed(2)}" stroke-dashoffset="${off.toFixed(2)}" transform="rotate(-90 ${size/2} ${size/2})"/></svg><span>${inner||""}</span></div>`;}
+const bar=(p,color,cls)=>`<div class="bar${cls?" "+cls:""}"${color?` style="--c:${color}"`:""}><i style="width:${Math.round(Math.max(0,Math.min(1,p))*100)}%"></i></div>`;
+const isInt=r=>r[2]&&r[2][0]==="#";
+function typeChip(r){return (r[4]==="Certification"||r[4]==="Badge")?`<span class="chip cert">${ic("award")}${r[4]==="Badge"?"Badge":"Certifiant"}</span>`:`<span class="chip">${h(r[4])}</span>`;}
+function linkAttrs(r){return isInt(r)?`href="${h(r[2])}"`:`href="${h(r[2])}" target="_blank" rel="noopener"`;}
+function resList(ids){
+  if(!ids||!ids.length)return "";
+  return '<ul class="res">'+ids.map(id=>{const r=R[id];if(!r)return "";
+    const col=isInt(r)?mc(F[+id.slice(1)-1].m):provColor(r[1]);
+    const inner=`<span class="pm" style="background:${col}">${isInt(r)?ic("doc","width:16px;height:16px;stroke:var(--on-c)"):h(provMono(r[1]))}</span><span class="rt"><b>${h(r[0])}</b><span>${h(r[1])}${isInt(r)?" · dans le site":""}</span></span><span class="rc"><span class="chip">${h(r[3])}</span>${typeChip(r)}</span>`;
+    return `<li><a ${linkAttrs(r)}>${inner}</a></li>`;}).join("")+"</ul>";
+}
+function band(inner,c,cls){return `<section class="band gutter${cls?" "+cls:""}"${c?` style="--c:${c}"`:""}><div class="inner">${inner}</div></section>`;}
+const wrap=inner=>`<div class="wrap gutter"><div class="inner">${inner}</div></div>`;
+
+/* ---------- En-tête et navigation ---------- */
+const NAVLINKS=[["accueil","Accueil"],["parcours","Parcours",1],["apprendre","Apprendre",1],["certifications","Certifications"],["ressources","Ressources",1]];
+function curSection(v){return v==="seance"?"parcours":["fiches","fiche","glossaire","outils"].includes(v)?"apprendre":v;}
+function ddParcours(){
+  const nxt=nextSession();
+  const col=(a,b,lab)=>`<div><p class="dd-h">${lab}</p>${M.slice(a,b).map((m,j)=>{const mi=a+j;return `<a class="dd-l" href="#module-${mi+1}" style="--c:${mc(mi)}"><span class="dn">${mi+1}</span><span><b>${h(m.t)}</b><small>Semaine ${mi+1} · ${modDone(mi)}/5 séances</small></span></a>`;}).join("")}</div>`;
+  const tc=nxt?`<a class="today-card" href="#seance-${nxt.n}" style="--c:${mc(nxt.m)}"><span class="eyebrow" style="color:var(--c)">Prochaine séance · ${nxt.n}/${TOTAL}</span><b>${h(nxt.t)}</b><span>${sCount(nxt)}/${nxt.k.length} tâches faites</span></a>`:"";
+  return `<div class="dd mega"><div class="ddp">${col(0,5,"Partie 1 · Apprendre le métier")}<div>${col(5,8,"Partie 2 · Décrocher le poste").replace(/^<div>|<\/div>$/g,"")}${tc}</div><div class="foot-l"><span class="muted">${doneSessions()} séance${doneSessions()>1?"s":""} sur ${TOTAL} terminée${doneSessions()>1?"s":""}</span><a href="#parcours">Voir tout le parcours →</a></div></div></div>`;
+}
+const APPR=[["fiches","Fiches de cours","8 fiches écrites pour la formation","doc","var(--m1)"],["glossaire","Glossaire",G.length+" termes en français et en anglais","book","var(--m3)"],["quiz","Quiz de vocabulaire","10 questions, ton meilleur score","quiz","var(--m4)"],["cartes","Cartes mémoire","Révise et marque ce que tu sais","cards","var(--m5)"],["outils","Boîte à outils","Grille d'appel, STAR, pitch, CV","tool","var(--m7)"]];
+function ddApprendre(){return `<div class="dd"><div class="ddp" style="width:340px">${APPR.map(a=>`<a class="dd-l" href="#${a[0]}" style="--c:${a[4]}"><span class="di">${ic(a[3])}</span><span><b>${a[1]}</b><small>${a[2]}</small></span></a>`).join("")}</div></div>`;}
+function countType(k){const t=RTYPES[k][1];return t?Object.values(R).filter(r=>t.includes(r[4])).length:NRES;}
+function ddRessources(){const icons={all:"lib",cours:"play",certifs:"award",lecture:"doc",media:"mic",terrain:"users"};return `<div class="dd" style="left:auto;right:-80px"><div class="ddp" style="width:330px">${Object.keys(RTYPES).map((k,i)=>`<a class="dd-l" href="#ressources${k==="all"?"":"-"+k}" style="--c:${mc(i)}"><span class="di">${ic(icons[k])}</span><span><b>${RTYPES[k][0]}</b><small>${countType(k)} ressources gratuites</small></span></a>`).join("")}</div></div>`;}
+function chrome(v){
+  const cur=curSection(v),x=xp(),lv=level(x),st=streakNow(),lit=active(ymd(today()));
+  $("nav").innerHTML=NAVLINKS.map(n=>{
+    const ac=cur===n[0]?' aria-current="page"':"";
+    if(!n[2])return `<div class="ni"><a class="nl" href="#${n[0]}"${ac}>${n[1]}</a></div>`;
+    const dd=n[0]==="parcours"?ddParcours():n[0]==="apprendre"?ddApprendre():ddRessources();
+    return `<div class="ni" data-ni="${n[0]}"><button class="nl" type="button" aria-haspopup="true"${ac}>${n[1]}${ic("down").replace('class="ico"','class="ico chev"')}</button>${dd}</div>`;}).join("");
+  $("pills").innerHTML=`<span class="pill fl${lit?"":" off"}" title="Série de jours">${flame()}<span>${st}</span></span><span class="pill xp" title="Points d'expérience">${ic("bolt")}<span>${x}</span></span>`;
+  const theme=getTheme(),ini=(S.name||"?").trim().charAt(0).toUpperCase()||"?";
+  $("prof").innerHTML=`<button class="avatar" type="button" aria-haspopup="true" aria-label="Mon profil">${h(ini)}</button><div class="dd"><div class="ddp"><div><b style="font-family:var(--display);font-size:17px">${S.name?h(S.name):"Invité"}</b><div class="muted" style="font-size:13px">${S.start?"Début le "+h(fLong.format(parse(S.start))):"Date de début non choisie"}</div></div>
+   <div class="lvl"><div class="row" style="justify-content:space-between"><b>Niveau ${lv.i+1} · ${h(lv.name)}</b><span class="mono" style="font-size:12px;color:var(--xp)">${x} XP</span></div>${bar(lv.next?(x-lv.from)/(lv.to-lv.from):1,null,"xpb")}<small>${lv.next?(lv.to-x)+" XP avant « "+h(lv.next)+" »":"Niveau maximum atteint"}</small></div>
+   <div><p class="dd-h" style="padding:0 0 6px">Thème</p><div class="seg" role="group" aria-label="Thème" style="width:100%">${[["system","Système"],["light","Clair"],["dark","Sombre"]].map(t=>`<button type="button" data-theme-set="${t[0]}" aria-pressed="${theme===t[0]}" style="flex:1">${t[1]}</button>`).join("")}</div></div>
+   <button class="dd-l" type="button" data-act="profile"><span class="di">${ic("edit")}</span><span><b>Modifier mon profil</b><small>Prénom et date de début</small></span></button>
+   <button class="dd-l" type="button" data-act="reset" style="--c:var(--m8)"><span class="di">${ic("reset")}</span><span><b>${resetArm?"Confirmer : tout effacer":"Réinitialiser ma progression"}</b><small>${resetArm?"Clique encore pour confirmer":"Séances, XP, série et certifications"}</small></span></button>
+  </div></div>`;
+}
+let resetArm=false,resetTimer=null;
+function closeMenus(){document.querySelectorAll(".ni.open").forEach(n=>n.classList.remove("open"));}
+
+/* ---------- Tiroir mobile ---------- */
+function openDrawer(){
+  const d=document.createElement("div");d.className="drawer";d.id="drawer";
+  const lv=level(xp());
+  d.innerHTML=`<div class="drawer-p" role="dialog" aria-modal="true" aria-label="Menu"><div class="drawer-top"><span class="row" style="gap:6px"><span class="pill fl" style="background:color-mix(in srgb,var(--flame) 14%,var(--surface));color:var(--flame)">${flame()}<span>${streakNow()}</span></span><span class="pill" style="background:color-mix(in srgb,var(--xp) 14%,var(--surface));color:var(--xp)">${ic("bolt")}<span>${xp()}</span></span></span><button class="iconbtn" type="button" data-close-drawer aria-label="Fermer">${ic("x")}</button></div>
+  <a class="solo" href="#accueil">Accueil</a>
+  <details${curSection(route().v)==="parcours"?" open":""}><summary>Parcours${ic("down").replace('class="ico"','class="ico chev"')}</summary><div><a class="dd-l" href="#parcours"><span class="di">${ic("path")}</span><span><b>Tout le parcours</b><small>${doneSessions()}/${TOTAL} séances</small></span></a>${M.map((m,mi)=>`<a class="dd-l" href="#module-${mi+1}" style="--c:${mc(mi)}"><span class="dn">${mi+1}</span><span><b>${h(m.t)}</b><small>${modDone(mi)}/5 séances</small></span></a>`).join("")}</div></details>
+  <details><summary>Apprendre${ic("down").replace('class="ico"','class="ico chev"')}</summary><div>${APPR.map(a=>`<a class="dd-l" href="#${a[0]}" style="--c:${a[4]}"><span class="di">${ic(a[3])}</span><span><b>${a[1]}</b><small>${a[2]}</small></span></a>`).join("")}</div></details>
+  <a class="solo" href="#certifications">Certifications</a>
+  <details><summary>Ressources${ic("down").replace('class="ico"','class="ico chev"')}</summary><div>${Object.keys(RTYPES).map((k,i)=>`<a class="dd-l" href="#ressources${k==="all"?"":"-"+k}" style="--c:${mc(i)}"><span class="di">${ic("lib")}</span><span><b>${RTYPES[k][0]}</b><small>${countType(k)} ressources</small></span></a>`).join("")}</div></details>
+  <details><summary>Mon profil${ic("down").replace('class="ico"','class="ico chev"')}</summary><div style="gap:10px"><div class="lvl"><b>Niveau ${lv.i+1} · ${h(lv.name)}</b>${bar(lv.next?(xp()-lv.from)/(lv.to-lv.from):1,null,"xpb")}</div><div class="seg" role="group" aria-label="Thème">${[["system","Système"],["light","Clair"],["dark","Sombre"]].map(t=>`<button type="button" data-theme-set="${t[0]}" aria-pressed="${getTheme()===t[0]}">${t[1]}</button>`).join("")}</div><button class="dd-l" type="button" data-act="profile"><span class="di">${ic("edit")}</span><span><b>Modifier mon profil</b></span></button></div></details>
+  </div>`;
+  document.body.appendChild(d);
+  d.addEventListener("click",e=>{if(e.target===d||e.target.closest("[data-close-drawer]")||e.target.closest("a[href^='#']")||e.target.closest("[data-act]"))d.remove();});
+}
+
+/* ---------- Pied de page ---------- */
+function footer(){
+  $("foot").innerHTML=`<div class="inner"><div style="display:grid;gap:10px;align-content:start"><a class="logo" href="#accueil" style="color:var(--on-night)"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-9"/><path d="M15 7h5v5"/></svg></span><span><b>Sales Tech Academy</b><small>La formation SDR &amp; BDR de PA</small></span></a><p style="max-width:36ch">40 séances pour apprendre le métier de SDR et décrocher le poste, uniquement avec des ressources gratuites.</p></div>
+  <div><h4>Parcours</h4>${M.slice(0,4).map((m,i)=>`<a href="#module-${i+1}">${i+1}. ${h(SHORT[i])}</a>`).join("")}<a href="#parcours">Tout le parcours</a></div>
+  <div><h4>Apprendre</h4>${APPR.map(a=>`<a href="#${a[0]}">${a[1]}</a>`).join("")}</div>
+  <div><h4>Aller plus loin</h4><a href="#certifications">Certifications</a><a href="#ressources">Bibliothèque</a><a href="#ressources-media">Vidéos et podcasts</a><a href="#ressources-terrain">Offres d'emploi</a></div>
+  <div class="base"><span class="sync${syncMode==="db"?" db":""}" id="sync"><i></i><span>${syncText()}</span></span><span>Ressources gratuites vérifiées en novembre 2026.</span></div></div>`;
+}
+
+/* ---------- Vues ---------- */
+let calY=today().getFullYear(),calM=today().getMonth();
+let gMod=0,gQuery="",gMode="list",fcI=0,fcFlip=false,fcOrder=null,rLang="all",rType="all",rQuery="",cTier=0,pendingTool=null,openMods=null;
+let qz=null;
+
+function vLanding(){
+  const ess=C.filter(c=>c[5]===1);
+  const waves=[40,75,55,90,35,65,85,50,30,70,95,60,45,80,40,65,30,55,85,45,70,35,60,90,50,75,40,65].map((v,i)=>`<i style="--h:${v}%;animation-delay:${(i%7)*.12}s"></i>`).join("");
+  return `<section class="band hero gutter"><div class="inner">
+   <div style="display:grid;gap:18px"><p class="eyebrow">Formation gratuite · SDR &amp; BDR</p><h1>Décroche ton premier poste de <em>sales en tech</em> en 8 semaines.</h1><p class="lede">40 séances de 4 heures, un programme clé en main construit uniquement avec des cours, des certifications et des guides gratuits. Tu coches, tu progresses, tu passes tes certifications et tu arrives en entretien avec des preuves.</p>
+   <div class="hero-ctas"><button class="btn hot" type="button" data-act="profile">Commencer la formation${ic("right")}</button><a class="btn ghost" href="#parcours">Voir le programme</a></div>
+   <div class="trust"><span>${ic("check")}100 % gratuit</span><span>${ic("check")}En français, avec l'anglais du métier</span><span>${ic("check")}Sans inscription</span></div></div>
+   <div class="call" aria-label="Exemple d'ouverture d'appel"><div class="call-top"><span class="call-av">CR</span><div><b>Camille R. · DRH</b><small>Scale-up SaaS · 180 salariés</small></div><span class="live"><i></i>00:27</span></div>
+    <div class="wave" aria-hidden="true">${waves}</div>
+    <div class="script"><div class="line you"><span class="ts">00:03</span><p>Bonjour Camille, Léa de Talento. Je vous appelle parce que vous recrutez 25 personnes ce trimestre.</p></div><div class="line them"><span class="ts">00:11</span><p>Je n'ai pas vraiment le temps, là.</p></div><div class="line you"><span class="ts">00:14</span><p>Je comprends. Comment accueillez-vous autant de nouveaux en même temps ?</p></div></div>
+    <div class="call-foot"><span>Raison de l'appel annoncée en <b>8 s</b></span><span>Objectif module 4 : <b>&lt; 30 s</b></span></div></div>
+  </div></section>`+
+  wrap(`<section class="figs">${[[TOTAL,"séances de 4 h"],["160 h","de formation"],["8","modules"],[NRES,"ressources gratuites"],[C.length,"certifications"],[G.length,"termes FR / EN"]].map(f=>`<div class="fig"><b class="num">${f[0]}</b><span>${f[1]}</span></div>`).join("")}</section>
+  <section style="display:grid;gap:18px"><div class="sech"><div><p class="eyebrow">Comment ça marche</p><h2>Une séance par jour ouvré, du lundi au vendredi</h2></div></div>
+   <div class="steps">${[["01","Suis la séance du jour","Environ 2 heures de cours avec des ressources gratuites, puis 2 heures de pratique : écrire, appeler, cibler. Chaque séance tient sur une page."],["02","Coche, gagne de l'XP, garde ta série","Chaque tâche cochée rapporte de l'XP et entretient ta série de jours. Le week-end ne la casse pas. Les badges de module récompensent les semaines bouclées."],["03","Arrive en entretien avec des preuves","Quatre certifications essentielles, un dossier de ciblage, une séquence, des dizaines d'appels notés, un CV et un pitch prêts. De quoi convaincre un manager SDR."]].map(s=>`<article class="card step"><span class="sn">${s[0]}</span><h3>${s[1]}</h3><p>${s[2]}</p></article>`).join("")}</div></section>
+  <section style="display:grid;gap:18px"><div class="sech"><div><p class="eyebrow">Le programme</p><h2>8 modules, de la découverte du métier à l'examen final</h2></div><a class="btn sec sm" href="#parcours">Tout le parcours${ic("right")}</a></div>
+   <div class="modgrid">${M.map((m,mi)=>`<a class="card modcard" href="#module-${mi+1}" style="--c:${mc(mi)}"><span class="mn"><span>${mi+1}</span><span class="wk">SEMAINE ${mi+1}</span></span><h3>${h(m.t)}</h3><p>${h(m.obj)}</p></a>`).join("")}</div></section>
+  <section style="display:grid;gap:18px"><div class="sech"><div><p class="eyebrow">Certifications</p><h2>Les 4 certifications intégrées au programme</h2></div><a class="btn sec sm" href="#certifications">Les ${C.length} certifications${ic("right")}</a></div>
+   <div class="stats">${ess.map(c=>`<a class="card stat" href="#certifications" style="--c:${provColor(c[2])}"><span class="pm" style="background:var(--c);width:46px;height:46px;border-radius:13px;font-size:14px">${h(provMono(c[2]))}</span><span class="t"><span class="k">${h(c[2])}</span><span class="v" style="font-size:17px">${h(c[1])}</span><span class="s">${h(c[4])} · séance ${c[6]}</span></span></a>`).join("")}</div></section>
+  <section class="band cta-band"><div style="display:grid;gap:8px"><h2>Prêt pour la séance 1 ?</h2><p style="color:var(--on-night-muted)">Choisis ta date de début : le site planifie tes 40 séances sur les jours ouvrés et suit ta progression.</p></div><button class="btn hot" type="button" data-act="profile">Commencer${ic("right")}</button></section>`);
+}
+
+function vAccueil(){
+  if(!S.name)return vLanding();
+  const t=today(),ts=ymd(t),nxt=nextSession(),dn=doneSessions(),st=streakNow(),best=bestStreak(),lit=active(ts),x=xp(),lv=level(x),planned=plannedOn(t);
+  const h0=new Date().getHours(),hello=h0<5||h0>=18?"Bonsoir":"Bonjour";
+  let status="";
+  if(S.start){const s0=parse(S.start);
+    if(t<s0)status=`<span class="chip">Début le ${h(fLong.format(s0))}</span>`;
+    else{const exp=Math.min(TOTAL,weekdaysBefore(s0,t)),diff=dn-exp,wd=planned>0;
+      if(diff<0)status=`<span class="chip" style="color:var(--flame);background:color-mix(in srgb,var(--flame) 12%,var(--surface));border-color:transparent">${-diff} séance${-diff>1?"s":""} de retard</span>`;
+      else if(diff===0&&wd)status='<span class="chip">Séance du jour à faire</span>';
+      else{const ah=diff-(wd?1:0);status=`<span class="chip" style="color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,var(--surface));border-color:transparent">${ah>0?ah+" séance"+(ah>1?"s":"")+" d'avance":"À jour"}</span>`;}}}
+  let cont;
+  if(!nxt){cont=`<article class="cont" style="--c:var(--m6)"><div><p class="eyebrow">Formation terminée</p><h2>Les ${TOTAL} séances sont validées.</h2><p class="o">Garde le rythme : 5 candidatures, 5 relances et un mock call par semaine jusqu'à la signature.</p></div></article>`;}
+  else{const m=M[nxt.m],c=sCount(nxt),sd=sessionDate(nxt.n);
+    cont=`<article class="cont" style="--c:${mc(nxt.m)}"><div style="position:relative;z-index:1"><div class="row" style="gap:8px"><span class="mchip"><b>${nxt.m+1}</b>${h(m.t)}</span><span class="chip">Séance ${nxt.n} / ${TOTAL}</span>${sd?`<span class="chip">${ic("clock")}${h(fLong.format(sd))}</span>`:""}</div>
+     <h2>${h(nxt.t)}</h2><p class="o">${h(nxt.o)}</p><div class="minipath">${modSessions(nxt.m).map(s=>`<a href="#seance-${s.n}" class="${sDone(s)?"d":""}${s.n===nxt.n?" cur":""}" title="${h(s.t)}">${sDone(s)?ic("check","width:16px;height:16px"):s.n}</a>`).join("")}</div>
+     <div class="row"><a class="btn" href="#seance-${nxt.n}">${c?"Reprendre la séance":"Commencer la séance"}${ic("right")}</a>${status}</div></div>
+     ${ring(c/nxt.k.length,118,11,`<span style="display:grid;justify-items:center;line-height:1.1"><span style="font-size:26px">${c}/${nxt.k.length}</span><span style="font-size:11px;font-family:var(--body);font-weight:600;color:var(--muted)">tâches</span></span>`)}</article>`;}
+  const mon=addDays(t,-((t.getDay()+6)%7)),names=["L","M","M","J","V","S","D"];let week="";
+  for(let i=0;i<7;i++){const d=addDays(mon,i),ds=ymd(d);week+=`<div class="wd${active(ds)?" on":""}${ds===ts?" now":""}"><b>${flame()}</b>${names[i]}</div>`;}
+  const msg=lit?"Série prolongée aujourd'hui. Bravo.":(isWE(t)?"Week-end : ta série est protégée.":(st?"Coche une tâche aujourd'hui pour garder ta série.":"Coche ta première tâche pour allumer la flamme."));
+  const tt=todayTasks(),certN=certsDone();
+  const stats=[
+    ["Niveau "+(lv.i+1),h(lv.name),lv.next?(lv.to-x)+" XP avant le niveau suivant":"Niveau maximum","bolt","var(--xp)",lv.next?(x-lv.from)/(lv.to-lv.from):1,""],
+    ["Objectif du jour",Math.min(tt,DAILY)+" / "+DAILY+" tâches",tt>=DAILY?"Objectif atteint":"Une séance compte environ 4 tâches","target","var(--flame)",tt/DAILY,""],
+    ["Séances",dn+" / "+TOTAL,Math.round(dn/TOTAL*100)+" % du programme","path","var(--m1)",dn/TOTAL,"parcours"],
+    ["Certifications",certN+" / "+C.length,"4 essentielles à obtenir","award","var(--m6)",certN/C.length,"certifications"]
+  ].map(s=>{const tag=s[6]?"a":"div";return `<${tag} class="card stat"${s[6]?` href="#${s[6]}"`:""} style="--c:${s[4]}">${ring(s[5],54,6,ic(s[3],"width:20px;height:20px;color:"+s[4]),s[4])}<span class="t"><span class="k">${s[0]}</span><span class="v">${s[1]}</span><span class="s">${h(s[2])}</span></span></${tag}>`;}).join("");
+  const cur=nxt?nxt.n:0;let glance="";
+  M.forEach((m,mi)=>{glance+=`<div class="grow" style="--c:${mc(mi)}"><span class="lab">M${mi+1}</span>${modSessions(mi).map(s=>{const p=sCount(s)/s.k.length;return `<a class="tile${p===1?" d":p>0?" part":""}${s.n===cur?" cur":""}" style="--p:${Math.round(p*100)}%" href="#seance-${s.n}" title="Séance ${s.n} · ${h(s.t)}">${s.n}</a>`;}).join("")}</div>`;});
+  const first=new Date(calY,calM,1,12),off=(first.getDay()+6)%7,days=new Date(calY,calM+1,0).getDate();let cells="";
+  ["lun","mar","mer","jeu","ven","sam","dim"].forEach(x=>{cells+=`<div class="dh">${x}</div>`;});
+  for(let p=0;p<off;p++)cells+='<div class="cell pad"></div>';
+  for(let dd=1;dd<=days;dd++){const cd=new Date(calY,calM,dd,12),cs=ymd(cd),pl=plannedOn(cd),ac=active(cs);
+    cells+=`<div class="cell${pl?" plan":""}${ac?" act":""}${cs===ts?" now":""}" title="${h(fLong.format(cd)+(pl?", séance "+pl:"")+(ac?", travaillé":""))}"><span>${dd}</span>${pl?`<span class="p">S${pl}</span>`:""}</div>`;}
+  const startVal=S.start||ymd(nextMonday());
+  const badges=M.map((m,mi)=>{const got=modSessions(mi).every(sDone);return `<div class="badge${got?" got":""}" style="--c:${mc(mi)}"><span class="medal">${got?ic("check","width:24px;height:24px"):(mi+1)}</span>${h(SHORT[mi])}</div>`;}).join("");
+  return `<section class="band dash gutter" style="--c:${nxt?mc(nxt.m):"var(--hot)"}"><div class="inner"><div class="hello"><div><p class="eyebrow">${h(fLong.format(t).replace(/^./,c=>c.toUpperCase()))}</p><h1>${hello} ${h(S.name)}</h1><p>${nxt?"Séance "+nxt.n+" sur "+TOTAL+" · "+Math.round(dn/TOTAL*100)+" % du programme":"Programme terminé"}</p></div></div>
+   ${cont}<article class="streakc${lit?" lit":""}"><div class="streak-top">${flame("bigflame")}<div><div class="sn-big num">${st}</div><div style="font-size:14px;color:var(--on-night-muted)">jour${st>1?"s":""} de suite</div></div></div><p style="font-size:14px;font-weight:600">${h(msg)}</p><div class="week">${week}</div><p style="font-size:12.5px;color:var(--on-night-muted)">Record : <b class="num" style="color:var(--on-night)">${best}</b> jour${best>1?"s":""}. Le week-end ne casse pas la série.</p></article></div></section>`+
+   wrap(`<section class="stats">${stats}</section>
+   <section class="two"><article class="card"><div class="chead"><h3>Ta formation en un coup d'œil</h3><a class="chip" href="#parcours">Voir le parcours</a></div><div class="glance">${glance}</div><div class="legend"><span><i style="background:var(--m1)"></i>Terminée</span><span><i style="background:color-mix(in srgb,var(--m1) 30%,var(--surface))"></i>Commencée</span><span><i style="background:var(--surface-2);border:1px solid var(--line)"></i>À venir</span></div></article>
+   <article class="card"><div class="chead"><h3 style="text-transform:capitalize">${h(fMonth.format(first))}</h3><div class="row" style="gap:6px"><button class="iconbtn" type="button" data-cal="-1" aria-label="Mois précédent">${ic("left")}</button><button class="iconbtn" type="button" data-cal="1" aria-label="Mois suivant">${ic("right")}</button></div></div><div class="cal">${cells}</div><div class="legend"><span><i style="background:linear-gradient(160deg,var(--flame-2),var(--flame))"></i>Jour travaillé</span><span><i style="background:var(--surface-2);border:1px solid var(--line)"></i>Séance prévue</span></div><div class="startset"><label for="start-date">Début de la formation</label><input class="input" type="date" id="start-date" value="${h(startVal)}" style="padding:7px 10px"><button class="btn sec sm" type="button" id="start-save">${S.start?"Modifier":"Enregistrer"}</button></div></article></section>
+   <section class="card"><div class="chead"><h3>Badges de module</h3><span class="muted" style="font-size:13px">Termine les 5 séances d'un module pour débloquer son badge</span></div><div class="badges">${badges}</div></section>`);
+}
+
+function vParcours(focusMod){
+  const nxt=nextSession(),cur=nxt?nxt.n:0;
+  if(!openMods){openMods={};openMods[nxt?nxt.m:0]=true;}
+  if(focusMod!=null)openMods[focusMod]=true;
+  let out="";
+  [[0,5,"Partie 1","Apprendre le métier"],[5,8,"Partie 2","Décrocher le poste"]].forEach(pt=>{
+    out+=`<div class="part-t"><p class="eyebrow">${pt[2]}</p><h2>${pt[3]}</h2></div>`;
+    for(let mi=pt[0];mi<pt[1];mi++){const m=M[mi],ss=modSessions(mi),d=ss.filter(sDone).length;
+      out+=`<details class="mod" id="mod-${mi}" data-mod-acc="${mi}" style="--c:${mc(mi)}"${openMods[mi]?" open":""}><summary><span class="modnum">${mi+1}</span><div><p class="eyebrow">Module ${mi+1} · semaine ${mi+1}</p><h2>${h(m.t)}</h2><p>${h(m.obj)}</p></div>${ring(d/ss.length,56,7,`<span style="font-size:14px">${d}/${ss.length}</span>`)}${ic("down").replace('class="ico"','class="ico chev"')}</summary>
+       <div class="mod-body"><dl class="livdl"><div><dt>Livrable</dt><dd>${h(m.liv)}</dd></div><div><dt>Validation</dt><dd>${h(m.crit)}</dd></div></dl>
+       <ol class="track">${ss.map(s=>{const c=sCount(s),done=c===s.k.length;return `<li><a href="#seance-${s.n}"><span class="node${done?" d":""}${s.n===cur?" cur":""}">${done?ic("check"):s.n}</span><span class="tcard"><span><h3>${h(s.t)}</h3><p>${h(s.o)}</p></span><span class="st${done?" d":""}">${done?"Terminée":c?c+" / "+s.k.length:s.k.length+" tâches"}</span></span></a></li>`;}).join("")}</ol></div></details>`;}
+  });
+  return band(`<p class="eyebrow">Parcours</p><h1>40 séances, 8 modules, 160 heures</h1><p class="lede">Chaque séance dure 4 heures : environ 2 heures de cours et 2 heures de pratique. La partie 1 t'apprend le métier, la partie 2 te prépare à décrocher le poste. Clique sur un module pour l'ouvrir.</p><div class="row"><button class="btn ghost sm" type="button" data-acc="open">Tout ouvrir</button><button class="btn ghost sm" type="button" data-acc="close">Tout fermer</button></div>`)+wrap(out);
+}
+
+function vSeance(n){
+  const s=SES[n-1];if(!s)return vParcours();
+  const m=M[s.m],sd=sessionDate(n),c=sCount(s),isLast=s.si===m.s.length-1,gain=s.k.length*XP_TASK+XP_SES;
+  const tasks=s.k.map((k,i)=>{const id=tid(n,i),on=!!S.done[id],x=k[4]||{};let extra="";
+    if(x.sol)extra+=`<details class="sol"><summary>Voir la solution</summary><p>${h(x.sol)}</p></details>`;
+    if(x.g!=null)extra+=`<button class="jump" type="button" data-g="${x.g}">${ic("book")}${x.g?"Glossaire · "+h(SHORT[x.g-1]):"Quiz sur tout le glossaire"}</button>`;
+    if(x.o)extra+=`<button class="jump" type="button" data-tool="${x.o}">${ic("tool")}${h(TOOLS[x.o].t)}</button>`;
+    return `<li class="task${on?" is-done":""}" id="task-${id}"><input class="chk" type="checkbox" id="t-${id}" data-task="${id}"${on?" checked":""} aria-label="Marquer comme fait"><div class="tbody"><div class="tmeta"><span class="kind${k[0]==="p"?" p":""}">${k[0]==="p"?"Pratique":"Cours"}</span><span>${ic("clock","width:14px;height:14px;vertical-align:-2px")} ${h(k[1])}</span><span class="mono">+${XP_TASK} XP</span></div><label class="tt" for="t-${id}">${h(k[2])}</label>${resList(k[3])}${extra}</div></li>`;}).join("");
+  const prev=n>1?`<a class="btn sec" href="#seance-${n-1}">${ic("left")}Séance ${n-1}</a>`:"<span></span>";
+  const next=n<TOTAL?`<a class="btn sec" href="#seance-${n+1}">Séance ${n+1}${ic("right")}</a>`:"<span></span>";
+  return band(`<nav class="crumbs"><a href="#parcours">Parcours</a><span>/</span><a href="#module-${s.m+1}">Module ${s.m+1} · ${h(m.t)}</a></nav><div class="row"><span class="mchip"><b>${s.m+1}</b>Séance ${n} sur ${TOTAL}</span><span class="chip">${ic("clock")}4 heures</span><span class="chip">Semaine ${s.m+1}, jour ${s.si+1}</span>${sd?`<span class="chip">${h(fLong.format(sd))}</span>`:""}<span class="chip cert">${ic("bolt")}${gain} XP</span></div><h1>${h(s.t)}</h1><p class="lede">${h(s.o)}</p><div class="sprog">${bar(c/s.k.length,mc(s.m))}<span class="num mono" style="font-weight:700;font-size:14px">${c} / ${s.k.length}</span></div>`,mc(s.m))+
+   `<div class="wrap gutter" style="--c:${mc(s.m)}"><div class="inner"><ol class="tasks">${tasks}</ol>${isLast?`<div class="livr"><p class="eyebrow" style="color:var(--c)">Fin du module ${s.m+1}</p><p><b>Livrable :</b> ${h(m.liv)}</p><p><b>Validation :</b> ${h(m.crit)}</p></div>`:""}<div class="pager">${prev}${next}</div></div></div>`;
+}
+
+function vCertifs(){
+  const dn=certsDone(),tiers=[[0,"Toutes"],[1,"Essentielles"],[2,"Recommandées"],[3,"Pour aller plus loin"]];
+  const list=C.filter(c=>!cTier||c[5]===cTier);
+  const essN=C.filter(c=>c[5]===1).length,essD=C.filter(c=>c[5]===1&&S.certs[c[0]]==="done").length,doing=C.filter(c=>S.certs[c[0]]==="doing").length;
+  return band(`<p class="eyebrow">Certifications</p><h1>Tes certifications gratuites</h1><p class="lede">Les 4 essentielles sont intégrées au programme. Les autres se font l'après-midi, à ton rythme. Chaque certification obtenue rapporte ${XP_CERT} XP et se met en avant sur ton CV et ton profil LinkedIn.</p>`,"var(--m6)")+
+   wrap(`<section class="stats" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+    <div class="card stat">${ring(dn/C.length,54,6,ic("award","width:20px;height:20px;color:var(--m6)"),"var(--m6)")}<span class="t"><span class="k">Obtenues</span><span class="v">${dn} / ${C.length}</span><span class="s">Toutes certifications</span></span></div>
+    <div class="card stat">${ring(essD/essN,54,6,ic("target","width:20px;height:20px;color:var(--m1)"),"var(--m1)")}<span class="t"><span class="k">Essentielles</span><span class="v">${essD} / ${essN}</span><span class="s">Prévues dans les séances</span></span></div>
+    <div class="card stat">${ring(doing/Math.max(1,C.length-dn),54,6,ic("clock","width:20px;height:20px;color:var(--flame)"),"var(--flame)")}<span class="t"><span class="k">En cours</span><span class="v">${doing}</span><span class="s">Termine-les avant d'en commencer d'autres</span></span></div></section>
+   <div class="seg" role="group" aria-label="Filtrer">${tiers.map(t=>`<button type="button" data-tier="${t[0]}" aria-pressed="${cTier===t[0]}">${t[1]}</button>`).join("")}</div>
+   <section class="cgrid">${list.map(c=>{const r=R[c[3]],st=S.certs[c[0]]||"todo",col=provColor(c[2]);
+     return `<article class="card ccard${st==="done"?" done":""}">${st==="done"?`<span class="got" title="Obtenue">${ic("check")}</span>`:""}<div class="top2"><span class="pm" style="background:${col}">${h(provMono(c[2]))}</span><div style="min-width:0;padding-right:30px"><h3>${h(c[1])}</h3><div class="org">${h(c[2])}</div></div></div><p class="d">${h(c[8])}</p><div class="row" style="gap:6px"><span class="chip">${ic("clock")}${h(c[4])}</span><span class="chip">${h(r[3])}</span>${c[6]?`<a class="chip" href="#seance-${c[6]}" style="color:var(--brand)">Séance ${c[6]}</a>`:'<span class="chip">Après-midi</span>'}<span class="chip" style="${c[5]===1?"color:var(--brand)":""}">${["","Essentielle","Recommandée","Pour aller plus loin"][c[5]]}</span></div><p class="acc">${h(c[7])}</p><div class="row" style="justify-content:space-between"><div class="cstat" role="group" aria-label="Statut">${[["todo","À faire"],["doing","En cours"],["done","Obtenue"]].map(o=>`<button type="button" data-cert="${c[0]}" data-v="${o[0]}" aria-pressed="${st===o[0]}">${o[1]}</button>`).join("")}</div><a class="btn sec sm" href="${h(r[2])}" target="_blank" rel="noopener">Ouvrir${ic("ext")}</a></div></article>`;}).join("")}</section>
+   <div class="note">${ic("info")}<span>Les cours OpenClassrooms du programme sont gratuits à suivre. Leur certificat de réussite est réservé à l'abonnement payant : il n'est donc pas listé ici. Sur Coursera, l'inscription est gratuite mais le certificat est payant, sauf aide financière.</span></div>`);
+}
+
+function gList(){const q=gQuery.trim().toLowerCase();return G.filter(g=>{const mod=g[3]>=6?6:g[3];if(gMod&&mod!==gMod)return false;if(q&&(g[0]+" "+g[1]+" "+g[2]).toLowerCase().indexOf(q)<0)return false;return true;});}
+function deckList(){let deck=gList().filter(g=>!S.known[g[0]]);if(fcOrder){deck=fcOrder.map(t=>deck.find(g=>g[0]===t)).filter(Boolean).concat(deck.filter(g=>!fcOrder.includes(g[0])));}return deck;}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function newQuiz(){
+  let pool=gList();if(pool.length<4)pool=G.slice();
+  const qs=shuffle(pool.slice()).slice(0,Math.min(10,pool.length)).map((g,i)=>{
+    const type=i%2?"en":"def";
+    const others=shuffle(G.filter(x=>x[0]!==g[0])).slice(0,3);
+    const opts=shuffle([g].concat(others));
+    return {g,type,opts,ans:opts.indexOf(g)};});
+  qz={qs,i:0,score:0,picked:null};
+}
+function vGlossaire(){
+  const labels=[[0,"Tous"],[1,"Le métier"],[2,"Ciblage"],[3,"Écrit"],[4,"Téléphone"],[5,"Qualification"],[6,"Candidature"]];
+  const list=gList(),kn=knownCount();
+  const head=band(`<p class="eyebrow">Glossaire</p><h1>Le vocabulaire de la vente tech</h1><p class="lede">${G.length} termes en français et en anglais. Révise avec les cartes mémoire, puis teste-toi avec le quiz. Chaque terme maîtrisé rapporte ${XP_WORD} XP et compte pour ta série.</p>`,"var(--m3)");
+  const tools=`<div class="gtools"><div class="seg" role="group" aria-label="Mode"><button type="button" data-gmode="list" aria-pressed="${gMode==="list"}">Liste</button><button type="button" data-gmode="cards" aria-pressed="${gMode==="cards"}">Cartes mémoire</button><button type="button" data-gmode="quiz" aria-pressed="${gMode==="quiz"}">Quiz</button></div>${gMode==="list"?`<input class="input" id="g-search" type="search" placeholder="Rechercher un terme, en français ou en anglais" value="${h(gQuery)}" aria-label="Rechercher">`:""}<div class="card stat" style="padding:10px 14px;box-shadow:none;margin-left:auto">${ring(kn/G.length,40,5,`<span style="font-size:10px">${Math.round(kn/G.length*100)}%</span>`,"var(--m3)")}<span class="t"><span class="k">Maîtrisés</span><span class="v" style="font-size:16px">${kn} / ${G.length}</span></span></div></div>
+   <div class="chips">${labels.map(l=>`<button type="button" class="fchip" data-gm="${l[0]}" aria-pressed="${gMod===l[0]}">${h(l[1])}</button>`).join("")}</div>`;
+  let body="";
+  if(gMode==="list"){
+    body=`<section class="gloss">${list.map(g=>{const mi=Math.min(g[3],8)-1;return `<article class="card gcard" style="--c:${mc(mi)}"><div class="term"><span>${h(g[0])}</span>${S.known[g[0]]?`<span class="known" title="Maîtrisé">${ic("check")}</span>`:""}</div><div class="en">${h(g[1])}</div><p>${h(g[2])}</p></article>`;}).join("")}</section>${!list.length?'<p class="muted">Aucun terme ne correspond.</p>':""}`;
+  }else if(gMode==="cards"){
+    const deck=deckList();
+    if(!deck.length)body=`<div class="fc-wrap"><div class="card" style="text-align:center;max-width:520px;display:grid;gap:12px;justify-items:center"><h3>Tous les termes de cette catégorie sont maîtrisés</h3><p class="muted">Choisis une autre catégorie, ou remets ces termes en révision.</p><button class="btn" type="button" id="fc-reset">Réviser à nouveau</button></div></div>`;
+    else{if(fcI>=deck.length)fcI=0;const g=deck[fcI],mi=Math.min(g[3],8)-1;
+      body=`<div class="fc-wrap" style="--c:${mc(mi)}"><span class="muted mono" style="font-size:13px">Carte ${fcI+1} sur ${deck.length} à réviser</span><button type="button" class="fc${fcFlip?" flip":""}" id="fc" aria-label="Retourner la carte"><div class="fc-in"><div class="fc-face fc-front"><span class="mchip" style="--c:${mc(mi)};background:color-mix(in srgb,var(--c) 10%,var(--surface))"><b>${Math.min(g[3],8)}</b>${h(SHORT[mi])}</span><span class="t">${h(g[0])}</span><span class="h">Donne le terme anglais et la définition, puis retourne la carte</span></div><div class="fc-face fc-back"><span class="en">${h(g[1])}</span><p>${h(g[2])}</p></div></div></button><div class="fc-actions"><button class="btn sec" type="button" id="fc-again">${ic("flip")}À revoir</button><button class="btn" type="button" id="fc-know" style="--c:var(--ok);color:#fff">${ic("check")}Je la connais</button><button class="iconbtn" type="button" id="fc-shuffle" aria-label="Mélanger" title="Mélanger">${ic("shuffle")}</button></div><span class="muted" style="font-size:12.5px">Astuce : barre d'espace pour retourner, flèche droite pour passer.</span></div>`;}
+  }else{
+    if(!qz)newQuiz();
+    if(qz.i>=qz.qs.length){const pct=Math.round(qz.score/qz.qs.length*100);
+      body=`<div class="quiz"><div class="card qcard" style="text-align:center;justify-items:center">${ring(qz.score/qz.qs.length,120,11,`<span style="font-size:28px">${pct}%</span>`,pct>=80?"var(--ok)":"var(--flame)")}<h2 style="font-size:26px">${qz.score} bonnes réponses sur ${qz.qs.length}</h2><p class="muted">${pct>=90?"Niveau examen final atteint.":pct>=80?"Objectif de mi-parcours atteint. Vise 90 % pour l'examen final.":"Révise les cartes mémoire de cette catégorie, puis retente."} Meilleur score : <b class="mono">${S.qbest}%</b></p><div class="row" style="justify-content:center"><button class="btn" type="button" id="qz-new">${ic("shuffle")}Nouveau quiz</button><button class="btn sec" type="button" data-gmode="cards">Réviser les cartes</button></div></div></div>`;}
+    else{const q=qz.qs[qz.i],mi=Math.min(q.g[3],8)-1,L="ABCD";
+      body=`<div class="quiz" style="--c:${mc(mi)}"><div class="qhead"><span>Question ${qz.i+1} / ${qz.qs.length}</span><span>Score ${qz.score} · Record ${S.qbest}%</span></div>${bar(qz.i/qz.qs.length,mc(mi))}<div class="card qcard"><span class="qk">${q.type==="def"?"Quelle est la bonne définition ?":"Quel est le terme français ?"}</span><span class="q">${h(q.type==="def"?q.g[0]:q.g[1])}</span><div class="opts">${q.opts.map((o,j)=>{let cls="";if(qz.picked!=null){if(j===q.ans)cls=" right";else if(j===qz.picked)cls=" wrong";}return `<button type="button" class="opt${cls}" data-opt="${j}"${qz.picked!=null?" disabled":""}><span class="lt">${L[j]}</span><span>${h(q.type==="def"?o[2]:o[0])}</span></button>`;}).join("")}</div>${qz.picked!=null?`<div class="row" style="justify-content:space-between"><span style="font-weight:700;color:${qz.picked===q.ans?"var(--ok)":"var(--m8)"}">${qz.picked===q.ans?"Bonne réponse":"Raté : "+h(q.g[0])+" = "+h(q.g[1])}</span><button class="btn" type="button" id="qz-next">${qz.i+1<qz.qs.length?"Question suivante":"Voir mon score"}${ic("right")}</button></div>`:""}</div></div>`;}
+  }
+  return head+wrap(tools+body);
+}
+
+function vFiches(){
+  return band(`<p class="eyebrow">Fiches de cours</p><h1>L'essentiel, écrit pour la formation</h1><p class="lede">Huit fiches courtes qui complètent les ressources en ligne : le métier, le cycle de vente, le ciblage, la découverte, MEDDIC, les objections, la rémunération et ton récit. Chacune est utilisée dans une ou plusieurs séances.</p>`,"var(--m1)")+
+   wrap(`<section class="fgrid">${F.map((f,i)=>`<a class="card fcard" href="#fiche-${i+1}" style="--c:${mc(f.m)}"><span class="fn">FICHE ${i+1} · ${f.min} MIN</span><h3>${h(f.t)}</h3><p>${h(f.sub)}</p><span class="used">${(used["f"+(i+1)]||[]).length?"Séances "+used["f"+(i+1)].join(", "):""}</span></a>`).join("")}</section>`);
+}
+function vFiche(n){
+  const f=F[n-1];if(!f)return vFiches();
+  const u=used["f"+n]||[];
+  return band(`<nav class="crumbs"><a href="#fiches">Fiches de cours</a><span>/</span><span>Fiche ${n}</span></nav><h1>${h(f.t)}</h1><p class="lede">${h(f.sub)}</p><div class="row"><span class="chip">${ic("clock")}${f.min} min de lecture</span>${u.map(s=>`<a class="chip" href="#seance-${s}">Séance ${s}</a>`).join("")}</div>`,mc(f.m))+
+   `<div class="wrap gutter" style="--c:${mc(f.m)}"><div class="inner"><div class="article"><article class="prose">${f.body}</article><aside class="card keybox"><h3>À retenir</h3><ul>${f.key.map(k=>`<li>${h(k)}</li>`).join("")}</ul>${u.length?`<a class="btn sm" href="#seance-${u[0]}">Aller à la séance ${u[0]}${ic("right")}</a>`:""}</aside></div><div class="pager">${n>1?`<a class="btn sec" href="#fiche-${n-1}">${ic("left")}Fiche ${n-1}</a>`:"<span></span>"}${n<F.length?`<a class="btn sec" href="#fiche-${n+1}">Fiche ${n+1}${ic("right")}</a>`:"<span></span>"}</div></div></div>`;
+}
+
+function vRessources(){
+  const q=rQuery.trim().toLowerCase(),types=RTYPES[rType]?RTYPES[rType][1]:null;
+  const ids=Object.keys(R).filter(id=>{const r=R[id];return (rLang==="all"||r[3]===rLang)&&(!types||types.includes(r[4]))&&(!q||(r[0]+" "+r[1]).toLowerCase().indexOf(q)>=0);});
+  const fr=Object.values(R).filter(r=>r[3]==="FR").length;
+  function card(id){const r=R[id],u=used[id]||[],intl=isInt(r),col=intl?mc(F[+id.slice(1)-1].m):provColor(r[1]);
+    const inner=`<span class="pm" style="background:${col}">${intl?ic("doc","width:18px;height:18px;stroke:var(--on-c)"):h(provMono(r[1]))}</span><span class="rt"><b>${h(r[0])}</b><span class="src">${h(r[1])}</span><span class="rc"><span class="chip">${h(r[3])}</span>${typeChip(r)}</span><span class="used">${u.length?"Séances "+u.join(", "):CERT_RES[id]?"Voir Certifications":"À suivre en continu"}</span></span>`;
+    return `<a class="card rcard" ${linkAttrs(r)}>${inner}</a>`;}
+  const inP=ids.filter(id=>used[id]),cont=ids.filter(id=>!used[id]);
+  return band(`<p class="eyebrow">Ressources</p><h1>La bibliothèque</h1><p class="lede">${NRES} ressources gratuites : ${fr} en français, ${NRES-fr} en anglais. Cours, certifications, guides, vidéos, podcasts et les fiches écrites pour la formation.</p>`,"var(--m2)")+
+   wrap(`<div class="gtools"><input class="input" id="r-search" type="search" placeholder="Rechercher une ressource ou un organisme" value="${h(rQuery)}" aria-label="Rechercher"><div class="seg" role="group" aria-label="Langue">${[["all","Toutes"],["FR","Français"],["EN","Anglais"]].map(l=>`<button type="button" data-rl="${l[0]}" aria-pressed="${rLang===l[0]}">${l[1]}</button>`).join("")}</div><select class="input" id="r-type" aria-label="Type de ressource">${Object.keys(RTYPES).map(k=>`<option value="${k}"${rType===k?" selected":""}>${h(RTYPES[k][0])}</option>`).join("")}</select></div>
+   ${inP.length?`<h2 style="font-size:21px">Dans le programme <span class="muted num" style="font-weight:500;font-size:15px">${inP.length}</span></h2><section class="rgrid">${inP.map(card).join("")}</section>`:""}
+   ${cont.length?`<h2 style="font-size:21px">Certifications, podcasts et compléments <span class="muted num" style="font-weight:500;font-size:15px">${cont.length}</span></h2><section class="rgrid">${cont.map(card).join("")}</section>`:""}
+   ${!ids.length?'<p class="muted">Aucune ressource ne correspond.</p>':""}`);
+}
+
+function vOutils(){
+  return band(`<p class="eyebrow">Boîte à outils</p><h1>Les grilles et trames de la formation</h1><p class="lede">Garde-les sous la main pendant les exercices et avant chaque entretien.</p><div class="toolnav">${TOOLS_ORDER.map(id=>`<button class="btn ghost sm" type="button" data-tool="${id}">${ic(TOOLS[id].i)}${h(TOOLS[id].t)}</button>`).join("")}</div>`,"var(--m7)")+
+   wrap(`<div class="toolgrid">${TOOLS_ORDER.map(id=>{const t=TOOLS[id];return `<article class="card tool" id="tool-${id}"><h2 style="font-size:22px">${h(t.t)}</h2><p class="muted">${h(t.d)}</p>${t.html}</article>`;}).join("")}</div>`);
+}
+
+/* ---------- Routage ---------- */
+function route(){
+  const r=(location.hash||"").slice(1);let m;
+  if((m=/^seance-(\d+)$/.exec(r)))return {v:"seance",n:+m[1]};
+  if((m=/^module-(\d+)$/.exec(r)))return {v:"parcours",mod:+m[1]-1};
+  if((m=/^fiche-(\d+)$/.exec(r)))return {v:"fiche",n:+m[1]};
+  if((m=/^ressources-([a-z]+)$/.exec(r)))return {v:"ressources",type:m[1]};
+  if(r==="quiz"||r==="cartes")return {v:"glossaire",mode:r==="quiz"?"quiz":"cards"};
+  if(["parcours","certifications","glossaire","ressources","outils","fiches","accueil"].includes(r))return {v:r};
+  return {v:"accueil"};
+}
+const view=$("view");let lastKey="";
+function render(top){
+  const r=route();let html;
+  if(top){if(r.v==="ressources")rType=r.type&&RTYPES[r.type]?r.type:"all";if(r.mode){gMode=r.mode;if(r.mode==="quiz")qz=null;}}
+  if(r.v==="seance")html=vSeance(r.n);else if(r.v==="parcours")html=vParcours(r.mod);else if(r.v==="certifications")html=vCertifs();else if(r.v==="glossaire")html=vGlossaire();else if(r.v==="ressources")html=vRessources();else if(r.v==="outils")html=vOutils();else if(r.v==="fiches")html=vFiches();else if(r.v==="fiche")html=vFiche(r.n);else html=vAccueil();
+  const ae=document.activeElement,focusId=ae&&ae.id;let sel=null;
+  if(ae&&(ae.id==="g-search"||ae.id==="r-search"))sel=ae.selectionStart;
+  const key=location.hash||"#";
+  view.innerHTML=html;
+  chrome(r.v);footer();
+  if(focusId&&view.contains(document.getElementById(focusId))){const el=document.getElementById(focusId);try{el.focus({preventScroll:true});if(sel!=null&&el.setSelectionRange)el.setSelectionRange(sel,sel);}catch(e){}}
+  if(top&&key!==lastKey){
+    if(r.v==="parcours"&&r.mod!=null){const md=$("mod-"+r.mod);if(md)md.scrollIntoView({block:"start"});else window.scrollTo(0,0);}
+    else window.scrollTo(0,0);
+  }
+  lastKey=key;
+  if(pendingTool){const t=$("tool-"+pendingTool);pendingTool=null;if(t){t.scrollIntoView({block:"start"});t.classList.add("flash");}}
+}
+
+/* ---------- Effets ---------- */
+const reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function floatXP(el,txt){if(!el)return;const r=el.getBoundingClientRect(),f=document.createElement("div");f.className="xpf";f.textContent=txt;f.style.left=(r.left+r.width+8)+"px";f.style.top=(r.top-4)+"px";$("fx").appendChild(f);setTimeout(()=>f.remove(),1100);}
+function toast(html){const t=document.createElement("div");t.className="toast";t.setAttribute("role","status");t.innerHTML=html;$("fx").appendChild(t);setTimeout(()=>t.remove(),3300);}
+function confetti(){
+  if(reduce)return;const cv=$("confetti");cv.hidden=false;const ctx=cv.getContext("2d"),W=cv.width=innerWidth,H=cv.height=innerHeight;
+  const cs=getComputedStyle(document.documentElement),cols=["--m1","--m2","--m3","--m4","--m5","--m6","--m7","--flame-2"].map(v=>cs.getPropertyValue(v).trim()||"#888");
+  const P=[];for(let i=0;i<150;i++)P.push({x:W/2+(Math.random()-.5)*W*.3,y:H*.35,vx:(Math.random()-.5)*13,vy:-Math.random()*12-4,s:5+Math.random()*6,r:Math.random()*6,vr:(Math.random()-.5)*.35,c:cols[i%cols.length]});
+  const t0=performance.now();
+  (function f(t){const e=t-t0;ctx.clearRect(0,0,W,H);P.forEach(p=>{p.vy+=.32;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.globalAlpha=Math.max(0,1-e/1900);ctx.fillStyle=p.c;ctx.fillRect(-p.s/2,-p.s/3,p.s,p.s*.66);ctx.restore();});
+    if(e<1900)requestAnimationFrame(f);else{ctx.clearRect(0,0,W,H);cv.hidden=true;}})(t0);
+}
+function modal(html,cls,label){
+  const m=document.createElement("div");m.className="modal";m.setAttribute("role","dialog");m.setAttribute("aria-modal","true");m.setAttribute("aria-label",label);
+  m.innerHTML=`<div class="mbox${cls?" "+cls:""}">${html}</div>`;$("fx").appendChild(m);
+  function close(){m.remove();document.removeEventListener("keydown",esc);}
+  function esc(e){if(e.key==="Escape")close();}
+  document.addEventListener("keydown",esc);
+  m.addEventListener("click",e=>{if(e.target===m||e.target.closest("[data-close]"))close();});
+  return {m,close};
+}
+function celebrate(s){
+  confetti();
+  const nx=s.n<TOTAL?SES[s.n]:null;
+  const {m}=modal(`<div style="--c:${mc(s.m)};display:grid;gap:16px;justify-items:center">${ring(1,86,9,ic("check","width:34px;height:34px;stroke:var(--c)"))}<h2>Séance ${s.n} terminée</h2><p>${h(s.t)}</p><div class="mstats"><div><b style="color:var(--xp)">+${s.k.length*XP_TASK+XP_SES}</b><span>XP gagnés</span></div><div><b style="color:var(--flame)">${streakNow()}</b><span>jours de suite</span></div><div><b>${doneSessions()}/${TOTAL}</b><span>séances</span></div></div>${s.si===M[s.m].s.length-1?`<p style="color:var(--c);font-weight:700">Badge du module ${s.m+1} débloqué</p>`:""}<div class="row" style="justify-content:center">${nx?`<a class="btn" href="#seance-${nx.n}" data-close="1">Séance suivante${ic("right")}</a>`:""}<button class="btn sec" type="button" data-close="1">Fermer</button></div></div>`,"center","Séance terminée");
+  const b=m.querySelector("[data-close]");if(b)b.focus();
+}
+function afterGain(before){const a=level(xp());if(a.i>before.i)toast(ic("bolt")+" Niveau "+(a.i+1)+" atteint : "+h(a.name));}
+function openProfile(){
+  const isNew=!S.name;
+  const {m,close}=modal(`<form id="pf" style="display:grid;gap:16px"><div style="display:grid;gap:6px"><p class="eyebrow" style="color:var(--brand)">${isNew?"Bienvenue":"Mon profil"}</p><h2>${isNew?"On commence par toi":"Modifier mon profil"}</h2><p>Ton prénom personnalise le tableau de bord. La date de début planifie tes 40 séances sur les jours ouvrés.</p></div>
+   <label class="field" for="pf-name">Prénom<input class="input" id="pf-name" required maxlength="40" autocomplete="given-name" value="${h(S.name)}" placeholder="Ton prénom"></label>
+   <label class="field" for="pf-start">Date de début<input class="input" id="pf-start" type="date" value="${h(S.start||ymd(nextMonday()))}"></label>
+   <p style="font-size:13px">Ta progression reste dans ce navigateur. Si tu ouvres le site connecté à ton compte Claude, elle te suit sur tous tes appareils.</p>
+   <div class="row" style="justify-content:flex-end"><button class="btn sec" type="button" data-close="1">Annuler</button><button class="btn" type="submit">${isNew?"C'est parti":"Enregistrer"}${ic("right")}</button></div></form>`,"","Profil");
+  const inp=m.querySelector("#pf-name");setTimeout(()=>inp.focus(),50);
+  m.querySelector("#pf").addEventListener("submit",e=>{e.preventDefault();const n=inp.value.trim();if(!n){inp.focus();return;}
+    S.name=n.slice(0,40);const sv=m.querySelector("#pf-start").value;if(/^\d{4}-\d{2}-\d{2}$/.test(sv)){S.start=sv;const sd=parse(sv);calY=sd.getFullYear();calM=sd.getMonth();}
+    commit();close();if(isNew){location.hash="accueil";render(true);toast("Bienvenue "+h(S.name)+". Ta séance 1 t'attend.");}else{render(false);toast("Profil enregistré");}});
+}
+
+/* ---------- Palette de recherche ---------- */
+let palIndex=null;
+function buildIndex(){
+  const it=[];
+  SES.forEach(s=>it.push({g:"Séances",t:`Séance ${s.n} · ${s.t}`,s:M[s.m].t,href:"#seance-"+s.n,k:String(s.n),c:mc(s.m)}));
+  M.forEach((m,i)=>it.push({g:"Modules",t:`Module ${i+1} · ${m.t}`,s:m.obj,href:"#module-"+(i+1),k:"M"+(i+1),c:mc(i)}));
+  F.forEach((f,i)=>it.push({g:"Fiches",t:f.t,s:f.sub,href:"#fiche-"+(i+1),ic:"doc",c:mc(f.m)}));
+  TOOLS_ORDER.forEach(id=>it.push({g:"Outils",t:TOOLS[id].t,s:TOOLS[id].d,tool:id,ic:TOOLS[id].i,c:"var(--m7)"}));
+  C.forEach(c=>it.push({g:"Certifications",t:c[1],s:c[2]+" · "+c[4],href:"#certifications",ic:"award",c:"var(--m6)"}));
+  G.forEach(g=>it.push({g:"Glossaire",t:g[0]+" · "+g[1],s:g[2],gloss:g[0],ic:"book",c:mc(Math.min(g[3],8)-1)}));
+  Object.keys(R).forEach(id=>{const r=R[id];if(!isInt(r))it.push({g:"Ressources",t:r[0],s:r[1]+" · "+r[3]+" · "+r[4],href:r[2],ext:1,k:provMono(r[1]),c:provColor(r[1])});});
+  return it;
+}
+const norm2=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+function openPalette(){
+  if(document.querySelector(".pal"))return;
+  palIndex=palIndex||buildIndex();
+  const m=document.createElement("div");m.className="modal pal";m.setAttribute("role","dialog");m.setAttribute("aria-modal","true");m.setAttribute("aria-label","Recherche");
+  m.innerHTML=`<div class="palbox"><div class="palin">${ic("search","color:var(--muted)")}<input id="pal-q" type="text" placeholder="Séance, fiche, terme, ressource…" autocomplete="off" aria-label="Rechercher dans la formation"><kbd>Échap</kbd></div><div class="pallist" id="pal-list" role="listbox"></div></div>`;
+  $("fx").appendChild(m);
+  const q=m.querySelector("#pal-q"),list=m.querySelector("#pal-list");let res=[],sel=0;
+  function draw(){
+    const v=norm2(q.value.trim());
+    if(!v){const nx=nextSession();res=(nx?[palIndex.find(x=>x.href==="#seance-"+nx.n)]:[]).concat(palIndex.filter(x=>x.g==="Fiches"||x.g==="Outils"));}
+    else{const terms=v.split(/\s+/);res=palIndex.filter(x=>{const hay=norm2(x.t+" "+x.s);return terms.every(t=>hay.includes(t));}).slice(0,40);}
+    sel=Math.min(sel,Math.max(0,res.length-1));
+    if(!res.length){list.innerHTML='<div class="palempty">Aucun résultat. Essaie un autre mot, en français ou en anglais.</div>';return;}
+    let g="",html="";
+    res.forEach((x,i)=>{if(x.g!==g){g=x.g;html+=`<div class="palgrp">${v?h(g):(i===0&&x.g==="Séances"?"Prochaine séance":h(g))}</div>`;}
+      html+=`<a class="palit" role="option" data-i="${i}" aria-selected="${i===sel}" ${x.href?(x.ext?`href="${h(x.href)}" target="_blank" rel="noopener"`:`href="${x.href}"`):'href="#" '} style="--c:${x.c}"><span class="pk">${x.ic?ic(x.ic):h(x.k||"")}</span><span style="min-width:0"><b>${h(x.t)}</b><small>${h(x.s)}</small></span>${x.ext?ic("ext","width:15px;height:15px;color:var(--muted);margin-left:auto"):""}</a>`;});
+    list.innerHTML=html;
+    const s=list.querySelector('[aria-selected="true"]');if(s)s.scrollIntoView({block:"nearest"});
+  }
+  function go(x){if(!x)return;close();if(x.tool){openTool(x.tool);return;}if(x.gloss){gMode="list";gMod=0;gQuery=x.gloss;if(location.hash==="#glossaire")render(false);else location.hash="glossaire";return;}if(x.ext){return;}location.hash=x.href.slice(1);}
+  function close(){m.remove();document.removeEventListener("keydown",key,true);}
+  function key(e){
+    if(e.key==="Escape"){e.preventDefault();close();}
+    else if(e.key==="ArrowDown"){e.preventDefault();sel=Math.min(res.length-1,sel+1);draw();}
+    else if(e.key==="ArrowUp"){e.preventDefault();sel=Math.max(0,sel-1);draw();}
+    else if(e.key==="Enter"){const x=res[sel];if(x&&x.ext){const a=list.querySelector(`[data-i="${sel}"]`);if(a)a.click();close();}else{e.preventDefault();go(x);}}
+  }
+  document.addEventListener("keydown",key,true);
+  q.addEventListener("input",()=>{sel=0;draw();});
+  list.addEventListener("click",e=>{const a=e.target.closest(".palit");if(!a)return;const x=res[+a.dataset.i];if(x.ext){setTimeout(close,0);return;}e.preventDefault();go(x);});
+  m.addEventListener("click",e=>{if(e.target===m)close();});
+  draw();setTimeout(()=>q.focus(),20);
+}
+function openTool(id){pendingTool=id;if(location.hash==="#outils")render(false);else location.hash="outils";}
+
+/* ---------- Interactions ---------- */
+document.addEventListener("change",e=>{
+  const el=e.target;
+  if(el.matches(".chk")){
+    const id=el.getAttribute("data-task"),n=+id.slice(1).split("-")[0],s=SES[n-1],wasDone=sDone(s),before=level(xp()),lit0=active(ymd(today()));
+    if(el.checked){S.done[id]=ymd(today());bump();}else{delete S.done[id];}
+    commit();render(false);
+    if(el.checked){const box=$("t-"+id),card=$("task-"+id);if(card)card.classList.add("pop");floatXP(box,"+"+XP_TASK+" XP");
+      if(!lit0)toast(flame()+" Série prolongée : "+streakNow()+" jour"+(streakNow()>1?"s":""));
+      if(!wasDone&&sDone(s))setTimeout(()=>celebrate(s),250);
+      afterGain(before);}
+    return;}
+  if(el.id==="r-type"){rType=el.value;render(false);return;}
+});
+document.addEventListener("input",e=>{if(e.target.id==="g-search"){gQuery=e.target.value;render(false);}if(e.target.id==="r-search"){rQuery=e.target.value;render(false);}});
+document.addEventListener("toggle",e=>{const d=e.target;if(d.matches&&d.matches("[data-mod-acc]")&&openMods){openMods[+d.dataset.modAcc]=d.open;}},true);
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button,a");
+  const ni=e.target.closest(".ni");
+  if(!ni)closeMenus();
+  if(!b)return;
+  // Menus déroulants
+  if(b.matches(".nl[aria-haspopup],.avatar")){const p=b.closest(".ni"),was=p.classList.contains("open");closeMenus();if(!was)p.classList.add("open");$("nav").classList.remove("quiet");return;}
+  if(b.closest(".dd")&&b.matches("a")){closeMenus();$("nav").classList.add("quiet");}
+  if(b.id==="open-search"){openPalette();return;}
+  if(b.id==="open-drawer"){openDrawer();return;}
+  if(b.hasAttribute("data-theme-set")){applyTheme(b.getAttribute("data-theme-set"));document.querySelectorAll("[data-theme-set]").forEach(x=>x.setAttribute("aria-pressed",String(x===b||x.getAttribute("data-theme-set")===b.getAttribute("data-theme-set"))));return;}
+  const act=b.getAttribute("data-act");
+  if(act==="profile"){closeMenus();openProfile();return;}
+  if(act==="reset"){if(!resetArm){resetArm=true;clearTimeout(resetTimer);resetTimer=setTimeout(()=>{resetArm=false;chrome(route().v);},5000);chrome(route().v);$("prof").classList.add("open");return;}
+    resetArm=false;const name=S.name;S=norm({name});commit();closeMenus();render(true);toast("Progression réinitialisée");return;}
+  if(b.hasAttribute("data-cal")){calM+=+b.getAttribute("data-cal");if(calM<0){calM=11;calY--;}if(calM>11){calM=0;calY++;}render(false);return;}
+  if(b.id==="start-save"){const v=$("start-date").value;if(/^\d{4}-\d{2}-\d{2}$/.test(v)){S.start=v;const sd=parse(v);calY=sd.getFullYear();calM=sd.getMonth();commit();render(false);toast("Début de la formation : "+h(fLong.format(sd)));}return;}
+  if(b.hasAttribute("data-acc")){const o=b.getAttribute("data-acc")==="open";M.forEach((_,i)=>{openMods[i]=o;});render(false);return;}
+  if(b.hasAttribute("data-gm")){gMod=+b.getAttribute("data-gm");fcI=0;fcFlip=false;fcOrder=null;if(gMode==="quiz")newQuiz();render(false);return;}
+  if(b.hasAttribute("data-gmode")){gMode=b.getAttribute("data-gmode");fcI=0;fcFlip=false;if(gMode==="quiz")newQuiz();if(location.hash!=="#glossaire"&&route().v==="glossaire"){history.replaceState(null,"","#glossaire");lastKey="#glossaire";}render(false);return;}
+  if(b.id==="fc"){fcFlip=!fcFlip;b.classList.toggle("flip",fcFlip);return;}
+  if(b.id==="fc-again"){fcI++;fcFlip=false;render(false);return;}
+  if(b.id==="fc-know"){const deck=deckList(),g=deck[fcI>=deck.length?0:fcI];if(g){const before=level(xp()),lit0=active(ymd(today()));S.known[g[0]]=ymd(today());bump();commit();fcFlip=false;render(false);floatXP($("fc-know"),"+"+XP_WORD+" XP");if(!lit0)toast(flame()+" Série prolongée : "+streakNow()+" jour"+(streakNow()>1?"s":""));afterGain(before);}return;}
+  if(b.id==="fc-shuffle"){fcOrder=shuffle(gList().filter(g=>!S.known[g[0]]).map(g=>g[0]));fcI=0;fcFlip=false;render(false);return;}
+  if(b.id==="fc-reset"){gList().forEach(g=>{delete S.known[g[0]];});commit();fcI=0;render(false);return;}
+  if(b.hasAttribute("data-opt")){if(!qz||qz.picked!=null)return;qz.picked=+b.getAttribute("data-opt");if(qz.picked===qz.qs[qz.i].ans)qz.score++;render(false);return;}
+  if(b.id==="qz-next"){qz.i++;qz.picked=null;if(qz.i>=qz.qs.length){const pct=Math.round(qz.score/qz.qs.length*100);if(pct>S.qbest){S.qbest=pct;commit();}bump();commit();if(pct>=80)confetti();}render(false);return;}
+  if(b.id==="qz-new"){newQuiz();render(false);return;}
+  if(b.hasAttribute("data-rl")){rLang=b.getAttribute("data-rl");render(false);return;}
+  if(b.hasAttribute("data-tier")){cTier=+b.getAttribute("data-tier");render(false);return;}
+  if(b.hasAttribute("data-cert")){const cid=b.getAttribute("data-cert"),v2=b.getAttribute("data-v"),was=S.certs[cid],before2=level(xp());if(v2==="todo")delete S.certs[cid];else S.certs[cid]=v2;if(v2==="done"&&was!=="done")bump();commit();render(false);if(v2==="done"&&was!=="done"){confetti();toast(ic("award")+" Certification obtenue : +"+XP_CERT+" XP");afterGain(before2);}return;}
+  if(b.hasAttribute("data-g")){const g=+b.getAttribute("data-g");gMod=g;gQuery="";if(g===0){gMode="quiz";newQuiz();}else gMode="list";location.hash="glossaire";return;}
+  if(b.hasAttribute("data-tool")){closeMenus();openTool(b.getAttribute("data-tool"));return;}
+});
+$("nav").addEventListener("mouseleave",()=>$("nav").classList.remove("quiet"));
+document.addEventListener("keydown",e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();openPalette();return;}
+  if(e.key==="Escape"){closeMenus();const d=$("drawer");if(d)d.remove();}
+  const tg=e.target;
+  if(e.key==="/"&&!(tg&&/INPUT|SELECT|TEXTAREA/.test(tg.tagName))&&!document.querySelector(".modal")){e.preventDefault();openPalette();return;}
+  if(route().v!=="glossaire"||gMode!=="cards")return;if(tg&&/INPUT|SELECT|TEXTAREA/.test(tg.tagName))return;if(document.querySelector(".modal"))return;
+  if(e.key===" "){if(tg&&tg.id==="fc")return;e.preventDefault();const fc=$("fc");if(fc){fcFlip=!fcFlip;fc.classList.toggle("flip",fcFlip);}}
+  else if(e.key==="ArrowRight"){fcI++;fcFlip=false;render(false);}
+});
+window.addEventListener("hashchange",()=>{closeMenus();render(true);});
+
+applyTheme(getTheme());
+loadLocal();
+if(S.start){const s0=parse(S.start);if(s0>today()){calY=s0.getFullYear();calM=s0.getMonth();}}
+render(true);
+initDb();
+})();
+</script>
+
+</body>
+</html>
