@@ -2,13 +2,21 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Sales Tech Academy</title>
+<title>Sales Tech Academy · La formation SDR &amp; BDR de PA</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Sales Tech Academy, la formation SDR &amp; BDR de PA : 40 séances pour décrocher ton premier poste de sales en tech. Encaisse les non, reste debout.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<meta name="description" content="40 séances pour apprendre le métier de SDR et décrocher ton premier poste de sales en tech : prospection, cold call, cold email, qualification, entretiens. Simulateur d'appel, examen final et certificat.">
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:600 800;font-display:swap;src:url(fonts/bricolage-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:600 800;font-display:swap;src:url(fonts/bricolage-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/inter-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/inter-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500 700;font-display:swap;src:url(fonts/jetbrains-mono-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500 700;font-display:swap;src:url(fonts/jetbrains-mono-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+</style>
 <style>
 /* Mise en page : site d'apprentissage. Bandeau « nuit » (en-tête + têtes de page) façon salle d'appels, contenu clair en dessous.
    Le corail est la couleur de l'action (appeler, commencer), chaque module garde sa couleur, l'or est réservé à l'XP. */
@@ -1146,19 +1154,69 @@ a.rcard:hover{border-color:color-mix(in srgb,var(--brand) 40%,var(--line));trans
 .adm-none{text-align:center;color:var(--muted);padding:28px 14px!important}
 @media (max-width:920px){.admk{grid-template-columns:repeat(2,minmax(0,1fr))}.admk .v{font-size:28px}}
 @media (max-width:560px){.nudge{padding:16px 46px 16px 16px}.nudge-a{width:100%}.nudge-a .btn{flex:1 1 auto}.admk .card{padding:14px 16px}}
+
+/* ---------- Accessibilité, aide et impression ---------- */
+html{scrollbar-gutter:stable}
+html.dlg-open{overflow:hidden}
+.skip{position:fixed;left:12px;top:12px;z-index:200;transform:translateY(-160%);padding:10px 16px;border-radius:12px;background:var(--brand);color:var(--on-brand);font-weight:700;text-decoration:none;box-shadow:var(--shadow-lg);transition:transform .15s}
+.skip:focus{transform:none}
+h1[tabindex="-1"]:focus,#view:focus{outline:none}
+.nojs{max-width:640px;margin:48px auto;padding:24px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);font:500 16px/1.6 var(--body);color:var(--ink)}
+.foot .flinks{display:flex;gap:6px 18px;flex-wrap:wrap;align-items:center}
+.foot .flinks a{display:inline;padding:0}
+.faq{display:grid;gap:32px;min-width:0}
+.faq h2{font-size:22px;margin-bottom:12px}
+.faql{display:grid;gap:10px}
+.card.faqi{padding:0;box-shadow:none}
+.faqi summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 20px;font-weight:700;font-size:16px;line-height:1.4;border-radius:var(--r)}
+.faqi summary::-webkit-details-marker{display:none}
+.faqi summary:hover{color:var(--brand)}
+.faqi summary .ico{flex:none;width:18px;height:18px;color:var(--muted);transition:transform .2s}
+.faqi[open] summary .ico{transform:rotate(180deg)}
+.faqa{padding:0 20px 18px;color:var(--muted);font-size:15px;line-height:1.65;display:grid;gap:10px}
+.faqa a{color:var(--brand)}
+.keybox .linkbtn{font-size:14px;justify-self:start}
+@media (prefers-reduced-motion:reduce){.skip,.faqi summary .ico{transition:none}}
+@media print{
+  @page{margin:16mm}
+  :root{--bg:#fff!important;--surface:#fff!important;--surface-2:#fff!important;--ink:#111!important;--muted:#444!important;--line:#ccc!important;--night:#fff!important;--night-2:#fff!important;--on-night:#111!important;--on-night-muted:#444!important;--night-line:#ccc!important;--shadow:none!important}
+  html,body{background:#fff!important}
+  .skip,.top,.foot,#fx,#confetti,.nudge,.pager,.hero-ctas,.toolnav,.bmoai,.btn,.kbtn{display:none!important}
+  .band{background:none!important;padding-block:0 12px!important}
+  .card{box-shadow:none!important;break-inside:avoid}
+  .article{grid-template-columns:1fr!important}
+  .keybox{position:static!important}
+  h1,h2,h3{break-after:avoid}
+  .prose a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;color:#555;overflow-wrap:anywhere}
+}
 </style>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="canonical" href="https://pa-vp-master101.github.io/sales-tech-academy/">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0A1222">
+<meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Sales Tech">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Sales Tech Academy">
+<meta property="og:url" content="https://pa-vp-master101.github.io/sales-tech-academy/">
 <meta property="og:title" content="Sales Tech Academy · Encaisse les non. Reste debout.">
 <meta property="og:description" content="La formation SDR &amp; BDR de PA : 40 séances pour décrocher ton premier poste de sales en tech.">
-<meta property="og:image" content="icon-512.png">
+<meta property="og:image" content="https://pa-vp-master101.github.io/sales-tech-academy/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sales Tech Academy : Encaisse les non. Reste debout. 40 séances pour apprendre le métier de SDR.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sales Tech Academy · Encaisse les non. Reste debout.">
+<meta name="twitter:description" content="La formation SDR &amp; BDR de PA : 40 séances pour décrocher ton premier poste de sales en tech.">
+<meta name="twitter:image" content="https://pa-vp-master101.github.io/sales-tech-academy/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://pa-vp-master101.github.io/sales-tech-academy/#site","url":"https://pa-vp-master101.github.io/sales-tech-academy/","name":"Sales Tech Academy","inLanguage":"fr-FR"},{"@type":"Course","@id":"https://pa-vp-master101.github.io/sales-tech-academy/#course","url":"https://pa-vp-master101.github.io/sales-tech-academy/","name":"Sales Tech Academy · Formation SDR & BDR","description":"40 séances pour apprendre le métier de SDR et décrocher ton premier poste de sales en tech : prospection, cold call, cold email, qualification, entretiens. Simulateur d'appel, examen final et certificat.","inLanguage":"fr-FR","educationalLevel":"Débutant","provider":{"@type":"Organization","name":"Sales Tech Academy","url":"https://pa-vp-master101.github.io/sales-tech-academy/","logo":"https://pa-vp-master101.github.io/sales-tech-academy/icon-512.png"},"teaches":["Prospection téléphonique","Cold email","Prospection sur LinkedIn","Ciblage ICP et personas","Qualification BANT, SPIN et MEDDIC","Préparation des entretiens SDR"],"hasCourseInstance":{"@type":"CourseInstance","courseMode":"Online","courseWorkload":"PT160H"}}]}</script>
 <script src="config.js"></script>
 <style>html,body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
 </head>
@@ -1167,6 +1225,7 @@ a.rcard:hover{border-color:color-mix(in srgb,var(--brand) 40%,var(--line));trans
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="flameGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB020"/><stop offset="1" stop-color="#FF5A1F"/></linearGradient><filter id="eyeGlow" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs></svg>
 
+<a class="skip" href="#view">Aller au contenu</a>
 <header class="top gutter">
   <div class="inner">
     <a class="logo" href="#accueil" aria-label="Sales Tech Academy, accueil"><span class="logo-mark"><svg viewBox="3 3 58 58" aria-hidden="true"><circle cx="46" cy="20" r="8.5" fill="#FFE7A8" opacity=".9"/><path fill="#0A1222" d="M16 64V17c0-4.5 2.5-7 7-7h14c2.5 0 3.6 1.5 4 4l1.2 7.5c1.6.7 2 2.1.8 3.1l-2.4 1L48.6 39.6c.8 1.4.2 3-1.4 3l-3.6.2c1.8.8 2.6 1.8 2 2.8l-1.8.8c1.4.6 1.6 1.8.8 2.6l-.6.6c2.6 1.8 3 4.6 1.4 6-2.4 1.6-6.4 2-9.4 2L38 64z"/><rect x="21.6" y="18" width="7.2" height="26" rx="3.6" fill="#1E2B49"/><rect x="23.6" y="6.5" width="3.2" height="22" rx="1.6" fill="#FFF4E6"/><circle cx="25.2" cy="31" r="5.6" fill="#FFF4E6"/><circle cx="25.2" cy="31" r="2.4" fill="#FF7A4D"/><path d="M28.6 35.2C32 44.5 37.6 49.2 46 48.2" fill="none" stroke="#FFF4E6" stroke-width="2.4" stroke-linecap="round"/><circle cx="47.6" cy="48" r="2.5" fill="#FFF4E6"/><g class="lg-eye"><ellipse cx="39.4" cy="27.4" rx="2.2" ry="1.25" fill="#FFF4E6"/><circle cx="40.2" cy="27.4" r=".85" fill="#0A1222"/></g></svg></span><span><b>Sales Tech Academy</b><small>La formation SDR &amp; BDR de PA</small></span></a>
@@ -1179,7 +1238,7 @@ a.rcard:hover{border-color:color-mix(in srgb,var(--brand) 40%,var(--line));trans
     </div>
   </div>
 </header>
-<main id="view" tabindex="-1"></main>
+<main id="view" tabindex="-1"><noscript><div class="nojs"><b>Sales Tech Academy a besoin de JavaScript.</b><br>Active-le dans les réglages de ton navigateur, puis recharge la page.</div></noscript></main>
 <footer class="foot gutter" id="foot"></footer>
 <div id="fx"></div>
 <canvas id="confetti" hidden></canvas>
@@ -1210,11 +1269,11 @@ const R = {
   skip_variable:["La rémunération variable du SDR","Skipcall","https://skipcall.io/blog/remuneration-variable-sdr","FR","Article"],
   skip_recruter:["Recruter un SDR : la méthode du manager","Skipcall","https://skipcall.io/formation/manager/recruter-un-sdr","FR","Cours"],
   skip_en:["How to cold call","Skipcall","https://skipcall.io/en/blog/how-to-cold-call","EN","Article"],
-  hs_inbound:["Inbound Sales","HubSpot Academy","https://academy.hubspot.com/academy/public/courses/inbound-sales","EN","Certification"],
-  hs_software:["HubSpot Sales Hub Software","HubSpot Academy","https://academy.hubspot.com/academy/public/courses/hubspot-sales-hub-software","EN","Certification"],
-  hs_inbound_core:["Inbound","HubSpot Academy","https://academy.hubspot.com/academy/public/courses/inbound","EN","Certification"],
+  hs_inbound:["Inbound Sales","HubSpot Academy","https://academy.hubspot.com/courses/inbound-sales","EN","Certification"],
+  hs_software:["HubSpot Sales Hub Software","HubSpot Academy","https://academy.hubspot.com/courses/hubspot-sales-hub-software","EN","Certification"],
+  hs_inbound_core:["Inbound","HubSpot Academy","https://academy.hubspot.com/courses/inbound","EN","Certification"],
   hs_enable:["Sales Enablement","HubSpot Academy","https://academy.hubspot.com/courses/sales-enablement","EN","Certification"],
-  hs_revops:["Revenue Operations","HubSpot Academy","https://academy.hubspot.com/academy/public/courses/revenue-operations","EN","Certification"],
+  hs_revops:["Revenue Operations","HubSpot Academy","https://academy.hubspot.com/courses/revenue-operations","EN","Certification"],
   hs_kpi:["SaaS : 18 KPI à suivre","HubSpot","https://blog.hubspot.fr/marketing/indicateurs-reference-secteur-saas","FR","Article"],
   hs_qualif:["Les principes de base de la qualification des prospects","HubSpot","https://blog.hubspot.fr/sales/qualifier-prospect-pour-vente","FR","Article"],
   hs_obj:["Gérer les objections courantes en prospection","HubSpot","https://blog.hubspot.fr/sales/gerer-objections-courantes-prospection","FR","Article"],
@@ -1233,9 +1292,7 @@ const R = {
   th_process:["Build a Sales Process","Salesforce Trailhead","https://trailhead.salesforce.com/content/learn/modules/build-a-sales-process","EN","Badge"],
   li_nav_cert:["Sales Navigator Essentials Certificate","LinkedIn Sales Solutions","https://training.sales.linkedin.com/path/sales-navigator-essentials-skillset","EN","Certification"],
   li_nav_best:["Sales Navigator Best Practices Certificate","LinkedIn Sales Solutions","https://training.sales.linkedin.com/path/sales-navigator-best-practices-skillset","EN","Certification"],
-  li_learning:["Become an Inside Sales Representative","LinkedIn Learning","https://www.linkedin.com/learning/paths/become-an-inside-sales-representative","EN","Certification"],
   coursera_sdr:["Salesforce Sales Development Representative","Coursera · Salesforce","https://www.coursera.org/professional-certificates/sales-development-representative","EN","Certification"],
-  coursera_hs:["HubSpot Sales Representative","Coursera · HubSpot","https://www.coursera.org/professional-certificates/hubspot-sales-representative","EN","Certification"],
   coursera_en:["Business English: Marketing and Sales","Coursera · Arizona State University","https://www.coursera.org/learn/marketing-sales-english","EN","Cours"],
   google_ads:["Google Ads Search","Google Skillshop","https://skillshop.exceedlms.com/student/path/18128","EN","Certification"],
   apollo:["Apollo Academy : cours et master classes","Apollo","https://www.apollo.io/academy","EN","Cours"],
@@ -1243,7 +1300,7 @@ const R = {
   clay:["Clay 101 : GTM Automation","Clay University","https://university.clay.com/courses/clay-101","EN","Cours"],
   jb:["Learn cold email","Josh Braun","https://joshbraun.com/learn/cold-email/","EN","Article"],
   woodpecker:["15 cold email templates","Woodpecker","https://woodpecker.co/docs/cold-email-templates-ebook.pdf","EN","E-book"],
-  lemlist_email:["L'email de prospection","lemlist","https://lemlist.com/fr/blog/email-de-prospection","FR","Article"],
+  lemlist_email:["Stratégie de prospection par email","lemlist","https://help.lemlist.com/fr/articles/4452704-strategie-de-prospection-par-email-methodes-et-etat-d-esprit","FR","Guide"],
   close:["Cold email tips from 20 sales leaders","Close","https://close.com/blog/cold-email-tips-linkedin","EN","Article"],
   gong_cheat:["Cold Call Cheat Sheet","Gong","https://www.gong.io/resources/guides/cold-calling-cheat-sheet","EN","Guide"],
   gong_how:["How to cold call","Gong","https://www.gong.io/blog/how-to-cold-call","EN","Article"],
@@ -1259,7 +1316,7 @@ const R = {
   jobrise_li:["Exemples de profils LinkedIn de SDR","Jobrise","https://jobrise.io/fr/blog/sales-development-representative-linkedin-profile-examples-2026/","FR","Article"],
   jobrise_int:["Exemples de réponses d'entretien SDR","Jobrise","https://jobrise.io/fr/blog/sales-development-representative-interview-answers-examples-2026/","FR","Article"],
   jobrise_cover:["Exemples de lettres de motivation SDR","Jobrise","https://jobrise.io/fr/blog/sales-development-representative-cover-letter-examples-2026/","FR","Article"],
-  bravado:["Acing the SDR interview","Bravado","https://bravado.co/blog/sdr-interview","EN","Article"],
+  syncgtm_int:["How to Ace a Sales Development Interview","SyncGTM","https://syncgtm.com/blog/how-to-ace-sales-development-interview","EN","Article"],
   reply_int:["12 common SDR interview questions","Reply","https://reply.io/sdr-interview-questions/","EN","Article"],
   springboard:["SDR interview questions","Springboard","https://www.springboard.com/blog/sales/sdr-interview-questions/","EN","Article"],
   glassdoor_hs:["Entretiens BDR chez HubSpot","Glassdoor","https://www2.glassdoor.com.au/Interview/HubSpot-Business-Development-Representative-BDR-Interview-Questions-EI_IE227605.0,7_KO8,47.htm","EN","Témoignages"],
@@ -1334,7 +1391,7 @@ const M = [
 {t:"Prospecter par écrit",obj:"Écrire des messages courts et personnalisés, sans présentation du produit, en français et en anglais.",liv:"Une séquence multicanale de 6 touches en français et sa version anglaise.",crit:"Chaque email fait 5 lignes au plus, part d'un signal réel et se termine par une demande simple.",s:[
  {t:"Les principes du cold email",o:"Comprendre ce qui fait répondre un prospect.",k:[
   ["c","1 h 30","Lis les articles de Josh Braun sur le cold email.",["jb"]],
-  ["c","45 min","Lis le guide lemlist de l'email de prospection.",["lemlist_email"]],
+  ["c","45 min","Lis le guide lemlist sur la stratégie de prospection par email : méthodes et état d'esprit.",["lemlist_email"]],
   ["c","45 min","Regarde la master class d'Apollo sur les cold emails qui obtiennent des réponses.",["apollo"]],
   ["p","1 h","Analyse 10 modèles de l'e-book Woodpecker : pour chacun, note l'accroche, le problème évoqué et la demande finale.",["woodpecker"],{g:3}]]},
  {t:"Écrire ses premiers emails",o:"Passer de la théorie à 5 emails prêts à envoyer.",k:[
@@ -1436,7 +1493,7 @@ const M = [
   ["c","1 h","Suis le premier module du cours « Foundations for Interviewing with Confidence » du certificat SDR de Salesforce sur Coursera.",["coursera_sdr"]],
   ["p","2 h 15","Écris 6 récits STAR avec la trame des Outils : un échec, un refus, un objectif atteint, un travail d'équipe, un apprentissage rapide, une initiative.",[],{o:"star"}]]},
  {t:"Le mock call",o:"Réussir la mise en situation d'appel.",k:[
-  ["c","1 h","Lis « Acing the SDR interview » et regarde des mock calls d'entretien.",["bravado","yt_mock"]],
+  ["c","1 h","Lis « How to Ace a Sales Development Interview », surtout la partie sur le jeu de rôle, puis regarde des mock calls d'entretien.",["syncgtm_int","yt_mock"]],
   ["p","1 h","Prépare une mise en situation sur le produit d'une entreprise prioritaire : persona, problème, signal, script.",[]],
   ["p","2 h","Fais 5 mock calls avec ton binôme, avec une objection surprise à chaque fois, et note-les avec la grille.",[],{o:"grille"}]]},
  {t:"L'entretien en anglais",o:"Tenir un entretien et un appel en anglais.",k:[
@@ -1561,9 +1618,7 @@ const C = [
  ["enablement","Sales Enablement","HubSpot Academy","hs_enable","4 h",2,0,"Compte HubSpot Academy · certificat inclus","Comment une entreprise forme et outille ses commerciaux. Tu comprendras mieux ton futur onboarding."],
  ["apollo","Apollo Academy","Apollo","apollo","2 h",2,11,"Compte Apollo","Master classes et cours pratiques sur le cold email, le cold call et la recherche de prospects avec l'IA."],
  ["english","Business English: Marketing and Sales","Coursera · Arizona State University","coursera_en","34 h",2,34,"Compte Coursera · certificat en option","Pitch, scripts de vente et langage persuasif en anglais, pour tes entretiens et tes appels."],
- ["inside_sales","Become an Inside Sales Representative","LinkedIn Learning","li_learning","15 h",2,0,"Abonnement LinkedIn Learning, avec période d'essai. Vérifie si ton école ou ta bibliothèque te donne un accès","Sept cours sur la vente à distance, avec certificat LinkedIn affichable sur ton profil."],
  ["nav_best","Sales Navigator Best Practices","LinkedIn Sales Solutions","li_nav_best","1 h",3,0,"Compte LinkedIn","La suite du certificat Essentials : recherches avancées et routines de prospection."],
- ["coursera_hs","HubSpot Sales Representative","Coursera · HubSpot","coursera_hs","5 mois",3,0,"Compte Coursera · certificat en option","Cinq cours HubSpot regroupés, avec un certificat Coursera en plus des certificats HubSpot."],
  ["revops","Revenue Operations","HubSpot Academy","hs_revops","7 h",3,0,"Compte HubSpot Academy · certificat inclus","Comment s'organisent les données, les outils et les processus d'une équipe revenus."],
  ["outreach","Outreach University","Outreach","outreach","2 h",3,0,"Accès à vérifier","Séquences et prospection dans Outreach, l'outil utilisé par de nombreuses scale-ups. Badge Prospecting Specialist."],
  ["clay","Clay 101 : GTM Automation","Clay University","clay","2 h",3,0,"Accès à vérifier","Automatiser la recherche de comptes et l'enrichissement de données. Une compétence de plus en plus recherchée chez les SDR."],
@@ -2056,7 +2111,7 @@ const EXG=["","Le métier","Cibler","Écrire","Téléphoner","Qualifier","Décro
 const EXQ=[
  [1,"Quelle est la mission principale d'un SDR ?",["Créer des rendez-vous qualifiés pour les Account Executives","Signer les contrats avec les nouveaux clients","Accompagner les clients après la signature","Fixer les prix des offres"],"Le SDR vend un rendez-vous, pas le produit. C'est l'AE qui mène la vente jusqu'à la signature."],
  [1,"Dans beaucoup d'entreprises, qu'est-ce qui distingue le BDR du SDR ?",["Le BDR prospecte surtout des comptes qui n'ont rien demandé (outbound)","Le BDR signe les contrats","Le BDR gère les clients après la vente","Le BDR travaille uniquement à l'international"],"Le SDR traite souvent l'entrant (inbound), le BDR le sortant (outbound). Dans d'autres entreprises, les deux titres désignent le même poste."],
- [1,"Que mesure le MRR ?",["Le revenu récurrent mensuel","Le nombre de rendez-vous du mois","La marge brute","Le taux de réponse aux e-mails"],"MRR : Monthly Recurring Revenue. Avec l'ARR (annuel), c'est l'indicateur central d'une entreprise SaaS."],
+ [1,"Que mesure le MRR ?",["Le revenu récurrent mensuel","Le nombre de rendez-vous du mois","La marge brute","Le taux de réponse aux emails"],"MRR : Monthly Recurring Revenue. Avec l'ARR (annuel), c'est l'indicateur central d'une entreprise SaaS."],
  [1,"Que désigne le churn ?",["La part de clients ou de revenu perdue sur une période","Le nombre de nouveaux clients","Le coût d'acquisition d'un client","La durée du cycle de vente"],"Le churn mesure l'attrition : les clients qui partent. Un SaaS qui churne beaucoup doit acquérir encore plus."],
  [1,"Qui reprend le rendez-vous obtenu par le SDR et mène la vente ?",["L'Account Executive","Le Customer Success Manager","Le directeur financier du prospect","Le SDR lui-même"],"L'AE mène la démo, la négociation et la signature. Le CSM prend le relais après la signature."],
  [1,"Que signifie CAC ?",["Le coût d'acquisition d'un client","Le chiffre d'affaires cumulé","Le contrat annuel client","Le cycle d'achat complet"],"CAC : Customer Acquisition Cost. Il se compare à la valeur d'un client sur sa durée de vie (LTV)."],
@@ -2065,9 +2120,9 @@ const EXQ=[
  [2,"Lequel de ces éléments est un signal d'achat ?",["L'entreprise vient de lever des fonds et recrute 30 personnes","L'entreprise existe depuis dix ans","Son site internet a un blog","Elle est installée à Paris"],"Un signal est un événement récent qui rend ton produit utile maintenant : levée, recrutements, nouveau dirigeant, ouverture."],
  [2,"Pourquoi un signal doit-il dater de moins de trois mois ?",["Parce qu'il justifie d'appeler maintenant","Parce que LinkedIn efface les anciens posts","Parce que c'est une obligation légale","Ça n'a aucune importance"],"Un signal récent donne une raison crédible d'appeler aujourd'hui. Un signal ancien ne crée plus d'urgence."],
  [2,"À quoi sert LinkedIn Sales Navigator ?",["Trouver des comptes et des contacts avec des filtres avancés, et suivre leurs signaux","Envoyer des factures","Enregistrer les appels","Remplacer le CRM"],"Sales Navigator sert au ciblage et à la veille. Le suivi des échanges et des affaires reste dans le CRM."],
- [3,"Un cold e-mail efficace…",["est court, part d'un signal et se termine par une seule demande","présente toutes les fonctionnalités du produit","contient une plaquette en pièce jointe","commence par « Je me permets de vous contacter »"],"Cinq lignes au plus, un signal réel, une demande simple : c'est le critère du module 3."],
- [3,"Quel objet de cold e-mail a le plus de chances d'être ouvert ?",["Vos 25 recrutements","Présentation de Talento, leader de l'onboarding","URGENT : opportunité à saisir","Re: notre échange (alors qu'il n'y en a pas eu)"],"Court, personnel, sans promesse ni fausse relance. Un faux « Re: » détruit la confiance dès l'ouverture."],
- [3,"Qu'est-ce qu'une séquence multicanale ?",["Plusieurs prises de contact espacées, par e-mail, téléphone et LinkedIn","Le même e-mail envoyé à 500 personnes","Un e-mail avec plusieurs destinataires en copie","Une relance par jour pendant un mois"],"Une séquence alterne les canaux sur deux à trois semaines, chaque touche apportant quelque chose de nouveau."],
+ [3,"Un cold email efficace…",["est court, part d'un signal et se termine par une seule demande","présente toutes les fonctionnalités du produit","contient une plaquette en pièce jointe","commence par « Je me permets de vous contacter »"],"Cinq lignes au plus, un signal réel, une demande simple : c'est le critère du module 3."],
+ [3,"Quel objet de cold email a le plus de chances d'être ouvert ?",["Vos 25 recrutements","Présentation de Talento, leader de l'onboarding","URGENT : opportunité à saisir","Re: notre échange (alors qu'il n'y en a pas eu)"],"Court, personnel, sans promesse ni fausse relance. Un faux « Re: » détruit la confiance dès l'ouverture."],
+ [3,"Qu'est-ce qu'une séquence multicanale ?",["Plusieurs prises de contact espacées, par email, téléphone et LinkedIn","Le même email envoyé à 500 personnes","Un email avec plusieurs destinataires en copie","Une relance par jour pendant un mois"],"Une séquence alterne les canaux sur deux à trois semaines, chaque touche apportant quelque chose de nouveau."],
  [3,"Dans une invitation LinkedIn envoyée à un prospect, il vaut mieux…",["personnaliser en une phrase, sans pitch","présenter ton produit en détail","proposer directement une démo","joindre ton CV"],"L'invitation ouvre une relation. Le pitch dans la note fait refuser l'invitation."],
  [4,"Dans un cold call, la raison de l'appel doit arriver…",["en moins de 30 secondes","après deux minutes de présentation","à la fin de l'appel","seulement si le prospect la demande"],"C'est le critère du module 4 : le prospect doit savoir très vite pourquoi tu l'appelles."],
  [4,"Quelle est la bonne méthode face à une objection ?",["Reconnaître, poser une question, rebondir","Argumenter jusqu'à convaincre","Ignorer l'objection et suivre le script","Proposer une remise"],"Reconnaître montre que tu as écouté, la question fait parler, et le rebond ramène vers le rendez-vous."],
@@ -2076,7 +2131,7 @@ const EXQ=[
  [4,"Pourquoi éviter « Comment allez-vous ? » en ouverture d'appel ?",["Ça signale un appel commercial et retarde la raison de l'appel","C'est impoli","C'est interdit par la loi","Le prospect ne comprendra pas la question"],"Les premières secondes doivent dire qui tu es et pourquoi tu appelles."],
  [5,"Que signifie BANT ?",["Budget, Authority, Need, Timeline","Business, Account, Network, Target","Budget, Action, Negotiation, Time","Buyer, Agent, Need, Team"],"Budget, pouvoir de décision, besoin, calendrier : la grille de qualification la plus utilisée par les SDR."],
  [5,"Dans la méthode SPIN, à quoi correspond le I ?",["Aux questions d'implication : les conséquences du problème","Aux questions d'introduction","À l'intérêt du prospect","À l'investissement prévu"],"Situation, Problème, Implication, Need-payoff. L'implication fait mesurer au prospect le coût de son problème."],
- [5,"À quoi sert surtout MEDDIC ?",["Qualifier les ventes complexes à plusieurs décideurs","Rédiger des e-mails","Calculer le MRR","Recruter des SDR"],"Metrics, Economic buyer, Decision criteria, Decision process, Identify pain, Champion."],
+ [5,"À quoi sert surtout MEDDIC ?",["Qualifier les ventes complexes à plusieurs décideurs","Rédiger des emails","Calculer le MRR","Recruter des SDR"],"Metrics, Economic buyer, Decision criteria, Decision process, Identify pain, Champion."],
  [5,"Que contient une bonne passation à l'AE ?",["Le contexte, le problème, l'enjeu, le décideur, le calendrier et la prochaine étape","Seulement le nom et le numéro du prospect","La plaquette envoyée au prospect","L'avis personnel du SDR sur le prospect"],"L'AE ne doit jamais faire répéter le prospect. Tout ce que tu as appris va dans le CRM."],
  [6,"Que signifie la méthode STAR ?",["Situation, Tâche, Action, Résultat","Stratégie, Talent, Ambition, Rigueur","Sujet, Thèse, Argument, Résumé","Savoir, Tester, Apprendre, Réussir"],"STAR structure tes récits d'entretien. Termine toujours par un résultat chiffré et ce que tu en as appris."],
  [6,"Lors d'un mock call en entretien SDR, le recruteur évalue surtout…",["ta structure, ton écoute et ta capacité à obtenir un rendez-vous malgré les objections","ta connaissance parfaite de son produit","ton accent en anglais","ta capacité à parler sans t'arrêter"],"On attend la méthode : ouverture, raison, question, traitement des objections, demande de rendez-vous."],
@@ -2089,14 +2144,14 @@ const EX_PICK={1:3,2:3,3:3,4:4,5:4,6:3};
 const EXS=[
  ["Tu appelles Hugo, Head of Sales d'une scale-up qui vient d'ouvrir 3 postes de SDR. Il décroche.","« Oui ? »",[[5,"« Bonjour Hugo, {moi} de Talento. Je vous appelle au sujet de vos 3 postes de SDR : je vous prends 30 secondes ? »","Prénom, raison précise, permission : tout tient en dix secondes."],[2,"« Bonjour Hugo, {moi} de Talento. Je ne vous dérange pas ? »","Poli, mais sans raison et avec une question qui invite au oui."],[0,"« Bonjour, comment allez-vous aujourd'hui ? »","Le signal d'un appel commercial, sans raison d'appeler."],[0,"« Bonjour, je vous présente Talento, la meilleure plateforme d'onboarding du marché. »","Un pitch et un superlatif : rien sur le prospect."]]],
  ["En plein appel, ta prospect te coupe.","« On a déjà un prestataire pour ça. »",[[5,"« Très bien. Qu'est-ce qui fonctionne bien avec lui, et qu'est-ce que vous aimeriez améliorer ? »","Tu reconnais l'existant et tu cherches le manque."],[2,"« Lequel ? Nous sommes souvent moins chers. »","La question est utile, mais l'argument prix arrive trop tôt."],[0,"« Le nôtre est bien meilleur, vous verrez. »","Dénigrer l'existant sans le connaître."],[0,"« D'accord, désolé pour le dérangement. Bonne journée. »","Tu abandonnes sur une objection réflexe."]]],
- ["Tu as envoyé trois e-mails à une DRH, sans réponse. Il reste une touche dans ta séquence.","Quelle est la meilleure quatrième touche ?",[[5,"Un appel qui reprend le signal de ton premier e-mail.","Changer de canal relance l'attention ; le signal donne une raison d'appeler."],[2,"Un message LinkedIn qui résume tes trois e-mails.","Changer de canal est une bonne idée, mais un résumé n'apporte rien de nouveau."],[0,"Un quatrième e-mail intitulé « Relance », avec la plaquette en pièce jointe.","Même canal, aucune valeur ajoutée, et une pièce jointe que personne n'ouvrira."],[0,"Un e-mail à toute son équipe RH.","Contourner la prospect auprès de son équipe abîme la relation."]]],
+ ["Tu as envoyé trois emails à une DRH, sans réponse. Il reste une touche dans ta séquence.","Quelle est la meilleure quatrième touche ?",[[5,"Un appel qui reprend le signal de ton premier email.","Changer de canal relance l'attention ; le signal donne une raison d'appeler."],[2,"Un message LinkedIn qui résume tes trois emails.","Changer de canal est une bonne idée, mais un résumé n'apporte rien de nouveau."],[0,"Un quatrième email intitulé « Relance », avec la plaquette en pièce jointe.","Même canal, aucune valeur ajoutée, et une pièce jointe que personne n'ouvrira."],[0,"Un email à toute son équipe RH.","Contourner la prospect auprès de son équipe abîme la relation."]]],
  ["En découverte, la prospect te dit :","« Nos nouveaux mettent du temps à être autonomes. »",[[5,"« Qu'est-ce que ce délai vous coûte aujourd'hui, concrètement ? »","Question d'implication : elle mesure elle-même l'enjeu."],[2,"« Combien de temps, exactement ? »","Utile pour préciser, mais tu ne fais pas encore parler des conséquences."],[0,"« Notre outil réduit ce délai de moitié. »","Tu pitches au lieu de creuser."],[0,"« Vous avez un budget pour ce sujet ? »","Trop tôt : le besoin n'est pas encore établi."]]],
  ["Le prospect est intéressé, mais c'est son directeur qui décide, au comité du mois prochain.","Que fais-tu ?",[[5,"Je propose une démo avec l'AE avant le comité, et je demande si le directeur peut y assister.","Tu cales une prochaine étape avant l'échéance et tu fais entrer le décideur."],[2,"Je demande les coordonnées du directeur pour l'appeler directement.","Tu identifies le décideur, mais tu risques de court-circuiter ton contact."],[0,"J'envoie un devis au prospect dès aujourd'hui.","Un devis sans démo ni qualification arrive trop tôt."],[0,"Je rappelle après le comité pour connaître la décision.","La décision se prendra sans toi."]]],
  ["En entretien, le manager SDR te demande :","« Parle-moi d'un échec. »",[[5,"Je raconte un échec réel avec la méthode STAR, ce que j'ai changé ensuite et le résultat obtenu.","Un récit honnête, structuré, qui montre que tu apprends."],[2,"Je raconte un échec réel, sans dire ce que j'en ai appris.","Sincère, mais le recruteur attend surtout ce que tu en as fait."],[0,"Je réponds que mon défaut, c'est d'être trop perfectionniste.","Une réponse toute faite que les recruteurs repèrent immédiatement."],[0,"Je dis que je n'ai jamais vraiment échoué.","Peu crédible, et le métier de SDR est fait de refus."]]],
  ["Mock call en anglais. Le manager joue le prospect.","« We're all set, thanks. »",[[5,"« That's fair. Out of curiosity, what are you using today, and what would you change if you could? »","Tu reconnais l'objection, puis une question ouverte sur ce qui manque."],[2,"« No problem. Can I send you an email? »","Poli, mais tu abandonnes la conversation."],[0,"« Are you sure? Our product is much better. »","Contredire le prospect le braque."],[0,"« Okay, bye. »","Aucune tentative de rebond."]]]
 ];
 const EX_SN=6;
-/* Exercice écrit : un cold e-mail noté sur 6 critères de 5 points */
+/* Exercice écrit : un cold email noté sur 6 critères de 5 points */
 const EXW={case:"Tu es SDR chez Talento, une plateforme qui aide les entreprises à intégrer et former leurs nouveaux salariés. Ta prospect : Inès Garnier, DRH de Mobilio (location de vélos électriques, 230 salariés). Le signal : Mobilio s'installe dans 4 nouvelles villes en 2027 et publie 45 offres d'emploi.",
  crit:[["Objet court","Un objet de 1 à 6 mots."],["Personnalisé","Le prénom de la prospect et le signal (villes, offres, recrutements)."],["Concis","Un corps de 40 à 120 mots."],["Une seule demande","Le corps se termine par une question, et c'est la seule question du mail."],["Centré sur elle","Plus de « vous » que de « je » et de « nous »."],["Sans formule à éviter","Ni « je me permets », ni « n'hésitez pas », ni plaquette en pièce jointe."]]};
 const BANNED=["je me permets","n'hésitez pas","n’hésitez pas","solution innovante","innovant","leader","numéro un","n°1","révolutionnaire","plaquette","brochure","pièce jointe","en pj","comment allez-vous","j'espère que vous allez bien","suite à mon précédent","i hope this email finds you well","just following up","touching base","i wanted to reach out","world-class","cutting-edge"];
@@ -2113,7 +2168,7 @@ const AT={
    ["question","Ta question d'ouverture","Comment organisez-vous l'arrivée de vos nouveaux aujourd'hui ?","t","Une question ouverte : comment, qu'est-ce que, quel…"],
    ["c1","Créneau 1","jeudi à 10 h","t"],["c2","Créneau 2","vendredi à 14 h","t"]],
   ex:{moi:"Léa",boite:"Talento",prenom:"Camille",signal:"vous recrutez 25 personnes ce trimestre",probleme:"accueillir autant de nouveaux en même temps sans que les managers y passent leurs journées",preuve:"Une scale-up de 200 personnes a réduit de moitié ses départs en période d'essai avec nous",question:"Comment organisez-vous l'arrivée de vos nouveaux aujourd'hui ?",c1:"jeudi à 10 h",c2:"vendredi à 14 h"}},
- email:{t:"Cold e-mail",s:"Observation, problème, preuve, une seule demande",i:"pen",c:"var(--m3)",m:2,ses:[11,12,14,15,38],
+ email:{t:"Cold email",s:"Observation, problème, preuve, une seule demande",i:"pen",c:"var(--m3)",m:2,ses:[11,12,14,15,38],
   f:[["lang","Langue","","s:fr|en"],["prenom","Prénom du prospect","Camille","t"],["objet","Objet (6 mots au plus)","Vos 25 recrutements","t","Court, personnel, sans promesse. Jamais de faux « Re: »."],
    ["obs","Observation : le signal, en une phrase","J'ai vu que vous recrutiez 25 personnes ce trimestre, dont 8 commerciaux.","a"],
    ["pb","Le problème probable, en une phrase","Quand autant de nouveaux arrivent en même temps, les managers passent leurs premières semaines à former au lieu de vendre.","a"],
@@ -2236,6 +2291,7 @@ function commit(){dirty=true;saveLocal();queueWrite();cDirty();}
 const CL=window.STA_CLOUD||{};
 const CLOUD_ON=!!document.querySelector('link[rel="manifest"]')&&/^https:\/\/[a-z0-9.-]+(:\d+)?\/?$/i.test(CL.url||"")&&typeof CL.key==="string"&&CL.key.length>20;
 const SB_SRC="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js",SB_SRI="sha384-TcHRA3zBbn+Lexh5n+Oil4guNPOS3rjNDpGRAN46u/s/mB2IZ50ceC6TYDU2yvgK";
+const CONTACT=typeof window.STA_CONTACT==="string"&&/^[^\s@<>"]+@[^\s@<>"]+\.[a-z]{2,}$/i.test(window.STA_CONTACT.trim())?window.STA_CONTACT.trim():"";
 const AUTH_KEY="sta-auth",CMKEY="sta-cloud-v1",NUDGE_DAYS=14;
 let sb=null,sbP=null,cUser=null,cAdmin=null,cPushing=false,cAgain=false,cTimer=null,cRetry=null,cTry=0,cLastPull=0,cWelcome=false,acc=null;
 let cMeta=(()=>{try{return JSON.parse(localStorage.getItem(CMKEY)||"null")||{};}catch(e){return {};}})();
@@ -2385,7 +2441,7 @@ function cloudInit(){
 }
 
 /* ---------- Fenêtre « Mon compte » ---------- */
-const AUTH_ERR={invalid_credentials:"E-mail ou mot de passe incorrect.",email_not_confirmed:"Confirme d'abord ton adresse : clique sur le lien reçu par e-mail.",user_already_exists:"Un compte existe déjà avec cet e-mail : connecte-toi.",email_exists:"Un compte existe déjà avec cet e-mail : connecte-toi.",weak_password:"Mot de passe trop facile à deviner : 8 caractères au moins, mélange lettres et chiffres.",same_password:"Choisis un mot de passe différent de l'ancien.",email_address_invalid:"Cette adresse e-mail n'est pas acceptée. Vérifie-la.",validation_failed:"Vérifie l'adresse e-mail et le mot de passe.",over_email_send_rate_limit:"Trop d'e-mails envoyés d'un coup. Réessaie dans quelques minutes.",over_request_rate_limit:"Trop de tentatives. Patiente une minute avant de réessayer.",signup_disabled:"Les inscriptions sont fermées pour le moment.",email_provider_disabled:"Les inscriptions par e-mail sont fermées pour le moment.",session_not_found:"Ta session a expiré. Reconnecte-toi.",user_not_found:"Aucun compte n'existe avec cet e-mail."};
+const AUTH_ERR={invalid_credentials:"Email ou mot de passe incorrect.",email_not_confirmed:"Confirme d'abord ton adresse : clique sur le lien reçu par email.",user_already_exists:"Un compte existe déjà avec cet email : connecte-toi.",email_exists:"Un compte existe déjà avec cet email : connecte-toi.",weak_password:"Mot de passe trop facile à deviner : 8 caractères au moins, mélange lettres et chiffres.",same_password:"Choisis un mot de passe différent de l'ancien.",email_address_invalid:"Cette adresse email n'est pas acceptée. Vérifie-la.",validation_failed:"Vérifie l'adresse email et le mot de passe.",over_email_send_rate_limit:"Trop d'emails envoyés d'un coup. Réessaie dans quelques minutes.",over_request_rate_limit:"Trop de tentatives. Patiente une minute avant de réessayer.",signup_disabled:"Les inscriptions sont fermées pour le moment.",email_provider_disabled:"Les inscriptions par email sont fermées pour le moment.",session_not_found:"Ta session a expiré. Reconnecte-toi.",user_not_found:"Aucun compte n'existe avec cet email."};
 function authMsg(e){
   if(!e)return "";
   if(!navigator.onLine||e.status===0||e.name==="AuthRetryableFetchError")return "Pas de connexion internet. Vérifie ton réseau et réessaie.";
@@ -2433,11 +2489,11 @@ function accHTML(){
   const a=acc,mode=a.mode,e=h(a.email),busy=a.busy;
   const head=(eb,t,p)=>`<div class="acc-h"><span class="logo-mark" aria-hidden="true">${LOGO}</span><p class="eyebrow">${eb}</p><h2>${t}</h2>${p?`<p>${p}</p>`:""}</div>`;
   const note=a.msg?`<p class="acc-msg ${a.msg.t}" role="${a.msg.t==="err"?"alert":"status"}">${ic(a.msg.t==="err"?"info":"check")}<span>${h(fr(a.msg.x))}</span></p>`:"";
-  const em=()=>`<label class="field" for="acc-email">Adresse e-mail<input class="input" id="acc-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required maxlength="254" value="${e}" placeholder="prenom@exemple.com"></label>`;
+  const em=()=>`<label class="field" for="acc-email">Adresse email<input class="input" id="acc-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required maxlength="254" value="${e}" placeholder="prenom@exemple.com"></label>`;
   const pw=(lab,ac,hint)=>`<label class="field" for="acc-pw">${lab}<span class="pw"><input class="input" id="acc-pw" name="password" type="${a.show?"text":"password"}" autocomplete="${ac}" required maxlength="72"><button type="button" class="pwt" data-acct="show" aria-pressed="${a.show}" aria-label="${a.show?"Masquer":"Afficher"} le mot de passe">${a.show?"Masquer":"Afficher"}</button></span>${hint?`<small>${hint}</small>`:""}</label>`;
   const go=(lab,wait)=>`<button class="btn acc-go" type="submit"${busy?" disabled":""}>${busy?`<span class="spin" aria-hidden="true"></span>${wait}`:lab+ic("right")}</button>`;
   const sw=(txt,lab,m)=>`<p class="acc-sw">${txt?h(fr(txt))+" ":""}<button type="button" class="linkbtn" data-acc-mode="${m}">${lab}</button></p>`;
-  const priv=`<p class="acc-priv">${ic("lock")}<span>Ton e-mail sert à te connecter et à retrouver ta progression. PA, qui a conçu la formation, voit ton prénom, ton e-mail et ton avancement pour améliorer le parcours. Tu peux supprimer ton compte à tout moment.</span></p>`;
+  const priv=`<p class="acc-priv">${ic("lock")}<span>Ton email sert à te connecter et à retrouver ta progression. PA, qui a conçu la formation, voit ton prénom, ton email et ton avancement pour améliorer le parcours. Tu peux supprimer ton compte à tout moment. <a href="#confidentialite" data-close="1">En savoir plus</a></span></p>`;
   if(mode==="signup"){const dn=doneSessions(),x=xp();
     return head("Mon compte","Crée ton compte","Ta progression te suit sur ton téléphone, ta tablette et ton ordinateur. Elle ne se perd plus, même si tu vides ton navigateur.")+
      (hasProgress(S)?`<p class="acc-keep">${ic("check")}<span>Ce que tu as déjà fait ici (${dn} séance${dn>1?"s":""} terminée${dn>1?"s":""}, ${x} XP) sera enregistré sur ton compte.</span></p>`:"")+
@@ -2445,11 +2501,11 @@ function accHTML(){
   if(mode==="login")
     return head("Mon compte","Connexion","Retrouve ta progression sur cet appareil.")+`<form class="acc-f" id="acc-f" novalidate>${em()}${pw("Mot de passe","current-password")}<button type="button" class="linkbtn acc-forgot" data-acc-mode="forgot">${fr("Mot de passe oublié ?")}</button>${note}${go("Se connecter","Connexion…")}</form>`+sw("Pas encore de compte ?","Créer un compte","signup");
   if(mode==="forgot")
-    return head("Mot de passe oublié","Choisis un nouveau mot de passe","Indique l'adresse e-mail de ton compte : tu reçois un lien pour choisir un nouveau mot de passe.".replace(" :","&nbsp;:"))+`<form class="acc-f" id="acc-f" novalidate>${em()}${note}${go("Recevoir le lien","Envoi…")}</form>`+sw("","Retour à la connexion","login");
+    return head("Mot de passe oublié","Choisis un nouveau mot de passe","Indique l'adresse email de ton compte : tu reçois un lien pour choisir un nouveau mot de passe.".replace(" :","&nbsp;:"))+`<form class="acc-f" id="acc-f" novalidate>${em()}${note}${go("Recevoir le lien","Envoi…")}</form>`+sw("","Retour à la connexion","login");
   if(mode==="sent")
-    return head("Mot de passe oublié","Regarde ta boîte mail",`Si un compte existe pour <b>${e}</b>, un e-mail vient de partir. Clique sur le lien qu'il contient pour choisir ton nouveau mot de passe.`)+`<p class="acc-tip">${ic("info")}<span>Rien reçu d'ici quelques minutes&nbsp;? Regarde dans les courriers indésirables, puis réessaie.</span></p><button class="btn sec" type="button" data-acc-mode="login">Retour à la connexion</button>`;
+    return head("Mot de passe oublié","Regarde ta boîte mail",`Si un compte existe pour <b>${e}</b>, un email vient de partir. Clique sur le lien qu'il contient pour choisir ton nouveau mot de passe.`)+`<p class="acc-tip">${ic("info")}<span>Rien reçu d'ici quelques minutes&nbsp;? Regarde dans les courriers indésirables, puis réessaie.</span></p><button class="btn sec" type="button" data-acc-mode="login">Retour à la connexion</button>`;
   if(mode==="check")
-    return head("Dernière étape","Confirme ton adresse",`Un e-mail vient de partir à <b>${e}</b>. Clique sur le lien qu'il contient&nbsp;: ton compte est activé et ta progression enregistrée.`)+`${note}<button class="btn acc-go" type="button" data-acc-mode="login">J'ai confirmé, je me connecte${ic("right")}</button><p class="acc-tip">${ic("info")}<span>Rien reçu&nbsp;? Regarde dans les courriers indésirables, ou <button type="button" class="linkbtn" data-acct="resend"${busy?" disabled":""}>renvoie l'e-mail</button>.</span></p>`;
+    return head("Dernière étape","Confirme ton adresse",`Un email vient de partir à <b>${e}</b>. Clique sur le lien qu'il contient&nbsp;: ton compte est activé et ta progression enregistrée.`)+`${note}<button class="btn acc-go" type="button" data-acc-mode="login">J'ai confirmé, je me connecte${ic("right")}</button><p class="acc-tip">${ic("info")}<span>Rien reçu&nbsp;? Regarde dans les courriers indésirables, ou <button type="button" class="linkbtn" data-acct="resend"${busy?" disabled":""}>renvoie l'email</button>.</span></p>`;
   if(mode==="newpw")
     return head("Mot de passe oublié","Nouveau mot de passe",cUser&&cUser.email?`Pour le compte <b>${h(cUser.email)}</b>.`:"")+`<form class="acc-f" id="acc-f" novalidate>${cUser&&cUser.email?`<input class="vh" type="email" name="username" autocomplete="username" value="${h(cUser.email)}" readonly tabindex="-1" aria-hidden="true">`:""}${pw("Nouveau mot de passe","new-password","8 caractères au moins.")}${note}${go("Enregistrer le mot de passe","Enregistrement…")}</form>`;
   /* account */
@@ -2483,7 +2539,7 @@ async function accSubmit(e){
   if(hasEm)acc.email=email;
   const bad=(x,sel)=>{acc.busy=false;acc.msg={t:"err",x};accPaint();const i=acc.m.querySelector(sel)||acc.m.querySelector("#acc-pw");if(i)i.focus();};
   if(mode==="signup"&&!name)return bad("Indique ton prénom.","#acc-name");
-  if(hasEm&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))return bad("Indique une adresse e-mail valide.","#acc-email");
+  if(hasEm&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))return bad("Indique une adresse email valide.","#acc-email");
   if((mode==="signup"||mode==="newpw")&&pw.length<8)return bad("Ton mot de passe doit faire 8 caractères au moins.","#acc-pw");
   if(mode==="login"&&!pw)return bad("Indique ton mot de passe.","#acc-pw");
   acc.busy=true;acc.msg=null;accPaint();
@@ -2547,7 +2603,7 @@ async function accResend(){
   if(!acc||acc.busy)return;
   acc.busy=true;acc.msg=null;accPaint();
   let r;try{const c=await sbLoad();r=await c.auth.resend({type:"signup",email:acc.email,options:{emailRedirectTo:authBase()}});}catch(err){r={error:err};}
-  if(!acc)return;acc.busy=false;acc.msg=r.error?{t:"err",x:authMsg(r.error)}:{t:"ok",x:"E-mail renvoyé à "+acc.email+"."};accPaint();
+  if(!acc)return;acc.busy=false;acc.msg=r.error?{t:"err",x:authMsg(r.error)}:{t:"ok",x:"Email renvoyé à "+acc.email+"."};accPaint();
 }
 
 /* ---------- Tableau de suivi (administrateur) ---------- */
@@ -2644,7 +2700,7 @@ function vAdmin(){
    <section class="admk">${kpi("Inscrits",N,"+"+new7+" ces 7 derniers jours")}${kpi("Actifs sur 7 jours",act7,pctTxt(act7,N)+" des inscrits")}${kpi("Séances par apprenant",avg.toFixed(1).replace(".",","),started+" ont commencé · "+fin+" ont terminé")}${kpi("Examen réussi",pass,att+" ont tenté l'examen")}</section>
    <section class="card adm-fun"><div class="chead"><h3>Où les apprenants décrochent</h3><span class="muted" style="font-size:13px">Nombre d'apprenants ayant terminé chaque séance</span></div><p class="adm-drop">${ic("info")}<span>${dropTxt}</span></p><div class="adm-ch" id="adm-ch"><div class="ftip" hidden></div><div class="adm-chs">${admChart(steps,drop)}</div></div><details class="sol"><summary>Voir les chiffres par séance</summary>${tbl}</details></section>
    <section class="card"><div class="chead"><h3>Les apprenants</h3><span class="muted" id="adm-count" style="font-size:13px">${N} apprenant${N>1?"s":""}</span></div>
-    <div class="adm-tools"><label class="vh" for="adm-q">Rechercher</label><input class="input" type="search" id="adm-q" placeholder="Rechercher un prénom ou un e-mail" value="${h(adm.q)}" autocomplete="off"><label class="vh" for="adm-sort">Trier</label><select class="input" id="adm-sort">${[["act","Activité récente"],["new","Inscription récente"],["prog","Progression"],["name","Prénom"]].map(o=>`<option value="${o[0]}"${adm.sort===o[0]?" selected":""}>${o[1]}</option>`).join("")}</select></div>
+    <div class="adm-tools"><label class="vh" for="adm-q">Rechercher</label><input class="input" type="search" id="adm-q" placeholder="Rechercher un prénom ou un email" value="${h(adm.q)}" autocomplete="off"><label class="vh" for="adm-sort">Trier</label><select class="input" id="adm-sort">${[["act","Activité récente"],["new","Inscription récente"],["prog","Progression"],["name","Prénom"]].map(o=>`<option value="${o[0]}"${adm.sort===o[0]?" selected":""}>${o[1]}</option>`).join("")}</select></div>
     <div class="adm-tw"><table class="admtbl"><thead><tr><th>Apprenant</th><th>Inscription</th><th>Dernière activité</th><th>Séances</th><th>XP</th><th>Appels réussis</th><th>Examen</th></tr></thead><tbody id="adm-tb">${admRows()}</tbody></table></div></section>`);
 }
 function admAfter(){
@@ -2656,7 +2712,7 @@ function admAfter(){
 }
 function admCSV(){
   const esc=v=>{v=String(v==null?"":v);if(/^[=+\-@\t\r]/.test(v))v="'"+v;return /[";\n\r]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;};
-  const head=["Prénom","E-mail","Inscription","Dernière activité","Séances terminées","Séances d'affilée depuis la 1","Tâches cochées","XP","Appels réussis","Meilleure note à l'examen","Examen réussi"];
+  const head=["Prénom","Email","Inscription","Dernière activité","Séances terminées","Séances d'affilée depuis la 1","Tâches cochées","XP","Appels réussis","Meilleure note à l'examen","Examen réussi"];
   const lines=[head.join(";")].concat(admSorted().map(l=>[l.name,l.email,l.created?l.created.slice(0,10):"",l.last||"",l.n,l.reach,l.tasks,l.xp,l.sims,l.exBest,l.pass?"oui":"non"].map(esc).join(";")));
   return "﻿"+lines.join("\r\n")+"\r\n";
 }
@@ -2677,8 +2733,8 @@ function resList(ids){
   if(!ids||!ids.length)return "";
   return '<ul class="res">'+ids.map(id=>{const r=R[id];if(!r)return "";
     const col=isInt(r)?mc(F[+id.slice(1)-1].m):provColor(r[1]);
-    const inner=`<span class="pm" style="background:${col}">${isInt(r)?ic("doc","width:16px;height:16px;stroke:var(--on-c)"):h(provMono(r[1]))}</span><span class="rt"><b>${h(r[0])}</b><span>${h(r[1])}${isInt(r)?" · dans le site":""}</span></span><span class="rc"><span class="chip">${h(r[3])}</span>${typeChip(r)}</span>`;
-    return `<li><a ${linkAttrs(r)}>${inner}</a></li>`;}).join("")+"</ul>";
+    const inner=`<span class="pm" style="background:${col}">${isInt(r)?ic("doc","width:16px;height:16px;stroke:var(--on-c)"):h(provMono(r[1]))}</span><span class="rt"><b${r[3]==="EN"?' lang="en"':""}>${h(r[0])}</b><span>${h(r[1])}${isInt(r)?" · dans le site":""}</span></span><span class="rc"><span class="chip">${h(r[3])}</span>${typeChip(r)}</span>`;
+    return `<li><a ${linkAttrs(r)}>${inner}${isInt(r)?"":'<span class="vh"> (nouvel onglet)</span>'}</a></li>`;}).join("")+"</ul>";
 }
 const BMOAI=`<span class="bmoai" aria-hidden="true"><svg viewBox="10 4 46 60"><path d="${MOAI_D}"/></svg></span>`;
 function band(inner,c,cls){return `<section class="band gutter${cls?" "+cls:""}"${c?` style="--c:${c}"`:""}>${BMOAI}<div class="inner">${inner}</div></section>`;}
@@ -2703,10 +2759,10 @@ function chrome(v){
     const ac=cur===n[0]?' aria-current="page"':"";
     if(!n[2])return `<div class="ni"><a class="nl" href="#${n[0]}"${ac}>${n[1]}</a></div>`;
     const dd=n[0]==="parcours"?ddParcours():n[0]==="apprendre"?ddApprendre():n[0]==="entrainer"?ddEntrainer():ddRessources();
-    return `<div class="ni" data-ni="${n[0]}"><button class="nl" type="button" aria-haspopup="true"${ac}>${n[1]}${ic("down").replace('class="ico"','class="ico chev"')}</button>${dd}</div>`;}).join("");
+    return `<div class="ni" data-ni="${n[0]}"><button class="nl" type="button" aria-haspopup="true" aria-expanded="false"${ac}>${n[1]}${ic("down").replace('class="ico"','class="ico chev"')}</button>${dd}</div>`;}).join("");
   $("pills").innerHTML=`<span class="pill fl${lit?"":" off"}" title="Série de jours">${flame()}<span>${st}</span></span><span class="pill xp" title="Points d'expérience">${ic("bolt")}<span>${x}</span></span>`;
   const theme=getTheme(),ini=(S.name||"?").trim().charAt(0).toUpperCase()||"?";
-  $("prof").innerHTML=`<button class="avatar${syncMode==="cloud"||syncMode==="db"?" on":""}" type="button" aria-haspopup="true" aria-label="Mon profil${cUser?", connecté à ton compte":""}">${h(ini)}</button><div class="dd"><div class="ddp"><div><b style="font-family:var(--display);font-size:17px">${S.name?h(S.name):"Invité"}</b><div class="muted" style="font-size:13px">${S.start?"Début le "+h(fLong.format(parse(S.start))):"Date de début non choisie"}</div></div>
+  $("prof").innerHTML=`<button class="avatar${syncMode==="cloud"||syncMode==="db"?" on":""}" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Mon profil${cUser?", connecté à ton compte":""}">${h(ini)}</button><div class="dd"><div class="ddp"><div><b style="font-family:var(--display);font-size:17px">${S.name?h(S.name):"Invité"}</b><div class="muted" style="font-size:13px">${S.start?"Début le "+h(fLong.format(parse(S.start))):"Date de début non choisie"}</div></div>
    ${accMenu()}
    <div class="lvl"><div class="row" style="justify-content:space-between"><b>Niveau ${lv.i+1} · ${h(lv.name)}</b><span class="mono" style="font-size:12px;color:var(--xp)">${x} XP</span></div>${bar(lv.next?(x-lv.from)/(lv.to-lv.from):1,null,"xpb")}<small>${lv.next?(lv.to-x)+" XP avant « "+h(lv.next)+" »":"Niveau maximum atteint"}</small></div>
    <div><p class="dd-h" style="padding:0 0 6px">Thème</p><div class="seg" role="group" aria-label="Thème" style="width:100%">${[["system","Système"],["light","Clair"],["dark","Sombre"]].map(t=>`<button type="button" data-theme-set="${t[0]}" aria-pressed="${theme===t[0]}" style="flex:1">${t[1]}</button>`).join("")}</div></div>
@@ -2716,7 +2772,7 @@ function chrome(v){
   </div></div>`;
 }
 let resetArm=false,resetTimer=null;
-function closeMenus(){document.querySelectorAll(".ni.open").forEach(n=>n.classList.remove("open"));}
+function closeMenus(){document.querySelectorAll(".ni.open").forEach(n=>{n.classList.remove("open");const t=n.querySelector("[aria-expanded]");if(t)t.setAttribute("aria-expanded","false");});}
 
 /* ---------- Tiroir mobile ---------- */
 function openDrawer(){
@@ -2729,6 +2785,7 @@ function openDrawer(){
   <details${curSection(route().v)==="entrainer"?" open":""}><summary>S'entraîner${ic("down").replace('class="ico"','class="ico chev"')}</summary><div>${trainMenu().map(a=>`<a class="dd-l" href="#${a[0]}" style="--c:${a[4]}"><span class="di">${ic(a[3])}</span><span><b>${a[1]}</b><small>${h(fr(a[2]))}</small></span></a>`).join("")}</div></details>
   <a class="solo" href="#certifications">Certifications</a>
   <details><summary>Ressources${ic("down").replace('class="ico"','class="ico chev"')}</summary><div>${Object.keys(RTYPES).map((k,i)=>`<a class="dd-l" href="#ressources${k==="all"?"":"-"+k}" style="--c:${mc(i)}"><span class="di">${ic("lib")}</span><span><b>${RTYPES[k][0]}</b><small>${countType(k)} ressources</small></span></a>`).join("")}</div></details>
+  <a class="solo" href="#faq">Questions fréquentes</a>
   <details><summary>Mon profil${ic("down").replace('class="ico"','class="ico chev"')}</summary><div style="gap:10px"><div class="lvl"><b>Niveau ${lv.i+1} · ${h(lv.name)}</b>${bar(lv.next?(xp()-lv.from)/(lv.to-lv.from):1,null,"xpb")}</div><div class="seg" role="group" aria-label="Thème">${[["system","Système"],["light","Clair"],["dark","Sombre"]].map(t=>`<button type="button" data-theme-set="${t[0]}" aria-pressed="${getTheme()===t[0]}">${t[1]}</button>`).join("")}</div><button class="dd-l" type="button" data-act="profile"><span class="di">${ic("edit")}</span><span><b>Modifier mon profil</b></span></button>${accMenu()}</div></details>
   </div>`;
   document.body.appendChild(d);
@@ -2742,7 +2799,7 @@ function footer(){
   <div><h4>Apprendre</h4>${APPR.map(a=>`<a href="#${a[0]}">${a[1]}</a>`).join("")}</div>
   <div><h4>S'entraîner</h4><a href="#simulateur">Simulateur d'appel</a><a href="#atelier">Atelier d'écriture</a><a href="#examen">Examen final</a>${S.exam.pass?'<a href="#certificat">Mon certificat</a>':""}<a href="#app">Application et agenda</a></div>
   <div><h4>Aller plus loin</h4><a href="#decouvrir">Découvrir la formation</a><a href="#certifications">Certifications</a><a href="#ressources">Bibliothèque</a><a href="#ressources-media">Vidéos et podcasts</a><a href="#ressources-terrain">Offres d'emploi</a></div>
-  <div class="base"><span class="sync${syncCls()}" id="sync"><i></i><span>${syncText()}</span></span><span>Ressources vérifiées en novembre 2026.</span></div></div>`;
+  <div class="base"><span class="sync${syncCls()}" id="sync"><i></i><span>${syncText()}</span></span><span class="flinks"><a href="#faq">Questions fréquentes</a><a href="#confidentialite">Confidentialité</a><span>© ${new Date().getFullYear()} Sales Tech Academy · Ressources vérifiées en novembre 2026</span></span></div></div>`;
 }
 
 /* ---------- Vues ---------- */
@@ -2926,8 +2983,8 @@ function vRessources(){
   const ids=Object.keys(R).filter(id=>{const r=R[id];return (rLang==="all"||r[3]===rLang)&&(!types||types.includes(r[4]))&&(!q||(r[0]+" "+r[1]).toLowerCase().indexOf(q)>=0);});
   const fr=Object.values(R).filter(r=>r[3]==="FR").length;
   function card(id){const r=R[id],u=used[id]||[],intl=isInt(r),col=intl?mc(F[+id.slice(1)-1].m):provColor(r[1]);
-    const inner=`<span class="pm" style="background:${col}">${intl?ic("doc","width:18px;height:18px;stroke:var(--on-c)"):h(provMono(r[1]))}</span><span class="rt"><b>${h(r[0])}</b><span class="src">${h(r[1])}</span><span class="rc"><span class="chip">${h(r[3])}</span>${typeChip(r)}</span><span class="used">${u.length?"Séances "+u.join(", "):CERT_RES[id]?"Voir Certifications":"À suivre en continu"}</span></span>`;
-    return `<a class="card rcard" ${linkAttrs(r)}>${inner}</a>`;}
+    const inner=`<span class="pm" style="background:${col}">${intl?ic("doc","width:18px;height:18px;stroke:var(--on-c)"):h(provMono(r[1]))}</span><span class="rt"><b${r[3]==="EN"?' lang="en"':""}>${h(r[0])}</b><span class="src">${h(r[1])}</span><span class="rc"><span class="chip">${h(r[3])}</span>${typeChip(r)}</span><span class="used">${u.length?"Séances "+u.join(", "):CERT_RES[id]?"Voir Certifications":"À suivre en continu"}</span></span>`;
+    return `<a class="card rcard" ${linkAttrs(r)}>${inner}${intl?"":'<span class="vh"> (nouvel onglet)</span>'}</a>`;}
   const inP=ids.filter(id=>used[id]),cont=ids.filter(id=>!used[id]);
   return band(`<p class="eyebrow">Ressources</p><h1>La bibliothèque</h1><p class="lede">${NRES} ressources sélectionnées : ${fr} en français, ${NRES-fr} en anglais. Cours, certifications, guides, vidéos, podcasts et les fiches écrites pour la formation.</p>`,"var(--m2)")+
    wrap(`<div class="gtools"><input class="input" id="r-search" type="search" placeholder="Rechercher une ressource ou un organisme" value="${h(rQuery)}" aria-label="Rechercher"><div class="seg" role="group" aria-label="Langue">${[["all","Toutes"],["FR","Français"],["EN","Anglais"]].map(l=>`<button type="button" data-rl="${l[0]}" aria-pressed="${rLang===l[0]}">${l[1]}</button>`).join("")}</div><select class="input" id="r-type" aria-label="Type de ressource">${Object.keys(RTYPES).map(k=>`<option value="${k}"${rType===k?" selected":""}>${h(RTYPES[k][0])}</option>`).join("")}</select></div>
@@ -3148,7 +3205,7 @@ async function drawCert(cv,o){
   x.fillStyle="#3A4558";x.font="400 34px "+BF;
   wrapText(x,"pour avoir suivi la formation SDR & BDR de Sales Tech Academy (40 séances, 8 modules, 160 heures) et réussi son examen final avec la note de "+o.s+"/100.",1420).forEach((l,i)=>x.fillText(l,W/2,748+i*50));
   const mt=mention(o.s);x.font="700 28px "+BF;const mw=x.measureText(mt).width+64;x.fillStyle="rgba(255,122,77,.12)";const mp=new Path2D();mp.roundRect?mp.roundRect(W/2-mw/2,872,mw,58,29):mp.rect(W/2-mw/2,872,mw,58);x.fill(mp);x.fillStyle="#D9452B";x.fillText(mt,W/2,911);
-  x.fillStyle="#6B7385";x.font="600 23px "+BF;x.fillText("Prospection téléphonique · Cold e-mail · LinkedIn · Ciblage ICP · Qualification BANT, SPIN, MEDDIC · Entretiens",W/2,990);
+  x.fillStyle="#6B7385";x.font="600 23px "+BF;x.fillText("Prospection téléphonique · Cold email · LinkedIn · Ciblage ICP · Qualification BANT, SPIN, MEDDIC · Entretiens",W/2,990);
   const HX=W/2,HY=1215,hw=980;const sun=x.createRadialGradient(HX,HY,10,HX,HY,180);sun.addColorStop(0,"#FFF1C2");sun.addColorStop(.6,"#FFB45C");sun.addColorStop(1,"rgba(255,122,77,0)");
   x.save();x.beginPath();x.rect(HX-hw/2,HY-260,hw,260);x.clip();x.fillStyle=sun;x.beginPath();x.arc(HX,HY,180,0,7);x.fill();x.restore();
   const mh=new Path2D(MH),mb=new Path2D(MB);
@@ -3304,14 +3361,14 @@ function vAtelier(id){
 }
 
 /* ---------- Examen final ---------- */
-function exParts(){return [["QCM","20 questions sur les 8 modules",40],["Mises en situation",EX_SN+" situations d'appel, de découverte et d'entretien",30],["Exercice écrit","Un cold e-mail noté sur 6 critères",30]];}
+function exParts(){return [["QCM","20 questions sur les 8 modules",40],["Mises en situation",EX_SN+" situations d'appel, de découverte et d'entretien",30],["Exercice écrit","Un cold email noté sur 6 critères",30]];}
 function vExamIntro(){
   const open=exOpen(),dn=doneSessions(),P=S.exam.pass,E=S.exam;
   let status;
   if(P)status=`<div class="exst ok">${ic("award")}<div><b>Examen réussi · ${P.s}/100 · ${mention(P.s)}</b><span>Le ${h(fLongY.format(parse(P.d)))}. Tu peux le repasser pour améliorer ta note : seule la meilleure compte.</span></div></div>`;
   else if(!open)status=`<div class="exst lock">${ic("lock")}<div><b>L'examen se débloque à ${EX_MIN} séances validées</b><span>Tu en as validé ${dn} sur ${TOTAL}. Encore ${EX_MIN-dn} séance${EX_MIN-dn>1?"s":""} : l'examen arrive avec le module 7.</span>${bar(dn/EX_MIN,"var(--m6)")}</div></div>`;
   else status=`<div class="exst go">${ic("check")}<div><b>Tu peux passer l'examen</b><span>${E.att?E.att+" tentative"+(E.att>1?"s":"")+", meilleure note : "+E.best+"/100. ":""}Prévois 45 minutes au calme, sans interruption.</span></div></div>`;
-  return band(`<nav class="crumbs"><span>S'entraîner</span><span>/</span><span>Examen final</span></nav><p class="eyebrow">Examen final · certificat Sales Tech Academy</p><h1>La dernière pierre de ton ahu</h1><p class="lede">Un examen de 45 minutes qui reprend les 8 modules : un QCM, des mises en situation et un cold e-mail à écrire. Obtiens au moins ${EX_PASS}/100 et reçois ton certificat, à télécharger et à ajouter sur LinkedIn.</p>`,"var(--m6)")+
+  return band(`<nav class="crumbs"><span>S'entraîner</span><span>/</span><span>Examen final</span></nav><p class="eyebrow">Examen final · certificat Sales Tech Academy</p><h1>La dernière pierre de ton ahu</h1><p class="lede">Un examen de 45 minutes qui reprend les 8 modules : un QCM, des mises en situation et un cold email à écrire. Obtiens au moins ${EX_PASS}/100 et reçois ton certificat, à télécharger et à ajouter sur LinkedIn.</p>`,"var(--m6)")+
   wrap(`${status}<section class="exgrid"><div class="card"><h3 style="font-size:19px;margin-bottom:14px">Le déroulé</h3><ol class="exparts">${exParts().map((p,i)=>`<li><span>${i+1}</span><div><b>${p[0]}</b><small>${h(p[1])}</small></div><em>${p[2]} pts</em></li>`).join("")}</ol>
      <ul class="exrules"><li>${ic("timer")}45 minutes : au-delà, ta copie est remise automatiquement.</li><li>${ic("target")}Admis à ${EX_PASS}/100. Mention bien à 80, très bien à 90.</li><li>${ic("reset")}Tu peux le repasser : les questions changent, la meilleure note compte.</li><li>${ic("info")}Si tu fermes la page, l'examen reprend où tu l'as laissé, mais le chrono continue.</li></ul>
      <div class="row">${open?`<button class="btn" type="button" data-ex="start" style="--c:var(--m6)">${ic("play")}${E.att?"Repasser l'examen":"Commencer l'examen"}</button>`:`<a class="btn sec" href="#parcours">Continuer le parcours${ic("right")}</a><a class="btn sec" href="#simulateur">S'entraîner au simulateur</a>`}${P?`<a class="btn sec" href="#certificat">${ic("award")}Mon certificat</a>`:""}</div></div>
@@ -3331,8 +3388,8 @@ function vExamRun(){
     const missing=list.length-nAns;
     nav=`<div class="pager"><button class="btn sec" type="button" data-ex-go="${i-1}"${i===0?" disabled":""}>${ic("left")}Précédent</button>${i<list.length-1?`<button class="btn" type="button" data-ex-go="${i+1}" style="--c:var(--m6)">Suivant${ic("right")}</button>`:`<button class="btn" type="button" data-ex="next" style="--c:var(--m6)">${exConfirm&&missing?"Confirmer : "+missing+" sans réponse":"Terminer la partie "+part}${ic("right")}</button>`}</div>`;}
   else{const w=r.w,cr=EXW.crit;
-    body=`<div class="card exw"><span class="qk">Partie 3 · exercice écrit · 30 points</span><p class="excase">${h(fr(EXW.case))}</p><p><b>Écris un cold e-mail</b> : un objet et un corps, comme tu l'enverrais vraiment. La correction est automatique, sur ces 6 critères de 5 points :</p><ul class="excrit">${cr.map(c=>`<li><b>${h(c[0])}</b> · ${h(fr(c[1]))}</li>`).join("")}</ul>
-      <label class="field" for="ex-obj">Objet<input class="input" id="ex-obj" data-exw="obj" value="${h(w.obj)}" autocomplete="off" placeholder="Objet de ton e-mail"></label><label class="field" for="ex-body">Corps de l'e-mail<textarea class="input" id="ex-body" data-exw="body" rows="11" placeholder="Bonjour Inès,">${h(w.body)}</textarea></label><div class="row" style="justify-content:space-between"><span class="muted mono" style="font-size:12.5px" id="ex-wc">${words(w.body)} mots</span><span class="muted" style="font-size:12.5px">Ta copie est enregistrée au fur et à mesure.</span></div></div>`;
+    body=`<div class="card exw"><span class="qk">Partie 3 · exercice écrit · 30 points</span><p class="excase">${h(fr(EXW.case))}</p><p><b>Écris un cold email</b> : un objet et un corps, comme tu l'enverrais vraiment. La correction est automatique, sur ces 6 critères de 5 points :</p><ul class="excrit">${cr.map(c=>`<li><b>${h(c[0])}</b> · ${h(fr(c[1]))}</li>`).join("")}</ul>
+      <label class="field" for="ex-obj">Objet<input class="input" id="ex-obj" data-exw="obj" value="${h(w.obj)}" autocomplete="off" placeholder="Objet de ton email"></label><label class="field" for="ex-body">Corps de l'email<textarea class="input" id="ex-body" data-exw="body" rows="11" placeholder="Bonjour Inès,">${h(w.body)}</textarea></label><div class="row" style="justify-content:space-between"><span class="muted mono" style="font-size:12.5px" id="ex-wc">${words(w.body)} mots</span><span class="muted" style="font-size:12.5px">Ta copie est enregistrée au fur et à mesure.</span></div></div>`;
     nav=`<div class="pager"><button class="btn sec" type="button" data-ex="back">${ic("left")}Revenir aux situations</button><button class="btn" type="button" data-ex="submit" style="--c:var(--m6)">${exConfirm?"Confirmer la remise de ma copie":"Remettre ma copie"}${ic("check")}</button></div>`;}
   return band(`<p class="eyebrow">Examen final · partie ${part} sur 3</p><h1 style="font-size:clamp(26px,3.6vw,36px)">${h(P[part-1][0])}</h1><p class="lede">${part===1?"Une seule bonne réponse par question. Tu peux revenir en arrière avant de terminer la partie.":part===2?"Choisis la réponse la plus professionnelle. Certaines réponses rapportent une partie des points.":"Prends le temps de te relire : c'est l'exercice que les managers SDR font passer en entretien."}</p>`,"var(--m6)")+
    `<div class="wrap gutter"><div class="inner exrun">${head}${body}${nav}</div></div>`;
@@ -3343,7 +3400,7 @@ function vExamResult(){
   const srev=x.sd.filter(s=>s.pts<5).map(s=>{const b=EXS[s.k],best=b[2].find(o=>o[0]===5);return `<li><b>${h(fr(b[0]))} ${h(sx(b[1]))}</b><p class="ko">${s.a==null?"Sans réponse":"Ta réponse ("+s.pts+"/5) : "+h(sx(b[2][s.a][1]))}${s.a!=null?" · "+h(fr(b[2][s.a][2])):""}</p><p class="okk">Meilleure réponse : ${h(sx(best[1]))}</p></li>`;}).join("");
   return band(`<p class="eyebrow">Examen final · résultat</p><h1>${g?"Admis. Ton dernier Moai est debout.":"Pas encore. Revois les corrections, puis retente."}</h1><p class="lede">${g?"Tu as obtenu "+x.tot+"/100, "+mention(x.tot).toLowerCase()+". Ton certificat est prêt.":"Tu as obtenu "+x.tot+"/100. Il faut "+EX_PASS+" pour être admis : relis les corrections ci-dessous, revois les séances concernées, puis repasse l'examen avec de nouvelles questions."}</p>`,g?"var(--m6)":"var(--m8)")+
   wrap(`<section class="exres"><div class="card exscore">${ring(x.tot/100,132,12,`<span style="display:grid;justify-items:center;line-height:1.05"><span style="font-size:34px">${x.tot}</span><span style="font-size:12px;font-family:var(--body);color:var(--muted);font-weight:600">sur 100</span></span>`,g?"var(--ok)":"var(--m8)")}<div class="exbd">${exParts().map((p,i)=>`<div><span>${p[0]}</span><b>${x.p[i]} / ${p[2]}</b>${bar(x.p[i]/p[2],g?"var(--ok)":"var(--m8)")}</div>`).join("")}</div><div class="row">${g?`<a class="btn" href="#certificat" style="--c:var(--m6)">${ic("award")}Voir mon certificat</a>`:`<button class="btn" type="button" data-ex="start" style="--c:var(--m6)">${ic("reset")}Repasser l'examen</button>`}<button class="btn sec" type="button" data-ex="close">Retour à l'examen</button></div></div>
-   <div class="card"><h3 style="font-size:18px;margin-bottom:10px">Ton cold e-mail · ${x.p[2]}/30</h3><ul class="critl">${x.wd.map(c=>`<li class="c${c.ok?1:-1}"><span>${c.ok?ic("check"):ic("x")}</span><div><b>${h(c.t)}</b><small>${h(fr(c.d))}</small></div></li>`).join("")}</ul><details class="sol"><summary>Relire ma copie</summary><p><b>${h(x.w.obj||"(sans objet)")}</b></p><p style="white-space:pre-wrap">${h(x.w.body||"(vide)")}</p></details></div></section>
+   <div class="card"><h3 style="font-size:18px;margin-bottom:10px">Ton cold email · ${x.p[2]}/30</h3><ul class="critl">${x.wd.map(c=>`<li class="c${c.ok?1:-1}"><span>${c.ok?ic("check"):ic("x")}</span><div><b>${h(c.t)}</b><small>${h(fr(c.d))}</small></div></li>`).join("")}</ul><details class="sol"><summary>Relire ma copie</summary><p><b>${h(x.w.obj||"(sans objet)")}</b></p><p style="white-space:pre-wrap">${h(x.w.body||"(vide)")}</p></details></div></section>
    ${qrev?`<section class="card"><h3 style="font-size:18px;margin-bottom:12px">QCM : les ${x.qd.filter(q=>!q.ok).length} questions à revoir</h3><ol class="exrev">${qrev}</ol></section>`:""}
    ${srev?`<section class="card"><h3 style="font-size:18px;margin-bottom:12px">Mises en situation à revoir</h3><ol class="exrev">${srev}</ol></section>`:""}`);
 }
@@ -3376,13 +3433,13 @@ function vApp(){
 }
 
 /* ---------- S'entraîner : menu, tableau de bord, page d'accueil ---------- */
-function trainMenu(){const P=S.exam.pass;return [["simulateur","Simulateur d'appel",SIMS.length+" appels à froid, un coach à chaque étape","phone","var(--m4)"],["atelier","Atelier d'écriture","Accroche, cold e-mail, LinkedIn, fiche ICP","pen","var(--m3)"],["examen","Examen final",P?"Réussi · "+P.s+"/100 · ton certificat":"45 minutes, certificat à la clé","award","var(--m6)"],["app","Application et agenda","Installe l'app, exporte tes séances","app","var(--m1)"]];}
+function trainMenu(){const P=S.exam.pass;return [["simulateur","Simulateur d'appel",SIMS.length+" appels à froid, un coach à chaque étape","phone","var(--m4)"],["atelier","Atelier d'écriture","Accroche, cold email, LinkedIn, fiche ICP","pen","var(--m3)"],["examen","Examen final",P?"Réussi · "+P.s+"/100 · ton certificat":"45 minutes, certificat à la clé","award","var(--m6)"],["app","Application et agenda","Installe l'app, exporte tes séances","app","var(--m1)"]];}
 function ddEntrainer(){return `<div class="dd"><div class="ddp" style="width:350px">${trainMenu().map(a=>`<a class="dd-l" href="#${a[0]}" style="--c:${a[4]}"><span class="di">${ic(a[3])}</span><span><b>${a[1]}</b><small>${h(fr(a[2]))}</small></span></a>`).join("")}</div></div>`;}
 function trainDash(){
   const won=simWon(),nextSim=SIMS.find(x=>!(S.sim[x.id]&&S.sim[x.id].b>=SIM_PASS)),dr=atDrafts(),P=S.exam.pass,dn=doneSessions();
   const ex=P?["Certificat obtenu",P.s+"/100 · "+mention(P.s),1,"certificat"]:exOpen()?["Disponible","45 minutes, admis à "+EX_PASS+"/100",1,"examen"]:[Math.min(dn,EX_MIN)+" / "+EX_MIN+" séances","Se débloque à "+EX_MIN+" séances",dn/EX_MIN,"examen"];
   const cards=[["Simulateur d'appel",won+" / "+SIMS.length+" réussis",nextSim?"À jouer : "+fr(nextSim.t):"Tous les appels sont réussis","phone","var(--m4)",won/SIMS.length,nextSim?"simulateur-"+nextSim.id:"simulateur"],
-   ["Atelier d'écriture",dr+" / 4 brouillons","Accroche, e-mail, LinkedIn, ICP","pen","var(--m3)",dr/4,"atelier"],
+   ["Atelier d'écriture",dr+" / 4 brouillons","Accroche, email, LinkedIn, ICP","pen","var(--m3)",dr/4,"atelier"],
    ["Examen final",ex[0],ex[1],"award","var(--m6)",ex[2],ex[3]],
    ["App et agenda",isStandalone()?"App installée":"Installer l'app","Exporte tes séances dans ton agenda","cal","var(--m1)",isStandalone()?1:0,"app"]];
   return `<section class="lp-sec"><div class="sech"><div><h2 style="font-size:21px">S'entraîner</h2></div></div><div class="stats">${cards.map(s=>`<a class="card stat" href="#${s[6]}" style="--c:${s[4]}">${ring(s[5],54,6,ic(s[3],"width:20px;height:20px;color:"+s[4]),s[4])}<span class="t"><span class="k">${s[0]}</span><span class="v" style="font-size:18px">${h(s[1])}</span><span class="s">${h(s[2])}</span></span></a>`).join("")}</div></section>`;}
@@ -3390,8 +3447,8 @@ function lpTrain(){
   return `<section class="lp-sec"><div class="sech rv"><div><p class="eyebrow">S'entraîner comme en vrai</p><h2>Pratique, corrige, prouve</h2><p class="sub">Les séances t'apprennent la méthode. Ces trois outils te font répéter jusqu'au réflexe, puis valident ton niveau.</p></div></div>
    <div class="lptrain">
     <a class="card lpt rv" href="#simulateur" style="--c:var(--m4)"><span class="lpi">${ic("phone")}</span><h3>Le simulateur d'appel</h3><p>${SIMS.length} appels à froid, du standard au cold call en anglais. Trois réponses possibles à chaque étape, et un coach qui t'explique chaque choix.</p><div class="lpchips">${["Pas le temps","Envoyez un mail","Déjà un outil","Pas de budget","Dans six mois"].map(x=>`<i>«${NB}${x}${NB}»</i>`).join("")}</div><span class="lpgo">Lancer un appel${ic("right")}</span></a>
-    <a class="card lpt rv" href="#atelier" style="--c:var(--m3);--d:.08s"><span class="lpi">${ic("pen")}</span><h3>L'atelier d'écriture</h3><p>Accroche d'appel, cold e-mail, message LinkedIn, fiche ICP : tu remplis les champs, le site rédige et vérifie les critères d'un manager SDR.</p><div class="lpchips"><i>${ic("check")}5 lignes au plus</i><i>${ic("check")}Une seule question</i><i>${ic("check")}Sans « je me permets »</i></div><span class="lpgo">Ouvrir l'atelier${ic("right")}</span></a>
-    <a class="card lpt rv" href="#examen" style="--c:var(--m6);--d:.16s"><span class="lpi">${ic("award")}</span><h3>L'examen et le certificat</h3><p>45 minutes : un QCM, des mises en situation et un cold e-mail à écrire. Réussis-le et télécharge ton certificat, prêt pour LinkedIn.</p><div class="lpcert" aria-hidden="true"><span class="lc-l">${LOGO}</span><span class="lc-t"><b>Certificat de réussite</b><i></i><i></i></span><span class="lc-s"></span></div><span class="lpgo">Voir l'examen${ic("right")}</span></a>
+    <a class="card lpt rv" href="#atelier" style="--c:var(--m3);--d:.08s"><span class="lpi">${ic("pen")}</span><h3>L'atelier d'écriture</h3><p>Accroche d'appel, cold email, message LinkedIn, fiche ICP : tu remplis les champs, le site rédige et vérifie les critères d'un manager SDR.</p><div class="lpchips"><i>${ic("check")}5 lignes au plus</i><i>${ic("check")}Une seule question</i><i>${ic("check")}Sans « je me permets »</i></div><span class="lpgo">Ouvrir l'atelier${ic("right")}</span></a>
+    <a class="card lpt rv" href="#examen" style="--c:var(--m6);--d:.16s"><span class="lpi">${ic("award")}</span><h3>L'examen et le certificat</h3><p>45 minutes : un QCM, des mises en situation et un cold email à écrire. Réussis-le et télécharge ton certificat, prêt pour LinkedIn.</p><div class="lpcert" aria-hidden="true"><span class="lc-l">${LOGO}</span><span class="lc-t"><b>Certificat de réussite</b><i></i><i></i></span><span class="lc-s"></span></div><span class="lpgo">Voir l'examen${ic("right")}</span></a>
    </div></section>`;}
 function seanceTrain(n){const t=TRAIN[n];if(!t)return "";return `<div class="trainbox"><p class="eyebrow" style="color:var(--c)">Pour t'entraîner</p><div class="trls">${t.map(trainLink).join("")}</div></div>`;}
 
@@ -3406,6 +3463,126 @@ function celebrateModule(s){
   const b=m.querySelector("[data-close]");if(b)b.focus({preventScroll:true});
 }
 
+
+/* ---------- Titre de l'onglet, page par page ---------- */
+function pageTitle(r){
+  const v=r.v;let t="";
+  if(v==="accueil")t=S.name?"Tableau de bord":"";
+  else if(v==="decouvrir")t="Découvrir la formation";
+  else if(v==="parcours")t="Le parcours";
+  else if(v==="module")t=M[r.mi]?`Module ${r.mi+1} · ${M[r.mi].t}`:"Le parcours";
+  else if(v==="seance"){const s=SES[r.n-1];t=s?`Séance ${s.n} · ${s.t}`:"Le parcours";}
+  else if(v==="certifications")t="Certifications";
+  else if(v==="glossaire")t=gMode==="quiz"?"Quiz de vocabulaire":gMode==="cards"?"Cartes mémoire":"Glossaire";
+  else if(v==="ressources")t=rType!=="all"&&RTYPES[rType]?RTYPES[rType][0]:"Bibliothèque de ressources";
+  else if(v==="outils")t="Boîte à outils";
+  else if(v==="fiches")t="Fiches de cours";
+  else if(v==="fiche")t=F[r.n-1]?F[r.n-1].t:"Fiches de cours";
+  else if(v==="simulateur")t="Simulateur d'appel";
+  else if(v==="sim"){const sc=SIMS.find(x=>x.id===r.id);t=sc?sc.t+" · Simulateur":"Simulateur d'appel";}
+  else if(v==="atelier")t=AT[r.id]?AT[r.id].t+" · Atelier d'écriture":"Atelier d'écriture";
+  else if(v==="examen")t="Examen final";
+  else if(v==="certificat")t=S.exam.pass?"Mon certificat":"Examen final";
+  else if(v==="app")t="Application et agenda";
+  else if(v==="admin")t="Tableau de suivi";
+  else if(v==="faq")t="Questions fréquentes";
+  else if(v==="confidentialite")t="Confidentialité";
+  else if(v==="404")t="Page introuvable";
+  return typo(t?t+" · Sales Tech Academy":"Sales Tech Academy · La formation SDR & BDR");
+}
+
+/* ---------- Pages d'aide : questions fréquentes, confidentialité, erreurs ---------- */
+function faqData(){
+  const where=CLOUD_ON?"Dans ton navigateur, sur cet appareil. Si tu crées un compte, elle est aussi enregistrée en ligne et te suit sur tous tes appareils : ordinateur, téléphone, tablette."
+    :!CAN_PWA?"Dans ton navigateur. Quand tu ouvres la formation dans Claude avec ton compte, elle y est aussi enregistrée et te suit sur tous tes appareils."
+    :"Dans ton navigateur, sur cet appareil. Rien n'est envoyé à un serveur. Garde le même navigateur pour suivre ta formation, et évite d'effacer les données du site.";
+  return [
+  ["La formation",[
+    ["À qui s'adresse la formation ?","À toute personne qui vise un premier poste de SDR ou de BDR dans une entreprise tech : étudiant ou jeune diplômé, personne en reconversion, commercial qui veut passer à la vente de logiciels. Aucune expérience de la vente n'est demandée."],
+    ["Combien de temps dure-t-elle ?","40 séances réparties en 8 modules de 5 séances. À raison d'une séance par jour ouvré, le parcours tient en 8 semaines. Une séance représente environ 4 heures de travail : des ressources choisies, puis des exercices pratiques."],
+    ["Je n'ai pas 4 heures par jour. Comment faire ?","Avance à ton rythme : chaque tâche se coche séparément et une séance peut s'étaler sur plusieurs jours. Dans <a href=\"#app\">Application et agenda</a>, choisis la durée des créneaux à bloquer dans ton agenda. Les week-ends ne cassent jamais ta série."],
+    ["Faut-il parler anglais ?","Les séances sont en français. Une partie des ressources est en anglais, comme dans le métier : beaucoup d'équipes sales en tech travaillent en anglais. Le parcours prévoit des exercices pour écrire et appeler en anglais, et le <a href=\"#glossaire\">glossaire</a> donne chaque terme dans les deux langues."],
+    ["Comment se passe une séance ?","Chaque séance fixe un objectif, propose des ressources (cours, articles, vidéos) puis des exercices à produire. Coche chaque tâche terminée : la séance est validée quand toutes ses tâches le sont. Le <a href=\"#simulateur\">simulateur d'appel</a> et l'<a href=\"#atelier\">atelier d'écriture</a> complètent les exercices."]]],
+  ["Ta progression",[
+    ["Où est enregistrée ma progression ?",where],
+    ["Puis-je suivre la formation hors ligne ?",CAN_PWA?"Oui. Installe l'application depuis <a href=\"#app\">Application et agenda</a> : séances, fiches, glossaire, simulateur, atelier et examen fonctionnent sans connexion. Seules les ressources externes demandent internet.":"Oui, depuis la version en ligne du site : installe-la comme une application depuis <a href=\"#app\">Application et agenda</a>. Seules les ressources externes demandent alors une connexion."],
+    ["Comment repartir de zéro ?","Ouvre le menu de ton profil, puis « Réinitialiser ma progression », et clique une seconde fois pour confirmer. Séances, XP, série, simulateur et examen sont effacés ; ton prénom et tes brouillons de l'atelier sont conservés."]]],
+  ["Certificat et emploi",[
+    ["Comment obtenir le certificat ?",`Valide au moins ${EX_MIN} séances pour débloquer l'<a href="#examen">examen final</a> : 45 minutes, avec un QCM, des mises en situation et un cold email à écrire. À partir de ${EX_PASS}/100, tu reçois ton certificat en PNG et en PDF, avec un numéro unique et un lien pour l'ajouter à ton profil LinkedIn.`],
+    ["Que vaut ce certificat ?","Il atteste que tu as suivi la formation et réussi son examen. Ce n'est ni un diplôme d'État ni une certification inscrite au RNCP. Face à un recruteur, il pèse avec ce qu'il prouve : tes exercices, tes résultats au simulateur et les certifications d'éditeurs reconnues que le parcours te fait passer."],
+    ["Quelles certifications d'éditeurs vais-je passer ?","HubSpot Academy, LinkedIn Sales Navigator, badges Trailhead de Salesforce, Apollo Academy… La page <a href=\"#certifications\">Certifications</a> indique pour chacune le temps à prévoir, le compte à créer et la séance où la passer."],
+    ["La formation m'aide-t-elle à trouver un poste ?","C'est son but. Le module 6 prépare ta candidature, le module 7 tes entretiens, jusqu'à la mise en situation d'appel. La <a href=\"#ressources-terrain\">bibliothèque</a> recense aussi des sites d'offres d'emploi et d'avis sur les équipes sales."]]]
+  ];
+}
+function vFaq(){
+  const D=faqData();
+  return band(`<p class="eyebrow">Aide</p><h1>Questions fréquentes</h1><p class="lede">Durée, rythme, progression, certificat : les réponses aux questions qu'on se pose avant et pendant la formation.</p>`,"var(--m3)")+
+  wrap(`<div class="article"><div class="faq">${D.map((g,gi)=>`<section aria-labelledby="faq-${gi}"><h2 id="faq-${gi}">${h(g[0])}</h2><div class="faql">${g[1].map(q=>`<details class="card faqi"><summary>${h(q[0])}${ic("down")}</summary><div class="faqa"><p>${q[1]}</p></div></details>`).join("")}</div></section>`).join("")}</div>
+   <aside class="card keybox" style="--c:var(--m3)"><h3>Une autre question ?</h3><p class="muted" style="font-size:14px">La recherche couvre les séances, les fiches, le glossaire et les ressources.</p><button class="btn sm" type="button" data-act="search">${ic("search")}Rechercher</button>${CONTACT?`<p class="muted" style="font-size:14px">Ou écris à <a href="mailto:${h(CONTACT)}">${h(CONTACT)}</a>.</p>`:""}<a class="linkbtn" href="#confidentialite">Données et confidentialité</a></aside></div>`);
+}
+function vPrivacy(){
+  return band(`<p class="eyebrow">Confidentialité</p><h1>Tes données, en clair</h1><p class="lede">Ce que la formation enregistre, où, et comment tout effacer. Pas de publicité, pas de mesure d'audience, pas de revente de données.</p>`,"var(--m2)")+
+  wrap(`<div class="article"><article class="prose">
+   <h2>Sur ton appareil</h2>
+   <p>Pour fonctionner, le site enregistre dans le stockage local de ton navigateur :</p>
+   <ul><li>ta progression : prénom, date de début, tâches et séances validées, XP, série de jours, résultats du quiz, du simulateur et de l'examen ;</li><li>tes brouillons de l'atelier d'écriture ;</li><li>ton choix de thème : clair, sombre ou système${CLOUD_ON?" ;</li><li>si tu te connectes, ta session de connexion":""}.</li></ul>
+   <p>Ce ne sont pas des cookies publicitaires : ces données servent uniquement au fonctionnement de la formation${CLOUD_ON?" et restent sur ton appareil, sauf si tu crées un compte":" et restent sur ton appareil"}.</p>
+   ${CLOUD_ON?`<h2>Si tu crées un compte</h2><p>Ton compte te permet de retrouver ta progression sur tous tes appareils. Il enregistre ton adresse email, ton prénom et ta progression dans une base de données hébergée par Supabase en Europe. Ton mot de passe n'est jamais stocké en clair.</p><p>PA, qui a conçu la formation, voit le prénom, l'email et l'avancement de chaque apprenant pour améliorer le parcours. Ces données ne sont ni vendues ni partagées.</p><p>Tu peux supprimer ton compte à tout moment depuis la fenêtre Mon compte : ta progression en ligne est effacée avec lui.</p>`:""}
+   ${CAN_PWA?"":`<h2>Dans Claude</h2><p>Quand tu ouvres la formation dans Claude avec ton compte, ta progression est aussi enregistrée sur ce compte, pour te suivre sur tous tes appareils.</p>`}
+   <h2>Hébergement et services tiers</h2>
+   <p>${CAN_PWA?"Le site est hébergé par GitHub Pages (GitHub, Inc.), qui traite les données techniques de connexion, comme l'adresse IP, pour afficher les pages. Les polices de caractères sont hébergées sur le site : aucune requête n'est envoyée à Google Fonts.":"La formation est affichée dans Claude. Les polices de caractères sont chargées depuis Google Fonts."}${CLOUD_ON?" Quand tu utilises ton compte, la bibliothèque de connexion est chargée depuis le réseau jsDelivr.":""}</p>
+   <p>Les ressources de la bibliothèque mènent vers d'autres sites (HubSpot, LinkedIn, Coursera…), qui appliquent leurs propres règles de confidentialité.</p>
+   <h2>Tes droits</h2>
+   <p>Tu peux effacer ta progression à tout moment depuis le menu de ton profil (« Réinitialiser ma progression »), ou toutes les données du site depuis les réglages de ton navigateur.${CLOUD_ON?" Ton compte se supprime depuis la fenêtre Mon compte.":""}${CONTACT?` Pour toute question sur tes données, écris à <a href="mailto:${h(CONTACT)}">${h(CONTACT)}</a>.`:""} Tu peux aussi adresser une réclamation à la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener">CNIL</a>.</p>
+   <p class="muted" style="font-size:14px">Dernière mise à jour : 16 novembre 2026.</p>
+  </article>
+  <aside class="card keybox" style="--c:var(--m2)"><h3>En bref</h3><ul><li>Aucune publicité ni mesure d'audience.</li><li>${CLOUD_ON?"Ta progression reste sur ton appareil, sauf si tu crées un compte.":"Ta progression reste sur ton appareil."}</li><li>Tu peux tout effacer à tout moment.</li></ul><a class="linkbtn" href="#faq">Questions fréquentes</a></aside></div>`);
+}
+function v404(){
+  return band(`<p class="eyebrow">Erreur 404</p><h1>Cette page n'existe pas</h1><p class="lede">Le lien est peut-être ancien ou incomplet. Le Moai, lui, n'a pas bougé : reprends depuis l'accueil ou lance une recherche.</p><div class="row" style="margin-top:6px"><a class="btn" href="#accueil">Retour à l'accueil${ic("right")}</a><button class="btn ghost" type="button" data-act="search">${ic("search")}Rechercher</button></div>`,"var(--m8)");
+}
+function vCrash(){
+  return band(`<p class="eyebrow">Erreur d'affichage</p><h1>Cette page n'a pas pu s'afficher</h1><p class="lede">Ta progression n'est pas touchée. Recharge la page ; si le problème revient, repars de l'accueil.</p><div class="row" style="margin-top:6px"><button class="btn" type="button" data-act="reload">${ic("reset")}Recharger la page</button><a class="btn ghost" href="#accueil">Retour à l'accueil</a></div>`,"var(--m8)");
+}
+
+/* ---------- Typographie française ----------
+   Apostrophes courbes et espaces insécables sur tout le texte affiché,
+   sans toucher aux données, aux champs de saisie ni au texte copié. */
+const TYPO_SKIP=/^(SCRIPT|STYLE|NOSCRIPT|TEXTAREA|INPUT|CODE|PRE|KBD)$/;
+function typo(s){return String(s)
+  .replace(/([A-Za-zÀ-ÿ])'(?=[A-Za-zÀ-ÿ])/g,"$1’")
+  .replace(/[  ]([?!;])/g," $1")
+  .replace(/ ([:»])/g," $1")
+  .replace(/« /g,"« ")
+  .replace(/(\d) (?=(?:%|€|h|min|pts?|XP)(?![\wÀ-ÿ]))/g,"$1 ")
+  .replace(/(\d h) (?=\d)/g,"$1 ");}
+function typoText(n){const v=n.data;if(v.length>1){const t=typo(v);if(t!==v)n.data=t;}}
+function typoTree(root){
+  if(root.nodeType===3){const p=root.parentNode;if(p&&!TYPO_SKIP.test(p.nodeName))typoText(root);return;}
+  if(root.nodeType!==1||TYPO_SKIP.test(root.nodeName))return;
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;
+  while((n=w.nextNode()))if(!TYPO_SKIP.test(n.parentNode.nodeName))typoText(n);
+  root.querySelectorAll("[placeholder]").forEach(el=>{const v=el.getAttribute("placeholder"),t=typo(v);if(t!==v)el.setAttribute("placeholder",t);});
+}
+const typoObs=typeof MutationObserver==="function"?new MutationObserver(rs=>{for(const r of rs)for(const n of r.addedNodes)typoTree(n);}):null;
+
+/* ---------- Fenêtres et tiroir : arrière-plan inerte, focus placé à l'ouverture et rendu à la fermeture ---------- */
+const FOCUSABLE='a[href],button:not([disabled]),input:not([disabled]):not([type="hidden"]),select:not([disabled]),textarea:not([disabled]),summary,[tabindex]:not([tabindex="-1"])';
+let dlgs=[];
+function dlgSync(){const on=dlgs.length>0;[document.querySelector(".skip"),document.querySelector("header.top"),$("view"),$("foot")].forEach(el=>{if(el)el.inert=on;});document.documentElement.classList.toggle("dlg-open",on);}
+function dlgWatch(recs){
+  recs.forEach(r=>{
+    r.addedNodes.forEach(n=>{if(n.nodeType!==1||!n.matches(".modal,.drawer"))return;
+      dlgs.push({el:n,back:document.activeElement});dlgSync();
+      setTimeout(()=>{if(!n.isConnected||n.contains(document.activeElement))return;const f=n.querySelector("[autofocus]")||n.querySelector(FOCUSABLE);if(f)try{f.focus({preventScroll:true});}catch(e){}},80);});
+    r.removedNodes.forEach(n=>{const i=dlgs.findIndex(d=>d.el===n);if(i<0)return;const d=dlgs.splice(i,1)[0];dlgSync();
+      const a=document.activeElement;if(dlgs.length||!d.back||!d.back.isConnected||(a&&a!==document.body))return;
+      /* Ouverte depuis un menu déroulant refermé entre-temps : le focus revient au bouton du menu */
+      const ni=d.back.closest(".ni:not(.open)"),t=ni&&ni.querySelector("[aria-expanded]")||d.back;try{t.focus({preventScroll:true});}catch(e){}});
+  });
+}
+function focusMain(){const t=$("view").querySelector("h1");if(t){t.setAttribute("tabindex","-1");t.focus();}else $("view").focus();}
+
 /* ---------- Routage ---------- */
 function route(){
   const r=(location.hash||"").slice(1);let m;
@@ -3417,8 +3594,10 @@ function route(){
   if((m=/^fiche-(\d+)$/.exec(r)))return {v:"fiche",n:+m[1]};
   if((m=/^ressources-([a-z]+)$/.exec(r)))return {v:"ressources",type:m[1]};
   if(r==="quiz"||r==="cartes")return {v:"glossaire",mode:r==="quiz"?"quiz":"cards"};
-  if(["parcours","certifications","glossaire","ressources","outils","fiches","accueil","decouvrir"].includes(r))return {v:r};
-  return {v:"accueil"};
+  if(["parcours","certifications","glossaire","ressources","outils","fiches","accueil","decouvrir","faq","confidentialite"].includes(r))return {v:r};
+  /* Retour de connexion (#access_token=…) ou adresse vide : accueil. Tout le reste : page introuvable. */
+  if(!r||/[=&]/.test(r))return {v:"accueil"};
+  return {v:"404"};
 }
 const view=$("view");let lastKey="";
 function render(top){
@@ -3426,19 +3605,23 @@ function render(top){
   if(top){if(r.v==="ressources")rType=r.type&&RTYPES[r.type]?r.type:"all";if(r.mode){gMode=r.mode;if(r.mode==="quiz")qz=null;}}
   if(r.v!=="sim"&&simRun)simRun=null;
   if(r.v!=="examen"&&exLast)exLast=null;
-  if(r.v==="seance")html=vSeance(r.n);else if(r.v==="parcours")html=vParcours(r.mod);else if(r.v==="module")html=vModule(r.mi);else if(r.v==="simulateur")html=vSimList();else if(r.v==="sim")html=vSim(r.id);else if(r.v==="atelier")html=vAtelier(r.id);else if(r.v==="examen")html=vExam();else if(r.v==="certificat")html=vCert();else if(r.v==="app")html=vApp();else if(r.v==="admin")html=vAdmin();else if(r.v==="certifications")html=vCertifs();else if(r.v==="glossaire")html=vGlossaire();else if(r.v==="ressources")html=vRessources();else if(r.v==="outils")html=vOutils();else if(r.v==="fiches")html=vFiches();else if(r.v==="fiche")html=vFiche(r.n);else if(r.v==="decouvrir")html=vLanding();else html=vAccueil();
+  try{if(r.v==="seance")html=vSeance(r.n);else if(r.v==="parcours")html=vParcours(r.mod);else if(r.v==="module")html=vModule(r.mi);else if(r.v==="simulateur")html=vSimList();else if(r.v==="sim")html=vSim(r.id);else if(r.v==="atelier")html=vAtelier(r.id);else if(r.v==="examen")html=vExam();else if(r.v==="certificat")html=vCert();else if(r.v==="app")html=vApp();else if(r.v==="admin")html=vAdmin();else if(r.v==="certifications")html=vCertifs();else if(r.v==="glossaire")html=vGlossaire();else if(r.v==="ressources")html=vRessources();else if(r.v==="outils")html=vOutils();else if(r.v==="fiches")html=vFiches();else if(r.v==="fiche")html=vFiche(r.n);else if(r.v==="faq")html=vFaq();else if(r.v==="confidentialite")html=vPrivacy();else if(r.v==="404")html=v404();else if(r.v==="decouvrir")html=vLanding();else html=vAccueil();}
+  catch(err){console.error(err);html=vCrash();}
   const ae=document.activeElement,focusId=ae&&ae.id;let sel=null;
   if(ae&&(ae.id==="g-search"||ae.id==="r-search"))sel=ae.selectionStart;
   const key=location.hash||"#";
   fxClear();
   const isLanding=r.v==="decouvrir"||(r.v==="accueil"&&!S.name);
   view.innerHTML=html;
+  document.title=pageTitle(r);
   view.classList.toggle("anim",isLanding&&!reduce&&!introDone);
   chrome(r.v);footer();
   if(focusId&&view.contains(document.getElementById(focusId))){const el=document.getElementById(focusId);try{el.focus({preventScroll:true});if(sel!=null&&el.setSelectionRange)el.setSelectionRange(sel,sel);}catch(e){}}
   if(top&&key!==lastKey){
     if(r.v==="parcours"&&r.mod!=null){const md=$("mod-"+r.mod);if(md)md.scrollIntoView({block:"start"});else window.scrollTo(0,0);}
     else window.scrollTo(0,0);
+    /* Changement de page : le focus va au titre, pour le clavier et les lecteurs d'écran */
+    if(lastKey&&!document.querySelector(".modal,.drawer")){const t=view.querySelector("h1");if(t){t.setAttribute("tabindex","-1");t.focus({preventScroll:true});}}
   }
   lastKey=key;
   if(isLanding)initLanding();
@@ -3555,6 +3738,8 @@ function buildIndex(){
   trainMenu().forEach(a=>it.push({g:"S'entraîner",t:a[1],s:a[2],href:"#"+a[0],ic:a[3],c:a[4]}));
   SIMS.forEach(sc=>it.push({g:"Simulateur d'appel",t:sc.t,s:sc.obj+" · "+LVL[sc.lvl],href:"#simulateur-"+sc.id,ic:"phone",c:"var(--m4)"}));
   AT_ORDER.forEach(id=>it.push({g:"Atelier d'écriture",t:AT[id].t,s:AT[id].s,href:"#atelier-"+id,ic:AT[id].i,c:AT[id].c}));
+  faqData().forEach(g=>g[1].forEach(q=>it.push({g:"Questions fréquentes",t:q[0],s:g[0],href:"#faq",ic:"info",c:"var(--m3)"})));
+  it.push({g:"Questions fréquentes",t:"Confidentialité et données",s:"Ce que le site enregistre et comment tout effacer",href:"#confidentialite",ic:"lock",c:"var(--m2)"});
   TOOLS_ORDER.forEach(id=>it.push({g:"Outils",t:TOOLS[id].t,s:TOOLS[id].d,tool:id,ic:TOOLS[id].i,c:"var(--m7)"}));
   C.forEach(c=>it.push({g:"Certifications",t:c[1],s:c[2]+" · "+c[4],href:"#certifications",ic:"award",c:"var(--m6)"}));
   G.forEach(g=>it.push({g:"Glossaire",t:g[0]+" · "+g[1],s:g[2],gloss:g[0],ic:"book",c:mc(Math.min(g[3],8)-1)}));
@@ -3624,13 +3809,16 @@ document.addEventListener("click",e=>{
   const ni=e.target.closest(".ni");
   if(!ni)closeMenus();
   if(!b)return;
+  if(b.classList.contains("skip")){e.preventDefault();focusMain();return;}
   // Menus déroulants
-  if(b.matches(".nl[aria-haspopup],.avatar")){const p=b.closest(".ni"),was=p.classList.contains("open");closeMenus();if(!was)p.classList.add("open");$("nav").classList.remove("quiet");return;}
+  if(b.matches(".nl[aria-haspopup],.avatar")){const p=b.closest(".ni"),was=p.classList.contains("open");closeMenus();if(!was){p.classList.add("open");b.setAttribute("aria-expanded","true");}$("nav").classList.remove("quiet");return;}
   if(b.closest(".dd")&&b.matches("a")){closeMenus();$("nav").classList.add("quiet");}
   if(b.id==="open-search"){openPalette();return;}
   if(b.id==="open-drawer"){openDrawer();return;}
   if(b.hasAttribute("data-theme-set")){applyTheme(b.getAttribute("data-theme-set"));document.querySelectorAll("[data-theme-set]").forEach(x=>x.setAttribute("aria-pressed",String(x===b||x.getAttribute("data-theme-set")===b.getAttribute("data-theme-set"))));return;}
   const act=b.getAttribute("data-act");
+  if(act==="search"){closeMenus();openPalette();return;}
+  if(act==="reload"){location.reload();return;}
   if(act==="profile"){closeMenus();openProfile();return;}
   if(act==="account"){closeMenus();openAccount(cUser?"account":(cMeta.uid?"login":"signup"));return;}
   if(act==="login"){closeMenus();openAccount("login");return;}
@@ -3697,7 +3885,7 @@ document.addEventListener("click",e=>{
 $("nav").addEventListener("mouseleave",()=>$("nav").classList.remove("quiet"));
 document.addEventListener("keydown",e=>{
   if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();openPalette();return;}
-  if(e.key==="Escape"){closeMenus();const d=$("drawer");if(d)d.remove();}
+  if(e.key==="Escape"){const o=document.querySelector(".ni.open");closeMenus();if(o&&o.contains(document.activeElement)){const t=o.querySelector("[aria-expanded]");if(t)t.focus();}const d=$("drawer");if(d)d.remove();}
   const tg=e.target;
   if(e.key==="/"&&!(tg&&/INPUT|SELECT|TEXTAREA/.test(tg.tagName))&&!document.querySelector(".modal")){e.preventDefault();openPalette();return;}
   if(route().v==="sim"&&simRun&&!simRun.wait&&!simRun.done&&/^[1-3]$/.test(e.key)&&!(tg&&/INPUT|SELECT|TEXTAREA/.test(tg.tagName))&&!document.querySelector(".modal")&&!e.metaKey&&!e.ctrlKey&&!e.altKey){e.preventDefault();simPick(+e.key-1);return;}
@@ -3705,8 +3893,13 @@ document.addEventListener("keydown",e=>{
   if(e.key===" "){if(tg&&tg.id==="fc")return;e.preventDefault();const fc=$("fc");if(fc){fcFlip=!fcFlip;fc.classList.toggle("flip",fcFlip);}}
   else if(e.key==="ArrowRight"){fcI++;fcFlip=false;render(false);}
 });
+document.addEventListener("focusout",e=>{const ni=e.target.closest&&e.target.closest(".ni.open");if(ni&&e.relatedTarget&&!ni.contains(e.relatedTarget)){ni.classList.remove("open");const t=ni.querySelector("[aria-expanded]");if(t)t.setAttribute("aria-expanded","false");}});
 window.addEventListener("hashchange",()=>{closeMenus();render(true);});
 
+document.documentElement.lang="fr";
+typoTree(document.body);
+if(typoObs)typoObs.observe(document.body,{childList:true,subtree:true});
+if(typeof MutationObserver==="function"){const dlgObs=new MutationObserver(dlgWatch);dlgObs.observe($("fx"),{childList:true});dlgObs.observe(document.body,{childList:true});}
 applyTheme(getTheme());
 loadLocal();
 exLoad();

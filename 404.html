@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page introuvable · Sales Tech Academy</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A1222">
+<link rel="icon" href="/sales-tech-academy/logo.svg" type="image/svg+xml">
+<script>
+/* Ancien lien sans « # » (ex. /sales-tech-academy/seance-3) : on le redirige vers la bonne page. */
+(function(){var m=/^\/sales-tech-academy\/([a-z0-9-]+)\/?$/.exec(location.pathname);if(m)location.replace("/sales-tech-academy/#"+m[1]);})();
+</script>
+<style>
+@font-face{font-family:'Bricolage Grotesque';font-weight:600 800;font-display:swap;src:url(/sales-tech-academy/fonts/bricolage-latin.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-weight:400 700;font-display:swap;src:url(/sales-tech-academy/fonts/inter-latin.woff2) format('woff2')}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 85% 110%,rgba(255,122,77,.35),rgba(10,18,34,0) 55%),#0A1222;color:#EEF2FA;font:400 17px/1.6 Inter,'Segoe UI',system-ui,sans-serif}
+main{max-width:560px;display:grid;gap:18px;justify-items:start}
+img{width:64px;height:64px;border-radius:17px;box-shadow:0 10px 30px rgba(255,122,77,.3)}
+p.k{margin:6px 0 0;font:700 13px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#FF7A4D}
+h1{margin:0;font:800 clamp(34px,7vw,52px)/1.05 'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;letter-spacing:-.02em}
+p{margin:0;color:#9AA7C0}
+a.btn{display:inline-flex;align-items:center;gap:8px;margin-top:6px;padding:13px 20px;border-radius:14px;background:#E04E26;color:#fff;font-weight:700;text-decoration:none}
+a.btn:hover{background:#C9431F}
+a.btn:focus-visible{outline:2px solid #FFC857;outline-offset:3px}
+</style>
+</head>
+<body>
+<main>
+  <img src="/sales-tech-academy/logo.svg" alt="">
+  <p class="k">Erreur 404</p>
+  <h1>Cette page n’existe pas</h1>
+  <p>Le lien est peut-être ancien ou incomplet. Le Moai, lui, n’a pas bougé&#8239;: reprends ta formation depuis l’accueil.</p>
+  <a class="btn" href="/sales-tech-academy/">Retour à Sales Tech Academy →</a>
+</main>
+</body>
+</html>

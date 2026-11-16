@@ -1,6 +1,6 @@
 # Activer les comptes utilisateurs
 
-Le site sait déjà gérer des comptes : inscription par e-mail et mot de passe, progression synchronisée sur tous les appareils, suppression de compte, et un tableau de suivi réservé à l'administrateur (`#admin`).
+Le site sait déjà gérer des comptes : inscription par email et mot de passe, progression synchronisée sur tous les appareils, suppression de compte, et un tableau de suivi réservé à l'administrateur (`#admin`).
 
 Ces fonctions restent cachées tant que le site n'est pas relié à une base de données. Ce guide explique comment créer cette base chez Supabase, gratuitement, en une vingtaine de minutes.
 
@@ -32,7 +32,7 @@ Ce script crée la table de progression et les règles de sécurité : chaque ap
 **Authentication > Sign In / Providers > Email**
 
 - Désactive **Confirm email**, puis enregistre.
-  Raison : sans serveur d'envoi d'e-mails à toi (voir l'étape 7), Supabase n'envoie des e-mails qu'aux membres de ton équipe, et au plus 2 par heure. Avec la confirmation activée, tes apprenants ne pourraient pas finir leur inscription.
+  Raison : sans serveur d'envoi d'emails à toi (voir l'étape 7), Supabase n'envoie des emails qu'aux membres de ton équipe, et au plus 2 par heure. Avec la confirmation activée, tes apprenants ne pourraient pas finir leur inscription.
 - Si l'option **Minimum password length** apparaît, mets **8** : c'est le minimum que le site demande déjà.
 
 **Authentication > URL Configuration**
@@ -56,7 +56,7 @@ Ensuite, deux possibilités :
 
 ## 5. Devenir administrateur (2 minutes)
 
-1. Sur le site, ouvre le menu de ton profil (ou le menu ☰ sur téléphone), clique sur **Sauvegarder ma progression** et crée ton compte avec ton adresse e-mail.
+1. Sur le site, ouvre le menu de ton profil (ou le menu ☰ sur téléphone), clique sur **Sauvegarder ma progression** et crée ton compte avec ton adresse email.
 2. Retourne dans **SQL Editor > New query**, colle ces lignes en remplaçant l'adresse par la tienne, puis clique sur **Run** :
 
    ```sql
@@ -67,7 +67,7 @@ Ensuite, deux possibilités :
 
 3. Recharge le site. Le menu de ton profil affiche maintenant **Tableau de suivi**, aussi accessible à l'adresse `https://pa-vp-master101.github.io/sales-tech-academy/#admin`.
 
-Crée ton compte **avant** d'ouvrir le site à tes apprenants : comme l'adresse e-mail n'est pas vérifiée (étape 3), cela garantit que personne ne peut s'inscrire avec la tienne.
+Crée ton compte **avant** d'ouvrir le site à tes apprenants : comme l'adresse email n'est pas vérifiée (étape 3), cela garantit que personne ne peut s'inscrire avec la tienne.
 
 ## 6. Ce que montre le tableau de suivi
 
@@ -75,13 +75,13 @@ Crée ton compte **avant** d'ouvrir le site à tes apprenants : comme l'adresse 
 - Le graphique **Où les apprenants décrochent** : combien d'apprenants ont terminé chaque séance, avec le plus gros décrochage mis en évidence.
 - La liste des apprenants, avec recherche, tri et export CSV (lisible directement dans Excel).
 
-## 7. Plus tard : envoyer de vrais e-mails (recommandé avant d'avoir beaucoup d'apprenants)
+## 7. Plus tard : envoyer de vrais emails (recommandé avant d'avoir beaucoup d'apprenants)
 
-Sans serveur d'e-mails, le lien **Mot de passe oublié** ne fonctionne que pour les membres de ton équipe Supabase. Pour qu'il marche pour tout le monde :
+Sans serveur d'emails, le lien **Mot de passe oublié** ne fonctionne que pour les membres de ton équipe Supabase. Pour qu'il marche pour tout le monde :
 
-1. Crée un compte chez un service d'envoi d'e-mails. [Brevo](https://www.brevo.com) (entreprise française) envoie 300 e-mails par jour dans son offre gratuite.
+1. Crée un compte chez un service d'envoi d'emails. [Brevo](https://www.brevo.com) (entreprise française) envoie 300 emails par jour dans son offre gratuite.
 2. Dans Supabase : **Authentication > Emails > SMTP Settings**, active **Enable custom SMTP** et recopie les réglages SMTP fournis par ce service (pour Brevo : `smtp-relay.brevo.com`, port `587`, ton identifiant SMTP et ta clé SMTP). L'expéditeur doit être une adresse que tu as validée chez ce service.
-3. Dans **Authentication > Rate Limits**, augmente si besoin le nombre d'e-mails par heure.
+3. Dans **Authentication > Rate Limits**, augmente si besoin le nombre d'emails par heure.
 4. Dans **Authentication > Emails > Templates**, traduis les modèles en français. Par exemple, pour **Reset password** :
    - Sujet : `Choisis ton nouveau mot de passe`
    - Message :
@@ -90,10 +90,10 @@ Sans serveur d'e-mails, le lien **Mot de passe oublié** ne fonctionne que pour 
      <h2>Nouveau mot de passe</h2>
      <p>Tu as demandé à changer le mot de passe de ton compte Sales Tech Academy.</p>
      <p><a href="{{ .ConfirmationURL }}">Choisir mon nouveau mot de passe</a></p>
-     <p>Si ce n'est pas toi, ignore cet e-mail : rien ne change.</p>
+     <p>Si ce n'est pas toi, ignore cet email : rien ne change.</p>
      ```
 
-   Et pour **Confirm signup**, si tu réactives la confirmation des e-mails :
+   Et pour **Confirm signup**, si tu réactives la confirmation des emails :
    - Sujet : `Confirme ton adresse`
    - Message :
 
@@ -103,11 +103,11 @@ Sans serveur d'e-mails, le lien **Mot de passe oublié** ne fonctionne que pour 
      <p><a href="{{ .ConfirmationURL }}">Activer mon compte</a></p>
      ```
 
-Une fois l'envoi d'e-mails configuré, tu peux réactiver **Confirm email** (étape 3) : le site sait déjà afficher l'écran « Confirme ton adresse ».
+Une fois l'envoi d'emails configuré, tu peux réactiver **Confirm email** (étape 3) : le site sait déjà afficher l'écran « Confirme ton adresse ».
 
 ## Bon à savoir
 
 - **Offre gratuite** : jusqu'à 50 000 utilisateurs actifs par mois et 500 Mo de base, largement assez pour la formation. Un projet gratuit est mis en pause après 7 jours sans aucune activité ; un bouton **Restore** le relance. Pendant une pause, le site continue de fonctionner et garde la progression dans le navigateur.
 - **Hors ligne** : la progression reste enregistrée sur l'appareil, puis part vers le compte dès le retour du réseau.
-- **Confidentialité** : la fenêtre de création de compte indique que tu vois le prénom, l'e-mail et l'avancement de chaque apprenant, et que chacun peut supprimer son compte à tout moment.
+- **Confidentialité** : la fenêtre de création de compte indique que tu vois le prénom, l'email et l'avancement de chaque apprenant, et que chacun peut supprimer son compte à tout moment.
 - **Plus tard, un accès payant** : les comptes en sont la première brique. Pour réserver vraiment une partie du contenu aux apprenants qui ont payé, il faudra en plus servir ce contenu depuis la base, réservé aux comptes autorisés, au lieu de l'inclure dans la page.
