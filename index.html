@@ -1024,6 +1024,128 @@ a.rcard:hover{border-color:color-mix(in srgb,var(--brand) 40%,var(--line));trans
 @media (min-width:921px){.foot .inner{grid-template-columns:1.3fr repeat(4,minmax(0,1fr))}}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* ---------- Comptes et synchronisation ---------- */
+.avatar{position:relative}
+.avatar.on::after{content:"";position:absolute;right:-3px;bottom:-3px;width:12px;height:12px;border-radius:50%;background:var(--teal);border:2px solid var(--night)}
+.sync.warn i{background:var(--flame-2)}
+.linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--brand);font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.linkbtn:hover{text-decoration-thickness:2px}
+.linkbtn:disabled{opacity:.5;cursor:default}
+.vh{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0!important}
+.mbox.accbox{width:min(440px,100%);max-height:calc(100dvh - 32px);overflow:auto}
+.acc{display:grid;gap:16px}
+.acc-h{display:grid;gap:6px}
+.acc-h .logo-mark{width:46px;height:46px;border-radius:14px;margin-bottom:4px}
+.acc-h .eyebrow{color:var(--brand)}
+.acc-h b{color:var(--ink)}
+.acc-f{display:grid;gap:14px}
+.acc .field small{font-weight:400;color:var(--muted);font-size:12.5px}
+.acc .field .input{width:100%}
+.pw{position:relative;display:flex}
+.pw .input{flex:1;padding-right:96px}
+.pwt{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:var(--surface-2);color:var(--muted);font:600 12.5px var(--body);padding:7px 10px;border-radius:8px;cursor:pointer}
+.pwt:hover{color:var(--ink)}
+.acc-forgot{justify-self:start;font-size:13.5px;margin-top:-4px}
+.acc .acc-go{width:100%;justify-self:stretch}
+.acc-go:disabled{opacity:.75;cursor:progress}
+.acc-sw{font-size:14px;text-align:center;color:var(--muted);margin:0}
+.acc-msg,.acc-keep,.acc-tip,.acc-priv{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.45;margin:0}
+.acc-msg{padding:11px 13px;border-radius:12px;color:var(--ink)}
+.mbox .acc-msg{color:var(--ink)}
+.acc-msg .ico{flex:none;width:18px;height:18px;margin-top:1px}
+.acc-msg.err{background:color-mix(in srgb,var(--m8) 9%,var(--surface));border:1px solid color-mix(in srgb,var(--m8) 35%,transparent)}
+.acc-msg.err .ico{color:var(--m8)}
+.acc-msg.ok,.acc-msg.info{background:color-mix(in srgb,var(--ok) 9%,var(--surface));border:1px solid color-mix(in srgb,var(--ok) 30%,transparent)}
+.acc-msg.ok .ico,.acc-msg.info .ico{color:var(--ok)}
+.acc-keep{padding:11px 13px;border-radius:12px;background:color-mix(in srgb,var(--teal) 12%,var(--surface))}
+.mbox .acc-keep{color:var(--ink)}
+.acc-keep .ico{flex:none;width:18px;height:18px;color:var(--ok);margin-top:1px}
+.acc-priv,.acc-tip{font-size:12.5px}
+.mbox .acc-priv,.mbox .acc-tip{color:var(--muted)}
+.acc-priv .ico,.acc-tip .ico{flex:none;width:16px;height:16px;margin-top:1px}
+.acc-tip .linkbtn{font-size:inherit}
+.acc-me{display:flex;gap:14px;align-items:center}
+.acc-me .avatar{width:54px;height:54px;font-size:21px;cursor:default;border-color:transparent;flex:none}
+.acc-me .avatar.on::after{border-color:var(--surface)}
+.acc-me div{display:grid;gap:2px;min-width:0}
+.acc-me b{font-family:var(--display);font-size:21px;line-height:1.2}
+.acc-me div span{color:var(--muted);font-size:14px;overflow-wrap:anywhere}
+.acc .exst{box-shadow:none;padding:13px 15px}
+.acc .mstats div{text-align:center}
+.acc .mstats b{font-size:clamp(16px,4.6vw,21px);white-space:nowrap}
+.acc-acts{display:flex;gap:10px;flex-wrap:wrap}
+.acc-acts .btn{flex:1 1 auto}
+.acc .acc-admin{border:1px solid var(--line);border-radius:14px;color:var(--ink)}
+.acc .acc-admin:hover{background:var(--surface-2)}
+.acc-del{border-top:1px solid var(--line);padding-top:14px;font-size:14px}
+.acc-del summary{cursor:pointer;color:var(--muted);font-weight:600;width:max-content}
+.acc-del summary:hover{color:var(--m8)}
+.acc-del p{margin:10px 0 12px;font-size:13.5px}
+.btn.acc-danger{--c:var(--m8)}
+.spin{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:spin .7s linear infinite;display:inline-block;flex:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation-duration:2s}}
+.hero-login{flex-basis:100%;margin:4px 0 0;color:var(--on-night-muted);font-size:14.5px}
+.hero-login .linkbtn{color:var(--on-night)}
+.pf-login{margin-right:auto;font-size:14px}
+/* Bandeau « Sauvegarde ta progression » */
+.nudge{position:relative;display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:18px 52px 18px 20px;border-radius:var(--r);border:1px solid color-mix(in srgb,var(--teal) 45%,var(--line));background:linear-gradient(120deg,color-mix(in srgb,var(--teal) 11%,var(--surface)),var(--surface) 70%);box-shadow:var(--shadow)}
+.nudge-i{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;flex:none;background:color-mix(in srgb,var(--teal) 20%,var(--surface));color:color-mix(in srgb,var(--teal) 70%,var(--ink))}
+.nudge-i .ico{width:22px;height:22px}
+.nudge-t{display:grid;gap:3px;flex:1 1 300px;min-width:0}
+.nudge-t b{font-size:16px}
+.nudge-t span{font-size:13.5px;color:var(--muted)}
+.nudge-a{display:flex;gap:8px;flex-wrap:wrap}
+.nudge-x{position:absolute;top:10px;right:10px;width:32px;height:32px;border-radius:9px;border:0;background:transparent;color:var(--muted);cursor:pointer;display:grid;place-items:center}
+.nudge-x:hover{background:var(--surface-2);color:var(--ink)}
+.nudge-x .ico{width:16px;height:16px}
+/* Tableau de suivi */
+.adm-gate{display:grid;gap:10px;justify-items:center;text-align:center;padding:40px 24px;max-width:560px;margin:0 auto;width:100%}
+.adm-gate .btn{justify-self:center;margin-top:6px}
+.adm-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.adm-bar p{font-size:13.5px;margin:0}
+.admk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.admk .card{padding:18px 20px;display:grid;gap:4px;align-content:start}
+.admk .k{font-size:13px;color:var(--muted);font-weight:600}
+.admk .v{font-family:var(--display);font-size:34px;font-weight:800;line-height:1.1;color:var(--ink)}
+.admk .s{font-size:12.5px;color:var(--muted)}
+.adm-drop{display:flex;gap:10px;align-items:flex-start;font-size:14px;margin:0 0 6px;color:var(--ink)}
+.adm-drop .ico{flex:none;width:18px;height:18px;color:var(--brand);margin-top:2px}
+.adm-ch{position:relative;margin-top:10px}
+.adm-chs{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-top:4px}
+.adm-ch svg{width:100%;min-width:620px;height:auto;display:block;overflow:visible}
+.adm-ch .grid line{stroke:var(--line);stroke-width:1}
+.adm-ch text{fill:var(--muted);font:500 11px var(--body)}
+.adm-ch text.dl{fill:var(--ink);font-weight:700;font-size:12px}
+.adm-ch .mk{stroke-width:3;stroke-linecap:round}
+.fb{fill:var(--m1);transition:opacity .15s}
+.fb.z{fill:color-mix(in srgb,var(--m1) 42%,var(--surface))}
+.fb.dr{fill:var(--brand)}
+.adm-ch svg.hov .fb:not(.hi){opacity:.45}
+.ftip{position:absolute;top:0;transform:translate(-50%,-100%);z-index:3;pointer-events:none;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow-lg);padding:10px 12px;display:grid;gap:3px;font-size:13px;width:max-content;max-width:min(300px,90vw)}
+.ftip b{font-size:13px}
+.ftip span{color:var(--muted)}
+.ftip .neg{color:var(--brand);font-weight:600}
+.adm-fun .sol{margin-top:12px}
+.adm-tools{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 14px}
+.adm-tools input{flex:1 1 260px}
+.adm-tools select{flex:0 0 auto}
+.adm-tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;-webkit-overflow-scrolling:touch}
+.admtbl{width:100%;border-collapse:collapse;min-width:780px;font-size:14px}
+.admtbl.small{min-width:0;font-size:13.5px;margin-top:10px}
+.admtbl th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;padding:10px 14px;background:var(--surface-2);border-bottom:1px solid var(--line);white-space:nowrap}
+.admtbl td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+.admtbl tbody tr:last-child td{border-bottom:0}
+.admtbl .who{display:grid;gap:1px}
+.admtbl .who span{color:var(--muted);font-size:12.5px;white-space:nowrap}
+.admtbl .num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.admtbl .bar{width:96px;margin-top:5px;height:6px}
+.admtbl .okc{color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,var(--surface));border-color:transparent}
+.admtbl .okc .ico{width:13px;height:13px}
+.adm-none{text-align:center;color:var(--muted);padding:28px 14px!important}
+@media (max-width:920px){.admk{grid-template-columns:repeat(2,minmax(0,1fr))}.admk .v{font-size:28px}}
+@media (max-width:560px){.nudge{padding:16px 46px 16px 16px}.nudge-a{width:100%}.nudge-a .btn{flex:1 1 auto}.admk .card{padding:14px 16px}}
 </style>
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
@@ -1037,6 +1159,7 @@ a.rcard:hover{border-color:color-mix(in srgb,var(--brand) 40%,var(--line));trans
 <meta property="og:title" content="Sales Tech Academy · Encaisse les non. Reste debout.">
 <meta property="og:description" content="La formation SDR &amp; BDR de PA : 40 séances pour décrocher ton premier poste de sales en tech.">
 <meta property="og:image" content="icon-512.png">
+<script src="config.js"></script>
 <style>html,body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
 </head>
 <body>
@@ -1611,6 +1734,8 @@ const TOOLS_ORDER=["grille","star","pitch","candidature","amis"];
 "use strict";
 /* ---------- Icônes ---------- */
 const I={
+ cloud:'<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>',
+ chart:'<path d="M18 20V10M12 20V4M6 20v-6"/>',
  home:'<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
  path:'<circle cx="6" cy="19" r="2.2"/><circle cx="18" cy="5" r="2.2"/><path d="M8.2 19H15a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h6.8"/>',
  award:'<circle cx="12" cy="9" r="6"/><path d="M8.6 14 7 22l5-3 5 3-1.6-8"/>',
@@ -2055,8 +2180,8 @@ const modDone=mi=>modSessions(mi).filter(sDone).length;
 
 /* ---------- Synchronisation avec le compte Claude (si disponible) ---------- */
 let dbRef=null,dirty=false,writing=false,again=false,wTimer=null,firstSnap=true,syncMode="local";
-function syncText(){return syncMode==="db"?"Progression enregistrée sur ton compte, sur tous tes appareils.":syncMode==="connecting"?"Connexion à ton compte…":"Progression enregistrée dans ce navigateur.";}
-function setSync(m){syncMode=m;const el=$("sync");if(!el)return;el.className="sync"+(m==="db"?" db":"");el.lastElementChild.textContent=syncText();}
+function syncText(){return syncMode==="db"?"Progression enregistrée sur ton compte, sur tous tes appareils.":syncMode==="connecting"?"Connexion à ton compte…":syncMode==="cloud"?"Progression synchronisée avec ton compte, sur tous tes appareils.":syncMode==="cloud-off"?"Hors ligne : tes changements sont gardés ici et partiront au retour du réseau.":syncMode==="cloud-err"?"Synchronisation momentanément indisponible : ta progression reste enregistrée ici.":syncMode==="cloud-out"?"Session expirée : reconnecte-toi pour synchroniser ta progression.":"Progression enregistrée dans ce navigateur.";}
+function setSync(m){syncMode=m;const el=$("sync");if(el){el.className="sync"+syncCls();el.lastElementChild.textContent=syncText();}const av=document.querySelector("#prof .avatar");if(av)av.classList.toggle("on",m==="cloud"||m==="db");if(acc&&acc.m.isConnected&&acc.mode==="account")accPaint();}
 function mergeState(a,b){const o=norm(b);
   Object.keys(a.done).forEach(k=>{if(!o.done[k]||a.done[k]<o.done[k])o.done[k]=a.done[k];});
   Object.keys(a.log).forEach(k=>{o.log[k]=Math.max(o.log[k]||0,a.log[k]);});
@@ -2103,7 +2228,439 @@ function initDb(){
     });
   }).catch(()=>{});
 }
-function commit(){dirty=true;saveLocal();queueWrite();}
+function commit(){dirty=true;saveLocal();queueWrite();cDirty();}
+
+/* ---------- Comptes utilisateurs et synchronisation (site en ligne, Supabase) ----------
+   Actif seulement si config.js fournit l'URL du projet et la clé publique. Sinon, rien ne change :
+   la progression reste dans le navigateur. La bibliothèque n'est chargée que si elle sert. */
+const CL=window.STA_CLOUD||{};
+const CLOUD_ON=!!document.querySelector('link[rel="manifest"]')&&/^https:\/\/[a-z0-9.-]+(:\d+)?\/?$/i.test(CL.url||"")&&typeof CL.key==="string"&&CL.key.length>20;
+const SB_SRC="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js",SB_SRI="sha384-TcHRA3zBbn+Lexh5n+Oil4guNPOS3rjNDpGRAN46u/s/mB2IZ50ceC6TYDU2yvgK";
+const AUTH_KEY="sta-auth",CMKEY="sta-cloud-v1",NUDGE_DAYS=14;
+let sb=null,sbP=null,cUser=null,cAdmin=null,cPushing=false,cAgain=false,cTimer=null,cRetry=null,cTry=0,cLastPull=0,cWelcome=false,acc=null;
+let cMeta=(()=>{try{return JSON.parse(localStorage.getItem(CMKEY)||"null")||{};}catch(e){return {};}})();
+function cmSave(){try{localStorage.setItem(CMKEY,JSON.stringify(cMeta));}catch(e){}}
+function hasSession(){try{return !!localStorage.getItem(AUTH_KEY);}catch(e){return false;}}
+const hasProgress=o=>Object.keys(o.done).length>0||o.exam.att>0||Object.keys(o.sim).length>0||Object.keys(o.known).length>0;
+const authBase=()=>location.origin+location.pathname;
+const syncCls=()=>syncMode==="db"||syncMode==="cloud"?" db":syncMode.indexOf("cloud-")===0?" warn":"";
+
+function sbLoad(){
+  if(sb)return Promise.resolve(sb);
+  if(sbP)return sbP;
+  sbP=new Promise((res,rej)=>{
+    const make=()=>{try{
+      sb=window.supabase.createClient(CL.url.replace(/\/$/,""),CL.key,{auth:{flowType:"implicit",persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storageKey:AUTH_KEY}});
+      sb.auth.onAuthStateChange((ev,ses)=>{setTimeout(()=>cAuth(ev,ses),0);});
+      res(sb);}catch(e){sb=null;sbP=null;rej(e);}};
+    if(window.supabase&&window.supabase.createClient){make();return;}
+    const s=document.createElement("script");s.src=SB_SRC;s.integrity=SB_SRI;s.crossOrigin="anonymous";s.async=true;
+    s.onload=make;s.onerror=()=>{s.remove();sbP=null;rej(new Error("offline"));};
+    document.head.appendChild(s);
+  });
+  return sbP;
+}
+function cAuth(ev,ses){
+  const u=ses&&ses.user||null;
+  if(ev==="PASSWORD_RECOVERY"){cSetUser(u);openAccount("newpw");return;}
+  if(ev==="SIGNED_OUT"){cGone();return;}
+  if(ev==="TOKEN_REFRESHED")return;
+  if(ev==="USER_UPDATED"){if(u&&cUser&&u.id===cUser.id)cUser=u;return;}
+  cSetUser(u);
+}
+/* Session terminée sans passer par « Se déconnecter » : expirée, révoquée, ou compte supprimé ailleurs */
+function cGone(){
+  if(!cUser){if(syncMode==="connecting")setSync(cMeta.uid?"cloud-out":"local");return;}
+  cUser=null;cAdmin=null;setSync(cMeta.uid?"cloud-out":"local");render(false);
+}
+function cSetUser(u){
+  if(!u){if(cUser)cGone();else if(syncMode==="connecting")setSync(cMeta.uid?"cloud-out":"local");return;}
+  if(cUser&&cUser.id===u.id){cUser=u;return;}
+  const first=cMeta.uid!==u.id;
+  cUser=u;cAdmin=null;
+  if(first)cMeta={uid:u.id,synced:null,dirty:true,nudge:cMeta.nudge};
+  cMeta.email=u.email||"";cmSave();
+  setSync("connecting");render(false);
+  cPull();
+  sb.rpc("is_admin").then(r=>{cAdmin=!r.error&&r.data===true;chrome(route().v);if(route().v==="admin")render(false);if(acc&&acc.m.isConnected&&acc.mode==="account")accPaint();},()=>{cAdmin=false;});
+}
+/* Lecture du compte. Changements locaux en attente : on fusionne. Sinon, le compte fait foi. */
+async function cPull(){
+  if(!cUser)return;
+  const uid=cUser.id;cLastPull=Date.now();
+  let r;try{r=await sb.from("progress").select("data,updated_at").eq("user_id",uid).maybeSingle();}catch(e){r={error:e};}
+  if(!cUser||cUser.id!==uid)return;
+  if(r.error){cFail(r.error);return;}
+  const row=r.data;
+  if(!row){
+    if(hasProgress(S)||S.name||S.start){cMeta.dirty=true;cmSave();await cPush();}
+    else{cMeta.dirty=false;cmSave();cOk();}
+    cHello(false);return;
+  }
+  const remote=norm(row.data);
+  if(cMeta.dirty&&cMeta.synced&&row.updated_at===cMeta.synced){
+    await cPush();
+  }else if(cMeta.dirty){
+    const merged=cMeta.synced?mergeState(remote,S):mergeState(S,remote),changed=canon(merged)!==canon(S);
+    S=merged;saveLocal();
+    if(changed)render(false);
+    if(canon(merged)!==canon(remote))await cPush();
+    else{cMeta.dirty=false;cMeta.synced=row.updated_at;cMeta.at=Date.now();cmSave();cOk();}
+  }else if(row.updated_at!==cMeta.synced){
+    S=remote;saveLocal();cMeta.synced=row.updated_at;cMeta.at=Date.now();cmSave();cOk();render(false);
+  }else{cMeta.at=Date.now();cmSave();cOk();}
+  cHello(true);
+}
+function cRow(uid){
+  const days=Object.keys(S.log).filter(active).sort();
+  return {user_id:uid,name:(S.name||"").slice(0,40),data:JSON.parse(JSON.stringify(S)),sessions_done:doneSessions(),xp:xp(),exam_best:S.exam.best||0,exam_passed:!!S.exam.pass,last_active:days.length?days[days.length-1]:null};
+}
+async function cPush(){
+  clearTimeout(cTimer);cTimer=null;
+  if(!cUser)return;
+  if(cPushing){cAgain=true;return;}
+  cPushing=true;const uid=cUser.id;
+  try{
+    const cur=await sb.from("progress").select("data,updated_at").eq("user_id",uid).maybeSingle();
+    if(cur.error)throw cur.error;
+    if(!cUser||cUser.id!==uid)return;
+    if(cur.data&&cur.data.updated_at!==cMeta.synced){const m=mergeState(norm(cur.data.data),S);if(canon(m)!==canon(S)){S=m;saveLocal();render(false);}}
+    const sent=canon(S);
+    const w=await sb.from("progress").upsert(cRow(uid),{onConflict:"user_id"}).select("updated_at").single();
+    if(w.error)throw w.error;
+    if(!cUser||cUser.id!==uid)return;
+    cMeta.synced=w.data.updated_at;cMeta.at=Date.now();
+    if(canon(S)===sent&&!cAgain)cMeta.dirty=false;
+    cmSave();cOk();
+  }catch(e){cFail(e);}
+  finally{cPushing=false;if(cAgain){cAgain=false;if(cUser&&cMeta.dirty)await cPush();}}
+}
+function cOk(){clearTimeout(cRetry);cRetry=null;cTry=0;setSync("cloud");}
+function cFail(e){
+  const net=!navigator.onLine||!e||e.status===0||/fetch|network|load failed|offline/i.test(String(e&&e.message||e));
+  if(!net)console.warn("Synchronisation du compte :",e);
+  setSync(net?"cloud-off":"cloud-err");
+  if(!cRetry){const wait=Math.min(120000,5000*Math.pow(2,cTry++));cRetry=setTimeout(()=>{cRetry=null;if(!cUser)return;if(cMeta.dirty)cPush();else cPull();},wait);}
+}
+/* Appelée par commit() : chaque changement part vers le compte, regroupé toutes les 1,2 s */
+function cDirty(){
+  if(!CLOUD_ON||!cMeta.uid)return;
+  cMeta.dirty=true;cmSave();
+  if(cUser){clearTimeout(cTimer);cTimer=setTimeout(cPush,1200);}
+}
+function cRefresh(){
+  if(!cUser||cPushing)return;
+  if(cMeta.dirty){if(!cTimer)cPush();return;}
+  if(Date.now()-cLastPull<15000)return;
+  cPull();
+}
+function cHello(had){
+  if(!cWelcome)return;cWelcome=false;
+  if(route().v==="decouvrir")location.hash="accueil";else render(false);
+  const n=doneSessions();
+  toast(ic("check")+" "+(had&&n?"Connecté : ta progression est à jour ("+n+" séance"+(n>1?"s":"")+" terminée"+(n>1?"s":"")+").":"Connecté : ta progression est enregistrée sur ton compte."));
+}
+function cWipe(){
+  clearTimeout(cTimer);clearTimeout(cRetry);cTimer=cRetry=null;cUser=null;cAdmin=null;adm.L=null;adm.err=null;
+  S=norm({});exRun=null;try{localStorage.removeItem(KEY);localStorage.removeItem(EXKEY);}catch(e){}
+  cMeta={nudge:cMeta.nudge};cmSave();setSync("local");
+  if(location.hash==="#accueil"||!location.hash||location.hash==="#")render(true);else location.hash="accueil";
+}
+function cloudInit(){
+  if(!CLOUD_ON)return;
+  const hs=location.hash.slice(1);
+  if(/(^|&)(error_description|error_code)=/.test(hs)){
+    const code=new URLSearchParams(hs).get("error_code")||"";
+    history.replaceState(null,"",location.pathname+location.search+"#accueil");
+    setTimeout(()=>openAccount("login",{msg:{t:"err",x:code==="otp_expired"?"Ce lien a expiré ou a déjà servi. Connecte-toi, ou redemande un lien avec « Mot de passe oublié ».":"Ce lien n'a pas pu être utilisé. Connecte-toi, ou redemande un lien avec « Mot de passe oublié »."}}),400);
+  }
+  if(/(^|&)access_token=/.test(hs)||hasSession()){
+    setSync("connecting");
+    sbLoad().catch(()=>{if(syncMode==="connecting")setSync(cMeta.uid?"cloud-off":"local");});
+    setTimeout(()=>{if(syncMode==="connecting"&&!cUser)setSync(cMeta.uid?"cloud-off":"local");},12000);
+  }
+  document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")cRefresh();else if(cTimer)cPush();});
+  window.addEventListener("online",()=>{if(!cUser)return;cTry=0;clearTimeout(cRetry);cRetry=null;if(cMeta.dirty)cPush();else cPull();});
+  window.addEventListener("offline",()=>{if(cUser&&cMeta.dirty)setSync("cloud-off");});
+}
+
+/* ---------- Fenêtre « Mon compte » ---------- */
+const AUTH_ERR={invalid_credentials:"E-mail ou mot de passe incorrect.",email_not_confirmed:"Confirme d'abord ton adresse : clique sur le lien reçu par e-mail.",user_already_exists:"Un compte existe déjà avec cet e-mail : connecte-toi.",email_exists:"Un compte existe déjà avec cet e-mail : connecte-toi.",weak_password:"Mot de passe trop facile à deviner : 8 caractères au moins, mélange lettres et chiffres.",same_password:"Choisis un mot de passe différent de l'ancien.",email_address_invalid:"Cette adresse e-mail n'est pas acceptée. Vérifie-la.",validation_failed:"Vérifie l'adresse e-mail et le mot de passe.",over_email_send_rate_limit:"Trop d'e-mails envoyés d'un coup. Réessaie dans quelques minutes.",over_request_rate_limit:"Trop de tentatives. Patiente une minute avant de réessayer.",signup_disabled:"Les inscriptions sont fermées pour le moment.",email_provider_disabled:"Les inscriptions par e-mail sont fermées pour le moment.",session_not_found:"Ta session a expiré. Reconnecte-toi.",user_not_found:"Aucun compte n'existe avec cet e-mail."};
+function authMsg(e){
+  if(!e)return "";
+  if(!navigator.onLine||e.status===0||e.name==="AuthRetryableFetchError")return "Pas de connexion internet. Vérifie ton réseau et réessaie.";
+  if(e.code&&AUTH_ERR[e.code])return AUTH_ERR[e.code];
+  if(e.status===429)return AUTH_ERR.over_request_rate_limit;
+  if(e.status===422&&/password/i.test(e.message||""))return AUTH_ERR.weak_password;
+  return "Une erreur est survenue. Réessaie dans un instant.";
+}
+function agoTxt(ms){const s=Math.round((Date.now()-ms)/1000);if(s<60)return "à l'instant";const m=Math.round(s/60);if(m<60)return "il y a "+m+" min";const hh=Math.round(m/60);if(hh<24)return "il y a "+hh+" h";return "le "+fLong.format(new Date(ms));}
+function accMenu(){
+  if(!CLOUD_ON)return "";
+  if(cUser)return `<button class="dd-l" type="button" data-act="account" style="--c:var(--ok)"><span class="di">${ic("cloud")}</span><span><b>Mon compte</b><small>${h(cUser.email||"Connecté")}</small></span></button>`+(cAdmin?`<a class="dd-l" href="#admin" style="--c:var(--m1)"><span class="di">${ic("chart")}</span><span><b>Tableau de suivi</b><small>Inscrits, progression, décrochage</small></span></a>`:"");
+  if(syncMode==="connecting")return `<button class="dd-l" type="button" data-act="account" style="--c:var(--ok)"><span class="di">${ic("cloud")}</span><span><b>Mon compte</b><small>Connexion…</small></span></button>`;
+  return `<button class="dd-l" type="button" data-act="account" style="--c:var(--ok)"><span class="di">${ic("cloud")}</span><span><b>${cMeta.uid?"Me reconnecter":"Sauvegarder ma progression"}</b><small>${cMeta.uid?"Pour synchroniser ta progression":"Crée ton compte ou connecte-toi"}</small></span></button>`;
+}
+function cloudNudge(){
+  if(!CLOUD_ON||cUser||syncMode==="connecting"||!hasProgress(S))return "";
+  if(cMeta.nudge&&Date.now()-cMeta.nudge<NUDGE_DAYS*864e5)return "";
+  const back=!!cMeta.uid;
+  return `<section class="nudge" aria-label="Sauvegarde de ta progression"><span class="nudge-i">${ic("cloud")}</span><div class="nudge-t"><b>${back?"Reconnecte-toi pour synchroniser":"Ne perds pas ta progression"}</b><span>${back?"Ta session a expiré. Tes nouveaux changements sont gardés ici et rejoindront ton compte dès ta reconnexion.":"Elle est enregistrée dans ce navigateur seulement. Crée ton compte en 30 secondes pour la retrouver sur ton téléphone et ton ordinateur."}</span></div><div class="nudge-a">${back?`<button class="btn sm" type="button" data-act="login">Me reconnecter</button>`:`<button class="btn sm" type="button" data-act="account">Créer mon compte</button><button class="btn sec sm" type="button" data-act="login">J'ai déjà un compte</button>`}</div><button class="nudge-x" type="button" data-act="nudge-x" aria-label="Masquer ce message">${ic("x")}</button></section>`;
+}
+function openAccount(mode,o){
+  if(!CLOUD_ON)return;
+  o=o||{};closeMenus();
+  if(acc&&acc.m.isConnected)acc.close();
+  const md=modal('<div class="acc" id="acc"></div>',"accbox","Mon compte");
+  acc={m:md.m,close:md.close,mode:mode||(cUser?"account":"signup"),email:o.email||(cUser&&cUser.email)||cMeta.email||"",msg:o.msg||null,busy:false,arm:null,show:false,armT:null};
+  md.m.addEventListener("submit",accSubmit);
+  md.m.addEventListener("click",accClick);
+  accPaint(true);
+  if(!sb)sbLoad().catch(()=>{if(acc&&acc.m.isConnected&&!acc.msg){acc.msg={t:"err",x:"Impossible de joindre le service de comptes. Vérifie ta connexion internet."};accPaint();}});
+}
+function accPaint(focus){
+  if(!acc||!acc.m.isConnected)return;
+  if(acc.mode==="account"&&!cUser&&syncMode!=="connecting")acc.mode="login";
+  const box=acc.m.querySelector("#acc"),dl=box.querySelector("details"),wasOpen=dl&&dl.open,ae=document.activeElement,fa=ae&&box.contains(ae)&&ae.getAttribute("data-acct");
+  const keep=acc.painted===acc.mode?[...box.querySelectorAll("input[name]")].reduce((o,i)=>(o[i.name]=i.value,o),{}):null;
+  box.innerHTML=accHTML();acc.painted=acc.mode;
+  if(keep)box.querySelectorAll("input[name]").forEach(i=>{if(keep[i.name]!=null&&!i.readOnly)i.value=keep[i.name];});
+  const d2=box.querySelector("details");if(d2&&wasOpen)d2.open=true;
+  if(focus){const t=[...box.querySelectorAll("input:not([readonly])")].find(i=>!i.value)||box.querySelector("input:not([readonly])")||box.querySelector(".btn");if(t)setTimeout(()=>{try{t.focus({preventScroll:true});}catch(e){}},40);}
+  else if(fa){const t=box.querySelector(`[data-acct="${fa}"]`);if(t&&!t.disabled)t.focus({preventScroll:true});}
+}
+function accHTML(){
+  const a=acc,mode=a.mode,e=h(a.email),busy=a.busy;
+  const head=(eb,t,p)=>`<div class="acc-h"><span class="logo-mark" aria-hidden="true">${LOGO}</span><p class="eyebrow">${eb}</p><h2>${t}</h2>${p?`<p>${p}</p>`:""}</div>`;
+  const note=a.msg?`<p class="acc-msg ${a.msg.t}" role="${a.msg.t==="err"?"alert":"status"}">${ic(a.msg.t==="err"?"info":"check")}<span>${h(fr(a.msg.x))}</span></p>`:"";
+  const em=()=>`<label class="field" for="acc-email">Adresse e-mail<input class="input" id="acc-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required maxlength="254" value="${e}" placeholder="prenom@exemple.com"></label>`;
+  const pw=(lab,ac,hint)=>`<label class="field" for="acc-pw">${lab}<span class="pw"><input class="input" id="acc-pw" name="password" type="${a.show?"text":"password"}" autocomplete="${ac}" required maxlength="72"><button type="button" class="pwt" data-acct="show" aria-pressed="${a.show}" aria-label="${a.show?"Masquer":"Afficher"} le mot de passe">${a.show?"Masquer":"Afficher"}</button></span>${hint?`<small>${hint}</small>`:""}</label>`;
+  const go=(lab,wait)=>`<button class="btn acc-go" type="submit"${busy?" disabled":""}>${busy?`<span class="spin" aria-hidden="true"></span>${wait}`:lab+ic("right")}</button>`;
+  const sw=(txt,lab,m)=>`<p class="acc-sw">${txt?h(fr(txt))+" ":""}<button type="button" class="linkbtn" data-acc-mode="${m}">${lab}</button></p>`;
+  const priv=`<p class="acc-priv">${ic("lock")}<span>Ton e-mail sert à te connecter et à retrouver ta progression. PA, qui a conçu la formation, voit ton prénom, ton e-mail et ton avancement pour améliorer le parcours. Tu peux supprimer ton compte à tout moment.</span></p>`;
+  if(mode==="signup"){const dn=doneSessions(),x=xp();
+    return head("Mon compte","Crée ton compte","Ta progression te suit sur ton téléphone, ta tablette et ton ordinateur. Elle ne se perd plus, même si tu vides ton navigateur.")+
+     (hasProgress(S)?`<p class="acc-keep">${ic("check")}<span>Ce que tu as déjà fait ici (${dn} séance${dn>1?"s":""} terminée${dn>1?"s":""}, ${x} XP) sera enregistré sur ton compte.</span></p>`:"")+
+     `<form class="acc-f" id="acc-f" novalidate><label class="field" for="acc-name">Prénom<input class="input" id="acc-name" name="name" autocomplete="given-name" required maxlength="40" value="${h(S.name)}" placeholder="Ton prénom"></label>${em()}${pw("Mot de passe","new-password","8 caractères au moins.")}${note}${go("Créer mon compte","Création du compte…")}</form>`+sw("Déjà un compte ?","Se connecter","login")+priv;}
+  if(mode==="login")
+    return head("Mon compte","Connexion","Retrouve ta progression sur cet appareil.")+`<form class="acc-f" id="acc-f" novalidate>${em()}${pw("Mot de passe","current-password")}<button type="button" class="linkbtn acc-forgot" data-acc-mode="forgot">${fr("Mot de passe oublié ?")}</button>${note}${go("Se connecter","Connexion…")}</form>`+sw("Pas encore de compte ?","Créer un compte","signup");
+  if(mode==="forgot")
+    return head("Mot de passe oublié","Choisis un nouveau mot de passe","Indique l'adresse e-mail de ton compte : tu reçois un lien pour choisir un nouveau mot de passe.".replace(" :","&nbsp;:"))+`<form class="acc-f" id="acc-f" novalidate>${em()}${note}${go("Recevoir le lien","Envoi…")}</form>`+sw("","Retour à la connexion","login");
+  if(mode==="sent")
+    return head("Mot de passe oublié","Regarde ta boîte mail",`Si un compte existe pour <b>${e}</b>, un e-mail vient de partir. Clique sur le lien qu'il contient pour choisir ton nouveau mot de passe.`)+`<p class="acc-tip">${ic("info")}<span>Rien reçu d'ici quelques minutes&nbsp;? Regarde dans les courriers indésirables, puis réessaie.</span></p><button class="btn sec" type="button" data-acc-mode="login">Retour à la connexion</button>`;
+  if(mode==="check")
+    return head("Dernière étape","Confirme ton adresse",`Un e-mail vient de partir à <b>${e}</b>. Clique sur le lien qu'il contient&nbsp;: ton compte est activé et ta progression enregistrée.`)+`${note}<button class="btn acc-go" type="button" data-acc-mode="login">J'ai confirmé, je me connecte${ic("right")}</button><p class="acc-tip">${ic("info")}<span>Rien reçu&nbsp;? Regarde dans les courriers indésirables, ou <button type="button" class="linkbtn" data-acct="resend"${busy?" disabled":""}>renvoie l'e-mail</button>.</span></p>`;
+  if(mode==="newpw")
+    return head("Mot de passe oublié","Nouveau mot de passe",cUser&&cUser.email?`Pour le compte <b>${h(cUser.email)}</b>.`:"")+`<form class="acc-f" id="acc-f" novalidate>${cUser&&cUser.email?`<input class="vh" type="email" name="username" autocomplete="username" value="${h(cUser.email)}" readonly tabindex="-1" aria-hidden="true">`:""}${pw("Nouveau mot de passe","new-password","8 caractères au moins.")}${note}${go("Enregistrer le mot de passe","Enregistrement…")}</form>`;
+  /* account */
+  if(!cUser)return head("Mon compte","Connexion à ton compte…","")+`<p class="acc-tip"><span class="spin" aria-hidden="true"></span><span>Un instant, on compare ta progression avec ton compte.</span></p>`;
+  const st=syncMode,ini=(S.name||cUser.email||"?").trim().charAt(0).toUpperCase();
+  const status=st==="cloud"?`<div class="exst ok">${ic("check")}<div><b>Progression synchronisée</b><span>${cMeta.at?"Dernière synchronisation "+agoTxt(cMeta.at)+".":"Sur tous les appareils où tu es connecté."}</span></div></div>`
+    :st==="connecting"?`<div class="exst go">${ic("clock")}<div><b>Synchronisation en cours…</b><span>On compare ta progression avec ton compte.</span></div></div>`
+    :`<div class="exst go">${ic("info")}<div><b>${st==="cloud-off"?"Hors ligne":"Synchronisation en attente"}</b><span>Tes changements sont gardés sur cet appareil et partiront dès que possible.</span></div></div>`;
+  return `<div class="acc-me"><span class="avatar on" aria-hidden="true">${h(ini)}</span><div><b>${h(S.name||"Mon compte")}</b><span>${h(cUser.email||"")}</span></div></div>${status}
+   <div class="mstats"><div><b>${doneSessions()}/${TOTAL}</b><span>séances</span></div><div><b style="color:var(--xp)">${xp()}</b><span>XP</span></div><div><b>${S.exam.pass?S.exam.pass.s+"/100":"À passer"}</b><span>examen</span></div></div>
+   ${note}
+   <div class="acc-acts"><button class="btn sec sm" type="button" data-acct="sync"${busy?" disabled":""}>${ic("reset")}Synchroniser maintenant</button><button class="btn sec sm" type="button" data-acct="out"${busy?" disabled":""}>${a.arm==="out"?"Me déconnecter quand même":"Se déconnecter"}</button></div>
+   ${cAdmin?`<a class="dd-l acc-admin" href="#admin" data-close="1" style="--c:var(--m1)"><span class="di">${ic("chart")}</span><span><b>Tableau de suivi des apprenants</b><small>Inscrits, progression, décrochage</small></span></a>`:""}
+   <details class="acc-del"${a.arm==="del"?" open":""}><summary>Supprimer mon compte</summary><p>Ton compte et ta progression enregistrée en ligne seront effacés définitivement, ainsi que la copie de cet appareil. Cette action ne peut pas être annulée.</p><button class="btn sm acc-danger" type="button" data-acct="del"${busy?" disabled":""}>${a.arm==="del"?"Confirmer la suppression définitive":"Supprimer mon compte"}</button></details>`;
+}
+function accClick(e){
+  const b=e.target.closest("button");if(!b||!acc)return;
+  const md=b.getAttribute("data-acc-mode");
+  if(md){const em=acc.m.querySelector("#acc-email");if(em)acc.email=em.value.trim();acc.mode=md;acc.msg=null;acc.arm=null;acc.show=false;accPaint(true);return;}
+  const a=b.getAttribute("data-acct");if(!a)return;
+  if(a==="show"){acc.show=!acc.show;const i=acc.m.querySelector("#acc-pw");if(i){i.type=acc.show?"text":"password";b.textContent=acc.show?"Masquer":"Afficher";b.setAttribute("aria-pressed",String(acc.show));b.setAttribute("aria-label",(acc.show?"Masquer":"Afficher")+" le mot de passe");i.focus();}return;}
+  if(a==="sync"){accSync();return;}
+  if(a==="out"){accOut();return;}
+  if(a==="del"){accDel();return;}
+  if(a==="resend"){accResend();return;}
+}
+async function accSubmit(e){
+  e.preventDefault();if(!acc||acc.busy)return;
+  const f=e.target,inp=n=>f.querySelector(`[name="${n}"]`),val=n=>{const i=inp(n);return i?i.value:"";};
+  const mode=acc.mode,hasEm=!!inp("email"),email=val("email").trim().toLowerCase(),pw=val("password"),name=val("name").trim();
+  if(hasEm)acc.email=email;
+  const bad=(x,sel)=>{acc.busy=false;acc.msg={t:"err",x};accPaint();const i=acc.m.querySelector(sel)||acc.m.querySelector("#acc-pw");if(i)i.focus();};
+  if(mode==="signup"&&!name)return bad("Indique ton prénom.","#acc-name");
+  if(hasEm&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))return bad("Indique une adresse e-mail valide.","#acc-email");
+  if((mode==="signup"||mode==="newpw")&&pw.length<8)return bad("Ton mot de passe doit faire 8 caractères au moins.","#acc-pw");
+  if(mode==="login"&&!pw)return bad("Indique ton mot de passe.","#acc-pw");
+  acc.busy=true;acc.msg=null;accPaint();
+  let client;try{client=await sbLoad();}catch(err){return bad("Impossible de joindre le service de comptes. Vérifie ta connexion internet.","#acc-email");}
+  try{
+    if(mode==="signup"){
+      const r=await client.auth.signUp({email,password:pw,options:{data:{name},emailRedirectTo:authBase()}});
+      if(r.error)throw r.error;
+      S.name=name.slice(0,40);saveLocal();
+      if(r.data&&r.data.session){acc.busy=false;acc.close();if(route().v==="decouvrir")location.hash="accueil";else render(false);toast(ic("check")+" Compte créé : ta progression est enregistrée sur ton compte.");}
+      else{acc.busy=false;acc.mode="check";accPaint(true);}
+      return;}
+    if(mode==="login"){
+      const r=await client.auth.signInWithPassword({email,password:pw});
+      if(r.error)throw r.error;
+      cWelcome=true;acc.busy=false;acc.close();return;}
+    if(mode==="forgot"){
+      const r=await client.auth.resetPasswordForEmail(email,{redirectTo:authBase()});
+      if(r.error)throw r.error;
+      acc.busy=false;acc.mode="sent";accPaint(true);return;}
+    if(mode==="newpw"){
+      const r=await client.auth.updateUser({password:pw});
+      if(r.error)throw r.error;
+      acc.busy=false;acc.close();toast(ic("check")+" Mot de passe modifié. Tu es connecté.");return;}
+  }catch(err){
+    if(mode==="signup"&&err&&(err.code==="user_already_exists"||err.code==="email_exists")){acc.mode="login";acc.busy=false;acc.msg={t:"err",x:AUTH_ERR.user_already_exists};accPaint(true);return;}
+    bad(authMsg(err),mode==="login"&&err&&err.code==="invalid_credentials"?"#acc-pw":"#acc-email");
+  }
+}
+async function accSync(){
+  if(!acc||acc.busy||!cUser)return;
+  acc.busy=true;acc.msg=null;accPaint();
+  if(cMeta.dirty)await cPush();else await cPull();
+  if(!acc)return;acc.busy=false;
+  acc.msg=syncMode==="cloud"?{t:"ok",x:"Tout est à jour."}:{t:"err",x:"La synchronisation n'a pas abouti. Tes changements restent sur cet appareil : réessaie dans un moment."};
+  accPaint();
+}
+async function accOut(){
+  if(!acc||acc.busy)return;
+  if(cMeta.dirty&&acc.arm!=="out"){
+    acc.busy=true;acc.msg={t:"info",x:"Envoi de tes derniers changements…"};accPaint();
+    await cPush();acc.busy=false;
+    if(cMeta.dirty){acc.arm="out";acc.msg={t:"err",x:"Tes derniers changements n'ont pas pu partir (pas de réseau ?). Si tu te déconnectes maintenant, ils seront perdus."};accPaint();return;}
+  }
+  acc.busy=true;accPaint();
+  const c=sb;cUser=null;cAdmin=null;
+  try{await c.auth.signOut({scope:"local"});}catch(err){}
+  if(acc)acc.close();acc=null;cWipe();toast("Tu es déconnecté. Ta progression t'attend sur ton compte.");
+}
+async function accDel(){
+  if(!acc||acc.busy||!cUser)return;
+  if(acc.arm!=="del"){acc.arm="del";acc.msg=null;accPaint();clearTimeout(acc.armT);acc.armT=setTimeout(()=>{if(acc&&acc.arm==="del"){acc.arm=null;accPaint();}},8000);return;}
+  clearTimeout(acc.armT);acc.busy=true;acc.msg=null;accPaint();
+  let r;try{r=await sb.rpc("delete_me");}catch(err){r={error:err};}
+  if(r.error){if(!acc)return;acc.busy=false;acc.arm=null;acc.msg={t:"err",x:"La suppression n'a pas abouti. Vérifie ta connexion internet et réessaie."};accPaint();return;}
+  const c=sb;cUser=null;cAdmin=null;
+  try{await c.auth.signOut({scope:"local"});}catch(err){}
+  if(acc)acc.close();acc=null;cWipe();toast("Ton compte et ta progression en ligne sont supprimés.");
+}
+async function accResend(){
+  if(!acc||acc.busy)return;
+  acc.busy=true;acc.msg=null;accPaint();
+  let r;try{const c=await sbLoad();r=await c.auth.resend({type:"signup",email:acc.email,options:{emailRedirectTo:authBase()}});}catch(err){r={error:err};}
+  if(!acc)return;acc.busy=false;acc.msg=r.error?{t:"err",x:authMsg(r.error)}:{t:"ok",x:"E-mail renvoyé à "+acc.email+"."};accPaint();
+}
+
+/* ---------- Tableau de suivi (administrateur) ---------- */
+let adm={L:null,busy:false,err:null,at:0,sort:"act",q:"",steps:null};
+const fShort=new Intl.DateTimeFormat("fr-FR",{day:"numeric",month:"short",year:"numeric"});
+const fHM=new Intl.DateTimeFormat("fr-FR",{hour:"2-digit",minute:"2-digit"});
+async function admFetch(){
+  const out=[];
+  for(let from=0;from<100000;from+=1000){
+    const r=await sb.from("progress").select("user_id,email,name,data,xp,created_at,updated_at").order("created_at",{ascending:true}).range(from,from+999);
+    if(r.error)throw r.error;
+    out.push(...(r.data||[]));
+    if(!r.data||r.data.length<1000)break;
+  }
+  return out;
+}
+function admCompute(rows){
+  return rows.map(r=>{
+    const st=norm(r.data||{}),ses=SES.map(s=>s.k.every((_,i)=>st.done[tid(s.n,i)])),n=ses.filter(Boolean).length;
+    const days=Object.keys(st.log).filter(k=>st.log[k]>0).sort();
+    let reach=0;while(reach<TOTAL&&ses[reach])reach++;
+    return {name:String(r.name||st.name||"").trim(),email:r.email||"",created:r.created_at||"",last:days.length?days[days.length-1]:null,n,ses,reach,tasks:Object.keys(st.done).length,xp:r.xp||0,
+      sims:Object.values(st.sim).filter(x=>x&&x.b>=SIM_PASS).length,exBest:st.exam.best||0,exAtt:st.exam.att||0,pass:!!st.exam.pass};
+  });
+}
+function admLoad(){
+  if(adm.busy||!cUser||!cAdmin)return;
+  adm.busy=true;adm.err=null;if(route().v==="admin"&&adm.L){const b=document.querySelector('[data-adm="refresh"]');if(b){b.disabled=true;b.textContent="Actualisation…";}}
+  admFetch().then(rows=>{adm.L=admCompute(rows);adm.at=Date.now();},e=>{adm.err=e;console.warn("Tableau de suivi :",e);})
+  .then(()=>{adm.busy=false;if(route().v==="admin")render(false);});
+}
+const pctTxt=(a,b)=>b?Math.round(a/b*100)+" %":"0 %";
+function admSorted(){
+  const q=norm2(adm.q.trim());
+  const L=adm.L.filter(l=>!q||norm2(l.name+" "+l.email).includes(q));
+  const k=adm.sort,by={act:(a,b)=>(b.last||"").localeCompare(a.last||"")||b.created.localeCompare(a.created),new:(a,b)=>b.created.localeCompare(a.created),prog:(a,b)=>b.n-a.n||b.tasks-a.tasks,name:(a,b)=>a.name.localeCompare(b.name,"fr")};
+  return L.sort(by[k]||by.act);
+}
+function lastTxt(d){if(!d)return "Aucune";const n=Math.round((today()-parse(d))/864e5);return n<=0?"Aujourd'hui":n===1?"Hier":n<7?"Il y a "+n+" jours":fShort.format(parse(d));}
+function admRows(){
+  const L=admSorted();
+  if(!L.length)return `<tr><td colspan="7" class="adm-none">${adm.L.length?"Aucun apprenant ne correspond à ta recherche.":"Personne ne s'est encore inscrit. Les comptes apparaîtront ici dès la première inscription."}</td></tr>`;
+  return L.map(l=>`<tr><td><span class="who"><b>${h(l.name||"Sans prénom")}</b><span>${h(l.email)}</span></span></td><td class="num">${l.created?h(fShort.format(new Date(l.created))):""}</td><td class="num">${h(lastTxt(l.last))}</td><td class="num"><span>${l.n}/${TOTAL}</span>${bar(l.n/TOTAL,"var(--m1)")}</td><td class="num">${l.xp}</td><td class="num">${l.sims}/${SIMS.length}</td><td class="num">${l.pass?`<span class="chip okc">${ic("check")}${l.exBest}/100</span>`:l.exAtt?l.exBest+"/100":"Pas tenté"}</td></tr>`).join("");
+}
+function admTb(){const tb=$("adm-tb");if(tb)tb.innerHTML=admRows();const c=$("adm-count");if(c){const n=admSorted().length;c.textContent=n+" apprenant"+(n>1?"s":"");}}
+function admChart(steps,drop){
+  const W=840,H=250,pl=40,pr=6,pt=18,pb=40,n=steps.length,bw=(W-pl-pr)/n,max=Math.max(1,steps[0]);
+  const stepV=(()=>{const raw=max/4,p=Math.pow(10,Math.floor(Math.log10(raw))),m=raw/p;return Math.max(1,(m<=1?1:m<=2?2:m<=5?5:10)*p);})(),top=Math.ceil(max/stepV)*stepV;
+  const y=v=>pt+(H-pt-pb)*(1-v/top),base=y(0);
+  let g="";for(let v=0;v<=top+1e-9;v+=stepV){g+=`<line x1="${pl}" x2="${W-pr}" y1="${y(v).toFixed(1)}" y2="${y(v).toFixed(1)}"/><text x="${pl-8}" y="${(y(v)+4).toFixed(1)}" text-anchor="end">${Math.round(v)}</text>`;}
+  const path=(x,yy,w,hh)=>{if(hh<=0)return "";const r=Math.min(4,w/2,hh);return `M${x.toFixed(1)},${base.toFixed(1)}V${(yy+r).toFixed(1)}Q${x.toFixed(1)},${yy.toFixed(1)} ${(x+r).toFixed(1)},${yy.toFixed(1)}H${(x+w-r).toFixed(1)}Q${(x+w).toFixed(1)},${yy.toFixed(1)} ${(x+w).toFixed(1)},${(yy+r).toFixed(1)}V${base.toFixed(1)}Z`;};
+  let bars="",hits="",lab="";
+  steps.forEach((v,i)=>{const x=pl+i*bw+1,w=bw-2,yy=y(v);
+    bars+=`<path class="fb${i===0?" z":""}${drop&&drop.i===i?" dr":""}" data-i="${i}" d="${path(x,yy,w,base-yy)}"/>`;
+    hits+=`<rect data-hit="1" data-i="${i}" x="${(pl+i*bw).toFixed(1)}" y="${pt}" width="${bw.toFixed(1)}" height="${(base-pt+pb-16).toFixed(1)}" fill="transparent"/>`;});
+  lab+=`<text x="${(pl+bw/2).toFixed(1)}" y="${(base+16).toFixed(1)}" text-anchor="middle">Insc.</text>`;
+  M.forEach((m,mi)=>{const x0=pl+(1+mi*5)*bw+2,x1=pl+(6+mi*5)*bw-2;lab+=`<line class="mk" x1="${x0.toFixed(1)}" x2="${x1.toFixed(1)}" y1="${(base+7).toFixed(1)}" y2="${(base+7).toFixed(1)}" style="stroke:${mc(mi)}"/><text x="${((x0+x1)/2).toFixed(1)}" y="${(base+22).toFixed(1)}" text-anchor="middle">M${mi+1}</text>`;});
+  if(drop){const x=pl+drop.i*bw+bw/2,yy=y(steps[drop.i])-7;lab+=`<text class="dl" x="${x.toFixed(1)}" y="${yy.toFixed(1)}" text-anchor="middle">−${drop.d}</text>`;}
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Nombre d'apprenants ayant terminé chaque séance, de l'inscription à la séance ${TOTAL}"><g class="grid">${g}</g>${bars}${lab}<g class="hits">${hits}</g></svg>`;
+}
+function admTip(i){
+  const s=adm.steps,N=s[0];if(!s)return "";
+  if(i===0)return `<b>Inscrits</b><span>${N} apprenant${N>1?"s":""}</span>`;
+  const se=SES[i-1],d=s[i-1]-s[i];
+  return `<b>Séance ${i} · ${h(se.t)}</b><span>${s[i]} l'${s[i]>1?"ont":"a"} terminée, soit ${pctTxt(s[i],N)} des inscrits</span>${d>0?`<span class="neg">${d} de moins qu'à l'étape précédente</span>`:""}`;
+}
+function admHover(ch){
+  const tip=ch.querySelector(".ftip"),svg=ch.querySelector("svg");if(!tip||!svg)return;
+  const show=t=>{const i=+t.getAttribute("data-i");tip.innerHTML=admTip(i);tip.hidden=false;
+    const r=ch.getBoundingClientRect(),b=t.getBoundingClientRect(),w=tip.offsetWidth;let x=b.left+b.width/2-r.left;x=Math.max(w/2,Math.min(r.width-w/2,x));tip.style.left=x+"px";const bp=svg.querySelector(`.fb[data-i="${i}"]`),bt=bp&&bp.getBBox().height?bp.getBoundingClientRect().top:b.top+b.height*.8;tip.style.top=Math.max(-6,bt-r.top-10)+"px";
+    svg.classList.add("hov");svg.querySelectorAll(".fb.hi").forEach(e=>e.classList.remove("hi"));const p=svg.querySelector(`.fb[data-i="${i}"]`);if(p)p.classList.add("hi");};
+  const hide=()=>{tip.hidden=true;svg.classList.remove("hov");svg.querySelectorAll(".fb.hi").forEach(e=>e.classList.remove("hi"));};
+  svg.addEventListener("pointerover",e=>{const t=e.target.closest("[data-hit]");if(t)show(t);});
+  svg.addEventListener("pointerdown",e=>{const t=e.target.closest("[data-hit]");if(t)show(t);});
+  ch.addEventListener("pointerleave",hide);
+}
+function vAdmin(){
+  const top=band(`<p class="eyebrow">Espace administrateur</p><h1>Tableau de suivi</h1><p class="lede">Qui s'inscrit, qui progresse, et à quelle séance les apprenants décrochent.</p>`,"var(--m1)");
+  const gate=(icn,t,p,btn)=>top+wrap(`<div class="card adm-gate">${ic(icn,"width:30px;height:30px;color:var(--m1)")}<h3>${t}</h3>${p?`<p class="muted">${p}</p>`:""}${btn||""}</div>`);
+  if(!CLOUD_ON)return gate("lock","Comptes non activés","Les comptes utilisateurs ne sont pas encore activés sur cette version du site.");
+  if(!cUser)return syncMode==="connecting"?gate("clock","Connexion…",""):gate("lock","Réservé à l'administrateur","Connecte-toi avec le compte administrateur de la formation pour voir les inscrits et leur progression.",`<button class="btn" type="button" data-act="login">Se connecter${ic("right")}</button>`);
+  if(cAdmin===null)return gate("clock","Vérification de tes droits…","");
+  if(!cAdmin)return gate("lock","Page réservée","Cette page est réservée à l'administrateur de la formation.",`<a class="btn sec" href="#accueil">Retour à l'accueil</a>`);
+  if(!adm.L)return adm.err?gate("info","Chargement impossible","Les données n'ont pas pu être chargées. Vérifie ta connexion internet, puis réessaie.",`<button class="btn" type="button" data-adm="refresh">Réessayer</button>`):gate("clock","Chargement des apprenants…","");
+  const L=adm.L,N=L.length,d7=ymd(addDays(today(),-6)),since=Date.now()-7*864e5;
+  const new7=L.filter(l=>l.created&&new Date(l.created).getTime()>=since).length,act7=L.filter(l=>l.last&&l.last>=d7).length,started=L.filter(l=>l.tasks>0).length,fin=L.filter(l=>l.n===TOTAL).length;
+  const avg=N?L.reduce((a,l)=>a+l.n,0)/N:0,att=L.filter(l=>l.exAtt>0).length,pass=L.filter(l=>l.pass).length;
+  const steps=[N].concat(SES.map((_,i)=>L.filter(l=>l.ses[i]).length));adm.steps=steps;
+  let drop=null;for(let i=1;i<steps.length;i++){const d=steps[i-1]-steps[i];if(d>0&&(!drop||d>drop.d))drop={i,d,from:steps[i-1]};}
+  const kpi=(k,v,s)=>`<div class="card"><span class="k">${k}</span><span class="v num">${v}</span><span class="s">${h(s)}</span></div>`;
+  const dropTxt=!N?"Le graphique se remplira avec les premières inscriptions.":!drop?"Aucun décrochage pour l'instant : tous les inscrits avancent au même rythme.":drop.i===1?`Le plus gros décrochage a lieu dès le départ : <b>${drop.d}</b> inscrit${drop.d>1?"s":""} sur ${N} n'${drop.d>1?"ont":"a"} pas terminé la séance 1 (<b>${h(SES[0].t)}</b>).`:`Le plus gros décrochage se situe entre la séance ${drop.i-1} et la séance ${drop.i} (<b>${h(SES[drop.i-1].t)}</b>)&nbsp;: ${drop.d} apprenant${drop.d>1?"s":""} de moins, soit −${pctTxt(drop.d,drop.from)}.`;
+  const tbl=`<table class="admtbl small"><thead><tr><th>Étape</th><th>Apprenants</th><th>Part des inscrits</th><th>Écart</th></tr></thead><tbody>${steps.map((v,i)=>`<tr><td>${i?"Séance "+i+" · "+h(SES[i-1].t):"Inscrits"}</td><td class="num">${v}</td><td class="num">${pctTxt(v,N)}</td><td class="num">${i&&steps[i-1]-v>0?"−"+(steps[i-1]-v):""}</td></tr>`).join("")}</tbody></table>`;
+  return top+wrap(`<div class="adm-bar"><p class="muted">Données à jour à ${h(fHM.format(new Date(adm.at)))}</p><div class="row" style="gap:8px"><button class="btn sec sm" type="button" data-adm="refresh"${adm.busy?" disabled":""}>${ic("reset")}${adm.busy?"Actualisation…":"Actualiser"}</button><button class="btn sec sm" type="button" data-adm="csv"${N?"":" disabled"}>${ic("dl")}Exporter en CSV</button></div></div>
+   <section class="admk">${kpi("Inscrits",N,"+"+new7+" ces 7 derniers jours")}${kpi("Actifs sur 7 jours",act7,pctTxt(act7,N)+" des inscrits")}${kpi("Séances par apprenant",avg.toFixed(1).replace(".",","),started+" ont commencé · "+fin+" ont terminé")}${kpi("Examen réussi",pass,att+" ont tenté l'examen")}</section>
+   <section class="card adm-fun"><div class="chead"><h3>Où les apprenants décrochent</h3><span class="muted" style="font-size:13px">Nombre d'apprenants ayant terminé chaque séance</span></div><p class="adm-drop">${ic("info")}<span>${dropTxt}</span></p><div class="adm-ch" id="adm-ch"><div class="ftip" hidden></div><div class="adm-chs">${admChart(steps,drop)}</div></div><details class="sol"><summary>Voir les chiffres par séance</summary>${tbl}</details></section>
+   <section class="card"><div class="chead"><h3>Les apprenants</h3><span class="muted" id="adm-count" style="font-size:13px">${N} apprenant${N>1?"s":""}</span></div>
+    <div class="adm-tools"><label class="vh" for="adm-q">Rechercher</label><input class="input" type="search" id="adm-q" placeholder="Rechercher un prénom ou un e-mail" value="${h(adm.q)}" autocomplete="off"><label class="vh" for="adm-sort">Trier</label><select class="input" id="adm-sort">${[["act","Activité récente"],["new","Inscription récente"],["prog","Progression"],["name","Prénom"]].map(o=>`<option value="${o[0]}"${adm.sort===o[0]?" selected":""}>${o[1]}</option>`).join("")}</select></div>
+    <div class="adm-tw"><table class="admtbl"><thead><tr><th>Apprenant</th><th>Inscription</th><th>Dernière activité</th><th>Séances</th><th>XP</th><th>Appels réussis</th><th>Examen</th></tr></thead><tbody id="adm-tb">${admRows()}</tbody></table></div></section>`);
+}
+function admAfter(){
+  if(CLOUD_ON&&cUser&&cAdmin&&!adm.L&&!adm.busy&&!adm.err)admLoad();
+  const q=$("adm-q"),so=$("adm-sort"),ch=$("adm-ch");
+  if(q)q.oninput=()=>{adm.q=q.value;admTb();};
+  if(so)so.onchange=()=>{adm.sort=so.value;admTb();};
+  if(ch)admHover(ch);
+}
+function admCSV(){
+  const esc=v=>{v=String(v==null?"":v);if(/^[=+\-@\t\r]/.test(v))v="'"+v;return /[";\n\r]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;};
+  const head=["Prénom","E-mail","Inscription","Dernière activité","Séances terminées","Séances d'affilée depuis la 1","Tâches cochées","XP","Appels réussis","Meilleure note à l'examen","Examen réussi"];
+  const lines=[head.join(";")].concat(admSorted().map(l=>[l.name,l.email,l.created?l.created.slice(0,10):"",l.last||"",l.n,l.reach,l.tasks,l.xp,l.sims,l.exBest,l.pass?"oui":"non"].map(esc).join(";")));
+  return "﻿"+lines.join("\r\n")+"\r\n";
+}
+
 
 /* ---------- Thème ---------- */
 function getTheme(){try{return localStorage.getItem(TKEY)||"system";}catch(e){return "system";}}
@@ -2149,7 +2706,8 @@ function chrome(v){
     return `<div class="ni" data-ni="${n[0]}"><button class="nl" type="button" aria-haspopup="true"${ac}>${n[1]}${ic("down").replace('class="ico"','class="ico chev"')}</button>${dd}</div>`;}).join("");
   $("pills").innerHTML=`<span class="pill fl${lit?"":" off"}" title="Série de jours">${flame()}<span>${st}</span></span><span class="pill xp" title="Points d'expérience">${ic("bolt")}<span>${x}</span></span>`;
   const theme=getTheme(),ini=(S.name||"?").trim().charAt(0).toUpperCase()||"?";
-  $("prof").innerHTML=`<button class="avatar" type="button" aria-haspopup="true" aria-label="Mon profil">${h(ini)}</button><div class="dd"><div class="ddp"><div><b style="font-family:var(--display);font-size:17px">${S.name?h(S.name):"Invité"}</b><div class="muted" style="font-size:13px">${S.start?"Début le "+h(fLong.format(parse(S.start))):"Date de début non choisie"}</div></div>
+  $("prof").innerHTML=`<button class="avatar${syncMode==="cloud"||syncMode==="db"?" on":""}" type="button" aria-haspopup="true" aria-label="Mon profil${cUser?", connecté à ton compte":""}">${h(ini)}</button><div class="dd"><div class="ddp"><div><b style="font-family:var(--display);font-size:17px">${S.name?h(S.name):"Invité"}</b><div class="muted" style="font-size:13px">${S.start?"Début le "+h(fLong.format(parse(S.start))):"Date de début non choisie"}</div></div>
+   ${accMenu()}
    <div class="lvl"><div class="row" style="justify-content:space-between"><b>Niveau ${lv.i+1} · ${h(lv.name)}</b><span class="mono" style="font-size:12px;color:var(--xp)">${x} XP</span></div>${bar(lv.next?(x-lv.from)/(lv.to-lv.from):1,null,"xpb")}<small>${lv.next?(lv.to-x)+" XP avant « "+h(lv.next)+" »":"Niveau maximum atteint"}</small></div>
    <div><p class="dd-h" style="padding:0 0 6px">Thème</p><div class="seg" role="group" aria-label="Thème" style="width:100%">${[["system","Système"],["light","Clair"],["dark","Sombre"]].map(t=>`<button type="button" data-theme-set="${t[0]}" aria-pressed="${theme===t[0]}" style="flex:1">${t[1]}</button>`).join("")}</div></div>
    <button class="dd-l" type="button" data-act="profile"><span class="di">${ic("edit")}</span><span><b>Modifier mon profil</b><small>Prénom et date de début</small></span></button>
@@ -2171,7 +2729,7 @@ function openDrawer(){
   <details${curSection(route().v)==="entrainer"?" open":""}><summary>S'entraîner${ic("down").replace('class="ico"','class="ico chev"')}</summary><div>${trainMenu().map(a=>`<a class="dd-l" href="#${a[0]}" style="--c:${a[4]}"><span class="di">${ic(a[3])}</span><span><b>${a[1]}</b><small>${h(fr(a[2]))}</small></span></a>`).join("")}</div></details>
   <a class="solo" href="#certifications">Certifications</a>
   <details><summary>Ressources${ic("down").replace('class="ico"','class="ico chev"')}</summary><div>${Object.keys(RTYPES).map((k,i)=>`<a class="dd-l" href="#ressources${k==="all"?"":"-"+k}" style="--c:${mc(i)}"><span class="di">${ic("lib")}</span><span><b>${RTYPES[k][0]}</b><small>${countType(k)} ressources</small></span></a>`).join("")}</div></details>
-  <details><summary>Mon profil${ic("down").replace('class="ico"','class="ico chev"')}</summary><div style="gap:10px"><div class="lvl"><b>Niveau ${lv.i+1} · ${h(lv.name)}</b>${bar(lv.next?(xp()-lv.from)/(lv.to-lv.from):1,null,"xpb")}</div><div class="seg" role="group" aria-label="Thème">${[["system","Système"],["light","Clair"],["dark","Sombre"]].map(t=>`<button type="button" data-theme-set="${t[0]}" aria-pressed="${getTheme()===t[0]}">${t[1]}</button>`).join("")}</div><button class="dd-l" type="button" data-act="profile"><span class="di">${ic("edit")}</span><span><b>Modifier mon profil</b></span></button></div></details>
+  <details><summary>Mon profil${ic("down").replace('class="ico"','class="ico chev"')}</summary><div style="gap:10px"><div class="lvl"><b>Niveau ${lv.i+1} · ${h(lv.name)}</b>${bar(lv.next?(xp()-lv.from)/(lv.to-lv.from):1,null,"xpb")}</div><div class="seg" role="group" aria-label="Thème">${[["system","Système"],["light","Clair"],["dark","Sombre"]].map(t=>`<button type="button" data-theme-set="${t[0]}" aria-pressed="${getTheme()===t[0]}">${t[1]}</button>`).join("")}</div><button class="dd-l" type="button" data-act="profile"><span class="di">${ic("edit")}</span><span><b>Modifier mon profil</b></span></button>${accMenu()}</div></details>
   </div>`;
   document.body.appendChild(d);
   d.addEventListener("click",e=>{if(e.target===d||e.target.closest("[data-close-drawer]")||e.target.closest("a[href^='#']")||e.target.closest("[data-act]"))d.remove();});
@@ -2184,7 +2742,7 @@ function footer(){
   <div><h4>Apprendre</h4>${APPR.map(a=>`<a href="#${a[0]}">${a[1]}</a>`).join("")}</div>
   <div><h4>S'entraîner</h4><a href="#simulateur">Simulateur d'appel</a><a href="#atelier">Atelier d'écriture</a><a href="#examen">Examen final</a>${S.exam.pass?'<a href="#certificat">Mon certificat</a>':""}<a href="#app">Application et agenda</a></div>
   <div><h4>Aller plus loin</h4><a href="#decouvrir">Découvrir la formation</a><a href="#certifications">Certifications</a><a href="#ressources">Bibliothèque</a><a href="#ressources-media">Vidéos et podcasts</a><a href="#ressources-terrain">Offres d'emploi</a></div>
-  <div class="base"><span class="sync${syncMode==="db"?" db":""}" id="sync"><i></i><span>${syncText()}</span></span><span>Ressources vérifiées en novembre 2026.</span></div></div>`;
+  <div class="base"><span class="sync${syncCls()}" id="sync"><i></i><span>${syncText()}</span></span><span>Ressources vérifiées en novembre 2026.</span></div></div>`;
 }
 
 /* ---------- Vues ---------- */
@@ -2203,7 +2761,7 @@ function vLanding(){
     <h1>${W("Encaisse",.1)} ${W("les",.2)} ${W("non.",.3)}<br><em>${W("Reste",.62)} ${W("debout.",.74)}</em></h1>
     <p class="obj">Comme un Moai face à <span class="tw" id="tw">${h(OBJ[0])}</span><span class="caret" aria-hidden="true"></span></p>
     <p class="lede">Décroche ton premier poste de sales en tech en 8 semaines. 40 séances de 4 heures, un programme clé en main fait de cours, de certifications reconnues et de pratique terrain. Tu coches, tu progresses, et tu arrives en entretien avec des preuves.</p>
-    <div class="hero-ctas">${go("Commencer la formation",1)}<a class="btn ghost" href="#parcours">Voir le programme</a></div>
+    <div class="hero-ctas">${go("Commencer la formation",1)}<a class="btn ghost" href="#parcours">Voir le programme</a>${CLOUD_ON&&!cUser?`<p class="hero-login">Déjà inscrit&nbsp;? <button type="button" class="linkbtn" data-act="login">Se connecter</button></p>`:""}</div>
     <div class="trust"><span>${ic("check")}40 séances clés en main</span><span>${ic("check")}Certifications reconnues</span><span>${ic("check")}En français, avec l'anglais du métier</span><span>${ic("check")}Simulateur d'appel et certificat</span></div></div>
    <div class="call" id="call" data-sp="you" aria-label="Simulation d'appel de prospection"><div class="call-top"><span class="call-av" id="call-av" style="background:${c0.g}">${c0.av}</span><div><b id="call-n">${h(c0.n)}</b><small id="call-co">${h(c0.co)}</small></div><span class="live"><i></i><span id="call-t">${live?"00:00":mmss(c0.l[c0.l.length-1][1])}</span></span></div>
     <div class="wave" aria-hidden="true">${waves}</div>
@@ -2266,7 +2824,7 @@ function vAccueil(){
   const hook=HOOKS[Math.floor(t.getTime()/864e5)%HOOKS.length];
   return `<section class="band dash gutter" style="--c:${nxt?mc(nxt.m):"var(--hot)"}">${BMOAI}<div class="inner"><div class="hello"><div><p class="eyebrow">${h(fLong.format(t).replace(/^./,c=>c.toUpperCase()))}</p><h1>${hello} ${h(S.name)}</h1><p>${nxt?"Séance "+nxt.n+" sur "+TOTAL+" · "+Math.round(dn/TOTAL*100)+" % du programme":"Programme terminé"}</p></div><p class="hook">${MINI}<span>${h(hook)}</span></p></div>
    ${cont}<article class="streakc${lit?" lit":""}"><div class="streak-top">${flame("bigflame")}<div><div class="sn-big num">${st}</div><div style="font-size:14px;color:var(--on-night-muted)">jour${st>1?"s":""} de suite</div></div></div><p style="font-size:14px;font-weight:600">${h(msg)}</p><div class="week">${week}</div><p style="font-size:12.5px;color:var(--on-night-muted)">Record : <b class="num" style="color:var(--on-night)">${best}</b> jour${best>1?"s":""}. Le week-end ne casse pas la série.</p></article></div></section>`+
-   wrap(`<section class="stats">${stats}</section>${trainDash()}
+   wrap(`${cloudNudge()}<section class="stats">${stats}</section>${trainDash()}
    <section class="two"><article class="card"><div class="chead"><h3>Ta formation en un coup d'œil</h3><a class="chip" href="#parcours">Voir le parcours</a></div><div class="glance">${glance}</div><div class="legend"><span><i style="background:var(--m1)"></i>Terminée</span><span><i style="background:color-mix(in srgb,var(--m1) 30%,var(--surface))"></i>Commencée</span><span><i style="background:var(--surface-2);border:1px solid var(--line)"></i>À venir</span></div></article>
    <article class="card"><div class="chead"><h3 style="text-transform:capitalize">${h(fMonth.format(first))}</h3><div class="row" style="gap:6px"><button class="iconbtn" type="button" data-cal="-1" aria-label="Mois précédent">${ic("left")}</button><button class="iconbtn" type="button" data-cal="1" aria-label="Mois suivant">${ic("right")}</button></div></div><div class="cal">${cells}</div><div class="legend"><span><i style="background:linear-gradient(160deg,var(--flame-2),var(--flame))"></i>Jour travaillé</span><span><i style="background:var(--surface-2);border:1px solid var(--line)"></i>Séance prévue</span></div><div class="startset"><label for="start-date">Début de la formation</label><input class="input" type="date" id="start-date" value="${h(startVal)}" style="padding:7px 10px"><button class="btn sec sm" type="button" id="start-save">${S.start?"Modifier":"Enregistrer"}</button></div></article></section>
    <section class="card"><div class="chead"><h3>Ton ahu</h3><span class="muted" style="font-size:13px">Chaque tâche taille ton Moai. Termine les 5 séances d'un module : il se dresse, reçoit sa coiffe et ouvre les yeux.</span></div><div class="ahu">${ahu}</div></section>`);
@@ -2809,7 +3367,7 @@ function vApp(){
   else install=instEvt?`<div class="exst go">${ic("app")}<div><b>Ton navigateur peut installer l'application</b><span>Un clic, et Sales Tech Academy s'ajoute à ton écran d'accueil ou à tes applications.</span></div><button class="btn" type="button" data-app="install">${ic("dl")}Installer</button></div>`:"";
   const how=[["iPhone et iPad","Dans Safari, touche le bouton Partager, puis « Sur l'écran d'accueil ».",IS_IOS],["Android","Dans Chrome, ouvre le menu ⋮, puis « Installer l'application » ou « Ajouter à l'écran d'accueil ».",IS_ANDROID],["Ordinateur","Dans Chrome ou Edge, clique sur l'icône d'installation à droite de la barre d'adresse.",!IS_IOS&&!IS_ANDROID]];
   return band(`<p class="eyebrow">Application et agenda</p><h1>Ta formation dans ta poche</h1><p class="lede">Installe Sales Tech Academy comme une application, même hors ligne, et bloque tes 40 séances dans ton agenda pour ne jamais casser ta série.</p>`,"var(--m1)")+
-  wrap(`<section class="appgrid"><div class="card"><div class="chead"><h3>${ic("app","vertical-align:-4px;margin-right:6px")}Installer l'application</h3></div>${install}<ol class="howto">${how.map(x=>`<li class="${x[2]?"me":""}"><b>${x[0]}${x[2]?' <span class="chip">Ton appareil</span>':""}</b><span>${h(fr(x[1]))}</span></li>`).join("")}</ol><ul class="exrules"><li>${ic("check")}Séances, fiches, glossaire, simulateur, atelier et examen fonctionnent hors ligne.</li><li>${ic("info")}Les ressources externes (cours, vidéos, certifications) demandent une connexion.</li><li>${ic("check")}Ta progression reste sur l'appareil, comme sur le site.</li></ul></div>
+  wrap(`<section class="appgrid"><div class="card"><div class="chead"><h3>${ic("app","vertical-align:-4px;margin-right:6px")}Installer l'application</h3></div>${install}<ol class="howto">${how.map(x=>`<li class="${x[2]?"me":""}"><b>${x[0]}${x[2]?' <span class="chip">Ton appareil</span>':""}</b><span>${h(fr(x[1]))}</span></li>`).join("")}</ol><ul class="exrules"><li>${ic("check")}Séances, fiches, glossaire, simulateur, atelier et examen fonctionnent hors ligne.</li><li>${ic("info")}Les ressources externes (cours, vidéos, certifications) demandent une connexion.</li><li>${ic("check")}${CLOUD_ON?(cUser?"Ta progression se synchronise avec ton compte dès que tu es en ligne.":"Ta progression reste sur l'appareil. Crée un compte pour la retrouver partout."):"Ta progression reste sur l'appareil, comme sur le site."}</li></ul></div>
    <div class="card"><div class="chead"><h3>${ic("cal","vertical-align:-4px;margin-right:6px")}Exporter vers ton agenda</h3></div><div class="icsf"><label class="field" for="ics-from">À partir du<input class="input" type="date" id="ics-from" data-ics="from" value="${h(p.from)}"></label><label class="field" for="ics-time">Heure de début<input class="input" type="time" id="ics-time" data-ics="time" value="${h(p.time)}" step="900"></label><label class="field" for="ics-dur">Durée<select class="input" id="ics-dur" data-ics="dur">${[[240,"4 heures"],[180,"3 heures"],[120,"2 heures"],[90,"1 h 30"],[60,"1 heure"]].map(o=>`<option value="${o[0]}"${p.dur===o[0]?" selected":""}>${o[1]}</option>`).join("")}</select></label><label class="field" for="ics-alarm">Rappel<select class="input" id="ics-alarm" data-ics="alarm">${[[15,"15 minutes avant"],[60,"1 heure avant"],[0,"Aucun rappel"]].map(o=>`<option value="${o[0]}"${p.alarm===o[0]?" selected":""}>${o[1]}</option>`).join("")}</select></label></div>
     <label class="tick"><input type="checkbox" data-ics="all"${p.all?" checked":""}> Inclure les séances déjà terminées</label>
     <p class="icssum">${plan.length?`<b>${plan.length} séance${plan.length>1?"s":""}</b>, du ${h(fLong.format(first.day))} au ${h(fLong.format(last.day))} ${last.day.getFullYear()}, du lundi au vendredi.`:"Toutes les séances sont terminées."}</p>
@@ -2855,7 +3413,7 @@ function route(){
   if((m=/^module-([1-8])$/.exec(r)))return {v:"module",mi:+m[1]-1};
   if((m=/^simulateur-([a-z]+)$/.exec(r)))return {v:"sim",id:m[1]};
   if((m=/^atelier(?:-([a-z]+))?$/.exec(r)))return {v:"atelier",id:AT[m[1]]?m[1]:AT_ORDER[0]};
-  if(["simulateur","examen","certificat","app"].includes(r))return {v:r};
+  if(["simulateur","examen","certificat","app","admin"].includes(r))return {v:r};
   if((m=/^fiche-(\d+)$/.exec(r)))return {v:"fiche",n:+m[1]};
   if((m=/^ressources-([a-z]+)$/.exec(r)))return {v:"ressources",type:m[1]};
   if(r==="quiz"||r==="cartes")return {v:"glossaire",mode:r==="quiz"?"quiz":"cards"};
@@ -2868,7 +3426,7 @@ function render(top){
   if(top){if(r.v==="ressources")rType=r.type&&RTYPES[r.type]?r.type:"all";if(r.mode){gMode=r.mode;if(r.mode==="quiz")qz=null;}}
   if(r.v!=="sim"&&simRun)simRun=null;
   if(r.v!=="examen"&&exLast)exLast=null;
-  if(r.v==="seance")html=vSeance(r.n);else if(r.v==="parcours")html=vParcours(r.mod);else if(r.v==="module")html=vModule(r.mi);else if(r.v==="simulateur")html=vSimList();else if(r.v==="sim")html=vSim(r.id);else if(r.v==="atelier")html=vAtelier(r.id);else if(r.v==="examen")html=vExam();else if(r.v==="certificat")html=vCert();else if(r.v==="app")html=vApp();else if(r.v==="certifications")html=vCertifs();else if(r.v==="glossaire")html=vGlossaire();else if(r.v==="ressources")html=vRessources();else if(r.v==="outils")html=vOutils();else if(r.v==="fiches")html=vFiches();else if(r.v==="fiche")html=vFiche(r.n);else if(r.v==="decouvrir")html=vLanding();else html=vAccueil();
+  if(r.v==="seance")html=vSeance(r.n);else if(r.v==="parcours")html=vParcours(r.mod);else if(r.v==="module")html=vModule(r.mi);else if(r.v==="simulateur")html=vSimList();else if(r.v==="sim")html=vSim(r.id);else if(r.v==="atelier")html=vAtelier(r.id);else if(r.v==="examen")html=vExam();else if(r.v==="certificat")html=vCert();else if(r.v==="app")html=vApp();else if(r.v==="admin")html=vAdmin();else if(r.v==="certifications")html=vCertifs();else if(r.v==="glossaire")html=vGlossaire();else if(r.v==="ressources")html=vRessources();else if(r.v==="outils")html=vOutils();else if(r.v==="fiches")html=vFiches();else if(r.v==="fiche")html=vFiche(r.n);else if(r.v==="decouvrir")html=vLanding();else html=vAccueil();
   const ae=document.activeElement,focusId=ae&&ae.id;let sel=null;
   if(ae&&(ae.id==="g-search"||ae.id==="r-search"))sel=ae.selectionStart;
   const key=location.hash||"#";
@@ -2894,6 +3452,7 @@ function afterRender(r){
   const sc=$("sim-script");if(sc)sc.scrollTop=sc.scrollHeight;
   if(exRun&&!exTick)exTimer();
   if($("cert-cv"))paintCert();
+  if(r.v==="admin")admAfter();
 }
 function exTimer(){clearInterval(exTick);exTick=null;if(!exRun)return;
   exTick=setInterval(()=>{if(!exRun){clearInterval(exTick);exTick=null;return;}const l=exLeft(),t=$("ex-t");
@@ -2978,8 +3537,8 @@ function openProfile(){
   const {m,close}=modal(`<form id="pf" style="display:grid;gap:16px"><div style="display:grid;gap:6px">${isNew?`<span class="logo-mark" style="width:52px;height:52px;border-radius:15px">${LOGO}</span>`:""}<p class="eyebrow" style="color:var(--brand)">${isNew?"Bienvenue sur l'île":"Mon profil"}</p><h2>${isNew?"On commence par toi":"Modifier mon profil"}</h2><p>${isNew?"Toute grande carrière commence dans une carrière. ":""}Ton prénom personnalise le tableau de bord. La date de début planifie tes 40 séances sur les jours ouvrés.</p></div>
    <label class="field" for="pf-name">Prénom<input class="input" id="pf-name" required maxlength="40" autocomplete="given-name" value="${h(S.name)}" placeholder="Ton prénom"></label>
    <label class="field" for="pf-start">Date de début<input class="input" id="pf-start" type="date" value="${h(S.start||ymd(nextMonday()))}"></label>
-   <p style="font-size:13px">Ta progression reste dans ce navigateur. Si tu ouvres le site connecté à ton compte Claude, elle te suit sur tous tes appareils.</p>
-   <div class="row" style="justify-content:flex-end"><button class="btn sec" type="button" data-close="1">Annuler</button><button class="btn" type="submit">${isNew?"C'est parti":"Enregistrer"}${ic("right")}</button></div></form>`,"","Profil");
+   <p style="font-size:13px">${CLOUD_ON?(cUser?"Ta progression est enregistrée sur ton compte et te suit sur tous tes appareils.":"Ta progression reste dans ce navigateur. Crée un compte quand tu veux pour la retrouver sur tous tes appareils."):"Ta progression reste dans ce navigateur. Si tu ouvres le site connecté à ton compte Claude, elle te suit sur tous tes appareils."}</p>
+   <div class="row" style="justify-content:flex-end">${isNew&&CLOUD_ON&&!cUser?`<button type="button" class="linkbtn pf-login" data-act="login" data-close="1">J'ai déjà un compte</button>`:""}<button class="btn sec" type="button" data-close="1">Annuler</button><button class="btn" type="submit">${isNew?"C'est parti":"Enregistrer"}${ic("right")}</button></div></form>`,"","Profil");
   const inp=m.querySelector("#pf-name");setTimeout(()=>inp.focus(),50);
   m.querySelector("#pf").addEventListener("submit",e=>{e.preventDefault();const n=inp.value.trim();if(!n){inp.focus();return;}
     S.name=n.slice(0,40);const sv=m.querySelector("#pf-start").value;if(/^\d{4}-\d{2}-\d{2}$/.test(sv)){S.start=sv;const sd=parse(sv);calY=sd.getFullYear();calM=sd.getMonth();}
@@ -3073,6 +3632,11 @@ document.addEventListener("click",e=>{
   if(b.hasAttribute("data-theme-set")){applyTheme(b.getAttribute("data-theme-set"));document.querySelectorAll("[data-theme-set]").forEach(x=>x.setAttribute("aria-pressed",String(x===b||x.getAttribute("data-theme-set")===b.getAttribute("data-theme-set"))));return;}
   const act=b.getAttribute("data-act");
   if(act==="profile"){closeMenus();openProfile();return;}
+  if(act==="account"){closeMenus();openAccount(cUser?"account":(cMeta.uid?"login":"signup"));return;}
+  if(act==="login"){closeMenus();openAccount("login");return;}
+  if(act==="nudge-x"){cMeta.nudge=Date.now();cmSave();render(false);return;}
+  if(b.hasAttribute("data-adm")){const a=b.getAttribute("data-adm");if(a==="refresh"){adm.err=null;admLoad();if(!adm.L)render(false);return;}
+    if(a==="csv"&&adm.L){saveFile("apprenants-sales-tech-academy-"+ymd(today())+".csv",new Blob([admCSV()],{type:"text/csv;charset=utf-8"})).then(ok=>{if(ok)toast(ic("dl")+" Liste des apprenants exportée");});}return;}
   if(act==="reset"){if(!resetArm){resetArm=true;clearTimeout(resetTimer);resetTimer=setTimeout(()=>{resetArm=false;chrome(route().v);},5000);chrome(route().v);$("prof").classList.add("open");return;}
     resetArm=false;const name=S.name;S=norm({name,tools:S.tools});commit();closeMenus();render(true);toast("Progression réinitialisée");return;}
   if(b.hasAttribute("data-cal")){calM+=+b.getAttribute("data-cal");if(calM<0){calM=11;calY--;}if(calM>11){calM=0;calY++;}render(false);return;}
@@ -3147,6 +3711,7 @@ applyTheme(getTheme());
 loadLocal();
 exLoad();
 if(S.start){const s0=parse(S.start);if(s0>today()){calY=s0.getFullYear();calM=s0.getMonth();}}
+cloudInit();
 render(true);
 if(exRun&&exLeft()<=0)exFinish();
 initDb();
