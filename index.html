@@ -1176,6 +1176,8 @@ h1[tabindex="-1"]:focus,#view:focus{outline:none}
 .faqa{padding:0 20px 18px;color:var(--muted);font-size:15px;line-height:1.65;display:grid;gap:10px}
 .faqa a{color:var(--brand)}
 .keybox .linkbtn{font-size:14px;justify-self:start}
+.prose table.legal th{width:40%;font-weight:600;color:var(--muted)}
+.prose table.legal td{overflow-wrap:anywhere}
 @media (prefers-reduced-motion:reduce){.skip,.faqi summary .ico{transition:none}}
 @media print{
   @page{margin:16mm}
@@ -2292,6 +2294,7 @@ const CL=window.STA_CLOUD||{};
 const CLOUD_ON=!!document.querySelector('link[rel="manifest"]')&&/^https:\/\/[a-z0-9.-]+(:\d+)?\/?$/i.test(CL.url||"")&&typeof CL.key==="string"&&CL.key.length>20;
 const SB_SRC="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js",SB_SRI="sha384-TcHRA3zBbn+Lexh5n+Oil4guNPOS3rjNDpGRAN46u/s/mB2IZ50ceC6TYDU2yvgK";
 const CONTACT=typeof window.STA_CONTACT==="string"&&/^[^\s@<>"]+@[^\s@<>"]+\.[a-z]{2,}$/i.test(window.STA_CONTACT.trim())?window.STA_CONTACT.trim():"";
+const LEGAL=(()=>{const L=window.STA_LEGAL,o={};if(L&&typeof L==="object")["editeur","statut","adresse","siren","rcs","tva","telephone","directeur"].forEach(k=>{if(typeof L[k]==="string"&&L[k].trim())o[k]=L[k].trim().slice(0,200);});return o;})();
 const AUTH_KEY="sta-auth",CMKEY="sta-cloud-v1",NUDGE_DAYS=14;
 let sb=null,sbP=null,cUser=null,cAdmin=null,cPushing=false,cAgain=false,cTimer=null,cRetry=null,cTry=0,cLastPull=0,cWelcome=false,acc=null;
 let cMeta=(()=>{try{return JSON.parse(localStorage.getItem(CMKEY)||"null")||{};}catch(e){return {};}})();
@@ -2799,7 +2802,7 @@ function footer(){
   <div><h4>Apprendre</h4>${APPR.map(a=>`<a href="#${a[0]}">${a[1]}</a>`).join("")}</div>
   <div><h4>S'entraîner</h4><a href="#simulateur">Simulateur d'appel</a><a href="#atelier">Atelier d'écriture</a><a href="#examen">Examen final</a>${S.exam.pass?'<a href="#certificat">Mon certificat</a>':""}<a href="#app">Application et agenda</a></div>
   <div><h4>Aller plus loin</h4><a href="#decouvrir">Découvrir la formation</a><a href="#certifications">Certifications</a><a href="#ressources">Bibliothèque</a><a href="#ressources-media">Vidéos et podcasts</a><a href="#ressources-terrain">Offres d'emploi</a></div>
-  <div class="base"><span class="sync${syncCls()}" id="sync"><i></i><span>${syncText()}</span></span><span class="flinks"><a href="#faq">Questions fréquentes</a><a href="#confidentialite">Confidentialité</a><span>© ${new Date().getFullYear()} Sales Tech Academy · Ressources vérifiées en novembre 2026</span></span></div></div>`;
+  <div class="base"><span class="sync${syncCls()}" id="sync"><i></i><span>${syncText()}</span></span><span class="flinks"><a href="#faq">Questions fréquentes</a><a href="#confidentialite">Confidentialité</a><a href="#mentions-legales">Mentions légales</a><span>© ${new Date().getFullYear()} Sales Tech Academy · Ressources vérifiées en novembre 2026</span></span></div></div>`;
 }
 
 /* ---------- Vues ---------- */
@@ -3487,6 +3490,7 @@ function pageTitle(r){
   else if(v==="admin")t="Tableau de suivi";
   else if(v==="faq")t="Questions fréquentes";
   else if(v==="confidentialite")t="Confidentialité";
+  else if(v==="mentions-legales")t="Mentions légales";
   else if(v==="404")t="Page introuvable";
   return typo(t?t+" · Sales Tech Academy":"Sales Tech Academy · La formation SDR & BDR");
 }
@@ -3536,7 +3540,32 @@ function vPrivacy(){
    <p>Tu peux effacer ta progression à tout moment depuis le menu de ton profil (« Réinitialiser ma progression »), ou toutes les données du site depuis les réglages de ton navigateur.${CLOUD_ON?" Ton compte se supprime depuis la fenêtre Mon compte.":""}${CONTACT?` Pour toute question sur tes données, écris à <a href="mailto:${h(CONTACT)}">${h(CONTACT)}</a>.`:""} Tu peux aussi adresser une réclamation à la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener">CNIL</a>.</p>
    <p class="muted" style="font-size:14px">Dernière mise à jour : 16 novembre 2026.</p>
   </article>
-  <aside class="card keybox" style="--c:var(--m2)"><h3>En bref</h3><ul><li>Aucune publicité ni mesure d'audience.</li><li>${CLOUD_ON?"Ta progression reste sur ton appareil, sauf si tu crées un compte.":"Ta progression reste sur ton appareil."}</li><li>Tu peux tout effacer à tout moment.</li></ul><a class="linkbtn" href="#faq">Questions fréquentes</a></aside></div>`);
+  <aside class="card keybox" style="--c:var(--m2)"><h3>En bref</h3><ul><li>Aucune publicité ni mesure d'audience.</li><li>${CLOUD_ON?"Ta progression reste sur ton appareil, sauf si tu crées un compte.":"Ta progression reste sur ton appareil."}</li><li>Tu peux tout effacer à tout moment.</li></ul><a class="linkbtn" href="#faq">Questions fréquentes</a><a class="linkbtn" href="#mentions-legales">Mentions légales</a></aside></div>`);
+}
+function vLegal(){
+  const L=LEGAL,ed=L.editeur||"PA",row=(k,v)=>v?`<tr><th scope="row">${k}</th><td>${v}</td></tr>`:"";
+  return band(`<p class="eyebrow">Informations légales</p><h1>Mentions légales</h1><p class="lede">Qui édite Sales Tech Academy, qui l'héberge, et les règles d'utilisation de ses contenus.</p>`,"var(--m5)")+
+  wrap(`<div class="article"><article class="prose">
+   <h2>Éditeur du site</h2>
+   <table class="legal"><tbody>${row("Éditeur",h(ed))}${row("Statut",L.statut&&h(L.statut))}${row("Adresse",L.adresse&&h(L.adresse))}${row("SIREN",L.siren&&h(L.siren)+(L.rcs?" · "+h(L.rcs):""))}${row("TVA intracommunautaire",L.tva&&h(L.tva))}${row("Téléphone",L.telephone&&h(L.telephone))}${row("Email",CONTACT&&`<a href="mailto:${h(CONTACT)}">${h(CONTACT)}</a>`)}${row("Directeur de la publication",h(L.directeur||ed))}</tbody></table>
+   <h2>Hébergement</h2>
+   <p>Le site est hébergé par GitHub Pages, un service de GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis. Contact : <a href="https://support.github.com/contact" target="_blank" rel="noopener">support.github.com</a>.</p>
+   ${CLOUD_ON?`<p>Les comptes des apprenants et leur progression sont enregistrés dans une base de données fournie par Supabase Pte. Ltd. (<a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com</a>), sur des serveurs situés en Europe.</p>`:""}
+   ${CAN_PWA?"":`<p>Cette version de la formation est affichée dans Claude, un service d'Anthropic.</p>`}
+   <h2>Propriété intellectuelle</h2>
+   <p>Les contenus de la formation (séances, fiches de cours, exercices, scénarios du simulateur, sujets d'examen, logo et identité visuelle Moai) sont protégés par le droit d'auteur. Tu peux les utiliser pour ta formation personnelle ; toute reproduction ou diffusion, totale ou partielle, sans l'accord écrit de l'éditeur est interdite.</p>
+   <p>Les noms de produits et de marques cités (HubSpot, LinkedIn, Salesforce, Apollo, lemlist, Coursera…) appartiennent à leurs propriétaires. Sales Tech Academy n'est affiliée à aucune de ces entreprises. Les polices Bricolage Grotesque, Inter et JetBrains Mono sont distribuées sous licence SIL Open Font License.</p>
+   <h2>Liens et ressources externes</h2>
+   <p>La bibliothèque renvoie vers des sites que l'éditeur ne contrôle pas. Les liens ont été vérifiés en novembre 2026 ; leur contenu, leur accès et leurs conditions peuvent avoir changé depuis. Les durées et conditions d'accès des certifications d'éditeurs sont données à titre indicatif : vérifie-les sur le site de chaque éditeur.</p>
+   <h2>Responsabilité</h2>
+   <p>La formation prépare au métier de SDR et à la recherche d'emploi ; elle ne garantit pas l'obtention d'un poste. Le certificat Sales Tech Academy atteste la réussite à l'examen de la formation : ce n'est ni un diplôme d'État ni une certification inscrite au RNCP.</p>
+   <h2>Données personnelles</h2>
+   <p>Ce que le site enregistre, et comment l'effacer, est détaillé dans la page <a href="#confidentialite">Confidentialité</a>.</p>
+   <h2>Droit applicable</h2>
+   <p>Les présentes mentions sont régies par le droit français.</p>
+   <p class="muted" style="font-size:14px">Dernière mise à jour : 18 novembre 2026.</p>
+  </article>
+  <aside class="card keybox" style="--c:var(--m5)"><h3>Voir aussi</h3><a class="linkbtn" href="#confidentialite">Confidentialité</a><a class="linkbtn" href="#faq">Questions fréquentes</a></aside></div>`);
 }
 function v404(){
   return band(`<p class="eyebrow">Erreur 404</p><h1>Cette page n'existe pas</h1><p class="lede">Le lien est peut-être ancien ou incomplet. Le Moai, lui, n'a pas bougé : reprends depuis l'accueil ou lance une recherche.</p><div class="row" style="margin-top:6px"><a class="btn" href="#accueil">Retour à l'accueil${ic("right")}</a><button class="btn ghost" type="button" data-act="search">${ic("search")}Rechercher</button></div>`,"var(--m8)");
@@ -3594,7 +3623,7 @@ function route(){
   if((m=/^fiche-(\d+)$/.exec(r)))return {v:"fiche",n:+m[1]};
   if((m=/^ressources-([a-z]+)$/.exec(r)))return {v:"ressources",type:m[1]};
   if(r==="quiz"||r==="cartes")return {v:"glossaire",mode:r==="quiz"?"quiz":"cards"};
-  if(["parcours","certifications","glossaire","ressources","outils","fiches","accueil","decouvrir","faq","confidentialite"].includes(r))return {v:r};
+  if(["parcours","certifications","glossaire","ressources","outils","fiches","accueil","decouvrir","faq","confidentialite","mentions-legales"].includes(r))return {v:r};
   /* Retour de connexion (#access_token=…) ou adresse vide : accueil. Tout le reste : page introuvable. */
   if(!r||/[=&]/.test(r))return {v:"accueil"};
   return {v:"404"};
@@ -3605,7 +3634,7 @@ function render(top){
   if(top){if(r.v==="ressources")rType=r.type&&RTYPES[r.type]?r.type:"all";if(r.mode){gMode=r.mode;if(r.mode==="quiz")qz=null;}}
   if(r.v!=="sim"&&simRun)simRun=null;
   if(r.v!=="examen"&&exLast)exLast=null;
-  try{if(r.v==="seance")html=vSeance(r.n);else if(r.v==="parcours")html=vParcours(r.mod);else if(r.v==="module")html=vModule(r.mi);else if(r.v==="simulateur")html=vSimList();else if(r.v==="sim")html=vSim(r.id);else if(r.v==="atelier")html=vAtelier(r.id);else if(r.v==="examen")html=vExam();else if(r.v==="certificat")html=vCert();else if(r.v==="app")html=vApp();else if(r.v==="admin")html=vAdmin();else if(r.v==="certifications")html=vCertifs();else if(r.v==="glossaire")html=vGlossaire();else if(r.v==="ressources")html=vRessources();else if(r.v==="outils")html=vOutils();else if(r.v==="fiches")html=vFiches();else if(r.v==="fiche")html=vFiche(r.n);else if(r.v==="faq")html=vFaq();else if(r.v==="confidentialite")html=vPrivacy();else if(r.v==="404")html=v404();else if(r.v==="decouvrir")html=vLanding();else html=vAccueil();}
+  try{if(r.v==="seance")html=vSeance(r.n);else if(r.v==="parcours")html=vParcours(r.mod);else if(r.v==="module")html=vModule(r.mi);else if(r.v==="simulateur")html=vSimList();else if(r.v==="sim")html=vSim(r.id);else if(r.v==="atelier")html=vAtelier(r.id);else if(r.v==="examen")html=vExam();else if(r.v==="certificat")html=vCert();else if(r.v==="app")html=vApp();else if(r.v==="admin")html=vAdmin();else if(r.v==="certifications")html=vCertifs();else if(r.v==="glossaire")html=vGlossaire();else if(r.v==="ressources")html=vRessources();else if(r.v==="outils")html=vOutils();else if(r.v==="fiches")html=vFiches();else if(r.v==="fiche")html=vFiche(r.n);else if(r.v==="faq")html=vFaq();else if(r.v==="confidentialite")html=vPrivacy();else if(r.v==="mentions-legales")html=vLegal();else if(r.v==="404")html=v404();else if(r.v==="decouvrir")html=vLanding();else html=vAccueil();}
   catch(err){console.error(err);html=vCrash();}
   const ae=document.activeElement,focusId=ae&&ae.id;let sel=null;
   if(ae&&(ae.id==="g-search"||ae.id==="r-search"))sel=ae.selectionStart;
@@ -3740,6 +3769,7 @@ function buildIndex(){
   AT_ORDER.forEach(id=>it.push({g:"Atelier d'écriture",t:AT[id].t,s:AT[id].s,href:"#atelier-"+id,ic:AT[id].i,c:AT[id].c}));
   faqData().forEach(g=>g[1].forEach(q=>it.push({g:"Questions fréquentes",t:q[0],s:g[0],href:"#faq",ic:"info",c:"var(--m3)"})));
   it.push({g:"Questions fréquentes",t:"Confidentialité et données",s:"Ce que le site enregistre et comment tout effacer",href:"#confidentialite",ic:"lock",c:"var(--m2)"});
+  it.push({g:"Questions fréquentes",t:"Mentions légales",s:"Éditeur, hébergement, propriété intellectuelle",href:"#mentions-legales",ic:"info",c:"var(--m5)"});
   TOOLS_ORDER.forEach(id=>it.push({g:"Outils",t:TOOLS[id].t,s:TOOLS[id].d,tool:id,ic:TOOLS[id].i,c:"var(--m7)"}));
   C.forEach(c=>it.push({g:"Certifications",t:c[1],s:c[2]+" · "+c[4],href:"#certifications",ic:"award",c:"var(--m6)"}));
   G.forEach(g=>it.push({g:"Glossaire",t:g[0]+" · "+g[1],s:g[2],gloss:g[0],ic:"book",c:mc(Math.min(g[3],8)-1)}));

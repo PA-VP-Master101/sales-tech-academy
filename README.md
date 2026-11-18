@@ -62,7 +62,8 @@ Puis ouvre <http://localhost:8000>.
 Dans [`config.js`](config.js) :
 
 - `window.STA_CLOUD` : l'URL et la clé publique du projet Supabase, pour activer les comptes. Laissées vides, la progression reste dans le navigateur.
-- `window.STA_CONTACT` : une adresse email de contact, affichée dans les pages Questions fréquentes et Confidentialité.
+- `window.STA_CONTACT` : une adresse email de contact, affichée dans les pages Questions fréquentes, Confidentialité et Mentions légales.
+- `window.STA_LEGAL` : l'identité de l'éditeur (nom, statut, adresse, SIREN, téléphone), affichée dans la page Mentions légales.
 
 ## Crédits
 
